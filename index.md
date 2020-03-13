@@ -27,14 +27,15 @@
 담당 : 검색엔진, 디자이너
 ```
 
-<img src="https://user-images.githubusercontent.com/28583588/76606671-06914d00-6556-11ea-8a88-957cdb2f6b84.jpg" width="50%" height="50%">
+<center><img src="https://user-images.githubusercontent.com/28583588/76606671-06914d00-6556-11ea-8a88-957cdb2f6b84.jpg" width="50%" height="50%"></center>
 
 ```markdown
 이름 : 김호준
 담당 : 웹 구축
 ```
 
-![wnghks](https://user-images.githubusercontent.com/28583588/76606717-1e68d100-6556-11ea-8047-d6524dfa9e70.jpg){: width="50%" height="50%"}
+<center><img src="https://user-images.githubusercontent.com/28583588/76606717-1e68d100-6556-11ea-8047-d6524dfa9e70.jpg" width="50%" height="50%"></center>
+
 ```markdown
 이름 : 김주환
 담당 : 문서작업, 인공지능
