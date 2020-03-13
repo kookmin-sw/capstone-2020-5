@@ -15,25 +15,21 @@
 ```markdown
 이름 : 손현기
 담당 : 팀장 / 인공지능 구현, 데이터 전처리
-e-mail : dbss58@naver.com
 ```
 
 ```markdown
 이름 : 이동윤
 담당 : 인공지능 구현
-e-mail : changhoe95@gmail.com
 ```
 
 ```markdown
 이름 : 오예린
 담당 : 검색엔진, 디자이너
-e-mail :  heeji228@gmail.com
 ```
 
 ```markdown
 이름 : 김호준
 담당 : 웹 구축
-e-mail : wlsdudqo97@naver.com
 ```
 
 ```markdown
