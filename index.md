@@ -28,7 +28,7 @@
 ```
 
 <img src="https://user-images.githubusercontent.com/28583588/76606671-06914d00-6556-11ea-8a88-957cdb2f6b84.jpg" width="50%" height="50%">
-![ghwns](https://user-images.githubusercontent.com/28583588/76606671-06914d00-6556-11ea-8a88-957cdb2f6b84.jpg){: width="50%" height="50%"}
+
 ```markdown
 이름 : 김호준
 담당 : 웹 구축
