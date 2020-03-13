@@ -1,14 +1,14 @@
-## 프로젝트 명
+## Project name
 
-###프로젝트 소개
+###about project
 
-###소개 영상
+###video clip
 
-###팀 소개
+###about team
 
-###사용법
+###how to use
 
-###기타
+###etc
 
 ## Welcome to GitHub Pages
 
