@@ -1,3 +1,15 @@
+## 프로젝트 명
+
+###프로젝트 소개
+
+###소개 영상
+
+###팀 소개
+
+###사용법
+
+###기타
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/kookmin-sw/cap-template/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
@@ -25,7 +37,7 @@ Syntax highlighted code block
 
 [Link](url) and ![Image](src)
 ```
-#Hi, yerin
+
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
 ### Jekyll Themes
