@@ -31,6 +31,8 @@ Recently, research on machine learning and deep learning based malware analysis 
 
 **_지도 교수 : 윤명근 교수님_**
 
+<center><img src="https://user-images.githubusercontent.com/28583588/76730511-bf49cd00-679e-11ea-9065-d62f41262244.jpg" width="50%" height="50%"></center>
+
 ```markdown
 이름 : 손현기
 담당 : 팀장 / 인공지능 구현, 데이터 전처리
