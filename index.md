@@ -2,9 +2,23 @@
 
 ### 프로젝트 소개
 
-한글
+<한글>
+ 정보보안 전문 기업 AV-Test의 통계 조사에 따르면 매일 약 350,000 개의 악성코드가 새로 생성되고 있으며, 2019년에는 매달 평균적으로 약 12,075,800 개의 악성코드가 새로 생성되었다.
 
-영문
+<center><img src="https://user-images.githubusercontent.com/28583588/76727702-11d3bb00-6798-11ea-8ba7-ea47c24383e5.png"></center>
+
+ 매일 생성되는 수많은 악성코드를 전문가가 분석하는 것은 현실적으로 어려우므로 일반적으로 자동 분석 도구를 통해 악성코드를 분석하고, 대응하는 방법을 채택하고 있다. 
+최근에는 기계학습(machine learning) 및 딥러닝(deep learning) 기반 악성코드 분석기 연구가 활발히 진행되고 있다. 딥러닝 기반의 악성코드 분석은 데이터로부터 특징을 자동으로 학습하여 분류를 수행하므로 변형된 악성코드를 감내할 수 있으며, 전통적인 분류기에 비해 월등히 높은 분류 성능을 갖는다. 그러나, 전통적인 암호 분석 도구 뿐만 아니라 딥러닝 기반의 악성코드 분석기 역시 100%의 정확도로 분석할 수 없으므로, 일부 악성코드에 대해서는 전문가의 분석이 필요하다.
+
+ 본 프로젝트의 목표는 **딥러닝 기반 악성코드 분석 보조도구**를 개발하는 것이다. 파일을 입력으로 받아 disassemble을 수행한 뒤, opcode 중 악성 행위를 수행하는 부분을 요약하는 소프트웨어를 개발함으로써 적은 인력으로도 악성코드를 효과적으로 분석할 수 있는 소프트웨어를 개발한다.
+
+<English>
+ According to a statistical survey by AV-Test, an information security company, about 350,000 new malicious codes are generated each day, and on average, about 12,075,800 new malicious codes are generated each month in 2019.
+
+ Since it is difficult for an expert to analyze a large number of malicious codes generated every day, it is generally used to analyze and respond to malicious codes through automatic analysis tools.
+Recently, research on machine learning and deep learning based malware analysis has been actively conducted. Deep learning-based malware analysis automatically classifies features from data and performs classification, so that it can endure modified malware, and has significantly higher classification performance than traditional classifiers. However, deep learning-based malware analyzers as well as traditional password analysis tools cannot be analyzed with 100% accuracy, so some malware requires expert analysis.
+
+ The goal of this project is to develop deep learning-based malware analysis aids. After disassembled by receiving a file as input, we develop software that summarizes the part that performs malicious behavior among opcodes, thereby developing software that can effectively analyze malicious code with less manpower.
 
 ### 소개 영상
 
