@@ -2,7 +2,6 @@
 
 ### 프로젝트 소개
 
-한글
 
  정보보안 전문 기업 AV-Test의 통계 조사에 따르면 매일 약 350,000 개의 악성코드가 새로 생성되고 있으며, 2019년에는 매달 평균적으로 약 12,075,800 개의 악성코드가 새로 생성되었다.
 
@@ -15,7 +14,7 @@
  본 프로젝트의 목표는 딥러닝 기반 악성코드 분석 보조도구를 개발하는 것이다. 파일을 입력으로 받아 disassemble을 수행한 뒤, opcode 중 악성 행위를 수행하는 부분을 요약하는 소프트웨어를 개발함으로써 적은 인력으로도 악성코드를 효과적으로 분석할 수 있는 소프트웨어를 개발한다.
 
 
-English
+- English
  
  According to a statistical survey by AV-Test, an information security company, about 350,000 new malicious codes are generated each day, and on average, about 12,075,800 new malicious codes are generated each month in 2019.
 
