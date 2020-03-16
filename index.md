@@ -38,6 +38,8 @@ Recently, research on machine learning and deep learning based malware analysis 
 담당 : 팀장 / 인공지능 구현, 데이터 전처리
 ```
 
+<center><img src="https://user-images.githubusercontent.com/28583588/76734837-1653a000-67a7-11ea-8a96-7ea094ff1b8b.jpg" width="50%" height="50%"></center>
+
 ```markdown
 이름 : 이동윤
 담당 : 인공지능 구현
@@ -64,10 +66,13 @@ Recently, research on machine learning and deep learning based malware analysis 
 담당 : 문서작업, 인공지능
 ```
 
+<center><img src="https://user-images.githubusercontent.com/28583588/76734830-1358af80-67a7-11ea-9a9d-d9657680518a.jpg" width="50%" height="50%"></center>
+
 ```markdown
 이름 : ruslan
 담당 : 데이터 전처리
 ```
+
 
 ### 사용법
 
