@@ -2,8 +2,7 @@
 
 <center><h3>a security insight</h3></center>
 
-<center><h3><strong>전문가를 위한 악성코드 분석 보조도구</h3></strong></center>
-
+<center><h3>전문가를 위한 악성코드 분석 보조도구</h3></center>
 
 
 ## I. 프로젝트 소개 
