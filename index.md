@@ -1,4 +1,4 @@
-<center><img src="https://user-images.githubusercontent.com/28583588/77531404-31748d00-6ed6-11ea-8849-07c2486ba354.png" width="40%" height="40%"></center>
+<center><img src="https://user-images.githubusercontent.com/28583588/77559176-2eda5d80-6eff-11ea-9ee8-17e391765665.png" width="40%" height="40%"></center>
 
 <center><h3>a security insight</h3></center>
 
@@ -49,18 +49,11 @@ After receiving the file as input, we will develop software that summarizes the 
 담당 : 팀장 / 인공지능 구현, 파서 개발, 서버구축
 ```
 
-<center><img src="https://user-images.githubusercontent.com/28583588/76734837-1653a000-67a7-11ea-8a96-7ea094ff1b8b.jpg" width="30%" height="30%"></center>
+<center><img src="https://user-images.githubusercontent.com/28583588/76606717-1e68d100-6556-11ea-8047-d6524dfa9e70.jpg" width="30%" height="30%"></center>
 
 ```markdown
-이름 : 이동윤
-담당 : 인공지능 구현, 크롤러 개발
-```
-
-<center><img src="https://user-images.githubusercontent.com/28583588/76729219-f1a5fb00-679b-11ea-98c3-8590ce8e0fec.jpg" width="30%" height="30%"></center>
-
-```markdown
-이름 : 오예린
-담당 : 검색엔진, 디자이너, 웹 기획
+이름 : 김주환
+담당 : 동향조사, 문서작업, 인공지능 구현
 ```
 
 <center><img src="https://user-images.githubusercontent.com/28583588/76606671-06914d00-6556-11ea-8a88-957cdb2f6b84.jpg" width="30%" height="30%"></center>
@@ -70,14 +63,19 @@ After receiving the file as input, we will develop software that summarizes the 
 담당 : 자료조사, 웹 프론트
 ```
 
-<center><img src="https://user-images.githubusercontent.com/28583588/76606717-1e68d100-6556-11ea-8047-d6524dfa9e70.jpg" width="30%" height="30%"></center>
+<center><img src="https://user-images.githubusercontent.com/28583588/76729219-f1a5fb00-679b-11ea-98c3-8590ce8e0fec.jpg" width="30%" height="30%"></center>
 
 ```markdown
-이름 : 김주환
-담당 : 동향조사, 문서작업, 인공지능 구현
+이름 : 오예린
+담당 : 검색엔진, 디자이너, 웹 기획
 ```
 
-<center><img src="https://user-images.githubusercontent.com/28583588/76734830-1358af80-67a7-11ea-9a9d-d9657680518a.jpg" width="30%" height="30%"></center>
+<center><img src="https://user-images.githubusercontent.com/28583588/76734837-1653a000-67a7-11ea-8a96-7ea094ff1b8b.jpg" width="30%" height="30%"></center>
+
+```markdown
+이름 : 이동윤
+담당 : 인공지능 구현, 크롤러 개발
+```
 
 ```markdown
 이름 : ruslan
