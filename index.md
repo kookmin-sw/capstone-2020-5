@@ -1,18 +1,18 @@
 <center><img src="https://user-images.githubusercontent.com/28583588/77531404-31748d00-6ed6-11ea-8849-07c2486ba354.png" width="40%" height="40%"></center>
 
-### a security insight
+<center><h3>a security insight</h3></center>
 
-## 전문가를 위한 악성코드 분석 보조도구 asi
+<center><h2>전문가를 위한 악성코드 분석 보조도구 <b>asi</b></h2></center>
   
   
 ## I. 프로젝트 소개 
 
-<img src="https://user-images.githubusercontent.com/28583588/76727702-11d3bb00-6798-11ea-8ba7-ea47c24383e5.png" width="40%" height="40%">
+<center><img src="https://user-images.githubusercontent.com/28583588/76727702-11d3bb00-6798-11ea-8ba7-ea47c24383e5.png" width="60%" height="60%"></center>
 
 AV-Test의 통계 조사에 따르면 매일 약 350,000 개의 악성코드가 새로 생성되고 있으며, 2019년에는 매달 평균적으로 약 12,075,800 개의 악성코드가 새로 생성되었습니다.
 최근 자동 분석도구가 발전하고 있으나 100%의 정확도를 갖지 않기 때문에 일부 파일에 대해서 전문가의 개입이 필수적입니다.
 
-<img src="https://user-images.githubusercontent.com/28583588/77532079-806ef200-6ed7-11ea-84d4-808a06fb34d4.png" width="70%" height="70%">
+<center><img src="https://user-images.githubusercontent.com/28583588/77532079-806ef200-6ed7-11ea-84d4-808a06fb34d4.png" width="80%" height="80%"></center>
 
 AhnLab에 따르면 전문가가 한개의 악성코드를 분석하는데는 최소 몇시간, 최대 몇주가 소요됩니다.
 그러나, 악성코드 자동분석도구의 연구는 활발한 반면 전문가를 위한 악성코드 분석도구의 연구와 투자는 턱없이 부족합니다.
