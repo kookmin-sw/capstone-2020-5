@@ -1,4 +1,4 @@
-<center><img src = "(https://user-images.githubusercontent.com/28583588/77529518-1d7b5c00-6ed3-11ea-87bc-87cd2c271889.png"></center>
+<center><img src="https://user-images.githubusercontent.com/28583588/77529518-1d7b5c00-6ed3-11ea-87bc-87cd2c271889.png"></center>
 
 <center><h4>A security insight<h4></center>
  
