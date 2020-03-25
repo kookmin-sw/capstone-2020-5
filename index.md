@@ -1,7 +1,5 @@
-<center><img src="https://user-images.githubusercontent.com/28583588/77529518-1d7b5c00-6ed3-11ea-87bc-87cd2c271889.png" width="40%" height="40%"></center>
-
+<center><img src="https://user-images.githubusercontent.com/28583588/77531404-31748d00-6ed6-11ea-8849-07c2486ba354.png" width="40%" height="40%"></center>
 <center><h4>A security insight</h4></center>
- 
 <center><h2>전문가를 위한 악성코드 분석 보조도구 asi</h2><center>
 
 ### 프로젝트 소개
