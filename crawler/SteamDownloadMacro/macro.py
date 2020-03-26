@@ -6,6 +6,7 @@ class DownloadMacro:
     __IMAGES = ['click_button.png', 'download.png', 'next_button.png', 'return_back.png', 'next_page.png']
     __PAGE_COUNT = 5 #크롤링할 페이지의 개수
     __INDEX_COUNT = 25 #한 페이지 내 게임의 개수
+    __USER_RESOLUTION = 62 #사용자 해상도
     def __init__(self):
         self.logger = Logger('DownloadMacro')
         self.logger.debug("init 완료.")
@@ -44,7 +45,7 @@ class DownloadMacro:
                 else:
                     m.moveTo(target_position.x, target_position.y, 1)
                     time.sleep(1)
-                    m.scroll(-62) #사용자 환경에 따라 스크롤 길이 조절
+                    m.scroll(-DownloadMacro.__USER_RESOLUTION) #사용자 환경에 따라 스크롤 길이 조절
                     time.sleep(1)
                     m.click()
                 time.sleep(2)
