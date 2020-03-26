@@ -17,7 +17,7 @@
  AhnLab에 따르면 전문가가 한개의 악성코드를 분석하는데는 최소 몇시간, 최대 몇주가 소요됩니다.
 그러나, 악성코드 자동분석도구의 연구는 활발한 반면 전문가를 위한 악성코드 분석도구의 연구와 투자는 턱없이 부족합니다.
 
- 본 프로젝트의 목표는 딥러닝 기반 악성코드 분석 보조도구를 개발하는 것입니다. 파일을 입력으로 받아 disassemble을 수행한 뒤, opcode 중 악성 행위를 수행하는 부분을 요약하는 소프트웨어를 개발함으로써 적은 인력으로도 악성코드를 효과적으로 분석할 수 있는 소프트웨어를 개발할 것입다.
+ 본 프로젝트의 목표는 딥러닝 기반 악성코드 분석 보조도구를 개발하는 것입니다. 파일을 입력으로 받아 disassemble을 수행한 뒤, opcode 중 악성 행위를 수행하는 부분을 요약하는 소프트웨어를 개발함으로써 적은 인력으로도 악성코드를 효과적으로 분석할 수 있는 소프트웨어를 개발할 것입니다.
 
 
 ## II. Abstract
@@ -33,7 +33,8 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ## III 소개 영상
   
-추가 예정
+
+[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/5gRVqjZ8mxI)
 
 
 ## IV 팀 소개
@@ -77,8 +78,11 @@ After receiving the file as input, we will develop software that summarizes the 
 담당 : 인공지능 구현, 크롤러 개발
 ```
 
+<center><img src="https://user-images.githubusercontent.com/28583588/77657335-81c41b80-6fb8-11ea-9afb-30370dca3c29.jpg"></center>
+
 ```markdown
 이름 : ruslan
 담당 : 파서 개발, 웹 프론트
 ```
+
 
