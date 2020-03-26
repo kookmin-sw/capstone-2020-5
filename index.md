@@ -78,7 +78,7 @@ After receiving the file as input, we will develop software that summarizes the 
 담당 : 인공지능 구현, 크롤러 개발
 ```
 
-<center><img src="https://user-images.githubusercontent.com/28583588/77657335-81c41b80-6fb8-11ea-9afb-30370dca3c29.jpg"></center>
+<center><img src="https://user-images.githubusercontent.com/28583588/77657335-81c41b80-6fb8-11ea-9afb-30370dca3c29.jpg" width="30%" height="30%"></center>
 
 ```markdown
 이름 : ruslan
