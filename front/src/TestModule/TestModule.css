@@ -1,0 +1,59 @@
+html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      .navbar:not(.top-nav-collapse) {
+        background: #929FBA !important;
+      }
+    }
+
+
+.height15 {
+    height:15px;
+}
+
+.height30 {
+    height:30px;
+}
+
+.bg-custom {
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/nature7.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+.bg-custom-2 {
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+.bg-custom-3 {
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
