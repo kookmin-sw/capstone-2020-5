@@ -39,9 +39,12 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ## IV 팀 소개
 
-**_지도 교수 : 윤명근 교수님_**
 
+<center><img src="https://user-images.githubusercontent.com/28583588/78563697-5b26a000-7856-11ea-85ec-dff4b6b0019f.png" width="30%" height="30%"></center>
 
+```markdown
+지도 교수 : 윤명근 교수님
+```
 
 <center><img src="https://user-images.githubusercontent.com/28583588/76730511-bf49cd00-679e-11ea-9065-d62f41262244.jpg" width="30%" height="30%"></center>
 
