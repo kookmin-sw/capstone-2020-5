@@ -1,0 +1,779 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "Using TensorFlow backend.\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "import keras\n",
+    "from keras.models import Sequential , Model\n",
+    "from keras.layers import Input , RepeatVector , TimeDistributed  , GRU , Bidirectional , LSTM , Dense\n",
+    "from keras import regularizers\n",
+    "import os\n",
+    "import pickle\n",
+    "from tensorflow.keras.preprocessing.sequence import pad_sequences\n",
+    "from tqdm import tqdm\n",
+    "import matplotlib.pyplot as plt\n",
+    "import tensorflow as tf\n",
+    "import pandas as pd\n",
+    "from keras.models import model_from_json\n",
+    "from keras.datasets import mnist\n",
+    "from gensim.models.word2vec import Word2Vec\n",
+    "\n",
+    "gpus = tf.config.experimental.list_physical_devices('GPU')\n",
+    "print(gpus)\n",
+    "if gpus:\n",
+    "    try:\n",
+    "        tf.config.experimental.set_memory_growth(gpus[0], True)\n",
+    "    except RuntimeError as e:\n",
+    "        # 프로그램 시작시에 메모리 증가가 설정되어야만 합니다\n",
+    "        print(e)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def data_load(BASEPATH):\n",
+    "    data_files = []\n",
+    "    filenames = os.listdir(BASEPATH)[:20000]\n",
+    "    for filename in tqdm(filenames):\n",
+    "        with open(os.path.join(BASEPATH,filename) , 'rb') as f:\n",
+    "            data_files.append(pickle.load(f))\n",
+    "    return data_files\n",
+    "    \n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def double_model(maxlen , word_vector):\n",
+    "    inputs = Input(shape=(maxlen , word_vector))\n",
+    "    encoded = LSTM(256 , return_sequences=True)(inputs)\n",
+    "    encoded = LSTM(128, return_sequences=False)(encoded)\n",
+    "    decoded = RepeatVector(maxlen)(encoded)\n",
+    "    decoded = LSTM(128,return_sequences=True)(decoded)\n",
+    "    decoded = LSTM(word_vector ,return_sequences=True)(decoded)\n",
+    "    output = TimeDistributed(Dense(word_vector))(decoded)\n",
+    "    sequence_autoencoder = Model(inputs, output)\n",
+    "    \n",
+    "    encoder = Model(inputs, encoded)\n",
+    "    return sequence_autoencoder"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def pre_processing(data_files, word_vector, func_len , vector_size ):\n",
+    "    unknown = 'unknown'\n",
+    "    zero_padding = [0] * vector_size\n",
+    "    result_data = []\n",
+    "    file = []\n",
+    "    for data_file in tqdm(data_files):\n",
+    "        for blocks in data_file:\n",
+    "            vec_block = []\n",
+    "            for block in blocks[:func_len]:\n",
+    "                for mnemonic in block:\n",
+    "                    try:\n",
+    "                        vec_block.append(word_vector[mnemonic])\n",
+    "                    except:\n",
+    "                        vec_block.append(word_vector[unknown])\n",
+    "            if (len(vec_block) >= 15):\n",
+    "                if (len(vec_block) < func_len):\n",
+    "                    for i in range(0, func_len - len(vec_block)):\n",
+    "                        vec_block.append(zero_padding)\n",
+    "                file.append(vec_block[:func_len])\n",
+    "    X_train = np.array(file)\n",
+    "    return X_train"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "word2vec = Word2Vec.load('word2vec_0402_64_upgrade.wv')\n",
+    "word_vector = word2vec.wv\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data_files = None\n",
+    "with open('raw_data_10000.pickle','rb') as f:\n",
+    "    data_files = pickle.load(f)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|████████████████████████████████████████████████████████████████████████████| 10000/10000 [06:46<00:00, 24.58it/s]\n"
+     ]
+    }
+   ],
+   "source": [
+    "pre_datas = pre_processing(data_files , word_vector , 80 ,64)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Train :  3175998\n",
+      "Test :  352889\n"
+     ]
+    }
+   ],
+   "source": [
+    "data_size = len(pre_datas)\n",
+    "rate = 0.9\n",
+    "X_train = pre_datas[:int(data_size*rate)]\n",
+    "X_test = pre_datas[int(data_size*rate):]\n",
+    "print('Train : ', len(X_train))\n",
+    "print('Test : ', len(X_test))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Model: \"model_1\"\n",
+      "_________________________________________________________________\n",
+      "Layer (type)                 Output Shape              Param #   \n",
+      "=================================================================\n",
+      "input_1 (InputLayer)         (None, 80, 64)            0         \n",
+      "_________________________________________________________________\n",
+      "lstm_1 (LSTM)                (None, 80, 256)           328704    \n",
+      "_________________________________________________________________\n",
+      "lstm_2 (LSTM)                (None, 128)               197120    \n",
+      "_________________________________________________________________\n",
+      "repeat_vector_1 (RepeatVecto (None, 80, 128)           0         \n",
+      "_________________________________________________________________\n",
+      "lstm_3 (LSTM)                (None, 80, 128)           131584    \n",
+      "_________________________________________________________________\n",
+      "lstm_4 (LSTM)                (None, 80, 64)            49408     \n",
+      "_________________________________________________________________\n",
+      "time_distributed_1 (TimeDist (None, 80, 64)            4160      \n",
+      "=================================================================\n",
+      "Total params: 710,976\n",
+      "Trainable params: 710,976\n",
+      "Non-trainable params: 0\n",
+      "_________________________________________________________________\n"
+     ]
+    }
+   ],
+   "source": [
+    "double_model = double_model(80,64)\n",
+    "double_model.compile(optimizer='adam' , loss='mae')\n",
+    "double_model.summary()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Train on 3175998 samples, validate on 352889 samples\n",
+      "Epoch 1/20\n",
+      " - 1409s - loss: 0.0738 - val_loss: 0.0676\n",
+      "Epoch 2/20\n",
+      " - 1406s - loss: 0.0677 - val_loss: 0.0661\n",
+      "Epoch 3/20\n",
+      " - 1425s - loss: 0.0657 - val_loss: 0.0633\n",
+      "Epoch 4/20\n",
+      " - 1440s - loss: 0.0633 - val_loss: 0.0605\n",
+      "Epoch 5/20\n",
+      " - 1451s - loss: 0.0616 - val_loss: 0.0593\n",
+      "Epoch 6/20\n",
+      " - 1435s - loss: 0.0608 - val_loss: 0.0586\n",
+      "Epoch 7/20\n",
+      " - 1547s - loss: 0.0593 - val_loss: 0.0576\n",
+      "Epoch 8/20\n",
+      " - 1479s - loss: 0.0578 - val_loss: 0.0554\n",
+      "Epoch 9/20\n",
+      " - 1459s - loss: 0.0570 - val_loss: 0.0555\n",
+      "Epoch 10/20\n",
+      " - 1415s - loss: 0.0581 - val_loss: 0.0554\n",
+      "Epoch 11/20\n",
+      " - 1353s - loss: 0.0559 - val_loss: 0.0540\n",
+      "Epoch 12/20\n",
+      " - 1647s - loss: 0.0550 - val_loss: 0.0526\n",
+      "Epoch 13/20\n",
+      " - 1164s - loss: 0.0547 - val_loss: 0.0527\n",
+      "Epoch 14/20\n",
+      " - 1378s - loss: 0.0545 - val_loss: 0.0526\n",
+      "Epoch 15/20\n",
+      " - 1419s - loss: 0.0540 - val_loss: 0.0633\n",
+      "Epoch 16/20\n",
+      " - 1450s - loss: 0.0579 - val_loss: 0.0566\n",
+      "Epoch 17/20\n",
+      " - 1366s - loss: 0.0532 - val_loss: 0.0512\n",
+      "Epoch 18/20\n",
+      " - 1348s - loss: 0.0517 - val_loss: 0.0500\n",
+      "Epoch 19/20\n",
+      " - 1435s - loss: 0.0516 - val_loss: 0.0492\n",
+      "Epoch 20/20\n",
+      " - 1412s - loss: 0.0505 - val_loss: 0.0498\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "<keras.callbacks.callbacks.History at 0x1cfc986ebc8>"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "double_model.fit(X_train, X_train,epochs=20,batch_size=2048,shuffle=False,verbose =2 ,validation_data=(X_test, X_test))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Saved lstm_model to disk0408\n"
+     ]
+    }
+   ],
+   "source": [
+    "model_json = double_model.to_json()\n",
+    "with open(\"model_ida_lstm_0408.json\", \"w\") as json_file : \n",
+    "    json_file.write(model_json)\n",
+    "\n",
+    "double_model.save_weights(\"model_ida_lstm_0408.h5\")\n",
+    "print(\"Saved lstm_model to disk0408\")\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "load complte\n"
+     ]
+    }
+   ],
+   "source": [
+    "json_file = open(\"model_ida_lstm_0408.json\", \"r\") \n",
+    "loaded_model_json = json_file.read() \n",
+    "json_file.close() \n",
+    "loaded_model = model_from_json(loaded_model_json)\n",
+    "\n",
+    "loaded_model.load_weights(\"model_ida_lstm_0408.h5\")\n",
+    "print('load complte')\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "THRESHOLD = 0.1\n",
+    "X_test_pred = loaded_model.predict(X_test[:54175])\n",
+    "test_mae_loss = np.mean(np.abs(X_test_pred - X_test[:54175]), axis=2)\n",
+    "test_mae_loss.shape\n",
+    "loss_data = []\n",
+    "for i in test_mae_loss:\n",
+    "    total_loss = 0\n",
+    "    for i2 in i:\n",
+    "        total_loss += i2\n",
+    "    loss_data.append(total_loss/80)\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "test_score_df = pd.DataFrame(index=[i for i in range(0,len(X_test[:54175]))])\n",
+    "test_score_df['loss'] = loss_data\n",
+    "\n",
+    "test_score_df['threshold'] = THRESHOLD\n",
+    "test_score_df['anomaly'] = test_score_df.loss > test_score_df.threshold\n",
+    "# test_score_df['close'] = test[TIME_STEPS:].close\n",
+    "\n",
+    "anomalies_ben = test_score_df[test_score_df.anomaly == True]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "3541\n",
+      "1295\n",
+      "118\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>loss</th>\n",
+       "      <th>threshold</th>\n",
+       "      <th>anomaly</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <td>297</td>\n",
+       "      <td>0.100986</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>333</td>\n",
+       "      <td>0.165902</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>337</td>\n",
+       "      <td>0.146634</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>448</td>\n",
+       "      <td>0.115598</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>456</td>\n",
+       "      <td>0.104030</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54152</td>\n",
+       "      <td>0.100152</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54153</td>\n",
+       "      <td>0.165068</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54154</td>\n",
+       "      <td>0.110422</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54155</td>\n",
+       "      <td>0.110344</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54160</td>\n",
+       "      <td>0.107030</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>4954 rows × 3 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           loss  threshold  anomaly\n",
+       "297    0.100986        0.1     True\n",
+       "333    0.165902        0.1     True\n",
+       "337    0.146634        0.1     True\n",
+       "448    0.115598        0.1     True\n",
+       "456    0.104030        0.1     True\n",
+       "...         ...        ...      ...\n",
+       "54152  0.100152        0.1     True\n",
+       "54153  0.165068        0.1     True\n",
+       "54154  0.110422        0.1     True\n",
+       "54155  0.110344        0.1     True\n",
+       "54160  0.107030        0.1     True\n",
+       "\n",
+       "[4954 rows x 3 columns]"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "nine_count = 0\n",
+    "one_count = 0\n",
+    "one_to_five = 0\n",
+    "two_count = 0\n",
+    "\n",
+    "for i in anomalies_ben['loss']:\n",
+    "    if(i<0.1):\n",
+    "        nine_count+=1\n",
+    "    elif (i<=0.15 and i>=0.1):\n",
+    "        one_count+=1\n",
+    "    elif (i<=0.2 and i>0.15):\n",
+    "        one_to_five+=1\n",
+    "    else:\n",
+    "        two_count+=1\n",
+    "\n",
+    "print(nine_count)\n",
+    "print(one_count)\n",
+    "print(one_to_five)\n",
+    "print(two_count)\n",
+    "\n",
+    "anomalies_ben"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "100%|███████████████████████████████████████████████████████████████████████████████| 500/500 [00:02<00:00, 190.52it/s]\n",
+      "100%|████████████████████████████████████████████████████████████████████████████████| 500/500 [00:07<00:00, 66.22it/s]\n"
+     ]
+    }
+   ],
+   "source": [
+    "mal_files = data_load(r'C:\\capstone\\modeling\\3\\data\\mal')\n",
+    "mal_data = pre_processing(mal_files , word_vector , 80 ,64)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(54175, 80, 64)"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mal_data.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# train_mae_loss = np.mean(np.abs(X_train_pred - X_train), axis=1)\n",
+    "\n",
+    "THRESHOLD = 0.1\n",
+    "X_test_pred = loaded_model.predict(mal_data)\n",
+    "test_mae_loss = np.mean(np.abs(X_test_pred - mal_data), axis=2)\n",
+    "test_mae_loss.shape\n",
+    "loss_data = []\n",
+    "for i in test_mae_loss:\n",
+    "    total_loss = 0\n",
+    "    for i2 in i:\n",
+    "        total_loss += i2\n",
+    "    loss_data.append(total_loss/80)\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "test_score_df = pd.DataFrame(index=[i for i in range(0,len(mal_data))])\n",
+    "test_score_df['loss'] = loss_data\n",
+    "\n",
+    "test_score_df['threshold'] = THRESHOLD\n",
+    "test_score_df['anomaly'] = test_score_df.loss > test_score_df.threshold\n",
+    "# test_score_df['close'] = test[TIME_STEPS:].close\n",
+    "\n",
+    "anomalies_mal = test_score_df[test_score_df.anomaly == True]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "4005\n",
+      "1053\n",
+      "1997\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>loss</th>\n",
+       "      <th>threshold</th>\n",
+       "      <th>anomaly</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <td>0</td>\n",
+       "      <td>0.296322</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>1</td>\n",
+       "      <td>0.296322</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>2</td>\n",
+       "      <td>0.224321</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>3</td>\n",
+       "      <td>0.297031</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>4</td>\n",
+       "      <td>0.295963</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54130</td>\n",
+       "      <td>0.102082</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54131</td>\n",
+       "      <td>0.108621</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54150</td>\n",
+       "      <td>0.105868</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54156</td>\n",
+       "      <td>0.105946</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <td>54172</td>\n",
+       "      <td>0.100986</td>\n",
+       "      <td>0.1</td>\n",
+       "      <td>True</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>7055 rows × 3 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           loss  threshold  anomaly\n",
+       "0      0.296322        0.1     True\n",
+       "1      0.296322        0.1     True\n",
+       "2      0.224321        0.1     True\n",
+       "3      0.297031        0.1     True\n",
+       "4      0.295963        0.1     True\n",
+       "...         ...        ...      ...\n",
+       "54130  0.102082        0.1     True\n",
+       "54131  0.108621        0.1     True\n",
+       "54150  0.105868        0.1     True\n",
+       "54156  0.105946        0.1     True\n",
+       "54172  0.100986        0.1     True\n",
+       "\n",
+       "[7055 rows x 3 columns]"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "nine_count = 0\n",
+    "one_count = 0\n",
+    "one_to_five = 0\n",
+    "two_count = 0\n",
+    "\n",
+    "for i in anomalies_mal['loss']:\n",
+    "    if(i<0.1):\n",
+    "        nine_count+=1\n",
+    "    elif (i<=0.15 and i>=0.1):\n",
+    "        one_count+=1\n",
+    "    elif (i<=0.2 and i>0.15):\n",
+    "        one_to_five+=1\n",
+    "    else:\n",
+    "        two_count+=1\n",
+    "\n",
+    "print(nine_count)\n",
+    "print(one_count)\n",
+    "print(one_to_five)\n",
+    "print(two_count)\n",
+    "\n",
+    "anomalies_mal"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
