@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# front-test
+/front-test/react-front/node_modules
+/front-test/react-front/.pnp
+
+# testing
+/front-test/react-front/coverage
+
+# production
+/front-test/react-front/build
