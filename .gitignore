@@ -1,15 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/front/node_modules
-/front/.pnp
-/front.pnp.js
+/flask-react-app/react-app/node_modules
+/flask-react-app/react-app/.pnp
+/flask-react-app/react-app.pnp.js
 
 # testing
-/front/coverage
+/flask-react-app/react-app/coverage
 
 # production
-/front/build
+/flask-react-app/react-app/build
 
 # misc
 .DS_Store
@@ -21,13 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# front-test
-/front-test/react-front/node_modules
-/front-test/react-front/.pnp
-
-# testing
-/front-test/react-front/coverage
-
-# production
-/front-test/react-front/build

@@ -1,19 +1,17 @@
 import React, {Component} from "react";
 import "./Upload.css"
 import { isCompositeComponent } from "react-dom/test-utils";
-import axios, { post } from 'axios';
 
 class Upload extends Component{
+
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSubmit = this.uploadFiles.bind(this);
         this.fileInput = React.createRef();
         this.dropInput = React.createRef();
         this.files = []
         this.uploadFiles = [];
     }
-
     state = {
         dragging: false
     };
@@ -93,35 +91,22 @@ class Upload extends Component{
         }
     }
 
-    uploadFiles() {
-        const url = "http://localhost:5000/fileUpload";
-        const data = new FormData();
-        // data.append('file', this.files[0]);
-        for (var i = 0; i < this.files.length; ++i) {
-            data.append(this.files[i].name, this.files[i]);
-        }
-
-        axios
-        .post(url, data)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-    }
-
     handleSubmit(event) {
         event.preventDefault();
-        // this.uploadFiles = [];
-        // console.log(this.files);
-        // let i = 0;
-        // do {
-        //     console.log("Begin processing for file "+(i+1));
-        //     this.processFile(i);
-        //     console.log("File "+(i+1)+" processed successfuly!");
-        //     i++;
-        // } while(i < this.files.length);
+        this.uploadFiles = [];
+        console.log(this.files);
+        let i = 0;
+        do {
+            console.log("Begin processing for file "+(i+1));
+            this.processFile(i);
+            console.log("File "+(i+1)+" processed successfuly!");
+            i++;
+        } while(i < this.files.length);
 
-        // console.log(this.uploadFiles);
-        this.uploadFiles();
-    }  
+        console.log(this.uploadFiles);
+    }
+
+    
 
     createListOfFiles() {
         let listOfFiles = []
