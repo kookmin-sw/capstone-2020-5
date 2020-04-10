@@ -1,15 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/flask-react-app/react-app/node_modules
-/flask-react-app/react-app/.pnp
-/flask-react-app/react-app.pnp.js
+/front/react-app/node_modules
+/front/react-app/.pnp
+/front/react-app.pnp.js
 
 # testing
-/flask-react-app/react-app/coverage
+/front/react-app/coverage
 
 # production
-/flask-react-app/react-app/build
+/front/react-app/build
 
 # misc
 .DS_Store
