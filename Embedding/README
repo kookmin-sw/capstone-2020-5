@@ -3,3 +3,5 @@
 
 1. Word2Vec (Skip-Gram)
 2. Word2Vec (CBOW)
+3. FastText (Skip-Gram)
+4. FastText (CBOW)
