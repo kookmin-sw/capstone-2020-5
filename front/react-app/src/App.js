@@ -4,6 +4,7 @@ import Upload from "./Upload/Upload";
 import TestModule from "./TestModule/TestModule"
 import Intro from "./Intro/Intro"
 import Contents from "./Contents/Contents";
+import loading_bar from "./loading_bar/loading_bar";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 
@@ -12,11 +13,13 @@ function App() {
     <Router>
       <div className="App">
         <Nav /> 
+        
         <Switch>
           <Route path="/" exact component={Upload}/>
           <Route path="/test" exact component={TestModule}/>
           <Route path="/intro" exact component={Intro}/>
           <Route path="/contents" exact component={Contents}/>
+          <Route path="/loading_bar" exact component={loading_bar}/>
         </Switch>
       </div>
     </Router>
