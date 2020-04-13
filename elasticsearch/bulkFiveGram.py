@@ -27,7 +27,7 @@ with open("asem.json", "wb") as jsonFile:
                     for k in j:
                         ngram.append(k)
             file = list(divide_list(ngram))
-            file = list(set([tuple(set(item)) for item in file]))
+            file = list(set([tuple(item)) for item in file]))
 
             print(file)
 
