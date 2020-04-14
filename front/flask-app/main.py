@@ -18,8 +18,8 @@ def upload_file():
     uploaded_files = request.files.getlist("fileCollection")
     for file in uploaded_files:
         file.save(secure_filename(file.filename))
-
-    return 'Successfuly recieved and saved files'
+    
+    return 'Success'
 
 
 if __name__ == '__main__':

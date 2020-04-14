@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from 'axios';
 import "./Upload.css"
-import { isCompositeComponent } from "react-dom/test-utils";
+import { Redirect } from "react-router-dom";
 
 class Upload extends Component{
 
@@ -14,7 +14,8 @@ class Upload extends Component{
         this.uploadFiles = [];
     }
     state = {
-        dragging: false
+        dragging: false,
+        loading: false
     };
 
     handleDrag = (e) => {
@@ -66,59 +67,24 @@ class Upload extends Component{
         div.removeEventListener('drop', this.handleDrop);
     }
 
-    readFileAsync(file) {
-        return new Promise((resolve, reject) => {
-            let fileReader = new FileReader();
-            fileReader.onloadend = () => {
-                resolve(fileReader.result);
-            };
-
-            fileReader.onerror = reject;
-
-            fileReader.readAsText(file);
-        })
-    }
-
-    async processFile(index) {
-        try {
-            let file = this.files[index];
-            let contentBuffer = await this.readFileAsync(file);
-            this.uploadFiles.push({
-                name:  this.files[index].name,
-                content: contentBuffer                
-            });
-        } catch(error) {
-            console.log(error);
-        }
-    }
-
     handleSubmit(event) {
         event.preventDefault();
+        this.setState({loading: true});
+
         var formData = new FormData();
         for(const key of Object.keys(this.files)) {
             formData.append("fileCollection", this.files[key]);
         }
         axios.post("http://localhost:5000/upload-files", formData, {
         }).then((response) => {
-            console.log(response.data);
+            if(response.data == "Success") {
+                window.location = "/contents";
+            } else {
+                console.log("ERROR");
+                // window.location = "/error";
+            }
         });
     }
-
-    // handleSubmit(event) {
-    //     event.preventDefault();
-    //     this.uploadFiles = [];
-    //     console.log(this.files);
-    //     let i = 0;
-    //     do {
-    //         console.log("Begin processing for file "+(i+1));
-    //         this.processFile(i);
-    //         console.log("File "+(i+1)+" processed successfuly!");
-    //         i++;
-    //     } while(i < this.files.length);
-
-    //     console.log(this.uploadFiles);
-    // }
-    
 
     createListOfFiles() {
         let listOfFiles = []
@@ -133,30 +99,37 @@ class Upload extends Component{
     render() {
     return(
         <div className="container upload-page">
-            <div className="container vertical-element w-100">
-                <h1>분석 요청하기</h1>
-            </div>
-            <div ref={this.dropInput} id="drop-area" className={this.state.dragging ? "container bg-dark vertical-element vertical-center text-center" : "container bg-light vertical-element vertical-center text-center"}>
-                <form className="my-form w-100">
-                    {
-                        (this.files.length === 0) && <h1 id="list-items">드래그로 업로드</h1>
-                    }
-                    {
-                        (this.files.length > 0) && 
-                        <div className="scroll-view">
-                            {this.createListOfFiles()}
+            {
+                !this.state.loading ? 
+                <div>
+                    <div className="container vertical-element w-100">
+                        <h1>분석 요청하기</h1>
+                    </div>
+                    <div ref={this.dropInput} id="drop-area" className={this.state.dragging ? "container bg-dark vertical-element vertical-center text-center" : "container bg-light vertical-element vertical-center text-center"}>
+                        <form className="my-form w-100">
+                            {
+                                (this.files.length === 0) && <h1 id="list-items">드래그로 업로드</h1>
+                            }
+                            {
+                                (this.files.length > 0) && 
+                                <div className="scroll-view">
+                                    {this.createListOfFiles()}
+                                </div>
+                            }
+                        </form>
+                    </div>
+                    <div className="container d-flex vertical-element">
+                        <div className="row w-100 justify-content-end">
+                            <input ref={this.fileInput} type="file" id="file" className="inputfile" multiple onChange={(e) => {this.files = e.target.files;this.forceUpdate();}}/>
+                            <label type="button" htmlFor="file" className="col-2 text-light text-center button btn btn-primary">파일 업로드</label>
+                            <p className="col-1"></p>
+                            <button id="button-upload" type="button" className="col-2 text-light text-center button btn btn-success" onClick={this.handleSubmit}>제출</button>
                         </div>
-                    }
-                </form>
-            </div>
-            <div className="container d-flex vertical-element">
-                <div className="row w-100 justify-content-end">
-                    <input ref={this.fileInput} type="file" id="file" className="inputfile" multiple onChange={(e) => {this.files = e.target.files;this.forceUpdate();}}/>
-                    <label type="button" htmlFor="file" className="col-2 text-light text-center button btn btn-primary">파일 업로드</label>
-                    <p className="col-1"></p>
-                    <button id="button-upload" type="button" className="col-2 text-light text-center button btn btn-success" onClick={this.handleSubmit}>제출</button>
+                    </div>
                 </div>
-            </div>
+                :
+                <h1>LOADING</h1>
+            }
         </div>
     );
     }
