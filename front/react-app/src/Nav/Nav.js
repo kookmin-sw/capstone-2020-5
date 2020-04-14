@@ -8,7 +8,7 @@ function Nav() {
         <nav className="navbar bg-top">
             <div className="container justify-content-center">
                 <img src="/virus.png" className="img-virus" alt=""/>
-                <h1 className="text-light">Virus Total</h1>
+                <h1 className="text-light">Asi</h1>
                 <div className="row w-100">
                     <p className="col-1"></p>
                 </div>
