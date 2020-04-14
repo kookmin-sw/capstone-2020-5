@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from 'axios';
 import "./Upload.css"
 import { isCompositeComponent } from "react-dom/test-utils";
 
@@ -93,19 +94,30 @@ class Upload extends Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        this.uploadFiles = [];
-        console.log(this.files);
-        let i = 0;
-        do {
-            console.log("Begin processing for file "+(i+1));
-            this.processFile(i);
-            console.log("File "+(i+1)+" processed successfuly!");
-            i++;
-        } while(i < this.files.length);
-
-        console.log(this.uploadFiles);
+        var formData = new FormData();
+        for(const key of Object.keys(this.files)) {
+            formData.append("fileCollection", this.files[key]);
+        }
+        axios.post("http://localhost:5000/upload-files", formData, {
+        }).then((response) => {
+            console.log(response.data);
+        });
     }
 
+    // handleSubmit(event) {
+    //     event.preventDefault();
+    //     this.uploadFiles = [];
+    //     console.log(this.files);
+    //     let i = 0;
+    //     do {
+    //         console.log("Begin processing for file "+(i+1));
+    //         this.processFile(i);
+    //         console.log("File "+(i+1)+" processed successfuly!");
+    //         i++;
+    //     } while(i < this.files.length);
+
+    //     console.log(this.uploadFiles);
+    // }
     
 
     createListOfFiles() {
