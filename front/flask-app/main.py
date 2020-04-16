@@ -1,8 +1,10 @@
 import os
-from flask import Flask, send_from_directory, render_template, request
+import json
+from flask import Flask, send_from_directory, render_template, request, send_file
 from werkzeug.utils import secure_filename
-
+from flask_cors import CORS
 app = Flask(__name__, static_folder='../react-app/build')
+CORS(app)
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
@@ -15,11 +17,15 @@ def serve(path):
 
 @app.route('/upload-files', methods = ['POST'])
 def upload_file():
-    uploaded_files = request.files.getlist("fileCollection")
-    for file in uploaded_files:
-        file.save(secure_filename(file.filename))
+    jsonData = request.get_json()
     
-    return 'Success'
+    print(jsonData)
+    
+    return "Success"
+
+@app.route('/load-files')
+def loadFiles():
+    return "HELLO WORLD"
 
 
 if __name__ == '__main__':

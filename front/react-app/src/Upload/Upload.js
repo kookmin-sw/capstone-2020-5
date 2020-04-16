@@ -11,7 +11,7 @@ class Upload extends Component{
         this.fileInput = React.createRef();
         this.dropInput = React.createRef();
         this.files = []
-        this.uploadFiles = [];
+        this.uploadJsonData = {};
     }
     state = {
         dragging: false,
@@ -70,20 +70,50 @@ class Upload extends Component{
     handleSubmit(event) {
         event.preventDefault();
         this.setState({loading: true});
-
-        var formData = new FormData();
-        for(const key of Object.keys(this.files)) {
-            formData.append("fileCollection", this.files[key]);
-        }
-        axios.post("http://localhost:5000/upload-files", formData, {
-        }).then((response) => {
-            if(response.data == "Success") {
-                window.location = "/contents";
-            } else {
-                console.log("ERROR");
-                // window.location = "/error";
-            }
+        this.uploadJsonData = {};
+        // Prepare json data -> extract name + content
+        this.prepareJsonData().then(() => {
+            // Send JSON file
+            axios.post("http://localhost:5000/upload-files", this.uploadJsonData, {
+            }).then((response) => {
+                console.log(response.data);
+                // if(response.data == "Success") {
+                //     window.location = "/contents";
+                // } else {
+                //     console.log("ERROR");
+                //     // window.location = "/error";
+                // }
+            });
         });
+    }
+
+    async prepareJsonData() {
+        for(var file of this.files) {
+            console.log(file.name);
+            await this.processFile(file)
+        }
+    }
+
+    async processFile(file) {
+        try {
+            let contentBuffer = await this.readFileAsync(file);
+            this.uploadJsonData[file.name] = contentBuffer;
+            console.log(1);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    readFileAsync(file) {
+        return new Promise((resolve, reject) => {
+            let fileReader = new FileReader();
+            fileReader.onloadend = () => {
+                resolve(fileReader.result);
+            };
+
+            fileReader.onerror = reject;
+            fileReader.readAsText(file);
+        })
     }
 
     createListOfFiles() {
