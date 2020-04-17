@@ -76,13 +76,12 @@ class Upload extends Component{
             // Send JSON file
             axios.post("http://localhost:5000/upload-files", this.uploadJsonData, {
             }).then((response) => {
-                console.log(response.data);
-                // if(response.data == "Success") {
-                //     window.location = "/contents";
-                // } else {
-                //     console.log("ERROR");
-                //     // window.location = "/error";
-                // }
+                window.localStorage.setItem('data', "");
+                window.localStorage.setItem('data', JSON.stringify(response.data));
+                window.location = "/contents";
+            }).catch(error => {
+                console.log(error)
+                // window.location = "/error";
             });
         });
     }
