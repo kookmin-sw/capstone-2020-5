@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import "./Upload.css"
 import { Redirect } from "react-router-dom";
+import Spinner from "../Spinner/Spin";
 
 class Upload extends Component{
 
@@ -156,7 +157,7 @@ class Upload extends Component{
                     </div>
                 </div>
                 :
-                <h1>LOADING</h1>
+                 <Spinner/>
             }
         </div>
     );

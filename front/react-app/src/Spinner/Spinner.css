@@ -1,0 +1,10 @@
+.loader{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    min-height: 80vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
