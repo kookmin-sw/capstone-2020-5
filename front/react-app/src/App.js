@@ -5,6 +5,7 @@ import TestModule from "./TestModule/TestModule"
 import Intro from "./Intro/Intro"
 import Contents from "./Contents/Contents";
 import loading_bar from "./loading_bar/loading_bar";
+import Spinner from "./Spinner/Spinner";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        
         <Nav /> 
         
         <Switch>
@@ -20,6 +22,7 @@ function App() {
           <Route path="/intro" exact component={Intro}/>
           <Route path="/contents" exact component={Contents}/>
           <Route path="/loading_bar" exact component={loading_bar}/>
+          <Route path="/spinner" exact component={Spinner}/>
         </Switch>
       </div>
     </Router>
