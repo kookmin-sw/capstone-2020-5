@@ -82,6 +82,7 @@ class Upload extends Component{
                 window.location = "/contents";
             }).catch(error => {
                 console.log(error)
+                window.localStorage.setItem("errorMessage", "File is too large!");
                 // window.location = "/error";
             });
         });

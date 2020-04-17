@@ -1,5 +1,6 @@
 import React, {useState, Component} from "react";
 import ContentElement from "./ContentElement";
+import {Link} from "react-router-dom";
 import "./Contents.css";
 
 class Contents extends Component{
@@ -13,7 +14,11 @@ class Contents extends Component{
         let listOfFiles = []
         Object.entries(this.jsonData).forEach(([key, value]) => {
             listOfFiles.push(
-                <h1 key={key}>{key}</h1>
+                <h1 key={key}>
+                    <Link to={"/contents/" + key}>
+                        {key}
+                    </Link>
+                </h1>
             );
         })
         return listOfFiles
