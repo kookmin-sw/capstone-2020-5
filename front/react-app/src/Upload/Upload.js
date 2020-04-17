@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import "./Upload.css"
 import { Redirect } from "react-router-dom";
-import Spinner from "../Spinner/Spin";
+import Spinner from "../Spinner/Spinner";
 
 class Upload extends Component{
 

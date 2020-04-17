@@ -5,7 +5,7 @@ import TestModule from "./TestModule/TestModule"
 import Intro from "./Intro/Intro"
 import Contents from "./Contents/Contents";
 import loading_bar from "./loading_bar/loading_bar";
-import Spinner from "./Spinner/Spin";
+import Spinner from "./Spinner/Spinner";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 
