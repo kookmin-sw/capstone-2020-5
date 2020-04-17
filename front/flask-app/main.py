@@ -3,6 +3,7 @@ import json
 from flask import Flask, send_from_directory, render_template, request, send_file
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
+import time
 app = Flask(__name__, static_folder='../react-app/build')
 CORS(app)
 
@@ -18,10 +19,15 @@ def serve(path):
 @app.route('/upload-files', methods = ['POST'])
 def upload_file():
     jsonData = request.get_json()
-    
-    print(jsonData)
-    
-    return "Success"
+    # fake response
+    time.sleep(1)
+    response = {}
+    for (k, v) in jsonData.items():
+        response[k] = {}
+        response[k]['content'] = v
+        response[k]['lines'] = [1, 3, 4, 10, 11, 15, 19]
+
+    return response
 
 @app.route('/load-files')
 def loadFiles():

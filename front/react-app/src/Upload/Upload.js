@@ -98,7 +98,6 @@ class Upload extends Component{
         try {
             let contentBuffer = await this.readFileAsync(file);
             this.uploadJsonData[file.name] = contentBuffer;
-            console.log(1);
         } catch(error) {
             console.log(error);
         }
