@@ -26,7 +26,7 @@ class Upload extends Component{
             this.setState({dragging: true});
         }
     };
-    
+
     handleDragIn = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -34,13 +34,13 @@ class Upload extends Component{
             this.setState({dragging: true});
         }
     };
-    
+
     handleDragOut = (e) => {
         e.preventDefault();
         e.stopPropagation();
         this.setState({dragging: false});
     };
-    
+
     handleDrop = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -71,21 +71,33 @@ class Upload extends Component{
     handleSubmit(event) {
         event.preventDefault();
         this.setState({loading: true});
-        this.uploadJsonData = {};
-        // Prepare json data -> extract name + content
-        this.prepareJsonData().then(() => {
-            // Send JSON file
-            axios.post("http://localhost:5000/upload-files", this.uploadJsonData, {
-            }).then((response) => {
-                window.localStorage.setItem('data', "");
-                window.localStorage.setItem('data', JSON.stringify(response.data));
-                window.location = "/contents";
-            }).catch(error => {
-                console.log(error)
-                window.localStorage.setItem("errorMessage", "File is too large!");
-                // window.location = "/error";
-            });
+        var formData = new FormData();
+        for(const key of Object.keys(this.files)) {
+            formData.append("fileCollection", this.files[key]);
+        }
+        axios.post("/upload-files", formData, {
+        }).then((response) => {
+            console.log(response.data);
+            window.localStorage.setItem('data', "");
+            window.localStorage.setItem('data', JSON.stringify(response.data));
+            window.location = "/contents";
         });
+        // this.uploadJsonData = {};
+        // Prepare json data -> extract name + content
+        // this.prepareJsonData().then(() => {
+        //     // Send JSON file
+        //     axios.post("/upload-files", this.uploadJsonData, {
+        //     }).then((response) => {
+                // console.log(response.data);
+                // window.localStorage.setItem('data', "");
+                // window.localStorage.setItem('data', JSON.stringify(response.data));
+                // window.location = "/contents";
+        //     }).catch(error => {
+        //         console.log(error)
+        //         window.localStorage.setItem("errorMessage", "File is too large!");
+        //         // window.location = "/error";
+        //     });
+        // });
     }
 
     async prepareJsonData() {
@@ -130,7 +142,7 @@ class Upload extends Component{
     return(
         <div className="container upload-page">
             {
-                !this.state.loading ? 
+                !this.state.loading ?
                 <div>
                     <div className="container vertical-element w-100">
                         <h1>분석 요청하기</h1>
@@ -141,7 +153,7 @@ class Upload extends Component{
                                 (this.files.length === 0) && <h1 id="list-items">드래그로 업로드</h1>
                             }
                             {
-                                (this.files.length > 0) && 
+                                (this.files.length > 0) &&
                                 <div className="scroll-view">
                                     {this.createListOfFiles()}
                                 </div>
