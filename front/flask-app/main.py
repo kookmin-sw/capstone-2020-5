@@ -3,7 +3,9 @@ import json
 from flask import Flask, send_from_directory, render_template, request, send_file
 from werkzeug.utils import secure_filename
 import time
+# from flask_cors import CORS
 app = Flask(__name__, static_folder='../react-app/build')
+# CORS(app)
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
@@ -20,7 +22,45 @@ def upload_file():
     for file in uploaded_files:
         file.save("files/"+secure_filename(file.filename))
 
-    return 'Successfuly recieved and saved files'
+    returnValue = {
+        "file1.txt": {
+                "meta" : {
+                    "md5" : "file1.txt",
+                    "sha256" : "1234567890"
+                },
+                "mal_functions" : {
+                    23 : ["add", "push", "dec", "mov"] ,
+                    41 : ["add", "push", "dec", "mov"] ,
+                    2 : ["add", "push", "dec", "mov"] ,
+                    102 : ["add", "push", "dec", "mov"]
+                }
+        },
+        "file2.txt": {
+                "meta" : {
+                    "md5" : "file2.txt",
+                    "sha256" : "2222222222"
+                },
+                "mal_functions" : {
+                    3 : ["add", "push", "dec", "mov"] ,
+                    51 : ["add", "push", "dec", "mov"] ,
+                    223 : ["add", "push", "dec", "mov"] ,
+                    10 : ["add", "push", "dec", "mov"]
+                }
+        },
+        "file3.txt": {
+                "meta" : {
+                    "md5" : "file3.txt",
+                    "sha256" : "333333"
+                },
+                "mal_functions" : {
+                    45 : ["add", "push", "dec", "mov"] ,
+                    203 : ["add", "push", "dec", "mov"] ,
+                    29 : ["add", "push", "dec", "mov"] ,
+                    78 : ["add", "push", "dec", "mov"]
+                }
+        }
+    }
+    return returnValue
     # jsonData = request.get_json()
     # # fake response
     # time.sleep(1)

@@ -77,8 +77,10 @@ class Upload extends Component{
         }
         axios.post("/upload-files", formData, {
         }).then((response) => {
-            this.setState({loading: false});
             console.log(response.data);
+            window.localStorage.setItem('data', "");
+            window.localStorage.setItem('data', JSON.stringify(response.data));
+            window.location = "/contents";
         });
         // this.uploadJsonData = {};
         // Prepare json data -> extract name + content
@@ -86,10 +88,10 @@ class Upload extends Component{
         //     // Send JSON file
         //     axios.post("/upload-files", this.uploadJsonData, {
         //     }).then((response) => {
-        //         console.log(response.data);
-        //         // window.localStorage.setItem('data', "");
-        //         // window.localStorage.setItem('data', JSON.stringify(response.data));
-        //         // window.location = "/contents";
+                // console.log(response.data);
+                // window.localStorage.setItem('data', "");
+                // window.localStorage.setItem('data', JSON.stringify(response.data));
+                // window.location = "/contents";
         //     }).catch(error => {
         //         console.log(error)
         //         window.localStorage.setItem("errorMessage", "File is too large!");
