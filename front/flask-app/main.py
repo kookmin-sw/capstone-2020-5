@@ -3,9 +3,9 @@ import json
 from flask import Flask, send_from_directory, render_template, request, send_file
 from werkzeug.utils import secure_filename
 import time
-# from flask_cors import CORS
+from flask_cors import CORS
 app = Flask(__name__, static_folder='../react-app/build')
-# CORS(app)
+CORS(app)
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
@@ -33,6 +33,16 @@ def upload_file():
                     41 : ["add", "push", "dec", "mov"] ,
                     2 : ["add", "push", "dec", "mov"] ,
                     102 : ["add", "push", "dec", "mov"]
+                },
+                "samefile": {
+                    "mal": {
+                        "hits": 123,
+                        "score": 0.2
+                    },
+                    "ben": {
+                        "hits": 456,
+                        "score": 0.8
+                    }
                 }
         },
         "file2.txt": {
@@ -45,6 +55,16 @@ def upload_file():
                     51 : ["add", "push", "dec", "mov"] ,
                     223 : ["add", "push", "dec", "mov"] ,
                     10 : ["add", "push", "dec", "mov"]
+                },
+                "samefile": {
+                    "mal": {
+                        "hits": 123,
+                        "score": 0.2
+                    },
+                    "ben": {
+                        "hits": 456,
+                        "score": 0.8
+                    }
                 }
         },
         "file3.txt": {
@@ -57,6 +77,16 @@ def upload_file():
                     203 : ["add", "push", "dec", "mov"] ,
                     29 : ["add", "push", "dec", "mov"] ,
                     78 : ["add", "push", "dec", "mov"]
+                },
+                "samefile": {
+                    "mal": {
+                        "hits": 123,
+                        "score": 0.2
+                    },
+                    "ben": {
+                        "hits": 456,
+                        "score": 0.8
+                    }
                 }
         }
     }

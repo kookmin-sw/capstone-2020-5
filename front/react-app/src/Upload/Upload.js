@@ -75,7 +75,7 @@ class Upload extends Component{
         for(const key of Object.keys(this.files)) {
             formData.append("fileCollection", this.files[key]);
         }
-        axios.post("/upload-files", formData, {
+        axios.post("http://127.0.0.1:5000/upload-files", formData, {
         }).then((response) => {
             console.log(response.data);
             window.localStorage.setItem('data', "");
