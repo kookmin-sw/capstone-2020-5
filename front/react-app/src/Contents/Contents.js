@@ -14,9 +14,7 @@ class Contents extends Component{
         let listOfFiles = []
         Object.entries(this.jsonData).forEach(([key, value]) => {
             listOfFiles.push(
-                <Link to={"/contents/" + key}>
-                    <ContentElement filename={key} key={key}/>
-                </Link>
+                <ContentElement filename={key} key={key}/>
             );
         })
         return listOfFiles
