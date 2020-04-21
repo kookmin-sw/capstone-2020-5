@@ -4,10 +4,11 @@ import "./Balloon.css"
 class Balloon extends Component{
     constructor(props) {
         super(props);
-        var filename = "file1.txt"
-        var jsonData = JSON.parse(window.localStorage.getItem('data'));
-        this.malhits
-        jsonData[filename]["samefile"]["mal"]
+        var ballonData = JSON.parse(window.localStorage.getItem('data'))[props.filename]["samefile"]''
+        this.malhits = ballonData["mal"]["hits"];
+        this.malscore = ballonData["mal"]["score"];
+        this.belhits = ballonData["ben"]["hits"];
+        this.benscore = ballonData["ben"]["score"];
     }
 
     render() {
@@ -17,16 +18,16 @@ class Balloon extends Component{
                     <br/>
                     <h1>MAL</h1>
                     <br/>
-                    <p>Score: 10%</p>
-                    <p>Hits: 34</p>
+                    <p>Score: {this.malscore}</p>
+                    <p>Hits: {this.malhits}</p>
                 </div>    
 
                 <div className="balloon ben">
                     <br/>
                     <h1>BEN</h1>
                     <br/>
-                    <p>Score: 90%</p>
-                    <p>Hits: 34213</p>
+                    <p>Score: {this.benscore}</p>
+                    <p>Hits: {this.malhits}</p>
                 </div> 
             </div>   
         );
