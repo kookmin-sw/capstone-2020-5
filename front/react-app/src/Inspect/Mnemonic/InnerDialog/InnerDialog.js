@@ -13,7 +13,7 @@ class InnerDialog extends Component {
         let listOfFunc = []
         for (let i = 0; i < this.props.mnemonics.length; i++) {
             listOfFunc.push(
-                <p key={i}>{this.props.mnemonics[i]}</p>
+                <p className="mnemonic-element" key={i}>{this.props.mnemonics[i]}</p>
             );
         }
         return listOfFunc

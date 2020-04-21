@@ -1,7 +1,13 @@
 #scroll-view-innerDialog{
-    width: 200px;
+    width: 450px;
     overflow-y: scroll;
-    height: 100px;
+    overflow-x: auto;
+    height: 400px;
+    display: flex;
+}
+
+.mnemonic-element {
+    margin-left: 10px;
 }
 
 #dialogStylesInner {

@@ -52,7 +52,7 @@ def upload_file():
                     "sha256" : "2222222222"
                 },
                 "mal_functions" : {
-                    3 : ["add", "push", "dec", "mov"] ,
+                    3 : ["add", "push", "dec", "mov", "add", "push", "dec", "mov", "add", "push", "dec", "mov", "add", "push", "dec", "mov"] ,
                     51 : ["add", "push", "dec", "mov"] ,
                     223 : ["add", "push", "dec", "mov"] ,
                     10 : ["add", "push", "dec", "mov"]
