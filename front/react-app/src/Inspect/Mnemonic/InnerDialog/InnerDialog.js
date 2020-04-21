@@ -52,7 +52,7 @@ class InnerDialog extends Component {
         return (
         <div style={dialogStyles} >
             <button style={diaglogCloseButtonStyles} onClick={this.props.onClose}>X</button>
-            <div className="scroll-view">
+            <div id="scroll-view-innerDialog">
             {this.createListOfMnemonics()}
             </div>
             

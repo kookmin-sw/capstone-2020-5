@@ -35,7 +35,7 @@
     background-color: gray;
 }
 
-.scroll-view {
+#scroll-view-upload {
     overflow-x: scroll;
     overflow-y: scroll;
     height: 250px;

@@ -1,5 +1,5 @@
-.scroll-view{
+#scroll-view-innerDialog{
     width: 200px;
-     overflow-y: scroll;
-     height: 100px;
- }
+    overflow-y: scroll;
+    height: 100px;
+}
