@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import "./Inspect.css";
 import Mnemonic from "./Mnemonic/Mnemonic";
 import Balloon from "./Balloon/Balloon";
+
+
 class Inspect extends Component {
     constructor(props)
     {
@@ -40,7 +42,11 @@ class Inspect extends Component {
                 </div>
             </nav>
             <Balloon filename={this.props.match.params.id}/>
-            { this.state.isMnemonicsOpened ? <Mnemonic filename={this.props.match.params.id} />:<br/>}
+            { this.state.isMnemonicsOpened ? 
+            <Mnemonic filename={this.props.match.params.id} onClose={(e) => this.setState({isMnemonicsOpened: false})}/>
+            :
+            
+            <br/>}
                
                
             
