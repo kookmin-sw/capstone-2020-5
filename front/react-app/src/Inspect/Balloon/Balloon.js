@@ -4,7 +4,7 @@ import "./Balloon.css"
 class Balloon extends Component{
     constructor(props) {
         super(props);
-        var ballonData = JSON.parse(window.localStorage.getItem('data'))[props.filename]["samefile"]''
+        var ballonData = JSON.parse(window.localStorage.getItem('data'))[props.filename]["samefile"]
         this.malhits = ballonData["mal"]["hits"];
         this.malscore = ballonData["mal"]["score"];
         this.belhits = ballonData["ben"]["hits"];

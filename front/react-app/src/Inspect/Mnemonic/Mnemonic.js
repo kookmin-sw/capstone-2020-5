@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import "./Mnemonic.css"
 class Mnemonic extends Component {
     constructor(props) {
-        state={
-            isOpen:false
-        }
+    
         super(props);
 
         this.mal_functions = JSON.parse(window.localStorage.getItem('data'))[this.props.filename]["mal_functions"];
