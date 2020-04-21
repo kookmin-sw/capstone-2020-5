@@ -4,14 +4,21 @@ class Mnemonic extends Component {
     constructor(props){
         super(props);
 
-        var jsonData=JSON.parse(window.localStorage.getItem('data'));
-        this.file=jsonData[this.props.filename]
+        var mal_functions=JSON.parse(window.localStorage.getItem('data'))[this.props.filename]["mal_functions"];
+        var indices = [];
 
+        Object.entries(mal_functions).forEach(([key, value]) => {
+            indices.push(key);
+        });
+        console.log(indices);
+        console.log(mal_functions);
+        console.log(mal_functions[indices[2]])
     }
+    
     render() {
         return (
             <div>
-        
+                
             </div>
         );
     }
