@@ -1,0 +1,5 @@
+.scroll-view{
+    width: 200px;
+     overflow-y: scroll;
+     height: 100px;
+ }
