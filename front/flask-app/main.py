@@ -1,11 +1,12 @@
+
 import os
 import json
 from flask import Flask, send_from_directory, render_template, request, send_file
 from werkzeug.utils import secure_filename
 import time
-from flask_cors import CORS
+from flask_cors import CORS# 얘도 주석처리 
 app = Flask(__name__, static_folder='../react-app/build')
-CORS(app)
+CORS(app) #빌드 보낼때 cors 삭제 
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
