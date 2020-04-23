@@ -39,8 +39,10 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ## III 소개 영상 - 중간 발표
 
+
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)]
 (https://youtu.be/tHDYGAmak0A)
+
 
 ## IV 팀 소개
 
