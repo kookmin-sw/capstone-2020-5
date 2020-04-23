@@ -43,8 +43,14 @@ After receiving the file as input, we will develop software that summarizes the 
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/tHDYGAmak0A)
 
 
+## IV 시연 영상 - 중간 발표
+  
 
-## IV 팀 소개
+[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/z1f9Wb0aCmI)
+
+
+
+## V 팀 소개
 
 
 <center><img src="https://user-images.githubusercontent.com/28583588/78563697-5b26a000-7856-11ea-85ec-dff4b6b0019f.png" width="30%" height="30%"></center>
