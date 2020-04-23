@@ -37,6 +37,13 @@ After receiving the file as input, we will develop software that summarizes the 
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/5gRVqjZ8mxI)
 
 
+## III 소개 영상
+  
+
+[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/tHDYGAmak0A)
+
+
+
 ## IV 팀 소개
 
 
@@ -50,7 +57,7 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ```markdown
 이름 : 손현기
-담당 : 팀장 / 인공지능 구현, 파서 개발, 서버구축
+담당 : 팀장 / 인공지능 구현, 파서 개발, 웹 백엔드 개발, ELK 구축
 ```
 
 <center><img src="https://user-images.githubusercontent.com/28583588/76606717-1e68d100-6556-11ea-8047-d6524dfa9e70.jpg" width="30%" height="30%"></center>
@@ -64,14 +71,14 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ```markdown
 이름 : 김호준
-담당 : 자료조사, 웹 프론트
+담당 : 자료조사, 웹 프론트 개발
 ```
 
 <center><img src="https://user-images.githubusercontent.com/28583588/76729219-f1a5fb00-679b-11ea-98c3-8590ce8e0fec.jpg" width="30%" height="30%"></center>
 
 ```markdown
 이름 : 오예린
-담당 : 검색엔진, 디자이너, 웹 기획
+담당 : ELK 구축, 디자이너, 웹 기획
 ```
 
 <center><img src="https://user-images.githubusercontent.com/28583588/76734837-1653a000-67a7-11ea-8a96-7ea094ff1b8b.jpg" width="30%" height="30%"></center>
@@ -85,7 +92,7 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ```markdown
 이름 : ruslan
-담당 : 파서 개발, 웹 프론트
+담당 : 파서 개발, 웹 프론트 개발
 ```
 
 
