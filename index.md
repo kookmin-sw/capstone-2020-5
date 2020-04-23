@@ -31,13 +31,13 @@ However, research on automatic analysis tools of malicious code is active, but r
 After receiving the file as input, we will develop software that summarizes the parts that perform malicious behavior between opcode so that we can effectively analyze malicious code with a small number of people. 
 
 
-## III 소개 영상
+## III 소개 영상 - 계획서 발표
   
 
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/5gRVqjZ8mxI)
 
 
-## III 소개 영상
+## III 소개 영상 - 중간 발표
   
 
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/tHDYGAmak0A)
