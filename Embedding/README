@@ -1,7 +1,13 @@
 임베딩을 수행한 코드와 결과를 정리한 폴더입니다.
 다음 알고리즘 수행 결과를 담고 있습니다.
-
+<파일 5000개>
 1. Word2Vec (Skip-Gram)
 2. Word2Vec (CBOW)
 3. FastText (Skip-Gram)
 4. FastText (CBOW)
+------------------------
+<파일 55000개>
+1. Word2Vec (Skip-Gram) (VectorSize = 32 64 128 256) (Window = 2 3 4) (min=1000)
+2. Word2Vec (CBOW) (VectorSize = 32 64 128 256) (Window = 2 3 4) (min=1000)
+총 24개 모델
+------------------------
