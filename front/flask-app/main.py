@@ -5,9 +5,11 @@ from werkzeug.utils import secure_filename
 import model
 import numpy as np
 from collections import OrderedDict
-
 import time
-app = Flask(__name__, static_folder='static')
+from flask_cors import CORS# 얘도 주석처리 
+
+app = Flask(__name__, static_folder='../react-app/build')
+CORS(app) #빌드 보낼때 cors 삭제
 md = model.model()
 md.setting()
 # Serve React App
@@ -25,8 +27,8 @@ def upload_file():
     uploaded_files = request.files.getlist("fileCollection")
     for file in uploaded_files:
         filename = secure_filename(file.filename)
-        file.save(os.path.join(r"/var/www/flask3/files",filename))
-        X_train, file_raw = md.preprocessing(os.path.join(r'/var/www/flask3/files', filename), md.word2vec_wv, 80, 64)
+        file.save("./files/"+secure_filename(file.filename))
+        X_train, file_raw = md.preprocessing(os.path.join(r"./files/", filename), md.word2vec_wv, 80, 64)
         result = md.predict(np.array(X_train))
         result_diction = {}
         for i in result:

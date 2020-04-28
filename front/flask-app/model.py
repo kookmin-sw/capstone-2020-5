@@ -17,8 +17,8 @@ class model():
 
 
     def setting(self):
-        self.load_model(r'/var/www/flask3/model_ida_lstm_0409.json', r'/var/www/flask3/model_ida_lstm_0409.h5')
-        self.load_word2vec(r'/var/www/flask3/word2vec_0402_64_upgrade.wv')
+        self.load_model(r"model_ida_lstm_0409.json", r"model_ida_lstm_0409.h5")
+        self.load_word2vec(r"word2vec_0402_64_upgrade.wv")
         self.graph = tf.get_default_graph()
 
     def load_model(self , model_path , weight_path):
@@ -32,7 +32,7 @@ class model():
     def load_word2vec(self ,word2vec_path):
         self.word2vec_wv = Word2Vec.load(word2vec_path).wv
         data = str(type(self.word2vec_wv))
-        with open('/var/www/flask3/a.txt','w') as f:
+        with open("a.txt",'w') as f:
             f.write(data)
 
 
@@ -99,7 +99,7 @@ class model():
 if __name__ == '__main__':
     md = model()
     md.setting()
-    X_test , raw = md.preprocessing(r'/var/www/flask3/files/fd63829b39eb6a034b609e4e25ee8d22.pickle',md.word2vec_wv,80,64)
+    X_test , raw = md.preprocessing(r"./files/",md.word2vec_wv,80,64)
     a= md.predict(X_test)
     print(a)
     # print(type(X_test))
