@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Inspect.css";
 import Mnemonic from "./Mnemonic/Mnemonic";
 import Balloon from "./Balloon/Balloon";
+import Axios from 'axios';
 
 
 class Inspect extends Component {
@@ -10,6 +11,9 @@ class Inspect extends Component {
         super(props)
         this.state={isMnemonicsOpened:false}
         this.onMnemonicsClick=this.onMnemonicsClick.bind(this);
+        
+       
+
     }
     
         // componentDidMount(){
@@ -22,6 +26,7 @@ class Inspect extends Component {
     render() {
 
         return (
+       
             <div className="container center">
             <nav className="menu">
                 <h1 className="menu__logo">Epic Co.</h1>

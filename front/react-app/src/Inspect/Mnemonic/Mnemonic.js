@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import "./Mnemonic.css"
 import InnerDialog from "./InnerDialog/InnerDialog";
-
+import Axios from 'axios';
 class Mnemonic extends Component {
     constructor(props) {
+        
         super(props);
-        this.state={isInnerDialogOpened:false};
-        this.mal_functions = JSON.parse(window.localStorage.getItem('data'))[this.props.filename]["mal_functions"];
-        this.indices = [];
-        Object.entries(this.mal_functions).forEach(([key, value]) => {
-            this.indices.push(key);
+        Axios.get("http://127.0.0.1:5000/get_files",  {
+            params:{
+                filename:this.props.filename
+            }
+        }).then((response) => {
+           
+            this.file=response.data
+            this.state={isInnerDialogOpened:false};
+            this.mal_functions = JSON.parse(this.file["mal_functions"]);
+            this.indices = [];
+            Object.entries(this.mal_functions).forEach(([key, value]) => {
+                this.indices.push(key);
+            });
+            console.log(this.file);      
         });
+
+       
     }
 
 

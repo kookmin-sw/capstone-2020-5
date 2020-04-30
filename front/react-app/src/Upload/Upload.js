@@ -78,8 +78,8 @@ class Upload extends Component{
         axios.post("http://127.0.0.1:5000/upload-files", formData, {
         }).then((response) => {
             console.log(response.data);
-            window.localStorage.setItem('data', "");
-            window.localStorage.setItem('data', JSON.stringify(response.data));
+            window.localStorage.setItem('filenames', "");
+            window.localStorage.setItem('filenames', JSON.stringify(response.data));
             window.location = "/contents";
         });
         // this.uploadJsonData = {};
