@@ -4,29 +4,24 @@ import InnerDialog from "./InnerDialog/InnerDialog";
 import Axios from 'axios';
 class Mnemonic extends Component {
     constructor(props) {
-        
         super(props);
-      
         this.state={
-            file:[],
+            dataRecieved: false,
             isInnerDialogOpened:false
-          }
+        }
         Axios.get("http://127.0.0.1:5000/get_files",  {
             params:{
                 filename:this.props.filename
             }
         }).then((response) => {
-           
-            const file=response.data;
+            var file=response.data;
             this.state={isInnerDialogOpened:false};
             this.mal_functions = (file["mal_functions"]);
             this.indices = [];
             Object.entries(this.mal_functions).forEach(([key, value]) => {
                 this.indices.push(key);
             });
-            console.log(this.indices.length);
-            this.setState({file}) ;    
-            
+            this.setState({dataRecieved: true});    
         });
 
        
@@ -50,20 +45,26 @@ class Mnemonic extends Component {
 
     render() {
         return (
-        <div id="dialogStyles">
-            <button id="diaglogCloseButtonStyles" onClick={this.props.onClose}>X</button>
-            <div id="scroll-view-mnemonic">
-                {this.createListOfFunc()}
+            <div>
+                {
+                    this.state.dataRecieved ? 
+                    <div id="dialogStyles">
+                        <button id="diaglogCloseButtonStyles" onClick={this.props.onClose}>X</button>
+                        <div id="scroll-view-mnemonic">
+                            {this.createListOfFunc()}
+                        </div>
+                        
+                        {
+                            this.state.isInnerDialogOpened ?
+                            <InnerDialog mnemonics={this.mnemonics} onClose={(e) => this.setState({isInnerDialogOpened: false})}/>
+                            :
+                            <br/>
+                        }
+                    </div>
+                    :
+                    <div></div>
+                }
             </div>
-            
-            {
-                this.state.isInnerDialogOpened ?
-                <InnerDialog mnemonics={this.mnemonics} onClose={(e) => this.setState({isInnerDialogOpened: false})}/>
-                :
-                <br/>
-            }
-
-        </div>
         );
     }
 }
