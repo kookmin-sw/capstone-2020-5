@@ -9,16 +9,24 @@ class Inspect extends Component {
     constructor(props)
     {
         super(props)
-        this.state={isMnemonicsOpened:false}
-        this.onMnemonicsClick=this.onMnemonicsClick.bind(this);
-        
-       
+        this.state={
+            isMnemonicsOpened:false, 
+            file:null
+        }
 
+        this.onMnemonicsClick=this.onMnemonicsClick.bind(this);
+    }
+
+    componentDidMount() {
+        Axios.get("http://127.0.0.1:5000/get_files",  {
+            params:{
+                filename:this.props.match.params.id
+            }
+        }).then((response) => {
+            this.setState({file:response.data})
+        });
     }
     
-        // componentDidMount(){
-        //     this.setState({ id: this.props.match.params.id })
-        // }
     onMnemonicsClick(){
         this.setState({isMnemonicsOpened:!this.state.isMnemonicsOpened});
         
@@ -26,39 +34,40 @@ class Inspect extends Component {
     render() {
 
         return (
-       
-            <div className="container center">
-            <nav className="menu">
-                <h1 className="menu__logo">Epic Co.</h1>
-    
-                <div className="menu__right">
-                    <ul className="menu__list">
-                        <li className="menu__list-item"><a className="menu__link menu__link--active" href="#" onClick={this.onMnemonicsClick}>Mnemonics</a></li>
-                        <li className="menu__list-item"><a className="menu__link" href="#">Strings</a></li>
-                        <li className="menu__list-item"><a className="menu__link" href="#">Import</a></li>
-                        <li className="menu__list-item"><a className="menu__link" href="#">Export</a></li>
-                    </ul>
-    
-                    <button className="menu__search-button"></button>
-    
-                    <form className="menu__search-form hide" method="POST">
-                        <input className="menu__search-input" placeholder="Type and hit enter"/>
-                    </form>
-                </div>
-            </nav>
-            <Balloon filename={this.props.match.params.id}/>
-            { this.state.isMnemonicsOpened ? 
-            <Mnemonic filename={this.props.match.params.id} onClose={(e) => this.setState({isMnemonicsOpened: false})}/>
-            :
-            
-            <br/>}
-               
-               
-            
-            
-        </div>
-
-        
+            <div>
+                {
+                    this.state.file == null ? 
+                    <div>LOADING</div> 
+                    :
+                    <div className="container center">
+                        <nav className="menu">
+                            <h1 className="menu__logo">Epic Co.</h1>
+                
+                            <div className="menu__right">
+                                <ul className="menu__list">
+                                    <li className="menu__list-item"><a className="menu__link menu__link--active" href="#" onClick={this.onMnemonicsClick}>Mnemonics</a></li>
+                                    <li className="menu__list-item"><a className="menu__link" href="#">Strings</a></li>
+                                    <li className="menu__list-item"><a className="menu__link" href="#">Import</a></li>
+                                    <li className="menu__list-item"><a className="menu__link" href="#">Export</a></li>
+                                </ul>
+                
+                                <button className="menu__search-button"></button>
+                
+                                <form className="menu__search-form hide" method="POST">
+                                    <input className="menu__search-input" placeholder="Type and hit enter"/>
+                                </form>
+                            </div>
+                        </nav>
+                        <Balloon file={this.state.file}/>
+                        { 
+                            this.state.isMnemonicsOpened ? 
+                            <Mnemonic file={this.state.file} onClose={(e) => this.setState({isMnemonicsOpened: false})}/>
+                            :
+                            <div></div>
+                        }     
+                    </div>
+                }
+            </div>
         );
     }
 }
