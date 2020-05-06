@@ -3,6 +3,7 @@ import "./Inspect.css";
 import Mnemonic from "./Mnemonic/Mnemonic";
 import Balloon from "./Balloon/Balloon";
 import Axios from 'axios';
+import Spinner from '../Spinner/Spinner';
 
 
 class Inspect extends Component {
@@ -37,7 +38,7 @@ class Inspect extends Component {
             <div>
                 {
                     this.state.file == null ? 
-                    <div>LOADING</div> 
+                    <div><Spinner/></div> 
                     :
                     <div className="container center">
                         <nav className="menu">
@@ -59,6 +60,7 @@ class Inspect extends Component {
                             </div>
                         </nav>
                         <Balloon file={this.state.file}/>
+
                         { 
                             this.state.isMnemonicsOpened ? 
                             <Mnemonic file={this.state.file} onClose={(e) => this.setState({isMnemonicsOpened: false})}/>
