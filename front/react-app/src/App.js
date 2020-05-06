@@ -8,6 +8,7 @@ import ContentElement from "./Contents/ContentElement";
 import loading_bar from "./loading_bar/loading_bar";
 import Spinner from "./Spinner/Spinner";
 import Inspect from "./Inspect/Inspect";
+import Error from "./Error/Error";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 
@@ -25,9 +26,8 @@ function App() {
           <Route path="/contents" exact component={Contents}/>
           <Route path="/loading_bar" exact component={loading_bar}/>
           <Route path="/Spinner" exact component={Spinner}/>
-          <Route path="/contents/:id" component={Inspect}>
-        
-          </Route>
+          <Route path="/contents/:id" component={Inspect}/>
+          <Route path="/error" exact component={Error}/>
         </Switch>
       </div>
     </Router>

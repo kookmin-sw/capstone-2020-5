@@ -77,27 +77,15 @@ class Upload extends Component{
         }
         axios.post("http://127.0.0.1:5000/upload-files", formData, {
         }).then((response) => {
-            console.log(response.data);
-            window.localStorage.setItem('filenames', "");
-            window.localStorage.setItem('filenames', JSON.stringify(response.data));
-            window.location = "/contents";
+            if(response.data == "error") {
+                window.localStorage.setItem('error_message', "Server uploading error");
+                window.location = "/error";
+            } else {
+                window.localStorage.setItem('filenames', "");
+                window.localStorage.setItem('filenames', JSON.stringify(response.data));
+                window.location = "/contents";
+            }
         });
-        // this.uploadJsonData = {};
-        // Prepare json data -> extract name + content
-        // this.prepareJsonData().then(() => {
-        //     // Send JSON file
-        //     axios.post("/upload-files", this.uploadJsonData, {
-        //     }).then((response) => {
-                // console.log(response.data);
-                // window.localStorage.setItem('data', "");
-                // window.localStorage.setItem('data', JSON.stringify(response.data));
-                // window.location = "/contents";
-        //     }).catch(error => {
-        //         console.log(error)
-        //         window.localStorage.setItem("errorMessage", "File is too large!");
-        //         // window.location = "/error";
-        //     });
-        // });
     }
 
     async prepareJsonData() {

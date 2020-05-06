@@ -21,10 +21,16 @@ class Inspect extends Component {
     componentDidMount() {
         Axios.get("http://127.0.0.1:5000/get_files",  {
             params:{
-                filename:this.props.match.params.id
+                filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle.txt"
+                // filename:this.props.match.params.id
             }
         }).then((response) => {
-            this.setState({file:response.data})
+            if(response.data == "error") {
+                window.localStorage.setItem('error_message', "File not found error");
+                window.location = "/error";
+            } else {
+                this.setState({file:response.data})
+            }
         });
     }
     
