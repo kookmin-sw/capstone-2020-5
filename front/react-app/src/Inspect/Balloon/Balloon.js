@@ -18,7 +18,7 @@ class Balloon extends Component{
                     <br/>
                     <h1>MAL</h1>
                     <br/>
-                    <p>Score: {this.malscore}</p>
+                    <p className="mal_score">Score: {this.malscore}</p>
                     <p>Hits: {this.malhits}</p>
                 </div>    
                 <div className="balloon ben">
