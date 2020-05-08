@@ -1,4 +1,5 @@
 import React, {useState, Component} from "react";
+import Nav from "../Nav/Nav";
 import ContentElement from "./ContentElement";
 import {Link} from "react-router-dom";
 import "./Contents.css";
@@ -23,6 +24,7 @@ class Contents extends Component{
     render() {
         return (
             <div>
+                <Nav />
                 {
                     this.createListOfFiles()
                 }

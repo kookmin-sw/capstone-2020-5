@@ -1,4 +1,5 @@
 import React from "react";
+import Index from "./index/index";
 import Nav from "./Nav/Nav";
 import Upload from "./Upload/Upload";
 import TestModule from "./TestModule/TestModule"
@@ -17,10 +18,11 @@ function App() {
     <Router>
       <div className="App">
         
-        <Nav /> 
+        {/*<Nav />*/}
         
         <Switch>
-          <Route path="/" exact component={Upload}/>
+          <Route path="/upload" exact component={Upload}/>
+          <Route path="/" exact component={Index}/>
           <Route path="/test" exact component={TestModule}/>
           <Route path="/intro" exact component={Intro}/>
           <Route path="/contents" exact component={Contents}/>

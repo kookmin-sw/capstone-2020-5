@@ -1,0 +1,56 @@
+@font-face { font-family: 'BMDOHYEON'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+.snip1535 {
+    background-color: #353dcb;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'BMDOHYEON', Arial, sans-serif;
+    font-size: 2em;
+    font-size: 44px;
+    line-height: 1em;
+    margin: 15px 40px;
+    outline: none;
+    padding: 2rem 3rem 2rem 3rem;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.snip1535:before,
+.snip1535:after {
+    border-color: transparent;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+    border-style: solid;
+    border-width: 0;
+    content: "";
+    height: 24px;
+    position: absolute;
+    width: 24px;
+}
+.snip1535:before {
+    border-color: #353dcb;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    right: -5px;
+    top: -5px;
+}
+.snip1535:after {
+    border-bottom-width: 3px;
+    border-color: #353dcb;
+    border-left-width: 3px;
+    bottom: -5px;
+    left: -5px;
+}
+.snip1535:hover,
+.snip1535.hover {
+    background-color: #353dcb;
+}
+.snip1535:hover:before,
+.snip1535.hover:before,
+.snip1535:hover:after,
+.snip1535.hover:after {
+    height: 100%;
+    width: 100%;
+}

@@ -1,10 +1,12 @@
 import React, {Component} from "react";
+import Nav from "../Nav/Nav";
 import axios from 'axios';
 import "./Upload.css"
 import { Redirect } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 
 class Upload extends Component{
+
 
     constructor(props) {
         super(props);
@@ -128,7 +130,9 @@ class Upload extends Component{
 
     render() {
     return(
+
         <div className="container upload-page">
+            <Nav />
             {
                 !this.state.loading ?
                 <div>

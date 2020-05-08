@@ -6,7 +6,7 @@ class Spinner extends Component {
         return (
             
                 <div className="loader">
-                <img src="/Spinner.gif"/>
+                <img src="/img/Spinner.gif"/>
                 </div>
             
         );

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import "./Intro.css"
+import Nav from "../Nav/Nav";
+
 
 function Intro(){
 
@@ -8,6 +9,7 @@ function Intro(){
     return(
 
 <div>
+    <Nav />
     
 <div id="header_wrap" class="outer">
         <header class="inner">
