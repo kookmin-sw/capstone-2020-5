@@ -67,6 +67,7 @@ class Inspect extends Component {
                                 </form>
                             </div>
                         </nav>
+                    
                         <Balloon file={this.state.file}/>
 
                         { 
