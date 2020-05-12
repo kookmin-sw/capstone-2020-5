@@ -17,12 +17,30 @@ class Inspect extends Component {
         }
 
         this.onMnemonicsClick=this.onMnemonicsClick.bind(this);
+        this.downloadFile = this.downloadFile.bind(this);
+    }
+
+    downloadFile() {
+        let filename = this.props.match.params.id;
+        let contentType = "application/json;charset=utf-8;";
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(this.state.file)))], { type: contentType });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            var a = document.createElement('a');
+            a.download = filename;
+            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(this.state.file));
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
     }
 
     componentDidMount() {
         Axios.get("http://127.0.0.1:5000/get_files",  {
             params:{
-                filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle"
+                filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle.txt"
                 // filename:this.props.match.params.id
             }
         }).then((response) => {
@@ -57,7 +75,7 @@ class Inspect extends Component {
                                     <li className="menu__list-item"><a className="menu__link menu__link--active" href="#" onClick={this.onMnemonicsClick}>Mnemonics</a></li>
                                     <li className="menu__list-item"><a className="menu__link" href="#">Strings</a></li>
                                     <li className="menu__list-item"><a className="menu__link" href="#">Import</a></li>
-                                    <li className="menu__list-item"><a className="menu__link" href="#">Export</a></li>
+                                    <li className="menu__list-item"><a className="menu__link" href="#" onClick={this.downloadFile}>Export</a></li>
                                 </ul>
                 
                                 <button className="menu__search-button"></button>
