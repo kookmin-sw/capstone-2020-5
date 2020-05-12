@@ -7,3 +7,10 @@
 .bg-top {
     background-color: #323c6e;
 }
+.main_nav{
+    background-color: rgba(92,0,165,1);
+    text-align: left;
+    padding: 10px 0 0 20px;
+    display: inline-block;
+    width: 100%;
+}

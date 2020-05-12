@@ -1,3 +1,34 @@
+
+.upload_img{
+    display: inline-block;
+}
+.drag_drop{
+    width: 50rem;
+    height: 20rem;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5rem;
+}
+.drag_drop_body{
+    font-family: "BMDOHYEON";
+    font-size: 3rem;
+    padding-top: 8rem;
+}
+.bg_light{
+    background-color: rgba(223, 204, 241, 0.49);
+    color: #000000;
+}
+.bg_dark{
+    background-color: rgb(107, 42, 167);
+    color: #ffffff;
+}
+.upload_title{
+    text-align: center;
+    font-size: 3rem;
+    padding: 2rem 0 2rem 0;
+    font-family: BMDOHYEON;
+}
+
 .upload-page {
     height:100%;
 }
@@ -15,11 +46,11 @@
     border-radius: 20px;
 }
   
-#drop-area {
+/*#drop-area {
     border-radius: 100px;
     font-family: sans-serif;
     height: 400px;
-}
+}*/
   
 .inputfile {
     width: 0.1px;

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Nav from "../Nav/Nav";
 import axios from 'axios';
 import "./Upload.css"
+import "../index/btn.css"
 import { Redirect } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 
@@ -131,33 +132,37 @@ class Upload extends Component{
     render() {
     return(
 
-        <div className="container upload-page">
+        <div className="upload_container">
             <Nav />
             {
                 !this.state.loading ?
-                <div>
-                    <div className="container vertical-element w-100">
-                        <h1>분석 요청하기</h1>
+                <div className="upload_container">
+                    <div className="upload_title">
+                        분석 요청하기
                     </div>
-                    <div ref={this.dropInput} id="drop-area" className={this.state.dragging ? "container bg-dark vertical-element vertical-center text-center" : "container bg-light vertical-element vertical-center text-center"}>
-                        <form className="my-form w-100">
-                            {
-                                (this.files.length === 0) && <h1 id="list-items">드래그로 업로드</h1>
-                            }
-                            {
-                                (this.files.length > 0) &&
-                                <div id="scroll-view-upload">
-                                    {this.createListOfFiles()}
-                                </div>
-                            }
-                        </form>
+                    <div className="upload_body">
+                        <div className="upload_img">
+                            <img src="/img/upload_file.png"></img>
+                        </div>
+                        <div ref={this.dropInput} id="drop-area" className={this.state.dragging ? "drag_drop bg_dark" : "drag_drop bg_light"}>
+                            <form className="my-form w-100">
+                                {
+                                    (this.files.length === 0) && <div className="drag_drop_body">Drag and Drop</div>
+                                }
+                                {
+                                    (this.files.length > 0) &&
+                                    <div id="scroll-view-upload">
+                                        {this.createListOfFiles()}
+                                    </div>
+                                }
+                            </form>
+                        </div>
                     </div>
                     <div className="container d-flex vertical-element">
                         <div className="row w-100 justify-content-end">
                             <input ref={this.fileInput} type="file" id="file" className="inputfile" multiple onChange={(e) => {this.files = e.target.files;this.forceUpdate();}}/>
-                            <label type="button" htmlFor="file" className="col-2 text-light text-center button btn btn-primary">파일 업로드</label>
-                            <p className="col-1"></p>
-                            <button id="button-upload" type="button" className="col-2 text-light text-center button btn btn-success" onClick={this.handleSubmit}>제출</button>
+                            <button type="button" htmlFor="file" className="snip1535">파일 업로드</button>
+                            <button id="button-upload" type="button" className="snip1535" onClick={this.handleSubmit}>제출</button>
                         </div>
                     </div>
                 </div>
