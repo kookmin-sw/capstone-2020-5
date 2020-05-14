@@ -140,6 +140,7 @@ class Upload extends Component{
                     <div className="upload_title">
                         분석 요청하기
                     </div>
+                    <hr className="underbar"></hr>
                     <div className="upload_body">
                         <div className="upload_img">
                             <img src="/img/upload_file.png"></img>

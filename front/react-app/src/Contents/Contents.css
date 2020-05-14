@@ -2,3 +2,34 @@
     display: inline;
     border-bottom: 1px dotted;
 }
+.contents_list{
+    width: 80rem;
+}
+.title_text{
+    font-size:3rem;
+    margin:50px 0;
+    text-align:left;
+    color: #cbcbcb;
+    font-weight: bold;
+}
+.title_text div:last-child {
+    text-align:right;
+}
+
+.title_text span {
+    color:#000;
+}
+
+.contents_container .table{text-align:center;}
+
+.contents_container .table tr td {
+    vertical-align: middle;
+}
+.contents_container .table tr td.left {
+    text-align:left;
+}
+
+.contents_container table .file_icon .material-icons{
+    color: #5CCAFF;
+    font-size:3rem;
+}

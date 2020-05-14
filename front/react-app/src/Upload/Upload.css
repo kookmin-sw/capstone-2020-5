@@ -1,4 +1,6 @@
-
+.upload_body{
+    padding-top : 2rem;
+}
 .upload_img{
     display: inline-block;
 }
@@ -28,7 +30,12 @@
     padding: 2rem 0 2rem 0;
     font-family: BMDOHYEON;
 }
-
+.underbar{
+    border: 0;
+    height: 0.1rem;
+    margin: 0;
+    background-color: rgba(186, 186, 186, 0.47);
+}
 .upload-page {
     height:100%;
 }

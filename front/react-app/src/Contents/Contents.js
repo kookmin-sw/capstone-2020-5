@@ -25,9 +25,33 @@ class Contents extends Component{
         return (
             <div>
                 <Nav />
-                {
-                    this.createListOfFiles()
-                }
+                <div className="contents_container">
+                    <div className="container">
+                        <div className="contents_title">
+                            <div className="title_text row">
+                                <div className="col-9">Upload / <span>File List</span></div>
+                                <div className="col-3"><input type="button" value="Download ZIP" className="filelist_btn purple" /></div>
+                            </div>
+                        </div>
+                        <div>
+                            <table className="table table-striped">
+                                <caption>List of users</caption>
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2">파일명</th>
+                                    <th scope="col">결과</th>
+                                    <th scope="col">정보</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {
+                                    this.createListOfFiles()
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             // <div className="container">
             //     <div className="container vertical-element w-100">
