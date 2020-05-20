@@ -162,7 +162,7 @@ class Upload extends Component{
                     <div className="container d-flex vertical-element">
                         <div className="row w-100 justify-content-end">
                             <input ref={this.fileInput} type="file" id="file" className="inputfile" multiple onChange={(e) => {this.files = e.target.files;this.forceUpdate();}}/>
-                            <button type="button" htmlFor="file" className="snip1535">파일 업로드</button>
+                            <label type="button" htmlFor="file" className="snip1535">파일 업로드</label>
                             <button id="button-upload" type="button" className="snip1535" onClick={this.handleSubmit}>제출</button>
                         </div>
                     </div>

@@ -40,8 +40,8 @@ class Inspect extends Component {
     componentDidMount() {
         Axios.get("http://127.0.0.1:5000/get_files",  {
             params:{
-                filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle.txt"
-                // filename:this.props.match.params.id
+                //filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle"
+                 filename:this.props.match.params.id
             }
         }).then((response) => {
             if(response.data == "error") {

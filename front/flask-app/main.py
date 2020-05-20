@@ -6,10 +6,10 @@ import model
 import numpy as np
 from collections import OrderedDict
 import time
-from flask_cors import CORS# 얘도 주석처리 
+#from flask_cors import CORS# 얘도 주석처리 
 
 app = Flask(__name__, static_folder='../react-app/build')
-CORS(app) #빌드 보낼때 cors 삭제
+#CORS(app) #빌드 보낼때 cors 삭제
 md = model.model()
 md.setting()
 # Serve React App
@@ -36,7 +36,7 @@ def upload_file():
             result_diction = {}
             for i in result:
                 result_diction[i] = file_raw[i]
-                print(file_raw[i])
+                
 
             file_data = OrderedDict()
             file_data["meta"] = {"md5": "md5", "sha256": "sha256"}
@@ -55,19 +55,11 @@ def upload_file():
 def get_files():
     try:
         filename = request.args.get('filename')
-        path = "./json" # 검색하고자하는 폴더 경로
-        file_names = os.listdir(path)
-        print(file_names)
-        for file_name in file_names:
-            print(filename)
-            print(file_name)
-            print()
-            if(filename == file_name):
-                contents = open("./json/"+filename, "r")
-                return json.load(contents)
+        with open("./json/"+filename, "r") as f:
+                return json.load(f)
     except:
         return 'error'
-    return 'error'
+  
     
  
     

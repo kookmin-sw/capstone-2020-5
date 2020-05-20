@@ -36,8 +36,12 @@ function Index() {
                 </div>
             </div>
             <div className="big_buttons">
+            <Link to="/intro">
                 <button type="button" className="snip1535">서비스 소개</button>
+                </Link>
+                <Link to="/upload">
                 <button type="button" className="snip1535">분석 요청</button>
+                </Link>
             </div>
             <div className="copyright">
                 <p>About More</p>
