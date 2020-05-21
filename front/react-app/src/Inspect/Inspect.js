@@ -12,18 +12,11 @@ import Spinner from '../Spinner/Spinner';
 
 class Inspect extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            isMnemonicsOpened: false,
-            isStringsOpened: false,
-            isImportOpened: false,
-            isExportOpened: false,
-            file: null
+            mnemonicIndices : null
         }
-        this.onMnemonicsClick = this.onMnemonicsClick.bind(this);
-        this.onStringsClick = this.onStringsClick.bind(this);
-        this.onImportClick = this.onImportClick.bind(this);
-        this.onExportClick = this.onExportClick.bind(this);
+        this.createListOfMnemonics = this.createListOfMnemonics.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
     }
 
@@ -55,91 +48,55 @@ class Inspect extends Component {
                 window.localStorage.setItem('error_message', "File not found error");
                 window.location = "/error";
             } else {
-                this.setState({ file: response.data })
+                this.setState({ file: response.data });
+                this.mnemonics = this.state.file["mal_functions"];
+                this.state.mnemonicIndices = [];
+                Object.entries(this.mnemonics).forEach(([key, value]) => {
+                    this.state.mnemonicIndices.push(key);
+                });
+
+                this.string = this.state.file["string"];
+                this.stringIndices = [];
+                Object.entries(this.string).forEach(([key, value]) => {
+                    this.stringIndices.push(key);
+                });
+
+                this.import = this.state.file["import"];
+                this.importIndices = [];
+                Object.entries(this.import).forEach(([key, value]) => {
+                    this.importIndices.push(key);
+                });
+
+                this.export = this.state.file["export"];
+                this.exportIndices = [];
+                Object.entries(this.export).forEach(([key, value]) => {
+                    this.exportIndices.push(key);
+                });
             }
         });
     }
 
-    onMnemonicsClick() {
-        this.setState({ isMnemonicsOpened: !this.state.isMnemonicsOpened });
-
-    }
-    onStringsClick() {
-        this.setState({ isStringsOpened: !this.state.isStringsOpened });
-    }
-    onImportClick() {
-        this.setState({ isImportOpened: !this.state.isImportOpened });
-
-    }
-    onExportClick() {
-        this.setState({ isExportOpened: !this.state.isExportOpened });
-
+    createListOfMnemonics() {
+        let listOfFunc = []
+        for (let i = 0; i < this.state.mnemonicIndices.length; i++) {
+            console.log(this.state.mnemonicIndices[i]);
+            listOfFunc.push(
+                <p key={i}>{i+1} {this.state.mnemonicIndices[i]}</p>
+            );
+        }
+        return listOfFunc
     }
 
     render() {
-
-        return (
+        return(
             <div>
-                <Nav />
-                {
-                    this.state.file == null ?
-                        <div><Spinner /></div>
-                        :
-                        <div className="container center">
-                            <nav className="menu">
-                                <h1 className="menu__logo">Epic Co.</h1>
-
-                                <div className="menu__right">
-                                    <ul className="menu__list">
-                                        <li className="menu__list-item"><a className="menu__link menu__link--active" href="#" onClick={this.onMnemonicsClick}>Mnemonics</a></li>
-                                        <li className="menu__list-item"><a className="menu__link menu__link--active" href="#" onClick={this.onStringsClick}>Strings</a></li>
-                                        <li className="menu__list-item"><a className="menu__link menu__link--active" href="#" onClick={this.onImportClick}>Import</a></li>
-                                        <li className="menu__list-item"><a className="menu__link menu__link--active" href="#" onClick={this.onExportClick}>Export</a></li>
-                                        <li className="menu__list-item"><a className="menu__link" href="#" onClick={this.downloadFile}>Download</a></li>
-                                    </ul>
-
-                                    <button className="menu__search-button"></button>
-
-                                    <form className="menu__search-form hide" method="POST">
-                                        <input className="menu__search-input" placeholder="Type and hit enter" />
-                                    </form>
-                                </div>
-                            </nav>
-
-                            <Balloon file={this.state.file} />
-
-                            {
-                                this.state.isMnemonicsOpened ?
-                                    <Mnemonic file={this.state.file} onClose={(e) => this.setState({ isMnemonicsOpened: false })} />
-                                    :
-                                    <div></div>
-
-                            }
-                            {
-                                this.state.isStringsOpened ?
-                                    <String file={this.state.file} onClose={(e) => this.setState({ isStringsOpened: false })} />
-                                    :
-                                    <div></div>
-
-                            }
-                            {
-                                this.state.isImportOpened ?
-                                    <Import file={this.state.file} onClose={(e) => this.setState({ isImportOpened: false })} />
-                                    :
-                                    <div></div>
-
-                            }
-                            {
-                                this.state.isExportOpened ?
-                                    <Import file={this.state.file} onClose={(e) => this.setState({ isExportOpened: false })} />
-                                    :
-                                    <div></div>
-
-                            }
-
-
-                        </div>
-                }
+            MNEMONIC: {this.state.mnemonicIndices == null ? <br/> : this.createListOfMnemonics()}
+            <br/>
+            STRING: {this.string}
+            <br/>
+            IMPORT: {this.import}
+            <br/>
+            EXPORT: {this.export}
             </div>
         );
     }
