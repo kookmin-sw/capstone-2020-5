@@ -1,0 +1,33 @@
+#scroll-view-mnemonic{
+    width: 400px;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+#dialogStyles {
+    width: 500px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    background-color:#eee;
+    padding:10px 20px 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+#diaglogCloseButtonStyles {
+    margin-bottom: 15px;
+    padding: 3px 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    align-self: flex-start;
+}

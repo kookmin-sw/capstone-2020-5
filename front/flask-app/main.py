@@ -6,10 +6,10 @@ import model
 import numpy as np
 from collections import OrderedDict
 import time
-#from flask_cors import CORS# 얘도 주석처리 
+from flask_cors import CORS# 얘도 주석처리 
 
 app = Flask(__name__, static_folder='../react-app/build')
-#CORS(app) #빌드 보낼때 cors 삭제
+CORS(app) #빌드 보낼때 cors 삭제
 md = model.model()
 md.setting()
 # Serve React App
@@ -42,6 +42,9 @@ def upload_file():
             file_data["meta"] = {"md5": "md5", "sha256": "sha256"}
             file_data["mal_functions"] = result_diction
             file_data["samefile"] = {"mal": {"hits": 123, "score": 0.2}, "ben": {"hits": 456, "score": 0.8}}
+            file_data["string"]= result_diction
+            file_data["import"]= result_diction
+            file_data["export"]= result_diction
             all_file_datas[str(filename)] = file_data
             
             file_to_write = open("./json/"+file.filename, "w")
