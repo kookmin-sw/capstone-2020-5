@@ -1,0 +1,60 @@
+.sample_body{
+}
+
+.file_info {
+    padding-top: 2rem;
+}
+.donut_chart{
+    display: inline-block;
+    background-color: #20c997;
+    border-radius: 100%;
+    padding: 2rem;
+    font-size: 4rem;
+    margin-right: 2rem;
+}
+.white_donut{
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 100%;
+}
+.chart_contents{
+    color: #000000;
+}
+.file_contents{
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+}
+.file_name{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.file_meta > li{
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+.data_tabs{
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.tab_contents{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    overflow-y: scroll;
+}
+.contents_title{
+    font-size: 2rem;
+    font-family: BMDOHYEON;
+    font-weight: bold;
+    background: linear-gradient(to left, #ff00bf 40%, #00f 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.under_line{
+    border-width: 2px;
+    width: 70%;
+}
