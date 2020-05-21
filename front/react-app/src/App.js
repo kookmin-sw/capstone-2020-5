@@ -1,6 +1,7 @@
 import React from "react";
 import Index from "./index/index";
 import Nav from "./Nav/Nav";
+import Sample from "./Inspect/inspectSample"
 import Upload from "./Upload/Upload";
 import TestModule from "./TestModule/TestModule"
 import Intro from "./Intro/Intro"
@@ -30,6 +31,7 @@ function App() {
           <Route path="/Spinner" exact component={Spinner}/>
           <Route path="/contents/:id" component={Inspect}/>
           <Route path="/error" exact component={Error}/>
+          <Route path="/sample" exact component={Sample}/>
         </Switch>
       </div>
     </Router>
