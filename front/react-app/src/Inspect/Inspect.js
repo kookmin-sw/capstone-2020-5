@@ -17,8 +17,12 @@ class Inspect extends Component {
             mnemonicIndices : null,
             stringIndices : null,
             importIndices : null,
-            exportIndices : null
+            exportIndices : null,
+            meta: null,
+            samefile: null
         }
+        this.showMeta = this.showMeta.bind(this);
+        this.showSameFile = this.showSameFile.bind(this);
         this.createListOfInnerElements = this.createListOfInnerElements.bind(this);
         this.createListOfIndices = this.createListOfIndices.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
@@ -53,7 +57,10 @@ class Inspect extends Component {
                 window.location = "/error";
             } else {
                 this.setState({ file: response.data });
-                
+
+                this.setState({meta: this.state.file["meta"]});
+                this.setState({samefile: this.state.file["samefile"]});
+
                 this.mnemonics = this.state.file["mal_functions"];
                 var mnemonicIndicesTemp = [];
                 Object.entries(this.mnemonics).forEach(([key, value]) => {
@@ -99,7 +106,7 @@ class Inspect extends Component {
         let listOfFunc = [];
         for (let i = 0; i < indices.length; i++) {
             listOfFunc.push(
-                <div key={i}>{indices[i]}
+                <div key={i}><h2>{indices[i]}</h2>
                     <br/>
                     {
                         this.createListOfInnerElements(indices[i], innerElements)
@@ -110,16 +117,40 @@ class Inspect extends Component {
         return listOfFunc;
     }
 
+    showSameFile() {
+        return(
+            <div>
+                <p>MAL HITS {this.state.samefile["mal"]["hits"]}</p>
+                <p>MAL SCORE {this.state.samefile["mal"]["score"]}</p>
+                <p>BEN HITS {this.state.samefile["ben"]["hits"]}</p>
+                <p>BEN SCORE {this.state.samefile["ben"]["score"]}</p>
+            </div>
+        );
+    }
+
+    showMeta() {
+        return(
+            <div>
+                <p>MD5 {this.state.meta["md5"]}</p>
+                <p>SHA256 {this.state.meta["sha256"]}</p>
+            </div>
+        );
+    }
+
     render() {
         return(
             <div>
-            MNEMONIC: {this.state.mnemonicIndices == null ? <br/> : this.createListOfIndices(this.state.mnemonicIndices, this.mnemonics)}
+            <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
             <br/>
-            STRING: {this.state.stringIndices == null ? <br/> : this.createListOfIndices(this.state.stringIndices, this.string)}
+            <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
             <br/>
-            IMPORT: {this.state.importIndices == null ? <br/> : this.createListOfIndices(this.state.importIndices, this.import)}
+            <h1>MNEMONIC:</h1> {this.state.mnemonicIndices == null ? <br/> : this.createListOfIndices(this.state.mnemonicIndices, this.mnemonics)}
             <br/>
-            EXPORT: {this.state.exportIndices == null ? <br/> : this.createListOfIndices(this.state.exportIndices, this.export)}
+            <h1>STRING:</h1> {this.state.stringIndices == null ? <br/> : this.createListOfIndices(this.state.stringIndices, this.string)}
+            <br/>
+            <h1>IMPORT:</h1> {this.state.importIndices == null ? <br/> : this.createListOfIndices(this.state.importIndices, this.import)}
+            <br/>
+            <h1>EXPORT:</h1> {this.state.exportIndices == null ? <br/> : this.createListOfIndices(this.state.exportIndices, this.export)}
             </div>
         );
     }
