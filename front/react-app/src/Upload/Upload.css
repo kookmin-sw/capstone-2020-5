@@ -74,7 +74,16 @@
 }
 
 #scroll-view-upload {
-    overflow-x: scroll;
     overflow-y: scroll;
-    height: 250px;
+    height: 200px;
+    width: 45rem;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    font-family: BMDOHYEON;
+    -ms-overflow-style: none;
+}
+.after_upload{
+
 }

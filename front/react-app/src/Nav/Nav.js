@@ -17,9 +17,6 @@ function Nav() {
                 <Link to="/upload">
                     <p type="button" className="small_button">분석 요청</p>
                 </Link>
-                <Link to="/sample">
-                    <p type="button" className="small_button">sample</p>
-                </Link>
             </div>
         </nav>
     );

@@ -15,18 +15,24 @@ class Inspect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mnemonicIndices : null,
-            stringIndices : null,
-            importIndices : null,
-            exportIndices : null,
-            meta: null,
-            samefile: null
+            mnemonicKeys : null,
+            mnemonicValues: null,
+            stringKeys : null,
+            stringValues : null,
+            importKeys : null,
+            importValues : null,
+            exportKeys : null,
+            exportValues : null,
+            meta : null,
+            samefile : null,
+            initialize : false
         }
         this.showMeta = this.showMeta.bind(this);
         this.showSameFile = this.showSameFile.bind(this);
-        this.createListOfInnerElements = this.createListOfInnerElements.bind(this);
-        this.createListOfIndices = this.createListOfIndices.bind(this);
+        this.createList = this.createList.bind(this);
+        this.createListValues = this.createListValues.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
+        this.initLists = this.initLists.bind(this);
     }
 
     downloadFile() {
@@ -62,60 +68,50 @@ class Inspect extends Component {
                 this.setState({meta: this.state.file["meta"]});
                 this.setState({samefile: this.state.file["samefile"]});
 
-                this.mnemonics = this.state.file["mal_functions"];
-                var mnemonicIndicesTemp = [];
-                Object.entries(this.mnemonics).forEach(([key, value]) => {
-                    mnemonicIndicesTemp.push(key);
-                });
-                this.setState({mnemonicIndices : mnemonicIndicesTemp})
+                this.initLists("mal_functions");
 
-                this.string = this.state.file["string"];
-                var stringIndicesTemp = [];
-                Object.entries(this.string).forEach(([key, value]) => {
-                    stringIndicesTemp.push(key);
-                });
-                this.setState({stringIndices : stringIndicesTemp})
+                this.initLists("string");
+                this.initLists("import");
+                this.initLists("export");
 
-                this.import = this.state.file["import"];
-                var importIndicesTemp = [];
-                Object.entries(this.import).forEach(([key, value]) => {
-                    importIndicesTemp.push(key);
-                });
-                this.setState({importIndices : importIndicesTemp})
-
-                this.export = this.state.file["export"];
-                var exportIndicesTemp = [];
-                Object.entries(this.export).forEach(([key, value]) => {
-                    exportIndicesTemp.push(key);
-                });
-                this.setState({exportIndices : exportIndicesTemp})
+                this.setState({initialize : true});
             }
         });
     }
 
-    createListOfInnerElements(index, innerElements) {
-        let listOfFunc = [];
-        for(let i = 0; i < innerElements[index].length; i++) {
-            listOfFunc.push(
-                <p key={i}>{i + 1} {innerElements[index][i]}</p>
-            );
+    initLists(name) {
+        var tempKeys = [];
+        var tempValues = [];
+        Object.entries(this.state.file[name]).forEach(([key, value]) => {
+            tempKeys.push(key);
+        });
+        for(let i = 0; i < tempKeys.length; i++) {
+            var tempValuesValuse = []
+            Object.entries(this.state.file[name][tempKeys[i]]).forEach(([key, value]) => {
+                tempValuesValuse.push(value);
+            });
+            tempValues.push(tempValuesValuse);
         }
-        return listOfFunc;
-    }
+        switch(name) {
+            case "mal_functions":
+                this.setState({mnemonicKeys : tempKeys});
+                this.setState({mnemonicValues : tempValues});
+                break;
+            case "string":
+                this.setState({stringKeys : tempKeys});
+                this.setState({stringValues : tempValues});
+                break;
+            case "import":
+                this.setState({importKeys : tempKeys});
+                this.setState({importValues : tempValues});
+                break;
+            case "export":
+                this.setState({exportKeys : tempKeys});
+                this.setState({exportValues : tempValues});
+                break;
+        }
 
-    createListOfIndices(indices, innerElements) {
-        let listOfFunc = [];
-        for (let i = 0; i < indices.length; i++) {
-            listOfFunc.push(
-                <div key={i}><h2>{indices[i]}</h2>
-                    <br/>
-                    {
-                        this.createListOfInnerElements(indices[i], innerElements)
-                    }
-                </div>
-            );
-        }
-        return listOfFunc;
+
     }
 
     showSameFile() {
@@ -138,6 +134,39 @@ class Inspect extends Component {
         );
     }
 
+    createList(array, index) {
+        let list = [];
+        if(index == null) {
+            for (let i = 0; i < array.length; i++) {
+                list.push(
+                    <p key={i}>{array[i]} </p>
+                );
+            }
+            return list;
+        } else {
+            for (let i = 0; i < array[index].length; i++) {
+                list.push(
+                    <p key={i}>{array[index][i]} </p>
+                );
+            }
+            return list;
+        }
+    }
+
+    createListValues(keyArray, valueArray) {
+        let list = [];
+        for(var i = 0; i < keyArray.length; ++i) {
+            for(var j = 0; j < valueArray[i].length; ++j) {
+                list.push(
+                    <p key={i * keyArray.length + j}>{valueArray[i][j]} </p>
+                );
+            }
+            list.push(<br/>);
+        }
+        return list;
+    }
+
+
     render() {
         return(
             <div className="sample_container">
@@ -152,7 +181,15 @@ class Inspect extends Component {
                         <div className="file_contents">
                             <div className="file_name"> file name</div>
                             <div className="file_meta">
-                                {this.state.meta == null ? <br/> : this.showMeta()}
+                                <div>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.state.meta == null ? <br/> : this.showMeta()}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
+                                </div>
                                 <li className="file_md5"> md5 : 	55cb06fc7ddebaf8c87df15c3681a1fd</li>
                                 <li className="file_sha256"> sha256 : 	b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778 </li>
                                 <li className="file_size"> file size : 440.92 KB</li>
@@ -164,41 +201,34 @@ class Inspect extends Component {
                         <div className="contents_title">Mnimonic</div>
                         <ul className="nav nav-tabs data_tabs">
                             <li className="nav-item">
-                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
+                                <a className="nav-link active" data-toggle="tab" href="#M66">66</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
+                                <a className="nav-link" data-toggle="tab" href="#M172">172</a>
                             </li>
                         </ul>
                         <div className="tab-content">
-                            <div className="tab-pane tab_contents fade show active" id="qwe">
+                            <div className="tab-pane tab_contents fade show active" id="M66">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.mnemonicValues, 0)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
+
                                 </p>
                             </div>
-                            <div className="tab-pane tab_contents fade" id="asd">
+                            <div className="tab-pane tab_contents fade" id="M172">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.mnemonicValues, 1)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -207,41 +237,33 @@ class Inspect extends Component {
                         <div className="contents_title">String</div>
                         <ul className="nav nav-tabs data_tabs">
                             <li className="nav-item">
-                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
+                                <a className="nav-link active" data-toggle="tab" href="#S1">30</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
+                                <a className="nav-link" data-toggle="tab" href="#S2">30</a>
                             </li>
                         </ul>
                         <div className="tab-content">
-                            <div className="tab-pane tab_contents fade show active" id="qwe">
+                            <div className="tab-pane tab_contents fade show active" id="S1">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.stringValues, 0)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
                                 </p>
                             </div>
-                            <div className="tab-pane tab_contents fade" id="asd">
+                            <div className="tab-pane tab_contents fade" id="S2">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.stringValues, 1)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -250,41 +272,33 @@ class Inspect extends Component {
                         <div className="contents_title">Import</div>
                         <ul className="nav nav-tabs data_tabs">
                             <li className="nav-item">
-                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
+                                <a className="nav-link active" data-toggle="tab" href="#I1">30</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
+                                <a className="nav-link" data-toggle="tab" href="#I2">30</a>
                             </li>
                         </ul>
                         <div className="tab-content">
-                            <div className="tab-pane tab_contents fade show active" id="qwe">
+                            <div className="tab-pane tab_contents fade show active" id="I1">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.importValues, 0)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
                                 </p>
                             </div>
-                            <div className="tab-pane tab_contents fade" id="asd">
+                            <div className="tab-pane tab_contents fade" id="I2">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.importValues, 0)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -302,32 +316,24 @@ class Inspect extends Component {
                         <div className="tab-content">
                             <div className="tab-pane tab_contents fade show active" id="qwe">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.exportValues, 0)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
                                 </p>
                             </div>
                             <div className="tab-pane tab_contents fade" id="asd">
                                 <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createList(this.state.exportValues, 0)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -336,20 +342,28 @@ class Inspect extends Component {
                 </div>
 
                 {/*<div>
-                    <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
-                    <br/>
-                    <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
-                    <br/>
-                    <h1>MNEMONIC:</h1> {this.state.mnemonicIndices == null ? <br/> : this.createListOfIndices(this.state.mnemonicIndices, this.mnemonics)}
-                    <br/>
-                    <h1>STRING:</h1> {this.state.stringIndices == null ? <br/> : this.createListOfIndices(this.state.stringIndices, this.string)}
-                    <br/>
-                    <h1>IMPORT:</h1> {this.state.importIndices == null ? <br/> : this.createListOfIndices(this.state.importIndices, this.import)}
-                    <br/>
-                    <h1>EXPORT:</h1> {this.state.exportIndices == null ? <br/> : this.createListOfIndices(this.state.exportIndices, this.export)}
-                </div>*/}
+                    {this.state.initialize ?
+                        <div>
+                            {this.createList(this.state.mnemonicKeys, null)}
+                            {this.createList(this.state.mnemonicValues, 0)}
+                            {this.createListValues(this.state.mnemonicKeys, this.state.mnemonicValues)}
 
+                            {this.createList(this.state.stringKeys, null)}
+                            {this.createListValues(this.state.stringKeys, this.state.stringValues)}
+                            {this.createList(this.state.importKeys, null)}
+                            {this.createListValues(this.state.importKeys, this.state.importValues)}
+                            {this.createList(this.state.exportKeys, null)}
+                            {this.createListValues(this.state.exportKeys, this.state.exportValues)}
+                            <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
+                            <br/>
+                            <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
+                        </div>
+                        :
+                        <br/>
+                    }
+                </div>*/}
             </div>
+
 
         );
     }

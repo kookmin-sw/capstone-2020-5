@@ -152,7 +152,7 @@ class Upload extends Component{
                                 }
                                 {
                                     (this.files.length > 0) &&
-                                    <div id="scroll-view-upload">
+                                    <div className="after_upload" id="scroll-view-upload">
                                         {this.createListOfFiles()}
                                     </div>
                                 }

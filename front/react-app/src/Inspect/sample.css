@@ -29,7 +29,7 @@
     font-size: 1.8rem;
     font-weight: bold;
 }
-.file_meta > li{
+.file_meta{
     list-style: none;
     font-size: 1.5rem;
 }
