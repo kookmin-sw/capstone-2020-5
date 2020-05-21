@@ -15,14 +15,22 @@ class Inspect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mnemonicIndices : null,
-            stringIndices : null,
-            importIndices : null,
-            exportIndices : null
+            mnemonicKeys : null,
+            mnemonicValues: null,
+            stringKeys : null,
+            stringValues : null,
+            importKeys : null,
+            importValues : null,
+            exportKeys : null,
+            exportValues : null,
+            meta : null,
+            samefile : null
         }
-        this.createListOfInnerElements = this.createListOfInnerElements.bind(this);
-        this.createListOfIndices = this.createListOfIndices.bind(this);
+        this.showMeta = this.showMeta.bind(this);
+        this.showSameFile = this.showSameFile.bind(this);
+        this.createList = this.createList.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
+        this.initLists = this.initLists.bind(this);
     }
 
     downloadFile() {
@@ -54,67 +62,113 @@ class Inspect extends Component {
                 window.location = "/error";
             } else {
                 this.setState({ file: response.data });
-                
-                this.mnemonics = this.state.file["mal_functions"];
-                var mnemonicIndicesTemp = [];
-                Object.entries(this.mnemonics).forEach(([key, value]) => {
-                    mnemonicIndicesTemp.push(key);
-                });
-                this.setState({mnemonicIndices : mnemonicIndicesTemp})
 
-                this.string = this.state.file["string"];
-                var stringIndicesTemp = [];
-                Object.entries(this.string).forEach(([key, value]) => {
-                    stringIndicesTemp.push(key);
-                });
-                this.setState({stringIndices : stringIndicesTemp})
+                this.setState({meta: this.state.file["meta"]});
+                this.setState({samefile: this.state.file["samefile"]});
 
-                this.import = this.state.file["import"];
-                var importIndicesTemp = [];
-                Object.entries(this.import).forEach(([key, value]) => {
-                    importIndicesTemp.push(key);
-                });
-                this.setState({importIndices : importIndicesTemp})
-
-                this.export = this.state.file["export"];
-                var exportIndicesTemp = [];
-                Object.entries(this.export).forEach(([key, value]) => {
-                    exportIndicesTemp.push(key);
-                });
-                this.setState({exportIndices : exportIndicesTemp})
+                this.initLists("mal_functions");
+                this.initLists("string");
+                this.initLists("import");
+                this.initLists("export");
             }
         });
     }
 
-    createListOfInnerElements(index, innerElements) {
-        let listOfFunc = [];
-        for(let i = 0; i < innerElements[index].length; i++) {
-            listOfFunc.push(
-                <p key={i}>{i + 1} {innerElements[index][i]}</p>
-            );
+    initLists(name) {
+        var tempKeys = [];
+        var tempValues = [];
+        Object.entries(this.state.file[name]).forEach(([key, value]) => {
+            tempKeys.push(key);
+        }); 
+        for(let i = 0; i < tempKeys.length; i++) {
+            var tempValuesValuse = []
+            Object.entries(this.state.file[name][tempKeys[i]]).forEach(([key, value]) => {
+                tempValuesValuse.push(value);
+            }); 
+            tempValues.push(tempValuesValuse);
         }
-        return listOfFunc;
+        switch(name) {
+            case "mal_functions":
+                this.setState({mnemonicKeys : tempKeys});
+                this.setState({mnemonicValues : tempValues});                        
+                break;
+            case "string":
+                this.setState({stringValues : tempKeys});
+                this.setState({stringValues : tempValues});                        
+                break;
+            case "import":
+                this.setState({importKeys : tempKeys});
+                this.setState({importValues : tempValues});                        
+                break;
+            case "export":
+                this.setState({exportKeys : tempKeys});
+                this.setState({exportValues : tempValues});                        
+                break;
+        }
+
+
     }
 
-    createListOfIndices(indices, innerElements) {
-        let listOfFunc = [];
-        for (let i = 0; i < indices.length; i++) {
-            listOfFunc.push(
-                <div key={i}>{indices[i]}
-                    <br/>
-                    {
-                        this.createListOfInnerElements(indices[i], innerElements)
-                    }
-                </div>
-            );
-        }
-        return listOfFunc;
+    showSameFile() {
+        return(
+            <div>
+                <p>MAL HITS {this.state.samefile["mal"]["hits"]}</p>
+                <p>MAL SCORE {this.state.samefile["mal"]["score"]}</p>
+                <p>BEN HITS {this.state.samefile["ben"]["hits"]}</p>
+                <p>BEN SCORE {this.state.samefile["ben"]["score"]}</p>
+            </div>
+        );
     }
+
+    showMeta() {
+        return(
+            <div>
+                <p>MD5 {this.state.meta["md5"]}</p>
+                <p>SHA256 {this.state.meta["sha256"]}</p>
+            </div>
+        );
+    }
+
+    createList(array, index) {
+        let listOfFunc = [];
+        if(index == null) {
+            for (let i = 0; i < array.length; i++) {
+                listOfFunc.push(
+                    <p key={i}>{array[i]} </p>
+                );
+            }
+            return listOfFunc;
+        } else {
+            for (let i = 0; i < array[index].length; i++) {
+                listOfFunc.push(
+                    <p key={i}>{array[index][i]} </p>
+                );
+            }
+            return listOfFunc;
+        }
+    }
+
+    // for(let i = 0; i < this.state.mnemonicKeys.length; i++) {
+    //     for(let j = 0; j < this.state.mnemonicValues[i].length; ++j) {
+    //         this.state.mnemonicValues[i][j];
+    //     }
+    // }
 
     render() {
         return(
-            <div></div>
-
+            <div>
+                {this.state.mnemonicKeys == null ? <br/> : this.createList(this.state.mnemonicKeys, null)}
+                {this.state.mnemonicValues == null ? <br/> : this.createList(this.state.mnemonicValues, 0)}
+                {this.state.stringKeys == null ? <br/> : this.createList(this.state.stringKeys, null)}
+                {this.state.stringValues == null ? <br/> : this.createList(this.state.stringValues, 0)}
+                {this.state.importKeys == null ? <br/> : this.createList(this.state.importKeys, null)}
+                {this.state.importValues == null ? <br/> : this.createList(this.state.importValues, 0)}
+                {this.state.exportKeys == null ? <br/> : this.createList(this.state.exportKeys, null)}
+                {this.state.exportValues == null ? <br/> : this.createList(this.state.exportValues, 0)}
+                <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
+                <br/>
+                <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
+            </div>
         );
     }
 }
