@@ -37,14 +37,14 @@ def upload_file():
             for i in result:
                 result_diction[i] = file_raw[i]
                 
-
+            
             file_data = OrderedDict()
             file_data["meta"] = {"md5": "md5", "sha256": "sha256"}
             file_data["mal_functions"] = result_diction
             file_data["samefile"] = {"mal": {"hits": 123, "score": 0.2}, "ben": {"hits": 456, "score": 0.8}}
-            file_data["string"]= result_diction
-            file_data["import"]= result_diction
-            file_data["export"]= result_diction
+            file_data["string"]= {"0":["Project1"],"1":["cDefE!gYjjiiijj2mnop"],"2":["music"],"3":["Microsoft Windows"],"4":["frm_main"],"5":["class_main"],"6":["module_main"],"7":["module_bind"],"8":["module_rnd"],"9":["module_registry"],"10":["module_until"],"11":["module_path"],"12":["module_check"],"13":["Project1"],"14":["C:\\Program Files\\Microsoft Visual Studio\\VB98\\VB6.OLB"],"15":["C:\\WINDOWS\\system32\\msvbvm60.dll\\3"],"16":["VBRUN"],"17":["AdjustTokenPrivileges"],"18":["LookupPrivilegeValueA"],"19":["GetCurrentProcess"],"20":["GetFileAttributesA"],"21":["GetWindowTextLengthA"],"22":["MSVBVM60.DLL"]}
+            file_data["import"]= {"MSVBVM60":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface","__vbaExceptHandler","ProcCallEngine","__imp_ThunRTMain","rtcSpaceBstr","rtcSpaceVar","rtcKillFiles","rtcChangeDir","rtcBstrFromAnsi","rtcGetPresentDate","rtcGetSecondOfMinute","rtcFileLength","rtcSetFileAttr","rtcRandomNext","rtcRandomize","rtcMsgBox","rtcDoEvents","rtcShell","rtcArray","rtcStringVar","rtcVarBstrFromAnsi","rtcLeftCharBstr","__imp_rtcDir","rtcCommandVar","rtcErrObj","rtcCreateObject2"]}
+            file_data["export"]= {"0":["start"]}
             all_file_datas[str(filename)] = file_data
             
             file_to_write = open("./json/"+file.filename, "w")
