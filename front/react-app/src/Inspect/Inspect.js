@@ -15,17 +15,8 @@ class Inspect extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mnemonicKeys : null,
-            mnemonicValues: null,
-            stringKeys : null,
-            stringValues : null,
-            importKeys : null,
-            importValues : null,
-            exportKeys : null,
-            exportValues : null,
-            meta : null,
-            samefile : null,
-            initialize : false
+            file : null,
+            initialized : false
         }
         this.showMeta = this.showMeta.bind(this);
         this.showSameFile = this.showSameFile.bind(this);
@@ -55,8 +46,8 @@ class Inspect extends Component {
     componentDidMount() {
         Axios.get("http://127.0.0.1:5000/get_files", {
             params: {
-                //filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle"
-                filename: this.props.match.params.id
+                filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle.txt"
+                // filename: this.props.match.params.id
             }
         }).then((response) => {
             if (response.data == "error") {
@@ -64,17 +55,17 @@ class Inspect extends Component {
                 window.location = "/error";
             } else {
                 this.setState({ file: response.data });
+                
 
-                this.setState({meta: this.state.file["meta"]});
-                this.setState({samefile: this.state.file["samefile"]});
+                this.meta = this.state.file["meta"];
+                this.samefile = this.state.file["samefile"];
 
                 this.initLists("mal_functions");
-
                 this.initLists("string");
                 this.initLists("import");
                 this.initLists("export");
 
-                this.setState({initialize : true});
+                this.setState({initialized : true});
             }
         });
     }
@@ -94,20 +85,20 @@ class Inspect extends Component {
         }
         switch(name) {
             case "mal_functions":
-                this.setState({mnemonicKeys : tempKeys});
-                this.setState({mnemonicValues : tempValues});                        
+                this.mnemonicKeys = tempKeys;
+                this.mnemonicValues = tempValues;
                 break;
             case "string":
-                this.setState({stringKeys : tempKeys});
-                this.setState({stringValues : tempValues});                        
+                this.stringKeys = tempKeys;
+                this.stringValues = tempValues;
                 break;
             case "import":
-                this.setState({importKeys : tempKeys});
-                this.setState({importValues : tempValues});                        
+                this.importKeys = tempKeys;
+                this.importValues = tempValues;
                 break;
             case "export":
-                this.setState({exportKeys : tempKeys});
-                this.setState({exportValues : tempValues});                        
+                this.exportKeys = tempKeys;
+                this.exportValues = tempValues;
                 break;
         }
 
@@ -201,9 +192,9 @@ class Inspect extends Component {
                         <div className="tab-content">
                             <div className="tab-pane tab_contents fade show active" id="qwe">
                                 <p>
-                                    {this.state.initialize ?
+                                    {this.state.initialized ?
                                         <div>
-                                            {this.createListValues(this.state.mnemonicKeys, this.state.mnemonicValues)}
+                                            {this.createListValues(this.mnemonicKeys, this.mnemonicValues)}
                                         </div>
                                         :
                                         <br/>
@@ -240,9 +231,9 @@ class Inspect extends Component {
                         <div className="tab-content">
                             <div className="tab-pane tab_contents fade show active" id="qwe">
                                 <p>
-                                    {this.state.initialize ?
+                                    {this.state.initialized ?
                                         <div>
-                                            {this.createListValues(this.state.stringKeys, this.state.stringValues)}
+                                            {this.createListValues(this.stringKeys, this.stringValues)}
                                         </div>
                                         :
                                         <br/>
@@ -279,9 +270,9 @@ class Inspect extends Component {
                         <div className="tab-content">
                             <div className="tab-pane tab_contents fade show active" id="qwe">
                                 <p>
-                                    {this.state.initialize ?
+                                    {this.state.initialized ?
                                         <div>
-                                            {this.createListValues(this.state.importKeys, this.state.importValues)}
+                                            {this.createListValues(this.importKeys, this.importValues)}
                                         </div>
                                         :
                                         <br/>
@@ -318,9 +309,9 @@ class Inspect extends Component {
                         <div className="tab-content">
                             <div className="tab-pane tab_contents fade show active" id="qwe">
                                 <p>
-                                    {this.state.initialize ?
+                                    {this.state.initialized ?
                                         <div>
-                                            {this.createListValues(this.state.exportKeys, this.state.exportValues)}
+                                            {this.createListValues(this.exportKeys, this.exportValues)}
                                         </div>
                                         :
                                         <br/>
