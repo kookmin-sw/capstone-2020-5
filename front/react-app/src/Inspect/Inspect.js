@@ -169,30 +169,207 @@ class Inspect extends Component {
 
     render() {
         return(
-            <div>
-                {this.state.initialize ? 
-                    <div>
-                        {/* get keys */}
-                        {this.createList(this.state.mnemonicKeys, null)}
-                        {/* get values for certain key */}
-                        {this.createList(this.state.mnemonicValues, 0)}
-                        {/* get all values */}
-                        {this.createListValues(this.state.mnemonicKeys, this.state.mnemonicValues)}
-                        
-                        {this.createList(this.state.stringKeys, null)}
-                        {this.createListValues(this.state.stringKeys, this.state.stringValues)}
-                        {this.createList(this.state.importKeys, null)}
-                        {this.createListValues(this.state.importKeys, this.state.importValues)}
-                        {this.createList(this.state.exportKeys, null)}
-                        {this.createListValues(this.state.exportKeys, this.state.exportValues)}
-                        <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
-                        <br/>
-                        <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
+            <div className="sample_container">
+                <Nav />
+                <div className="sample_body">
+                    <div className="file_info">
+                        <div className="donut_chart">
+                            <div className="white_donut">
+                                <div className="chart_contents"> 80% </div>
+                            </div>
+                        </div>
+                        <div className="file_contents">
+                            <div className="file_name"> file name</div>
+                            <div className="file_meta">
+                                <li className="file_md5"> md5 : 	55cb06fc7ddebaf8c87df15c3681a1fd</li>
+                                <li className="file_sha256"> sha256 : 	b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778 </li>
+                                <li className="file_size"> file size : 440.92 KB</li>
+                            </div>
+                        </div>
                     </div>
-                    :
-                    <br/> 
-                }
+                    <hr className="under_line"></hr>
+                    <div className="mnemonic">
+                        <div className="contents_title">Mnimonic</div>
+                        <ul className="nav nav-tabs data_tabs">
+                            <li className="nav-item">
+                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
+                            </li>
+                        </ul>
+                        <div className="tab-content">
+                            <div className="tab-pane tab_contents fade show active" id="qwe">
+                                <p>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createListValues(this.state.mnemonicKeys, this.state.mnemonicValues)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
+                                </p>
+                            </div>
+                            <div className="tab-pane tab_contents fade" id="asd">
+                                <p>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="string">
+                        <div className="contents_title">String</div>
+                        <ul className="nav nav-tabs data_tabs">
+                            <li className="nav-item">
+                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
+                            </li>
+                        </ul>
+                        <div className="tab-content">
+                            <div className="tab-pane tab_contents fade show active" id="qwe">
+                                <p>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createListValues(this.state.stringKeys, this.state.stringValues)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
+                                </p>
+                            </div>
+                            <div className="tab-pane tab_contents fade" id="asd">
+                                <p>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="import">
+                        <div className="contents_title">Import</div>
+                        <ul className="nav nav-tabs data_tabs">
+                            <li className="nav-item">
+                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
+                            </li>
+                        </ul>
+                        <div className="tab-content">
+                            <div className="tab-pane tab_contents fade show active" id="qwe">
+                                <p>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createListValues(this.state.importKeys, this.state.importValues)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
+                                </p>
+                            </div>
+                            <div className="tab-pane tab_contents fade" id="asd">
+                                <p>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="Export">
+                        <div className="contents_title">Export</div>
+                        <ul className="nav nav-tabs data_tabs">
+                            <li className="nav-item">
+                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
+                            </li>
+                        </ul>
+                        <div className="tab-content">
+                            <div className="tab-pane tab_contents fade show active" id="qwe">
+                                <p>
+                                    {this.state.initialize ?
+                                        <div>
+                                            {this.createListValues(this.state.exportKeys, this.state.exportValues)}
+                                        </div>
+                                        :
+                                        <br/>
+                                    }
+                                </p>
+                            </div>
+                            <div className="tab-pane tab_contents fade" id="asd">
+                                <p>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                    add<br></br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {/*<div>
+                    {this.state.initialize ?
+                        <div>
+                            {this.createList(this.state.mnemonicKeys, null)}
+                            {this.createList(this.state.mnemonicValues, 0)}
+                            {this.createListValues(this.state.mnemonicKeys, this.state.mnemonicValues)}
+
+                            {this.createList(this.state.stringKeys, null)}
+                            {this.createListValues(this.state.stringKeys, this.state.stringValues)}
+                            {this.createList(this.state.importKeys, null)}
+                            {this.createListValues(this.state.importKeys, this.state.importValues)}
+                            {this.createList(this.state.exportKeys, null)}
+                            {this.createListValues(this.state.exportKeys, this.state.exportValues)}
+                            <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
+                            <br/>
+                            <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
+                        </div>
+                        :
+                        <br/>
+                    }
+                </div>*/}
+
             </div>
+
 
 
         );
