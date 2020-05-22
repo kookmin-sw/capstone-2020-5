@@ -27,7 +27,7 @@ class Contents extends Component{
                 <Nav />
                 <div className="contents_container">
                     <div className="container">
-                        <div className="contents_title">
+                        <div className="">
                             <div className="title_text row">
                                 <div className="col-9">Upload / <span>File List</span></div>
                                 <div className="col-3"><input type="button" value="Download ZIP" className="filelist_btn purple" /></div>
@@ -53,8 +53,7 @@ class Contents extends Component{
                     </div>
                 </div>
             </div>
-            // <div className="container">
-            //     <div className="container vertical-element w-100">
+
             //         <h1>분석 결과확인</h1>
             //     </div>
             //     <div id="drop-area" className="bg-light vertical-element vertical-center text-center">

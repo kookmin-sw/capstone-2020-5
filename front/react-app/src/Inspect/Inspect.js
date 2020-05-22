@@ -89,7 +89,7 @@ class Inspect extends Component {
             var tempValuesValuse = []
             Object.entries(this.state.file[name][tempKeys[i]]).forEach(([key, value]) => {
                 tempValuesValuse.push(value);
-            }); 
+            });
             tempValues.push(tempValuesValuse);
         }
         switch(name) {
@@ -193,6 +193,8 @@ class Inspect extends Component {
                     <br/> 
                 }
             </div>
+
+
         );
     }
 }
