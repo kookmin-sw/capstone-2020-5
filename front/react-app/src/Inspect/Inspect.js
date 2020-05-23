@@ -9,6 +9,7 @@ import Export from "./Export/Export";
 import Balloon from "./Balloon/Balloon";
 import Axios from 'axios';
 import Spinner from '../Spinner/Spinner';
+import Overview from './Overview/Overview';
 
 
 class Inspect extends Component {
@@ -24,6 +25,8 @@ class Inspect extends Component {
         this.createListValues = this.createListValues.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
         this.initLists = this.initLists.bind(this);
+        this.createMnemonicOverview=this.createMnemonicOverview.bind(this);
+
     }
 
     downloadFile() {
@@ -55,19 +58,28 @@ class Inspect extends Component {
                 window.location = "/error";
             } else {
                 this.setState({ file: response.data });
-                
-
                 this.meta = this.state.file["meta"];
                 this.samefile = this.state.file["samefile"];
-
+                this.mnemonic_samefiles=this.state.file["mnemonic_samefiles"];
                 this.initLists("mal_functions");
                 this.initLists("string");
                 this.initLists("import");
                 this.initLists("export");
-
                 this.setState({initialized : true});
+               
             }
         });
+    }
+    createMnemonicOverview()
+    { 
+        let list=[];
+        Object.entries(this.mnemonic_samefiles).forEach(([key, value]) => {
+       list.push(<Overview data={this.mnemonic_samefiles} md5={key}/>);
+       
+
+    }); 
+     return list;
+
     }
 
     initLists(name) {
@@ -160,7 +172,10 @@ class Inspect extends Component {
 
     render() {
         return(
-            <div className="sample_container">
+          <div>
+              {
+                  this.state.initialized?
+                  <div className="sample_container">
                 <Nav />
                 <div className="sample_body">
                     <div className="file_info">
@@ -182,6 +197,9 @@ class Inspect extends Component {
                     <div className="mnemonic">
                         <div className="contents_title">Mnimonic</div>
                         <div id="accordion">
+                            
+                           
+
                             <div className="card full_accordion">
                                 <div className="accordion-header" id="headingOne">
                                     <div className="mb-0 each_function">
@@ -259,18 +277,8 @@ class Inspect extends Component {
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
+                                                {this.createMnemonicOverview()}
+                                               
                                                 </tbody>
                                             </table>
                                         </div>
@@ -513,32 +521,11 @@ class Inspect extends Component {
                     </div>
 
                 </div>
-                {/*<div>
-                    {this.state.initialize ?
-                        <div>
-                            {this.createList(this.state.mnemonicKeys, null)}
-                            {this.createList(this.state.mnemonicValues, 0)}
-                            {this.createListValues(this.state.mnemonicKeys, this.state.mnemonicValues)}
-
-                            {this.createList(this.state.stringKeys, null)}
-                            {this.createListValues(this.state.stringKeys, this.state.stringValues)}
-                            {this.createList(this.state.importKeys, null)}
-                            {this.createListValues(this.state.importKeys, this.state.importValues)}
-                            {this.createList(this.state.exportKeys, null)}
-                            {this.createListValues(this.state.exportKeys, this.state.exportValues)}
-                            <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
-                            <br/>
-                            <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
-                        </div>
-                        :
-                        <br/>
-                    }
-                </div>*/}
-
-            </div>
-
-
-
+                </div>
+                :
+                <br/>
+              }
+          </div>
         );
     }
 }
