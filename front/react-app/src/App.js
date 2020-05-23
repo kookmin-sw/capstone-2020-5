@@ -11,6 +11,7 @@ import loading_bar from "./loading_bar/loading_bar";
 import Spinner from "./Spinner/Spinner";
 import Inspect from "./Inspect/Inspect";
 import Error from "./Error/Error";
+import Balloon from "./Inspect/Balloon/Balloon";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/contents/:id" component={Inspect}/>
           <Route path="/error" exact component={Error}/>
           <Route path="/sample" exact component={Sample}/>
+          <Route path="/balloon" exact component={Balloon}/>
         </Switch>
       </div>
     </Router>
