@@ -46,8 +46,8 @@ class Inspect extends Component {
     componentDidMount() {
         Axios.get("http://127.0.0.1:5000/get_files", {
             params: {
-                filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle.txt"
-                // filename: this.props.match.params.id
+                //filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle.txt"
+                filename: this.props.match.params.id
             }
         }).then((response) => {
             if (response.data == "error") {
@@ -181,80 +181,154 @@ class Inspect extends Component {
                     <hr className="under_line"></hr>
                     <div className="mnemonic">
                         <div className="contents_title">Mnimonic</div>
-                        <ul className="nav nav-tabs data_tabs">
-                            <li className="nav-item">
-                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
-                            </li>
-                        </ul>
-                        <div className="tab-content">
-                            <div className="tab-pane tab_contents fade show active" id="qwe">
-                                <p>
-                                    {this.state.initialized ?
-                                        <div>
-                                            {this.createListValues(this.mnemonicKeys, this.mnemonicValues)}
+                        <div id="accordion">
+                            <div className="card full_accordion">
+                                <div className="accordion-header" id="headingOne">
+                                    <div className="mb-0 each_function">
+                                        <div className="function_hash col-10">
+                                            55cb06fc7ddebaf8c87df15c3681a1fd
                                         </div>
-                                        :
-                                        <br/>
-                                    }
-                                </p>
+                                        <div className="result-button-contain col-2">
+                                            <div className="result-button" data-toggle="collapse"
+                                                    data-target="#collapseOne" aria-expanded="true"
+                                                    aria-controls="collapseOne">
+                                                유사도 검사
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="collapseOne" className="collapse" aria-labelledby="headingOne"
+                                     data-parent="#accordion">
+                                    <div className="card-body">
+                                        <div>
+                                            progress bar
+                                        </div>
+                                        <div>
+                                            유사한 md5   cosine   edit   보기
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="tab-pane tab_contents fade" id="asd">
-                                <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                </p>
+                            <div className="card full_accordion">
+                                <div className="accordion-header" id="headingTwo">
+                                    <div className="mb-0 each_function">
+                                        <div className="function_hash col-10">
+                                            55cb06fc7ddebaf8c87df15c3681a1fd
+                                        </div>
+                                        <div className="result-button-contain col-2">
+                                            <div className="result-button" data-toggle="collapse"
+                                                    data-target="#collapseTwo" aria-expanded="true"
+                                                    aria-controls="collapseTwo">
+                                                유사도 검사
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo"
+                                     data-parent="#accordion">
+                                    <div className="card-body">
+                                        <div>
+                                            progress bar
+                                        </div>
+                                        <div>
+                                            유사한 md5   cosine   edit   보기
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="card full_accordion">
+                                <div className="accordion-header" id="headingThree">
+                                    <div className="mb-0 each_function">
+                                        <div className="function_hash col-10">
+                                            55cb06fc7ddebaf8c87df15c3681a1fd
+                                        </div>
+                                        <div className="result-button-contain col-2">
+                                            <div className="result-button" data-toggle="collapse"
+                                                    data-target="#collapseThree" aria-expanded="true"
+                                                    aria-controls="collapseThree">
+                                                유사도 검사
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="collapseThree" className="collapse" aria-labelledby="headingThree"
+                                     data-parent="#accordion">
+                                    <div className="card-body">
+                                        <div>
+                                            progress bar
+                                        </div>
+                                        <div>
+                                            유사한 md5   cosine   edit   보기
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                     <div className="string">
                         <div className="contents_title">String</div>
-                        <ul className="nav nav-tabs data_tabs">
-                            <li className="nav-item">
-                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
-                            </li>
-                        </ul>
-                        <div className="tab-content">
-                            <div className="tab-pane tab_contents fade show active" id="qwe">
-                                <p>
-                                    {this.state.initialized ?
-                                        <div>
-                                            {this.createListValues(this.stringKeys, this.stringValues)}
+                        <div id="accordion">
+                            <div className="card full_accordion">
+                                <div className="accordion-header" id="stringOne">
+                                    <div className="mb-0 each_function">
+                                        <div className="function_hash col-10">
+                                            55cb06fc7ddebaf8c87df15c3681a1fd
                                         </div>
-                                        :
-                                        <br/>
-                                    }
-                                </p>
+                                        <div className="result-button-contain col-2">
+                                            <div className="result-button" data-toggle="collapse"
+                                                 data-target="#collapseStringOne" aria-expanded="true"
+                                                 aria-controls="collapseStringOne">
+                                                유사도 검사
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="collapseStringOne" className="collapse" aria-labelledby="stringOne"
+                                     data-parent="#accordion">
+                                    <div className="card-body">
+                                        <div>
+                                            progress bar
+                                        </div>
+                                        <div>
+                                            유사한 md5   cosine   edit   보기
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="tab-pane tab_contents fade" id="asd">
-                                <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                </p>
+                            <div className="card full_accordion">
+                                <div className="accordion-header" id="stringTwo">
+                                    <div className="mb-0 each_function">
+                                        <div className="function_hash col-10">
+                                            55cb06fc7ddebaf8c87df15c3681a1fd
+                                        </div>
+                                        <div className="result-button-contain col-2">
+                                            <div className="result-button" data-toggle="collapse"
+                                                 data-target="#collapseStringTwo" aria-expanded="true"
+                                                 aria-controls="collapseStringTwo">
+                                                유사도 검사
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="collapseStringTwo" className="collapse" aria-labelledby="stringTwo"
+                                     data-parent="#accordion">
+                                    <div className="card-body">
+                                        <div>
+                                            progress bar
+                                        </div>
+                                        <div>
+                                            유사한 md5   cosine   edit   보기
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     <div className="import">

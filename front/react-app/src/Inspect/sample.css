@@ -48,6 +48,7 @@
 }
 .contents_title{
     font-size: 2rem;
+    margin-bottom: 1rem;
     font-family: BMDOHYEON;
     font-weight: bold;
     background: linear-gradient(to left, #ff00bf 40%, #00f 60%);
@@ -57,4 +58,32 @@
 .under_line{
     border-width: 2px;
     width: 70%;
+}
+.full_accordion{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+
+}
+.each_function{
+    background: rgb(221,238,255);
+    background: linear-gradient(103deg, rgba(221,238,255,1) 0%, rgba(246,223,255,1) 50%, rgba(228,230,255,1) 100%);    padding: 0.7rem 0 0.7rem 0;
+}
+.function_hash{
+    display: inline-block;
+    font-size: 1.5rem;
+    text-align: left;
+}
+.result-button-contain{
+    display: inline-block;
+}
+.result-button{
+    color: white;
+    font-size: 1.5rem;
+    background-color: #6a1fc1;
+    padding:0.3rem 1rem 0.3rem 1rem;
+    border-radius: 10px;
+    font-family: BMDOHYEON;
+    text-align: center;
 }
