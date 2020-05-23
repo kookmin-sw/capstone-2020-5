@@ -3,36 +3,53 @@ import "./Overview.css"
 import "../Inspect.css";
 import "../sample.css";
 class Overview extends Component {
+    constructor(props) {
+        super(props);
+        this.name = this.props.md5
+        this.md5 = this.props.data[this.name];
+
+    }
 
     render() {
         return (
-            <div className="card full_accordion">
-                <div className="accordion-header" id={"heading"+1}>
-                    <div className="mb-0 each_function">
-                        <div className="function_hash col-10">
-                            55cb06fc7ddebaf8c87df15c3681a1fd
-                        </div>
-                        <div className="result-button-contain col-2">
-                            <div className="result-button" data-toggle="collapse"
-                                    data-target={"#" + "md5"} aria-expanded="true"
-                                    aria-controls={"md5"}>
-                                유사도 검사
+            <tr>
+                <th scope="row">{this.name}</th>
+                <td>{this.md5["cosine"]}</td>
+                <td>{this.md5["edit"]}</td>
+                <td> <button type="button" className=""
+                    data-toggle="modal" data-target="#exampleModalCenter">
+                    <span className="material-icons">zoom_in</span>
+                </button>
+
+                    <div className="modal fade" id="exampleModalCenter"
+                        tabIndex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle"
+                        aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered"
+                            role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title"
+                                        id="exampleModalCenterTitle">Modal
+                                                                            title</h5>
+                                    <button type="button" className="close"
+                                        data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    ...
+                                                                    </div>
+                                <div className="modal-footer">
+                                    <button type="button"
+                                        className="btn btn-secondary"
+                                        data-dismiss="modal">Close
+                                                                        </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div id={"md5"} className="collapse" aria-labelledby={"heading"+1}
-                     data-parent="#accordion">
-                    <div className="card-body">
-                        <div>
-                            progress bar
-                        </div>
-                        <div>
-                            유사한 md5   cosine   edit   보기
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    </div></td>
+            </tr>
         );
     }
 }
