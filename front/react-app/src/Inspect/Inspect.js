@@ -201,11 +201,78 @@ class Inspect extends Component {
                                 <div id="collapseOne" className="collapse" aria-labelledby="headingOne"
                                      data-parent="#accordion">
                                     <div className="card-body">
-                                        <div>
-                                            progress bar
+                                        <div className="progress-contain">
+                                            <div className="progress">
+                                                <div className="progress-bar bg-success"
+                                                     role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
                                         </div>
                                         <div>
-                                            유사한 md5   cosine   edit   보기
+                                            <table className="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">md5</th>
+                                                    <th scope="col">Cosine</th>
+                                                    <th scope="col">Edit</th>
+                                                    <th scope="col">Details</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">55cb06fc7ddebaf8c87df15c3681a1fd</th>
+                                                    <td>0.00</td>
+                                                    <td>0.00</td>
+                                                    <td>
+                                                        <button type="button" className=""
+                                                                data-toggle="modal" data-target="#exampleModalCenter">
+                                                            <span className="material-icons">zoom_in</span>
+                                                        </button>
+
+                                                        <div className="modal fade" id="exampleModalCenter"
+                                                             tabIndex="-1" role="dialog"
+                                                             aria-labelledby="exampleModalCenterTitle"
+                                                             aria-hidden="true">
+                                                            <div className="modal-dialog modal-dialog-centered"
+                                                                 role="document">
+                                                                <div className="modal-content">
+                                                                    <div className="modal-header">
+                                                                        <h5 className="modal-title"
+                                                                            id="exampleModalCenterTitle">Modal
+                                                                            title</h5>
+                                                                        <button type="button" className="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div className="modal-body">
+                                                                        ...
+                                                                    </div>
+                                                                    <div className="modal-footer">
+                                                                        <button type="button"
+                                                                                className="btn btn-secondary"
+                                                                                data-dismiss="modal">Close
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>@fat</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Larry</td>
+                                                    <td>the Bird</td>
+                                                    <td>@twitter</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -291,11 +358,46 @@ class Inspect extends Component {
                                 <div id="collapseStringOne" className="collapse" aria-labelledby="stringOne"
                                      data-parent="#accordion">
                                     <div className="card-body">
-                                        <div>
-                                            progress bar
+                                        <div className="progress-contain">
+                                            <div className="progress">
+                                                <div className="progress-bar bg-success"
+                                                     role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
                                         </div>
                                         <div>
-                                            유사한 md5   cosine   edit   보기
+                                            <table className="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">md5</th>
+                                                    <th scope="col">Cosine</th>
+                                                    <th scope="col">Edit</th>
+                                                    <th scope="col">Details</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">55cb06fc7ddebaf8c87df15c3681a1fd</th>
+                                                    <td>0.00</td>
+                                                    <td>0.00</td>
+                                                    <td>
+                                                        button
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>@fat</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Larry</td>
+                                                    <td>the Bird</td>
+                                                    <td>@twitter</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
