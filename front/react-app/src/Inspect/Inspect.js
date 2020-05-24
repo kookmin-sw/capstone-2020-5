@@ -9,7 +9,6 @@ import Export from "./Export/Export";
 import Balloon from "./Balloon/Balloon";
 import Axios from 'axios';
 import Spinner from '../Spinner/Spinner';
-import Overview from './Overview/Overview';
 
 
 class Inspect extends Component {
@@ -25,8 +24,6 @@ class Inspect extends Component {
         this.createListValues = this.createListValues.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
         this.initLists = this.initLists.bind(this);
-        this.createMnemonicOverview=this.createMnemonicOverview.bind(this);
-
     }
 
     downloadFile() {
@@ -58,28 +55,19 @@ class Inspect extends Component {
                 window.location = "/error";
             } else {
                 this.setState({ file: response.data });
+
+
                 this.meta = this.state.file["meta"];
                 this.samefile = this.state.file["samefile"];
-                this.mnemonic_samefiles=this.state.file["mnemonic_samefiles"];
+
                 this.initLists("mal_functions");
                 this.initLists("string");
                 this.initLists("import");
                 this.initLists("export");
+
                 this.setState({initialized : true});
-               
             }
         });
-    }
-    createMnemonicOverview()
-    { 
-        let list=[];
-        Object.entries(this.mnemonic_samefiles).forEach(([key, value]) => {
-       list.push(<Overview data={this.mnemonic_samefiles} md5={key}/>);
-       
-
-    }); 
-     return list;
-
     }
 
     initLists(name) {
@@ -87,7 +75,7 @@ class Inspect extends Component {
         var tempValues = [];
         Object.entries(this.state.file[name]).forEach(([key, value]) => {
             tempKeys.push(key);
-        }); 
+        });
         for(let i = 0; i < tempKeys.length; i++) {
             var tempValuesValuse = []
             Object.entries(this.state.file[name][tempKeys[i]]).forEach(([key, value]) => {
@@ -172,17 +160,12 @@ class Inspect extends Component {
 
     render() {
         return(
-          <div>
-              {
-                  this.state.initialized?
-                  <div className="sample_container">
+            <div className="sample_container">
                 <Nav />
                 <div className="sample_body">
                     <div className="file_info">
-                        <div className="donut_chart">
-                            <div className="white_donut">
-                                <div className="chart_contents"> 80% </div>
-                            </div>
+                        <div className="reportImg">
+                            <img className="report_result_img" src="/img/report.png"></img>
                         </div>
                         <div className="file_contents">
                             <div className="file_name"> file name</div>
@@ -197,9 +180,6 @@ class Inspect extends Component {
                     <div className="mnemonic">
                         <div className="contents_title">Mnimonic</div>
                         <div id="accordion">
-                            
-                           
-
                             <div className="card full_accordion">
                                 <div className="accordion-header" id="headingOne">
                                     <div className="mb-0 each_function">
@@ -207,9 +187,9 @@ class Inspect extends Component {
                                             55cb06fc7ddebaf8c87df15c3681a1fd
                                         </div>
                                         <div className="result-button-contain col-2">
-                                            <div className="result-button" data-toggle="collapse"
-                                                    data-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">
+                                            <div className="filelist_btn purple" data-toggle="collapse"
+                                                 data-target="#collapseOne" aria-expanded="true"
+                                                 aria-controls="collapseOne">
                                                 유사도 검사
                                             </div>
                                         </div>
@@ -221,12 +201,19 @@ class Inspect extends Component {
                                     <div className="card-body">
                                         <div className="progress-contain">
                                             <div className="progress">
-                                                <div className="progress-bar bg-success"
-                                                     role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                <div className="progress-bar bg-ben" role="progressbar"
+                                                     aria-valuenow="30" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                                <div className="progress-bar bg-mal" role="progressbar"
+                                                     aria-valuenow="20" aria-valuemin="0"
                                                      aria-valuemax="100"></div>
                                             </div>
+                                            <table className="mal-ben-percentage">
+                                                <th className="part-ben">정상</th>
+                                                <th className="part-mal">악성</th>
+                                            </table>
                                         </div>
-                                        <div>
+                                        <div className="similary-result-table">
                                             <table className="table table-striped">
                                                 <thead>
                                                 <tr>
@@ -242,101 +229,62 @@ class Inspect extends Component {
                                                     <td>0.00</td>
                                                     <td>0.00</td>
                                                     <td>
-                                                        <button type="button" className=""
+                                                        <button type="button" className="zoomin-btn"
                                                                 data-toggle="modal" data-target="#exampleModalCenter">
                                                             <span className="material-icons">zoom_in</span>
                                                         </button>
 
-                                                        <div className="modal fade" id="exampleModalCenter"
+                                                        <div className="modal fade modal-center" id="exampleModalCenter"
                                                              tabIndex="-1" role="dialog"
                                                              aria-labelledby="exampleModalCenterTitle"
                                                              aria-hidden="true">
-                                                            <div className="modal-dialog modal-dialog-centered"
+                                                            <div className="modal-content-size modal-dialog modal-dialog-centered"
                                                                  role="document">
                                                                 <div className="modal-content">
-                                                                    <div className="modal-header">
-                                                                        <h5 className="modal-title"
-                                                                            id="exampleModalCenterTitle">Modal
-                                                                            title</h5>
-                                                                        <button type="button" className="close"
+                                                                    <div className="modal-header modal-head-title">
+                                                                        <div className="modal-title taget_title"
+                                                                             id="exampleModalCenterTitle">
+                                                                            (유사한 파일 md5)
+                                                                        </div>
+                                                                        <button type="button" className="close close-btn-white"
                                                                                 data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
                                                                     <div className="modal-body">
-                                                                        ...
+                                                                        <div>
+                                                                            <table className="gradient-table">
+                                                                                <thead>
+                                                                                <tr>
+                                                                                    <th className="compare-taget">(사용자가 올린파일)</th>
+                                                                                    <th className="compare-taget">(유사한 파일)</th>
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                <tr>
+                                                                                    <td className="gradient-img">
+                                                                                        <img src="/img/gradient-img.jpeg" />
+                                                                                    </td>
+                                                                                    <td className="gradient-img">
+                                                                                        <img src="/img/gradient-img.jpeg" />
+                                                                                    </td>
+                                                                                </tr>
+                                                                                </tbody>
+                                                                            </table>
+
+                                                                        </div>
                                                                     </div>
                                                                     <div className="modal-footer">
                                                                         <button type="button"
-                                                                                className="btn btn-secondary"
-                                                                                data-dismiss="modal">Close
-                                                                        </button>
+                                                                                className="filelist_btn purple">Download</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                {this.createMnemonicOverview()}
-                                               
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card full_accordion">
-                                <div className="accordion-header" id="headingTwo">
-                                    <div className="mb-0 each_function">
-                                        <div className="function_hash col-10">
-                                            55cb06fc7ddebaf8c87df15c3681a1fd
-                                        </div>
-                                        <div className="result-button-contain col-2">
-                                            <div className="result-button" data-toggle="collapse"
-                                                    data-target="#collapseTwo" aria-expanded="true"
-                                                    aria-controls="collapseTwo">
-                                                유사도 검사
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo"
-                                     data-parent="#accordion">
-                                    <div className="card-body">
-                                        <div>
-                                            progress bar
-                                        </div>
-                                        <div>
-                                            유사한 md5   cosine   edit   보기
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card full_accordion">
-                                <div className="accordion-header" id="headingThree">
-                                    <div className="mb-0 each_function">
-                                        <div className="function_hash col-10">
-                                            55cb06fc7ddebaf8c87df15c3681a1fd
-                                        </div>
-                                        <div className="result-button-contain col-2">
-                                            <div className="result-button" data-toggle="collapse"
-                                                    data-target="#collapseThree" aria-expanded="true"
-                                                    aria-controls="collapseThree">
-                                                유사도 검사
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="collapseThree" className="collapse" aria-labelledby="headingThree"
-                                     data-parent="#accordion">
-                                    <div className="card-body">
-                                        <div>
-                                            progress bar
-                                        </div>
-                                        <div>
-                                            유사한 md5   cosine   edit   보기
                                         </div>
                                     </div>
                                 </div>
@@ -346,186 +294,41 @@ class Inspect extends Component {
                     </div>
                     <div className="string">
                         <div className="contents_title">String</div>
-                        <div id="accordion">
-                            <div className="card full_accordion">
-                                <div className="accordion-header" id="stringOne">
-                                    <div className="mb-0 each_function">
-                                        <div className="function_hash col-10">
-                                            55cb06fc7ddebaf8c87df15c3681a1fd
-                                        </div>
-                                        <div className="result-button-contain col-2">
-                                            <div className="result-button" data-toggle="collapse"
-                                                 data-target="#collapseStringOne" aria-expanded="true"
-                                                 aria-controls="collapseStringOne">
-                                                유사도 검사
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="collapseStringOne" className="collapse" aria-labelledby="stringOne"
-                                     data-parent="#accordion">
-                                    <div className="card-body">
-                                        <div className="progress-contain">
-                                            <div className="progress">
-                                                <div className="progress-bar bg-success"
-                                                     role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                                     aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <table className="table table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th scope="col">md5</th>
-                                                    <th scope="col">Cosine</th>
-                                                    <th scope="col">Edit</th>
-                                                    <th scope="col">Details</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <th scope="row">55cb06fc7ddebaf8c87df15c3681a1fd</th>
-                                                    <td>0.00</td>
-                                                    <td>0.00</td>
-                                                    <td>
-                                                        button
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card full_accordion">
-                                <div className="accordion-header" id="stringTwo">
-                                    <div className="mb-0 each_function">
-                                        <div className="function_hash col-10">
-                                            55cb06fc7ddebaf8c87df15c3681a1fd
-                                        </div>
-                                        <div className="result-button-contain col-2">
-                                            <div className="result-button" data-toggle="collapse"
-                                                 data-target="#collapseStringTwo" aria-expanded="true"
-                                                 aria-controls="collapseStringTwo">
-                                                유사도 검사
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="collapseStringTwo" className="collapse" aria-labelledby="stringTwo"
-                                     data-parent="#accordion">
-                                    <div className="card-body">
-                                        <div>
-                                            progress bar
-                                        </div>
-                                        <div>
-                                            유사한 md5   cosine   edit   보기
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                     <div className="import">
                         <div className="contents_title">Import</div>
-                        <ul className="nav nav-tabs data_tabs">
-                            <li className="nav-item">
-                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
-                            </li>
-                        </ul>
-                        <div className="tab-content">
-                            <div className="tab-pane tab_contents fade show active" id="qwe">
-                                <p>
-                                    {this.state.initialized ?
-                                        <div>
-                                            {this.createListValues(this.importKeys, this.importValues)}
-                                        </div>
-                                        :
-                                        <br/>
-                                    }
-                                </p>
-                            </div>
-                            <div className="tab-pane tab_contents fade" id="asd">
-                                <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                </p>
-                            </div>
-                        </div>
                     </div>
                     <div className="Export">
                         <div className="contents_title">Export</div>
-                        <ul className="nav nav-tabs data_tabs">
-                            <li className="nav-item">
-                                <a className="nav-link active" data-toggle="tab" href="#30">30</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" data-toggle="tab" href="#30">30</a>
-                            </li>
-                        </ul>
-                        <div className="tab-content">
-                            <div className="tab-pane tab_contents fade show active" id="qwe">
-                                <p>
-                                    {this.state.initialized ?
-                                        <div>
-                                            {this.createListValues(this.exportKeys, this.exportValues)}
-                                        </div>
-                                        :
-                                        <br/>
-                                    }
-                                </p>
-                            </div>
-                            <div className="tab-pane tab_contents fade" id="asd">
-                                <p>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                    add<br></br>
-                                </p>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
-                </div>
-                :
-                <br/>
-              }
-          </div>
+                {/*<div>
+                    {this.state.initialize ?
+                        <div>
+                            {this.createList(this.state.mnemonicKeys, null)}
+                            {this.createList(this.state.mnemonicValues, 0)}
+                            {this.createListValues(this.state.mnemonicKeys, this.state.mnemonicValues)}
+
+                            {this.createList(this.state.stringKeys, null)}
+                            {this.createListValues(this.state.stringKeys, this.state.stringValues)}
+                            {this.createList(this.state.importKeys, null)}
+                            {this.createListValues(this.state.importKeys, this.state.importValues)}
+                            {this.createList(this.state.exportKeys, null)}
+                            {this.createListValues(this.state.exportKeys, this.state.exportValues)}
+                            <h1>META:</h1> {this.state.meta == null ? <br/> : this.showMeta()}
+                            <br/>
+                            <h1>SAMEFILE:</h1> {this.state.samefile == null ? <br/> : this.showSameFile()}
+                        </div>
+                        :
+                        <br/>
+                    }
+                </div>*/}
+
+            </div>
+
+
+
         );
     }
 }
