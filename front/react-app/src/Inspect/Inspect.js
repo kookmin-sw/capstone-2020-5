@@ -19,12 +19,8 @@ class Inspect extends Component {
             file : null,
             initialized : false
         }
-        this.showMeta = this.showMeta.bind(this);
-        this.showSameFile = this.showSameFile.bind(this);
-        this.createList = this.createList.bind(this);
-        this.createListValues = this.createListValues.bind(this);
+        this.createListOfOverviews = this.createListOfOverviews.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
-        this.initLists = this.initLists.bind(this);
     }
 
     downloadFile() {
@@ -57,18 +53,28 @@ class Inspect extends Component {
             } else {
                 this.setState({ file: response.data });
 
-
                 this.meta = this.state.file["meta"];
                 this.samefile = this.state.file["samefile"];
-                this.percentage = 50;
-                this.initLists("all_functions");
-                this.initLists("string");
-                this.initLists("import");
-                this.initLists("export");
-
+                
+                // Create list of functions' hash
+                this.all_functions = []
+                for(var i = 0; i < this.state.file["all_functions"].length; ++i) {
+                    this.all_functions.push(this.state.file["all_functions"][i]);
+                }
+                console.log(this.state.file["all_functions"]);
                 this.setState({initialized : true});
             }
         });
+    }
+
+    createListOfOverviews() {
+        let list = [];
+        for(var i = 0; i < this.all_functions.length; ++i) {
+            list.push(
+                <Overview key={i} filename={this.props.match.params.id} hash={this.all_functions[i]}/>
+            );
+        }
+        return list;
     }
 
     render() {
@@ -95,8 +101,7 @@ class Inspect extends Component {
                             <hr className="under_line"></hr>
                             <div className="mnemonic">
                                 <div className="contents_title">Mnimonic</div>
-                                <Overview/>
-
+                                {this.createListOfOverviews()}
                             </div>
                             <div className="string">
                                 <div className="contents_title">String</div>
