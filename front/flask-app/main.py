@@ -62,6 +62,10 @@ def upload_file():
                     "mal_funcitons": []
                 }
             }
+            file_data["all_functions"] = [
+                "66_function_hash",
+                "274_function_2_hash"
+            ]
             all_file_datas[str(filename)] = file_data
             
             file_to_write = open("./json/"+file.filename, "w")
