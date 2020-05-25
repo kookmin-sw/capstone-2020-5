@@ -39,32 +39,15 @@ def upload_file():
                 
             
             file_data = OrderedDict()
-            file_data["meta"] = {"md5": "md5", "sha256": "sha256","filesize":"filesize"}     
+            file_data["meta"] = {"md5": "55cb06fc7ddebaf8c87df15c3681a1fd", "sha256": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778","filesize":"440.92 KB"}     
             file_data["mal_functions"] = result_diction
             file_data["samefile"] = {"mal": {"hits": 123, "score": 0.2}, "ben": {"hits": 456, "score": 0.8}}
             file_data["string"]= {"0":["Project1"],"1":["cDefE!gYjjiiijj2mnop"],"2":["music"],"3":["Microsoft Windows"],"4":["frm_main"],"5":["class_main"],"6":["module_main"],"7":["module_bind"],"8":["module_rnd"],"9":["module_registry"],"10":["module_until"],"11":["module_path"],"12":["module_check"],"13":["Project1"],"14":["C:\\Program Files\\Microsoft Visual Studio\\VB98\\VB6.OLB"],"15":["C:\\WINDOWS\\system32\\msvbvm60.dll\\3"],"16":["VBRUN"],"17":["AdjustTokenPrivileges"],"18":["LookupPrivilegeValueA"],"19":["GetCurrentProcess"],"20":["GetFileAttributesA"],"21":["GetWindowTextLengthA"],"22":["MSVBVM60.DLL"]}
             file_data["import"]= {"MSVBVM60":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface","__vbaExceptHandler","ProcCallEngine","__imp_ThunRTMain","rtcSpaceBstr","rtcSpaceVar","rtcKillFiles","rtcChangeDir","rtcBstrFromAnsi","rtcGetPresentDate","rtcGetSecondOfMinute","rtcFileLength","rtcSetFileAttr","rtcRandomNext","rtcRandomize","rtcMsgBox","rtcDoEvents","rtcShell","rtcArray","rtcStringVar","rtcVarBstrFromAnsi","rtcLeftCharBstr","__imp_rtcDir","rtcCommandVar","rtcErrObj","rtcCreateObject2"]}
             file_data["export"]= {"0":["start"]}
-            file_data["mnemonic_samefiles"] = {
-                "md5_file1": {
-                    "cosine":"0.00",
-                    "edit": "0.00",
-                    "mal_funcitons": []
-                },
-                "md5_file2": {
-                    "cosine": "0.00",
-                    "edit": "0.00",
-                    "mal_funcitons": []
-                },
-                "md5_file3": {
-                    "cosine": "0.00",
-                    "edit": "0.00",
-                    "mal_funcitons": []
-                }
-            }
             file_data["all_functions"] = [
-                "66_function_hash",
-                "274_function_2_hash"
+                "66x3b52063cd84097a65d1633f5c74f5",
+                "274x3b52063cd84097a65d1633f5c74f5"
             ]
             all_file_datas[str(filename)] = file_data
             
@@ -80,13 +63,69 @@ def get_files():
     try:
         filename = request.args.get('filename')
         with open("./json/"+filename, "r") as f:
-                return json.load(f)
+            return json.load(f)
     except:
         return 'error'
   
     
+@app.route('/get_function_data', methods=['GET'])
+def get_function_data():
+    try:
+        # FAKE DATA!
+        # WRITE SIM_JSON
+        filename = request.args.get('filename')
+        function_hash = request.args.get('hash')
+        file_data = OrderedDict()
+        if(function_hash == "66x3b52063cd84097a65d1633f5c74f5"):
+            file_data["mal_ben"] = {
+                "mal": 0.2, 
+                "ben": 0.8
+            }
+            file_data["same_functions"] = {
+                "b52063cd84097a65d1633f5c74f5": {
+                    "cosine":"0.61",
+                    "edit": "6.60",
+                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
+                },
+                "cd84097a65d1633f5c74f5" : {
+                    "cosine":"2.74",
+                    "edit": "4.72",
+                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
+                }
+            }
+        else:
+            file_data["mal_ben"] = {
+                "mal": 0.4, 
+                "ben": 0.6
+            }
+            file_data["same_functions"] = {
+                "d89c92b4400b15c39e462a8caa939ab40c3aeeea": {
+                    "cosine":"1.004",
+                    "edit": "12.60",
+                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jnz","cmp","jl","psllq","cmp","jg","movq","fld","retn","fld","retn","movq","psllq","movapd","ucomisd","jp","cmpltpd","cmp","jl","cmp","jg","andpd","subsd","movq","fld","retn","fldz","retn","cmpltpd","orpd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
+                },
+                "e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198" : {
+                    "cosine":"4.23",
+                    "edit": "1.18",
+                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jnz","cmp","jl","psllq","cmp","jg","movq","fld","retn","fld","retn","movq","psllq","movapd","ucomisd","jp","cmpltpd","cmp","jl","cmp","jg","andpd","subsd","movq","fld","retn","fldz","retn","cmpltpd","orpd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
+                }
+            }
+
+        if not os.path.isdir("sim_json/"+filename):
+            os.mkdir("sim_json/"+filename)
+
+        file_path = "sim_json/"+filename+"/"+function_hash+".json"
+
+        file_to_write = open(file_path, "w")
+        file_to_write.write(json.dumps(file_data , ensure_ascii=False , indent="\t"))
+        file_to_write.close()
+        # RETURN SIM_JSON DATA
+        with open(file_path, "r") as f:
+            return json.load(f)
+    except:
+        return 'error'
  
-    
+
     
 
 if __name__ == '__main__':

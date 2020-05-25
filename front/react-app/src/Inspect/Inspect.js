@@ -55,13 +55,17 @@ class Inspect extends Component {
 
                 this.meta = this.state.file["meta"];
                 this.samefile = this.state.file["samefile"];
+
+                this.uploaded_mnemonics = []
+                Object.entries(this.state.file["mal_functions"]).forEach(([key, value]) => {
+                    this.uploaded_mnemonics.push(value);
+                });
                 
                 // Create list of functions' hash
                 this.all_functions = []
                 for(var i = 0; i < this.state.file["all_functions"].length; ++i) {
                     this.all_functions.push(this.state.file["all_functions"][i]);
                 }
-                console.log(this.state.file["all_functions"]);
                 this.setState({initialized : true});
             }
         });
@@ -71,7 +75,7 @@ class Inspect extends Component {
         let list = [];
         for(var i = 0; i < this.all_functions.length; ++i) {
             list.push(
-                <Overview key={i} filename={this.props.match.params.id} hash={this.all_functions[i]}/>
+                <Overview key={i} filename={this.props.match.params.id} hash={this.all_functions[i]} uploaded_mnemonics={this.uploaded_mnemonics[i]}/>
             );
         }
         return list;
@@ -92,9 +96,9 @@ class Inspect extends Component {
                                 <div className="file_contents">
                                     <div className="file_name"> file name</div>
                                     <div className="file_meta">
-                                        <li className="file_md5"> md5 : 	55cb06fc7ddebaf8c87df15c3681a1fd</li>
-                                        <li className="file_sha256"> sha256 : 	b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778 </li>
-                                        <li className="file_size"> file size : 440.92 KB</li>
+                                        <li className="file_md5"> md5 : {this.meta["md5"]}</li>
+                                        <li className="file_sha256"> sha256 : {this.meta["sha256"]} </li>
+                                        <li className="file_size"> file size : {this.meta["filesize"]}</li>
                                     </div>
                                 </div>
                             </div>
