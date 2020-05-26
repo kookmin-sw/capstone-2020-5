@@ -72,23 +72,19 @@ class Overview extends Component {
                                     <div className="modal-body">
                                         <div>
                                             <table className="gradient-table">
-                                                <thead>
                                                 <tr>
                                                     <th className="compare-taget">{this.hash}</th>
                                                     <th className="gradient-img" rowspan="2">
                                                         <Balloon mnemonics={this.uploaded_mnemonics}/>
                                                         <Balloon mnemonics={this.function_data[key]["mnemonics"]}/>
-                                                        </th>
+                                                    </th>
                                                 </tr>
-                                                </thead>
-                                                <tbody>
                                                 <tr>
                                                     <td className="compare-taget">
                                                         {key}
                                                     </td>
                                                     
                                                 </tr>
-                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
