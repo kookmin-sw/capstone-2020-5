@@ -43,8 +43,7 @@ class Inspect extends Component {
     componentDidMount() {
         Axios.get("http://127.0.0.1:5000/get_files", {
             params: {
-                filename:"fd63829b39eb6a034b609e4e25ee8d22.pickle.txt"
-                // filename: this.props.match.params.id
+                filename: this.props.match.params.id
             }
         }).then((response) => {
             if (response.data == "error") {
@@ -94,7 +93,7 @@ class Inspect extends Component {
                                     <img className="report_result_img" src="/img/report.png"></img>
                                 </div>
                                 <div className="file_contents">
-                                    <div className="file_name"> file name</div>
+                                    <div className="file_name">{this.props.match.params.id}</div>
                                     <div className="file_meta">
                                         <li className="file_md5"> md5 : {this.meta["md5"]}</li>
                                         <li className="file_sha256"> sha256 : {this.meta["sha256"]} </li>
@@ -104,7 +103,7 @@ class Inspect extends Component {
                             </div>
                             <hr className="under_line"></hr>
                             <div className="mnemonic">
-                                <div className="contents_title">Mnimonic</div>
+                                <div className="contents_title">Mnemonic</div>
                                 {this.createListOfOverviews()}
                             </div>
                             <div className="string">

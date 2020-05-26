@@ -122,7 +122,7 @@ class Overview extends Component {
                             </div>
                         </div>
                     </div>
-                        <div id={"h"+this.hash+"One"} className="collapse" aria-labelledby="headingOne"
+                        <div id={"h"+this.hash+"One"} className="collapse" aria-labelledby={"h"+this.hash+"One"}
                         data-parent="#accordion">
                          {
                         this.state.dataloaded ?     
