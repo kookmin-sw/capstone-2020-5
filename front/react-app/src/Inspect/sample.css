@@ -166,3 +166,7 @@ result-button-rignt{
     max-width: 400px;
     overflow-x: scroll;
 }
+.mnemonic-scroll{
+    max-height: 600px;
+    overflow-y: scroll;
+}

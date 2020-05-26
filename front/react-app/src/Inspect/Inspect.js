@@ -104,7 +104,9 @@ class Inspect extends Component {
                             <hr className="under_line"></hr>
                             <div className="mnemonic">
                                 <div className="contents_title">Mnemonic</div>
-                                {this.createListOfOverviews()}
+                                <div className="mnemonic-scroll">
+                                    {this.createListOfOverviews()}
+                                </div>
                             </div>
                             <div className="string">
                                 <div className="contents_title">String</div>
