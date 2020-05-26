@@ -162,3 +162,7 @@ result-button-rignt{
 .similary-result-table{
     margin-top: 1rem;
 }
+.gradient-img{
+    max-width: 400px;
+    overflow-x: scroll;
+}

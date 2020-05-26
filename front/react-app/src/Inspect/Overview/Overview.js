@@ -75,17 +75,18 @@ class Overview extends Component {
                                                 <thead>
                                                 <tr>
                                                     <th className="compare-taget">{this.hash}</th>
-                                                    <th className="compare-taget">{key}</th>
+                                                    <th className="gradient-img" rowspan="2">
+                                                        <Balloon mnemonics={this.uploaded_mnemonics}/>
+                                                        <Balloon mnemonics={this.function_data[key]["mnemonics"]}/>
+                                                        </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td className="gradient-img">
-                                                        <Balloon mnemonics={this.uploaded_mnemonics}/>
+                                                    <td className="compare-taget">
+                                                        {key}
                                                     </td>
-                                                    <td className="gradient-img">
-                                                        <Balloon mnemonics={this.function_data[key]["mnemonics"]}/>
-                                                    </td>
+                                                    
                                                 </tr>
                                                 </tbody>
                                             </table>

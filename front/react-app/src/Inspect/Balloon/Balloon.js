@@ -44,14 +44,14 @@ class Balloon extends Component{
         for(var i = 0; i < this.state.colors.length; ++i) {
             if(this.state.colors[i] == -1) {
                 list.push(
-                    <tr style={{backgroundColor: "rgb(0, 0, 0)", width:"100%"}}>...</tr>
+                    <th style={{backgroundColor: "rgb(0, 0, 0)", width:"100%"}}>...</th>
                 );
                 continue;
             }
             var c = this.state.colors[i] * step;
             var cc = "rgb("+(255)+","+(c)+","+(500 / c)+")";
             list.push(
-            <tr style={{backgroundColor: cc, width:"100%"}}>...</tr>
+            <th style={{backgroundColor: cc, width:"100%"}}>...</th>
             );
         }
         return list;
