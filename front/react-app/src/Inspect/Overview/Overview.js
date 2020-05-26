@@ -69,24 +69,22 @@ class Overview extends Component {
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div className="modal-body">
-                                        <div>
-                                            <table className="gradient-table">
-                                                <tr>
-                                                    <th className="compare-taget">{this.hash}</th>
-                                                    <th className="gradient-img" rowspan="2">
-                                                        <Balloon mnemonics={this.uploaded_mnemonics}/>
-                                                        <Balloon mnemonics={this.function_data[key]["mnemonics"]}/>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td className="compare-taget">
-                                                        {key}
-                                                    </td>
-                                                    
-                                                </tr>
-                                            </table>
-                                        </div>
+                                    <div className="modal-body" style={{padding:"0"}}>
+                                        <table className="gradient-table" style={{width:"100%"}}>
+                                            <tr style={{padding:"0"}}>
+                                                <th className="compare-taget">{this.hash}</th>
+                                                <th style={{width:"100%", padding:"0"}} className="gradient-img" rowSpan="2">
+                                                    <Balloon mnemonics={this.uploaded_mnemonics}/>
+                                                    <Balloon mnemonics={this.function_data[key]["mnemonics"]}/>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td style={{padding:"0"}} className="compare-taget">
+                                                    {key}
+                                                </td>
+                                                
+                                            </tr>
+                                        </table>
                                     </div>
                                     <div className="modal-footer">
                                         <button type="button"

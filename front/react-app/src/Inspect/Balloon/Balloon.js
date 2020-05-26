@@ -9,6 +9,7 @@ class Balloon extends Component{
         }
         this.setColors = this.setColors.bind(this);
         this.createColors = this.createColors.bind(this);
+        this.colors = ["#FDD5B1","#1A4876","#1DACD6","#EFDECD","#000000","#00B9FB","#4CB7A5","#1F75FE","#D68A59","#B4674D","#DD9475","#FD7C6E","#828E84","#CCFF00","#50C878","#F78FA7","#A7825D","#FFB653","#3D9979","#95918C","#1CAC78","#FF1DCE","#FFBCD9","#FF496C","#8EE53F","#FFFF66","#CD4A4C","#FF6E4A","#FF7538","#6F9940","#D998A0","#FFAACC","#8E4585","#DD4492","#FF7518","#CA3767","#EE204D","#FDD9B5","#9FE2BF","#704214","#B05C52","#FAA76C","#DEAA88","#17857B","#9B7653","#CDA4DE","#00C5CD","#9D81BA","#926EAE","#E6A8D7","#FCE883"]
     }
 
     componentDidMount() {
@@ -44,14 +45,12 @@ class Balloon extends Component{
         for(var i = 0; i < this.state.colors.length; ++i) {
             if(this.state.colors[i] == -1) {
                 list.push(
-                    <th style={{backgroundColor: "rgb(0, 0, 0)", width:"100%"}}>...</th>
+                    <th style={{backgroundColor: this.colors[50]}}>.</th>
                 );
                 continue;
             }
-            var c = this.state.colors[i] * step;
-            var cc = "rgb("+(255)+","+(c)+","+(500 / c)+")";
             list.push(
-            <th style={{backgroundColor: cc, width:"100%"}}>...</th>
+            <th style={{backgroundColor: this.colors[i]}}>.</th>
             );
         }
         return list;
