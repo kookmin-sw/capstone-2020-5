@@ -5,6 +5,7 @@ import "./Overview.css"
 import "../Inspect.css";
 import "../sample.css";
 import Balloon from '../Balloon/Balloon';
+import Spinner from "../../Spinner/Spinner";
 class Overview extends Component {
     constructor(props) {
         super(props);
@@ -122,7 +123,7 @@ class Overview extends Component {
                             </div>
                         </div>
                     </div>
-                        <div id={"h"+this.hash+"One"} className="collapse" aria-labelledby={"h"+this.hash+"One"}
+                        <div id={"h"+this.hash+"One"} className="collapse" aria-labelledby="headingOne"
                         data-parent="#accordion">
                          {
                         this.state.dataloaded ?     
@@ -158,7 +159,7 @@ class Overview extends Component {
                                 </div>
                             </div>
                             :
-                            <br/>
+                            <Spinner/>
                         }
                         </div>
                         
