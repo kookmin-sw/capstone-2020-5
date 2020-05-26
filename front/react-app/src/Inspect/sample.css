@@ -162,3 +162,7 @@ result-button-rignt{
 .similary-result-table{
     margin-top: 1rem;
 }
+.mnemonic-scroll{
+    max-height: 600px;
+    overflow-y: scroll;
+}
