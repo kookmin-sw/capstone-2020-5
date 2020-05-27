@@ -75,8 +75,9 @@ def get_function_data():
         # WRITE SIM_JSON
         filename = request.args.get('filename')
         function_hash = request.args.get('hash')
+        function_sim = request.args.get('sim')
         file_data = OrderedDict()
-        if(function_hash == "66x3b52063cd84097a65d1633f5c74f5"):
+        if function_sim == "true": 
             file_data["mal_ben"] = {
                 "mal": 0.2, 
                 "ben": 0.8
@@ -95,19 +96,19 @@ def get_function_data():
             }
         else:
             file_data["mal_ben"] = {
-                "mal": 0.4, 
-                "ben": 0.6
+                "mal": 0.7, 
+                "ben": 0.3
             }
             file_data["same_functions"] = {
-                "d89c92b4400b15c39e462a8caa939ab40c3aeeea": {
-                    "cosine":"1.004",
-                    "edit": "12.60",
-                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jnz","cmp","jl","psllq","cmp","jg","movq","fld","retn","fld","retn","movq","psllq","movapd","ucomisd","jp","cmpltpd","cmp","jl","cmp","jg","andpd","subsd","movq","fld","retn","fldz","retn","cmpltpd","orpd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
+                "b52063cd84097a65d1633f5c74f5": {
+                    "cosine":"0.61",
+                    "edit": "6.60",
+                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
                 },
-                "e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198" : {
-                    "cosine":"4.23",
-                    "edit": "1.18",
-                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jnz","cmp","jl","psllq","cmp","jg","movq","fld","retn","fld","retn","movq","psllq","movapd","ucomisd","jp","cmpltpd","cmp","jl","cmp","jg","andpd","subsd","movq","fld","retn","fldz","retn","cmpltpd","orpd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
+                "cd84097a65d1633f5c74f5" : {
+                    "cosine":"2.74",
+                    "edit": "4.72",
+                    "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
                 }
             }
 

@@ -14,6 +14,7 @@ class Overview extends Component {
         }
         this.filename = this.props.filename
         this.hash = this.props.hash
+        this.sim = this.props.sim
 
         this.loadFunctionData = this.loadFunctionData.bind(this);
     }
@@ -23,7 +24,8 @@ class Overview extends Component {
             Axios.get("http://127.0.0.1:5000/get_function_data", {
                 params: {
                     filename:this.filename,
-                    hash: this.hash
+                    hash: this.hash,
+                    sim: this.sim
                 }
             }).then((response) => {
                 if (response.data == "error") {
@@ -49,19 +51,19 @@ class Overview extends Component {
                     <td>{value["edit"]}</td>
                     <td>
                         <button type="button" className="zoomin-btn"
-                                data-toggle="modal" data-target={"#h" + key}>
+                                data-toggle="modal" data-target={"#h" + key + this.sim}>
                             <span className="material-icons">zoom_in</span>
                         </button>
-                        <div className="modal fade modal-center" id={"h"+key}
+                        <div className="modal fade modal-center" id={"h"+key + this.sim}
                              tabIndex="-1" role="dialog"
-                             aria-labelledby={"h"+key+"Title"}
+                             aria-labelledby={"h"+key + this.sim+"Title"}
                              aria-hidden="true">
                             <div className="modal-content-size modal-dialog modal-dialog-centered"
                                  role="document">
                                 <div className="modal-content">
                                     <div className="modal-header modal-head-title">
                                         <div className="modal-title taget_title"
-                                             id={"h"+key+"Title"}>
+                                             id={"h"+key + this.sim+"Title"}>
                                             (유사한 파일 md5)
                                         </div>
                                         <button type="button" className="close close-btn-white"

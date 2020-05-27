@@ -65,20 +65,31 @@ class Inspect extends Component {
                 for(var i = 0; i < this.state.file["all_functions"].length; ++i) {
                     this.all_functions.push(this.state.file["all_functions"][i]);
                 }
+                this.mal_function = this.state.file["mal_functions"];
                 this.setState({initialized : true});
             }
         });
     }
 
-    createListOfOverviews() {
+    createListOfOverviews(similarity) {
         let list = [];
-        for(var i = 0; i < this.all_functions.length; ++i) {
-            list.push(
-                <Overview key={i} filename={this.props.match.params.id} hash={this.all_functions[i]} uploaded_mnemonics={this.uploaded_mnemonics[i]}/>
-            );
+        if(similarity) {
+            for(var i = 0; i < this.all_functions.length; ++i) {
+                list.push(
+                    <Overview key={i} filename={this.props.match.params.id} hash={this.all_functions[i]} uploaded_mnemonics={this.uploaded_mnemonics[i]} sim={similarity}/>
+                );
+            }
+        }
+        else {
+            Object.entries(this.mal_function).forEach(([key, value]) => {
+                list.push(
+                    <Overview key={i} filename={this.props.match.params.id} hash={key} uploaded_mnemonics={value} sim={similarity}/>
+                );
+            });
         }
         return list;
     }
+    
 
     render() {
         return(
@@ -115,7 +126,7 @@ class Inspect extends Component {
                                     <div className="mnemonic">
                                         <div className="contents_title">Function</div>
                                         <div className="mnemonic-scroll">
-                                            {this.createListOfOverviews()}
+                                            {this.createListOfOverviews(true)}
                                         </div>
                                     </div>
                                     <div className="string">
@@ -132,7 +143,7 @@ class Inspect extends Component {
                                     <div className="mnemonic">
                                         <div className="contents_title">Function</div>
                                         <div className="mnemonic-scroll">
-                                            {this.createListOfOverviews()}
+                                            {this.createListOfOverviews(false)}
                                         </div>
                                     </div>
                                     <div className="string">
