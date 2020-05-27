@@ -72,14 +72,14 @@ class Overview extends Component {
                                     <div className="modal-body" style={{padding:"0"}}>
                                         <table className="gradient-table" style={{width:"100%"}}>
                                             <tr style={{padding:"0"}}>
-                                                <th className="compare-taget">{this.hash}</th>
-                                                <th style={{width:"100%", padding:"0"}} className="gradient-img" rowSpan="2">
+                                                <th className="balloon-table compare-taget">{this.hash}</th>
+                                                <th className="balloon-table" style={{width:"100%", padding:"0"}} className="gradient-img" rowSpan="2">
                                                     <Balloon mnemonics={this.uploaded_mnemonics}/>
                                                     <Balloon mnemonics={this.function_data[key]["mnemonics"]}/>
                                                 </th>
                                             </tr>
                                             <tr>
-                                                <td style={{padding:"0"}} className="compare-taget">
+                                                <td className="balloon-table compare-taget" style={{padding:"0"}}>
                                                     {key}
                                                 </td>
                                                 

@@ -102,21 +102,51 @@ class Inspect extends Component {
                                 </div>
                             </div>
                             <hr className="under_line"></hr>
-                            <div className="mnemonic">
-                                <div className="contents_title">Mnemonic</div>
-                                <div className="mnemonic-scroll">
-                                    {this.createListOfOverviews()}
+                            <ul className="nav nav-pills mb-3 sim-stran-tab" id="pills-tabs" role="tablist">
+                                <li className="nav-item">
+                                    <a className="tab-style nav-link active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">유사도 검사</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="tab-style nav-link tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">이상탐지</a>
+                                </li>
+                            </ul>
+                            <div className="tab-content" id="pills-tabContent">
+                                <div className="tab-pane fade show active" id="similary-tab" role="tabpanel" aria-labelledby="pills-similary-tab">
+                                    <div className="mnemonic">
+                                        <div className="contents_title">Function</div>
+                                        <div className="mnemonic-scroll">
+                                            {this.createListOfOverviews()}
+                                        </div>
+                                    </div>
+                                    <div className="string">
+                                        <div className="contents_title">String</div>
+                                    </div>
+                                    <div className="import">
+                                        <div className="contents_title">Import</div>
+                                    </div>
+                                    <div className="Export">
+                                        <div className="contents_title">Export</div>
+                                    </div>
+                                </div>
+                                <div className="tab-pane fade" id="strange-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
+                                    <div className="mnemonic">
+                                        <div className="contents_title">Function</div>
+                                        <div className="mnemonic-scroll">
+                                            {this.createListOfOverviews()}
+                                        </div>
+                                    </div>
+                                    <div className="string">
+                                        <div className="contents_title">String</div>
+                                    </div>
+                                    <div className="import">
+                                        <div className="contents_title">Import</div>
+                                    </div>
+                                    <div className="Export">
+                                        <div className="contents_title">Export</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="string">
-                                <div className="contents_title">String</div>
-                            </div>
-                            <div className="import">
-                                <div className="contents_title">Import</div>
-                            </div>
-                            <div className="Export">
-                                <div className="contents_title">Export</div>
-                            </div>
+
 
                         </div>
                     </div>
