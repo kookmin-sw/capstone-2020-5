@@ -74,7 +74,6 @@
 }
 
 #scroll-view-upload {
-    overflow-y: scroll;
     height: 200px;
     width: 45rem;
     margin-right: auto;
