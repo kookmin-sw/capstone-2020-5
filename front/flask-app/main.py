@@ -42,21 +42,18 @@ def upload_file():
 
 
             file_data = OrderedDict()
+            file_data["meta"] = {"md5": "55cb06fc7ddebaf8c87df15c3681a1fd", "sha256": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778","filesize":"440.92 KB"}     
+            file_data["string"]= {"0":["Project1"],"1":["cDefE!gYjjiiijj2mnop"],"2":["music"],"3":["Microsoft Windows"],"4":["frm_main"],"5":["class_main"],"6":["module_main"],"7":["module_bind"],"8":["module_rnd"],"9":["module_registry"],"10":["module_until"],"11":["module_path"],"12":["module_check"],"13":["Project1"],"14":["C:\\Program Files\\Microsoft Visual Studio\\VB98\\VB6.OLB"],"15":["C:\\WINDOWS\\system32\\msvbvm60.dll\\3"],"16":["VBRUN"],"17":["AdjustTokenPrivileges"],"18":["LookupPrivilegeValueA"],"19":["GetCurrentProcess"],"20":["GetFileAttributesA"],"21":["GetWindowTextLengthA"],"22":["MSVBVM60.DLL"]}
+            file_data["import"]= {"MSVBVM60":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface","__vbaExceptHandler","ProcCallEngine","__imp_ThunRTMain","rtcSpaceBstr","rtcSpaceVar","rtcKillFiles","rtcChangeDir","rtcBstrFromAnsi","rtcGetPresentDate","rtcGetSecondOfMinute","rtcFileLength","rtcSetFileAttr","rtcRandomNext","rtcRandomize","rtcMsgBox","rtcDoEvents","rtcShell","rtcArray","rtcStringVar","rtcVarBstrFromAnsi","rtcLeftCharBstr","__imp_rtcDir","rtcCommandVar","rtcErrObj","rtcCreateObject2"]}
+            file_data["export"]= {"0":["start"]}
 
             file_data['anomaly_functions'] = {
                 "1db4e72a613f9430f561806791378a5c": [ "push", "mov", "mov", "test", "jz", "push", "call", "and", "mov", "pop", "retn" ], "8609397dbd5b09b1a89a7cd9d2955d6c": [ "mov", "push", "mov", "push", "push", "mov", "push", "push", "call", "push", "call", "mov", "pop", "pop", "retn" ]
             }
-
-            file_data["meta"] = {"md5": "55cb06fc7ddebaf8c87df15c3681a1fd", "sha256": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778","filesize":"440.92 KB"}     
-            file_data["mal_functions"] = result_diction
-            file_data["samefile"] = {"mal": {"hits": 123, "score": 0.2}, "ben": {"hits": 456, "score": 0.8}}
-            file_data["string"]= {"0":["Project1"],"1":["cDefE!gYjjiiijj2mnop"],"2":["music"],"3":["Microsoft Windows"],"4":["frm_main"],"5":["class_main"],"6":["module_main"],"7":["module_bind"],"8":["module_rnd"],"9":["module_registry"],"10":["module_until"],"11":["module_path"],"12":["module_check"],"13":["Project1"],"14":["C:\\Program Files\\Microsoft Visual Studio\\VB98\\VB6.OLB"],"15":["C:\\WINDOWS\\system32\\msvbvm60.dll\\3"],"16":["VBRUN"],"17":["AdjustTokenPrivileges"],"18":["LookupPrivilegeValueA"],"19":["GetCurrentProcess"],"20":["GetFileAttributesA"],"21":["GetWindowTextLengthA"],"22":["MSVBVM60.DLL"]}
-            file_data["import"]= {"MSVBVM60":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface","__vbaExceptHandler","ProcCallEngine","__imp_ThunRTMain","rtcSpaceBstr","rtcSpaceVar","rtcKillFiles","rtcChangeDir","rtcBstrFromAnsi","rtcGetPresentDate","rtcGetSecondOfMinute","rtcFileLength","rtcSetFileAttr","rtcRandomNext","rtcRandomize","rtcMsgBox","rtcDoEvents","rtcShell","rtcArray","rtcStringVar","rtcVarBstrFromAnsi","rtcLeftCharBstr","__imp_rtcDir","rtcCommandVar","rtcErrObj","rtcCreateObject2"]}
-            file_data["export"]= {"0":["start"]}
-            file_data["all_functions"] = [
-                "66x3b52063cd84097a65d1633f5c74f5",
-                "274x3b52063cd84097a65d1633f5c74f5"
-            ]
+            file_data["all_functions"] = {
+                "1db4e72a613f9430f561806791378a5c": [ "push", "mov", "mov", "test", "jz", "push", "call", "and", "mov", "pop", "retn" ], 
+                "8609397dbd5b09b1a89a7cd9d2955d6c": [ "mov", "push", "mov", "push", "push", "mov", "push", "push", "call", "push", "call", "mov", "pop", "pop", "retn" ]
+            }
             all_file_datas[str(filename)] = file_data
             
             file_to_write = open("./json/"+file.filename, "w")

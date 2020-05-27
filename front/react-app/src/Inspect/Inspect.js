@@ -54,17 +54,9 @@ class Inspect extends Component {
 
                 this.meta = this.state.file["meta"];
                 this.samefile = this.state.file["samefile"];
-
-                this.uploaded_mnemonics = []
-                Object.entries(this.state.file["mal_functions"]).forEach(([key, value]) => {
-                    this.uploaded_mnemonics.push(value);
-                });
                 
                 // Create list of functions' hash
-                this.all_functions = []
-                for(var i = 0; i < this.state.file["all_functions"].length; ++i) {
-                    this.all_functions.push(this.state.file["all_functions"][i]);
-                }
+                this.all_functions = this.state.file["all_functions"];
                 this.anomaly_functions = this.state.file["anomaly_functions"];
                 this.setState({initialized : true});
             }
@@ -73,20 +65,12 @@ class Inspect extends Component {
 
     createListOfOverviews(similarity) {
         let list = [];
-        if(similarity) {
-            for(var i = 0; i < this.all_functions.length; ++i) {
-                list.push(
-                    <Overview key={i} filename={this.props.match.params.id} hash={this.all_functions[i]} uploaded_mnemonics={this.uploaded_mnemonics[i]} sim={similarity}/>
-                );
-            }
-        }
-        else {
-            Object.entries(this.anomaly_functions).forEach(([key, value]) => {
-                list.push(
-                    <Overview key={i} filename={this.props.match.params.id} hash={key} uploaded_mnemonics={value} sim={similarity}/>
-                );
-            });
-        }
+        let array = similarity ? this.all_functions : this.anomaly_functions
+        Object.entries(array).forEach(([key, value]) => {
+            list.push(
+                <Overview key={key} filename={this.props.match.params.id} hash={key} uploaded_mnemonics={value} sim={similarity}/>
+            );
+        });
         return list;
     }
     

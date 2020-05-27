@@ -113,14 +113,14 @@ class Overview extends Component {
                             </div>
                             <div className="result-button-contain col-2">
                                 <div className="filelist_btn purple" data-toggle="collapse"
-                                     data-target={"#h"+this.hash+"One"} aria-expanded="true"
-                                     aria-controls={"h"+this.hash+"One"} onClick={this.loadFunctionData}>
+                                     data-target={"#h"+this.hash+this.sim+"One"} aria-expanded="true"
+                                     aria-controls={"h"+this.hash+this.sim+"One"} onClick={this.loadFunctionData}>
                                     유사도 검사
                                 </div>
                             </div>
                         </div>
                     </div>
-                        <div id={"h"+this.hash+"One"} className="collapse" aria-labelledby="headingOne"
+                        <div id={"h"+this.hash+this.sim+"One"} className="collapse" aria-labelledby="headingOne"
                         data-parent="#accordion">
                          {
                         this.state.dataloaded ?     
