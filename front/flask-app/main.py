@@ -37,8 +37,16 @@ def upload_file():
             for i in result:
                 result_diction[i] = file_raw[i]
                 
-            
+            # anomaly_funcs = md.predict2(X_train)
+
+
+
             file_data = OrderedDict()
+
+            file_data['anomaly_functions'] = {
+                "1db4e72a613f9430f561806791378a5c": [ "push", "mov", "mov", "test", "jz", "push", "call", "and", "mov", "pop", "retn" ], "8609397dbd5b09b1a89a7cd9d2955d6c": [ "mov", "push", "mov", "push", "push", "mov", "push", "push", "call", "push", "call", "mov", "pop", "pop", "retn" ]
+            }
+
             file_data["meta"] = {"md5": "55cb06fc7ddebaf8c87df15c3681a1fd", "sha256": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778","filesize":"440.92 KB"}     
             file_data["mal_functions"] = result_diction
             file_data["samefile"] = {"mal": {"hits": 123, "score": 0.2}, "ben": {"hits": 456, "score": 0.8}}

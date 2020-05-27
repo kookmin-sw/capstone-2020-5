@@ -65,7 +65,7 @@ class Inspect extends Component {
                 for(var i = 0; i < this.state.file["all_functions"].length; ++i) {
                     this.all_functions.push(this.state.file["all_functions"][i]);
                 }
-                this.mal_function = this.state.file["mal_functions"];
+                this.anomaly_functions = this.state.file["anomaly_functions"];
                 this.setState({initialized : true});
             }
         });
@@ -81,7 +81,7 @@ class Inspect extends Component {
             }
         }
         else {
-            Object.entries(this.mal_function).forEach(([key, value]) => {
+            Object.entries(this.anomaly_functions).forEach(([key, value]) => {
                 list.push(
                     <Overview key={i} filename={this.props.match.params.id} hash={key} uploaded_mnemonics={value} sim={similarity}/>
                 );
