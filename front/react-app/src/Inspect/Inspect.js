@@ -20,24 +20,6 @@ class Inspect extends Component {
             initialized : false
         }
         this.createListOfOverviews = this.createListOfOverviews.bind(this);
-        this.downloadFile = this.downloadFile.bind(this);
-    }
-
-    downloadFile() {
-        let filename = this.props.match.params.id;
-        let contentType = "application/json;charset=utf-8;";
-        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(this.state.file)))], { type: contentType });
-            navigator.msSaveOrOpenBlob(blob, filename);
-        } else {
-            var a = document.createElement('a');
-            a.download = filename;
-            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(this.state.file));
-            a.target = '_blank';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
     }
 
     componentDidMount() {

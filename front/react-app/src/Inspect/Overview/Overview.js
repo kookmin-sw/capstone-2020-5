@@ -17,6 +17,27 @@ class Overview extends Component {
         this.sim = this.props.sim
 
         this.loadFunctionData = this.loadFunctionData.bind(this);
+        this.downloadFile = this.downloadFile.bind(this);
+    }
+
+    downloadFile(hash) {
+        let mnemonics = this.function_data[hash]["mnemonics"]
+        let fileData = {}
+        fileData[hash] = mnemonics
+        let filename=hash+".json"
+        let contentType = "application/json;charset=utf-8;";
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(fileData)))], { type: contentType });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            var a = document.createElement('a');
+            a.download = filename;
+            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(fileData));
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
     }
 
     loadFunctionData() {
@@ -89,7 +110,7 @@ class Overview extends Component {
                                         </table>
                                     </div>
                                     <div className="modal-footer">
-                                        <button type="button"
+                                        <button type="button" onClick={() => this.downloadFile(key)}
                                                 className="filelist_btn purple">Download</button>
                                     </div>
                                 </div>
