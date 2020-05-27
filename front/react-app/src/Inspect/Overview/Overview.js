@@ -143,7 +143,7 @@ class Overview extends Component {
                                         <tr>
                                             <th scope="col">md5</th>
                                             <th scope="col">Cosine</th>
-                                            <th scope="col">Edit</th>
+                                            <th scope="col">Jaccard-distance</th>
                                             <th scope="col">Details</th>
                                         </tr>
                                         </thead>
