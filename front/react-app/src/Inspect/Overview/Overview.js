@@ -20,12 +20,28 @@ class Overview extends Component {
         this.downloadFile = this.downloadFile.bind(this);
     }
 
-    downloadFile(hash) {
-        let mnemonics = this.function_data[hash]["mnemonics"]
+    downloadFile(data) {
         let fileData = {}
-        fileData[hash] = mnemonics
-        let filename=hash+".json"
+        fileData[this.hash] = this.uploaded_mnemonics
+        let filename=this.hash+".json"
         let contentType = "application/json;charset=utf-8;";
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(fileData)))], { type: contentType });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            var a = document.createElement('a');
+            a.download = filename;
+            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(fileData));
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+ 
+         fileData = {}
+         fileData[data["Function"]] = data["mnemonics"]
+         filename=data["Function"]+".json"
+    
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
             var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(fileData)))], { type: contentType });
             navigator.msSaveOrOpenBlob(blob, filename);
@@ -68,6 +84,7 @@ class Overview extends Component {
             list.push(
                 <tr>
                     <th scope="row">{key}</th>
+                    <td>{value["Function"]}</td>
                     <td>{value["cosine"]}</td>
                     <td>{value["edit"]}</td>
                     <td>
@@ -103,14 +120,14 @@ class Overview extends Component {
                                             </tr>
                                             <tr>
                                                 <td className="balloon-table compare-taget" style={{padding:"0"}}>
-                                                    {key}
+                                                    {this.function_data[key]["Function"]}
                                                 </td>
                                                 
                                             </tr>
                                         </table>
                                     </div>
                                     <div className="modal-footer">
-                                        <button type="button" onClick={() => this.downloadFile(key)}
+                                    <button type="button" onClick={() => this.downloadFile(this.function_data[key])}
                                                 className="filelist_btn purple">Download</button>
                                     </div>
                                 </div>
@@ -130,6 +147,10 @@ class Overview extends Component {
                     <div className="accordion-header" id="headingOne">
                         <div className="mb-0 each_function">
                             <div className="function_hash col-10">
+                            <span class="material-icons">
+                            cloud_done
+                            </span>
+                            
                                 {this.hash}
                             </div>
                             <div className="result-button-contain col-2">
@@ -164,7 +185,8 @@ class Overview extends Component {
                                     <table className="table table-striped">
                                         <thead>
                                         <tr>
-                                            <th scope="col">md5</th>
+                                            <th scope="col">File(md5)</th>
+                                            <th scope="col">Function(md5)</th>
                                             <th scope="col">Cosine</th>
                                             <th scope="col">Jaccard-distance</th>
                                             <th scope="col">Details</th>
