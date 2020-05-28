@@ -37,20 +37,27 @@ After receiving the file as input, we will develop software that summarizes the 
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/5gRVqjZ8mxI)
 
 
-## III 소개 영상 - 중간 발표
+## IV 소개 영상 - 중간 발표
   
 
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/TInuzVyQY5U)
 
 
-## IV 시연 영상 - 중간 발표
+## V 소개 영상 - 2차 중간 발표
   
 
-[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/z1f9Wb0aCmI)
+[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/StVPDL_qehU)
 
 
 
-## V 팀 소개
+## VI 시연 영상 - 2차 중간 발표
+  
+
+[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/5w1rk3371yY)
+
+
+
+## VII 팀 소개
 
 
 <center><img src="https://user-images.githubusercontent.com/28583588/78563697-5b26a000-7856-11ea-85ec-dff4b6b0019f.png" width="30%" height="30%"></center>
@@ -63,7 +70,7 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ```markdown
 이름 : 손현기
-담당 : 팀장 / 인공지능 구현, 파서 개발, 웹 백엔드 개발, ELK 구축
+담당 : 팀장 / 인공지능 구현, 단어 임베딩, 파서 개발, 웹 백엔드 개발, ELK 구축
 ```
 
 <center><img src="https://user-images.githubusercontent.com/28583588/76606717-1e68d100-6556-11ea-8047-d6524dfa9e70.jpg" width="30%" height="30%"></center>
@@ -84,7 +91,7 @@ After receiving the file as input, we will develop software that summarizes the 
 
 ```markdown
 이름 : 오예린
-담당 : ELK 구축, 디자이너, 웹 기획
+담당 : ELK 구축, 디자이너, 웹 기획&퍼블리싱
 ```
 
 <center><img src="https://user-images.githubusercontent.com/28583588/76734837-1653a000-67a7-11ea-8a96-7ea094ff1b8b.jpg" width="30%" height="30%"></center>
