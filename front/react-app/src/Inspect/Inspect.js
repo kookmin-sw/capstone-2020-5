@@ -63,20 +63,35 @@ class Inspect extends Component {
                 {
                     this.state.initialized ? 
                     <div className="sample_container">
-                        <Nav />
+                        <Nav id="top" />
                         <div className="sample_body">
                             <div className="file_info">
                                 <div className="reportImg">
                                     <img className="report_result_img" src="/img/report.png"></img>
                                 </div>
-                                <div className="file_contents">
-                                    <div className="file_name">{this.props.match.params.id}</div>
-                                    <div className="file_meta">
-                                        <li className="file_md5"> md5 : {this.meta["md5"]}</li>
-                                        <li className="file_sha256"> sha256 : {this.meta["sha256"]} </li>
-                                        <li className="file_size"> file size : {this.meta["filesize"]}</li>
-                                    </div>
-                                </div>
+                                <table className="file_contents">
+                                    <thead>
+                                    <tr>
+                                        <th colSpan="2">
+                                            {this.props.match.params.id}
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>md5</td>
+                                        <td>{this.meta["md5"]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sha256</td>
+                                        <td>{this.meta["sha256"]}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>size</td>
+                                        <td>{this.meta["filesize"]}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <hr className="under_line"></hr>
                             <ul className="nav nav-pills mb-3 sim-stran-tab" id="pills-tabs" role="tablist">
@@ -90,43 +105,510 @@ class Inspect extends Component {
                             <div className="tab-content" id="pills-tabContent">
                                 <div className="tab-pane fade show active" id="similary-tab" role="tabpanel" aria-labelledby="pills-similary-tab">
                                     <div className="mnemonic">
-                                        <div className="contents_title">Function</div>
-                                        <div className="mnemonic-scroll">
-                                            {this.createListOfOverviews(true)}
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist"
+                                             aria-multiselectable="true">
+
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="function_handle_acco">
+                                                    <div className="contents_title acco_header_title">Function</div>
+                                                    <a  className="acco_header_title dropdown-icon" data-toggle="collapse" data-parent="#accordionEx"
+                                                       href="#function_contents_acco" aria-expanded="true"
+                                                       aria-controls="collapseOne1">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="function_contents_acco" className="collapse show" role="tabpanel"
+                                                     aria-labelledby="function_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <div className="mnemonic-scroll">
+                                                            {this.createListOfOverviews(true)}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+
+
                                     </div>
-                                    <div className="string">
-                                        <div className="contents_title">String</div>
+                                    <div className="String">
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist"
+                                             aria-multiselectable="true">
+
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="String_handle_acco">
+                                                    <div className="contents_title acco_header_title">String</div>
+                                                    <a  className="acco_header_title dropdown-icon" data-toggle="collapse" data-parent="#accordionEx"
+                                                       href="#String_contents_acco" aria-expanded="true"
+                                                       aria-controls="collapseOne2">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="String_contents_acco" className="collapse" role="tabpanel"
+                                                     aria-labelledby="String_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <table className="table search_table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope ="col" className="search-table-font">string 목록</th>
+                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <td className="string-list-scroll">this is a dangerous file</td>
+                                                            <td>
+                                                                <div className="string-search-part">
+                                                                    <div className="string-search-input">
+                                                                        <input className="search-input" type="search" placeholder="Search string" />
+                                                                    </div>
+                                                                    <div className="string-search-button">
+                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <table className="table string-donut-table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            ben
+                                                                        </th>
+                                                                        <th>
+                                                                            mal
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>donut</td>
+                                                                        <td>donut</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+
+                                                            </td>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
-                                    <div className="import">
-                                        <div className="contents_title">Import</div>
+                                    <div className="Import">
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="Import_handle_acco">
+                                                    <div className="contents_title acco_header_title">Import</div>
+                                                    <a  className="acco_header_title dropdown-icon" data-toggle="collapse" data-parent="#accordionEx"
+                                                       href="#Import_contents_acco" aria-expanded="true"
+                                                       aria-controls="collapseOne3">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="Import_contents_acco" className="collapse" role="tabpanel"
+                                                     aria-labelledby="Import_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <table className="table search_table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope ="col" className="search-table-font">import 목록</th>
+                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <td className="string-list-scroll">hi, yerin</td>
+                                                            <td>
+                                                                <div className="string-search-part">
+                                                                    <div className="string-search-input">
+                                                                        <input className="search-input" type="search" placeholder="Search import" />
+                                                                    </div>
+                                                                    <div className="string-search-button">
+                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <table className="table string-donut-table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            ben
+                                                                        </th>
+                                                                        <th>
+                                                                            mal
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>donut</td>
+                                                                        <td>donut</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+
+                                                            </td>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                     <div className="Export">
-                                        <div className="contents_title">Export</div>
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="Export_handle_acco">
+                                                    <div className="contents_title acco_header_title">Export</div>
+                                                    <a  className="acco_header_title dropdown-icon" data-toggle="collapse" data-parent="#accordionEx"
+                                                       href="#Export_contents_acco" aria-expanded="true"
+                                                       aria-controls="collapseOne4">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="Export_contents_acco" className="collapse" role="tabpanel"
+                                                     aria-labelledby="Export_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <table className="table search_table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope ="col" className="search-table-font">Export 목록</th>
+                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <td className="string-list-scroll">hi, yerin</td>
+                                                            <td>
+                                                                <div className="string-search-part">
+                                                                    <div className="string-search-input">
+                                                                        <input className="search-input" type="search" placeholder="Search Export" />
+                                                                    </div>
+                                                                    <div className="string-search-button">
+                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <table className="table string-donut-table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            ben
+                                                                        </th>
+                                                                        <th>
+                                                                            mal
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>donut</td>
+                                                                        <td>donut</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+
+                                                            </td>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
+
                                 </div>
                                 <div className="tab-pane fade" id="strange-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
                                     <div className="mnemonic">
-                                        <div className="contents_title">Function</div>
-                                        <div className="mnemonic-scroll">
-                                            {this.createListOfOverviews(false)}
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist"
+                                             aria-multiselectable="true">
+
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="function_handle_acco">
+                                                    <div className="contents_title_strange acco_header_title">Function</div>
+                                                    <a  className="acco_header_title dropdown-icon-strange" data-toggle="collapse" data-parent="#accordionEx"
+                                                        href="#function_contents_acco" aria-expanded="true"
+                                                        aria-controls="collapseOne1">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="function_contents_acco" className="collapse show" role="tabpanel"
+                                                     aria-labelledby="function_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <div className="mnemonic-scroll">
+                                                            {this.createListOfOverviews(false)}                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+
+
                                     </div>
-                                    <div className="string">
-                                        <div className="contents_title">String</div>
+                                    <div className="String">
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist"
+                                             aria-multiselectable="true">
+
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="String_handle_acco">
+                                                    <div className="contents_title_strange acco_header_title">String</div>
+                                                    <a  className="acco_header_title dropdown-icon-strange" data-toggle="collapse" data-parent="#accordionEx"
+                                                        href="#String_contents_acco" aria-expanded="true"
+                                                        aria-controls="collapseOne2">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="String_contents_acco" className="collapse" role="tabpanel"
+                                                     aria-labelledby="String_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <table className="table search_table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope ="col" className="search-table-font">string 목록</th>
+                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <td className="string-list-scroll">this is a dangerous file</td>
+                                                            <td>
+                                                                <div className="string-search-part">
+                                                                    <div className="string-search-input">
+                                                                        <input className="search-input" type="search" placeholder="Search string" />
+                                                                    </div>
+                                                                    <div className="string-search-button">
+                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <table className="table string-donut-table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            ben
+                                                                        </th>
+                                                                        <th>
+                                                                            mal
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>donut</td>
+                                                                        <td>donut</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+
+                                                            </td>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
-                                    <div className="import">
-                                        <div className="contents_title">Import</div>
+                                    <div className="Import">
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="Import_handle_acco">
+                                                    <div className="contents_title_strange acco_header_title">Import</div>
+                                                    <a  className="acco_header_title dropdown-icon-strange" data-toggle="collapse" data-parent="#accordionEx"
+                                                        href="#Import_contents_acco" aria-expanded="true"
+                                                        aria-controls="collapseOne3">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="Import_contents_acco" className="collapse" role="tabpanel"
+                                                     aria-labelledby="Import_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <table className="table search_table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope ="col" className="search-table-font">import 목록</th>
+                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <td className="string-list-scroll">hi, yerin</td>
+                                                            <td>
+                                                                <div className="string-search-part">
+                                                                    <div className="string-search-input">
+                                                                        <input className="search-input" type="search" placeholder="Search import" />
+                                                                    </div>
+                                                                    <div className="string-search-button">
+                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <table className="table string-donut-table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            ben
+                                                                        </th>
+                                                                        <th>
+                                                                            mal
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>donut</td>
+                                                                        <td>donut</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+
+                                                            </td>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                     <div className="Export">
-                                        <div className="contents_title">Export</div>
+                                        <div className="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                                            <div className="card">
+                                                <div className="accordion_head" role="tab" id="Export_handle_acco">
+                                                    <div className="contents_title_strange acco_header_title">Export</div>
+                                                    <a  className="acco_header_title dropdown-icon-strange" data-toggle="collapse" data-parent="#accordionEx"
+                                                        href="#Export_contents_acco" aria-expanded="true"
+                                                        aria-controls="collapseOne4">
+                                                        <h5 className="mb-0">
+                                                                <span className="material-icons">
+                                                                arrow_drop_down_circle
+                                                            </span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+
+                                                <div id="Export_contents_acco" className="collapse" role="tabpanel"
+                                                     aria-labelledby="Export_handle_acco"
+                                                     data-parent="#accordionEx">
+                                                    <div className="card-body card-width">
+                                                        <table className="table search_table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope ="col" className="search-table-font">Export 목록</th>
+                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <td className="string-list-scroll">hi, yerin</td>
+                                                            <td>
+                                                                <div className="string-search-part">
+                                                                    <div className="string-search-input">
+                                                                        <input className="search-input" type="search" placeholder="Search Export" />
+                                                                    </div>
+                                                                    <div className="string-search-button">
+                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <table className="table string-donut-table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            ben
+                                                                        </th>
+                                                                        <th>
+                                                                            mal
+                                                                        </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>donut</td>
+                                                                        <td>donut</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+
+                                                            </td>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>
 
 
                         </div>
+                        <div className="homebutton">
+                            <a href="#top">
+                                <span className="material-icons">arrow_upward</span>
+                            </a>
+
+                        </div>
                     </div>
+
                     :
                     <br/>
                 }

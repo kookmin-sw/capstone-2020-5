@@ -120,10 +120,28 @@ class Overview extends Component {
                                             </tr>
                                             <tr>
                                                 <td className="balloon-table compare-taget" style={{padding:"0"}}>
-                                                    {this.function_data[key]["Function"]}
+                                                    {this.function_data[key]["Function"]}aa
                                                 </td>
                                                 
                                             </tr>
+                                        </table>
+                                        <table className="function-donut-table">
+                                            <thead>
+                                            <tr>
+                                                <th>ben</th>
+                                                <th>mal</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    ben
+                                                </td>
+                                                <td>
+                                                    mal
+                                                </td>
+                                            </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <div className="modal-footer">

@@ -24,6 +24,10 @@
     text-align: left;
     display: inline-block;
     vertical-align: middle;
+    font-size: 25px;
+}
+.file_contents > tbody > tr >td{
+    padding-right: 15px;
 }
 .file_name{
     font-size: 1.8rem;
@@ -51,16 +55,24 @@
     margin-bottom: 1rem;
     font-family: BMDOHYEON;
     font-weight: bold;
-    background: linear-gradient(to left, #ff00bf 40%, #00f 60%);
+    background: linear-gradient(to left, #8800ff 40%, #00f 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.contents_title_strange{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: BMDOHYEON;
+    font-weight: bold;
+    background: linear-gradient(to left, #8800ff 40%, #c90097 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .under_line{
     border-width: 2px;
-    width: 70%;
+    width: 80%;
 }
 .full_accordion{
-    width: 70%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1rem;
@@ -128,8 +140,11 @@ result-button-rignt{
     margin-left: 90%;
 }
 .gradient-table{
-    width: 80%;
-    margin: 0 auto;
+    margin: 20px auto 20px auto!important;
+    width: 80%!important;
+}
+.gradient-table >tr > th{
+    vertical-align: middle;
 }
 .zoomin-btn{
     background: none;
@@ -166,12 +181,16 @@ result-button-rignt{
     max-width: 400px;
     overflow-x: scroll;
 }
+.gradient-img::-webkit-scrollbar{
+    display: none;
+}
 .mnemonic-scroll{
     max-height: 600px;
+    margin: 0 auto;
     overflow-y: scroll;
 }
 .sim-stran-tab{
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
@@ -194,4 +213,97 @@ result-button-rignt{
     font-weight: bold;
     font-size: 1.2rem;
     padding: 0!important;
+}
+.accordion_head{
+    border: none;
+    width: 80%;
+    text-align: left;
+    margin: 0 auto;
+}
+.acco_header_title{
+    display: inline-block;
+}
+
+.card-body{
+    margin: 0 auto;
+}
+.card-width{
+    width: 75%;
+}
+.string-search-input{
+    display: inline-block;
+}
+.string-search-button{
+    display: inline-block;
+}
+
+.string-list-scroll{
+    height: 400px;
+    max-height: 400px;
+    overflow-y: scroll;
+    border-right: 2px solid #d4d4d4;
+}
+.string-list-scroll::-webkit-scrollbar{
+    display: none;
+}
+.search-table-font{
+    font-size: 30px;
+    font-weight: bold;
+}
+.search-input{
+    height: 50px;
+    width: 300px;
+    border: solid 2px #a8aaac;
+}
+.search-button{
+    height: 50px;
+}
+.string-ben-donut{
+    margin: 20px;
+}
+.string-donut-table{
+    width: 80%;
+    margin: 0 auto;
+}
+.string-search-part{
+    margin: 20px 0 20px 0;
+}
+.card{
+    border: none!important;
+}
+.function-donut-table{
+    width: 80%;
+    margin: 0 auto;
+    background-color: #ffffff!important;
+}
+.function-donut-table >thead > tr > th{
+    background-color: #ffffff;
+}
+.function-donut-table >tbody> tr >td{
+    background-color: #ffffff;
+}
+.dropdown-icon{
+    margin-left: 10px;
+}
+.dropdown-icon > h5 >span{
+    font-size: 30px;
+    vertical-align: middle;
+    color: #7c00d4;
+}
+.dropdown-icon-strange{
+    margin-left: 10px;
+}
+.dropdown-icon-strange > h5 >span{
+    font-size: 30px;
+    vertical-align: middle;
+    color: #c90097;
+}
+.homebutton{
+    position : fixed;
+    bottom:20px; right: 20px;
+}
+.homebutton > a > span{
+    color: #3a3e47;
+    font-size: 60px;
+    font-weight: bold;
 }
