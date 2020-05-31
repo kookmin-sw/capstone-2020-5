@@ -83,9 +83,14 @@
     background: linear-gradient(180deg, rgb(232, 218, 255) 0%, rgba(215,228,255,1) 52%, rgba(255,255,255,1) 100%);
     padding: 0.7rem 0 0.7rem 0;
 }
+.each_function_strange{
+    background: rgb(226,209,255);
+    background: linear-gradient(180deg, rgb(255, 218, 253) 0%, rgb(234, 215, 255) 52%, rgb(255, 255, 255) 100%);
+    padding: 0.7rem 0 0.7rem 0;
+}
 .function_hash{
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 25px;
     text-align: left;
 }
 .result-button-contain{
@@ -246,6 +251,9 @@ result-button-rignt{
 .string-list-scroll::-webkit-scrollbar{
     display: none;
 }
+.string-list{
+    font-size: 25px;
+}
 .search-table-font{
     font-size: 30px;
     font-weight: bold;
@@ -264,6 +272,12 @@ result-button-rignt{
 .string-donut-table{
     width: 80%;
     margin: 0 auto;
+}
+.string-donut-table > thead > tr >th{
+    font-size: 27px;
+}
+.cloud-done-icon{
+    margin-right: 10px;
 }
 .string-search-part{
     margin: 20px 0 20px 0;
@@ -306,4 +320,24 @@ result-button-rignt{
     color: #3a3e47;
     font-size: 60px;
     font-weight: bold;
+}
+.similary-table > thead > tr > th{
+    font-size: 25px;
+}
+.similary-table >tbody > tr > th,td{
+    font-size: 20px;
+}
+.similary-distance{
+    color: #7c00d4;
+}
+.compare-taget{
+    padding: 0 20px 0 0!important;
+}
+.search_table >thead > tr >th{
+    color: #ffffff;
+    padding: 5px 0 5px 0;
+}
+.search_table >thead >tr{
+    background-color: rgba(151, 130, 205, 0.78);
+    border-radius: 30px;
 }

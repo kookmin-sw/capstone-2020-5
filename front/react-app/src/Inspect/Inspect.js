@@ -162,12 +162,16 @@ class Inspect extends Component {
                                                         <table className="table search_table">
                                                             <thead>
                                                             <tr>
-                                                                <th scope ="col" className="search-table-font">string 목록</th>
-                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                                <th scope ="col" className="search-table-font">string list</th>
+                                                                <th scope="col"  className="search-table-font">search similarity</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <td className="string-list-scroll">this is a dangerous file</td>
+                                                            <td className="string-list-scroll">
+                                                                <div className="string-list">
+                                                                    this is a dangerous file
+                                                                </div>
+                                                            </td>
                                                             <td>
                                                                 <div className="string-search-part">
                                                                     <div className="string-search-input">
@@ -182,17 +186,17 @@ class Inspect extends Component {
                                                                     <thead>
                                                                     <tr>
                                                                         <th>
-                                                                            ben
+                                                                            ben(%)
                                                                         </th>
                                                                         <th>
-                                                                            mal
+                                                                            mal(%)
                                                                         </th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr>
-                                                                        <td>donut</td>
-                                                                        <td>donut</td>
+                                                                        <td>ben 도넛 들어갈 자리</td>
+                                                                        <td>mal 도넛 들어갈 자리</td>
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
@@ -409,8 +413,8 @@ class Inspect extends Component {
                                                         <table className="table search_table">
                                                             <thead>
                                                             <tr>
-                                                                <th scope ="col" className="search-table-font">string 목록</th>
-                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                                <th scope ="col" className="search-table-font">string list</th>
+                                                                <th scope="col"  className="search-table-font">search similaryty</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
