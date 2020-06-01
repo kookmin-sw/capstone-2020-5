@@ -96,10 +96,10 @@ class Inspect extends Component {
                             <hr className="under_line"></hr>
                             <ul className="nav nav-pills mb-3 sim-stran-tab" id="pills-tabs" role="tablist">
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">유사도 검사</a>
+                                    <a className="tab-style nav-link active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">similarity</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">이상탐지</a>
+                                    <a className="tab-style nav-link tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">anomaly detection</a>
                                 </li>
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
@@ -236,8 +236,8 @@ class Inspect extends Component {
                                                         <table className="table search_table">
                                                             <thead>
                                                             <tr>
-                                                                <th scope ="col" className="search-table-font">import 목록</th>
-                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                                <th scope ="col" className="search-table-font">import list</th>
+                                                                <th scope="col"  className="search-table-font">search similarity</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -306,8 +306,8 @@ class Inspect extends Component {
                                                         <table className="table search_table">
                                                             <thead>
                                                             <tr>
-                                                                <th scope ="col" className="search-table-font">Export 목록</th>
-                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                                <th scope ="col" className="search-table-font">Export list</th>
+                                                                <th scope="col"  className="search-table-font">search similarity</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -483,8 +483,8 @@ class Inspect extends Component {
                                                         <table className="table search_table">
                                                             <thead>
                                                             <tr>
-                                                                <th scope ="col" className="search-table-font">import 목록</th>
-                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                                <th scope ="col" className="search-table-font">import list</th>
+                                                                <th scope="col"  className="search-table-font">search similarity</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -553,8 +553,8 @@ class Inspect extends Component {
                                                         <table className="table search_table">
                                                             <thead>
                                                             <tr>
-                                                                <th scope ="col" className="search-table-font">Export 목록</th>
-                                                                <th scope="col"  className="search-table-font">유사도 검색</th>
+                                                                <th scope ="col" className="search-table-font">Export list</th>
+                                                                <th scope="col"  className="search-table-font">search similarity</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>

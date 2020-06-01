@@ -128,17 +128,17 @@ class Overview extends Component {
                                         <table className="function-donut-table">
                                             <thead>
                                             <tr>
-                                                <th>ben</th>
-                                                <th>mal</th>
+                                                <th>업로드한 파일의 함수</th>
+                                                <th>유사한 함수</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
                                                 <td>
-                                                    ben
+                                                    업로드한 파일 뉴모닉
                                                 </td>
                                                 <td>
-                                                    mal
+                                                    유사한 함수 뉴모닉
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -165,7 +165,7 @@ class Overview extends Component {
                     <div className="accordion-header" id="headingOne">
                         <div className="mb-0 each_function">
                             <div className="function_hash col-10">
-                            <span class="material-icons">
+                            <span class="material-icons cloud-done-icon">
                             cloud_done
                             </span>
                             
@@ -186,27 +186,23 @@ class Overview extends Component {
                         this.state.dataloaded ?     
                             <div className="card-body">
                                 <div className="progress-contain">
-                                    <div className="progress">
-                                    <div style={{width: (parseFloat(this.mal_ben["ben"]) * 100)+"%",backgroundColor:"#20c997"}} role="progressbar"
+                                    <div className="progress" style={{height:"30px"}}>
+                                    <div style={{width: (parseFloat(this.mal_ben["ben"]) * 100)+"%",backgroundColor:"#20c997", color:"#ffffff", fontSize:"20px", fontWeight:"bold"}} role="progressbar"
                                             aria-valuenow="30" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                        <div style={{width: (parseFloat(this.mal_ben["mal"]) * 100)+"%",backgroundColor:"#ff2b99"}} role="progressbar"
+                                            aria-valuemax="100">{(parseFloat(this.mal_ben["ben"]) * 100)+"%"}</div>
+                                        <div style={{width: (parseFloat(this.mal_ben["mal"]) * 100)+"%",backgroundColor:"#ff2b99", color:"#ffffff", fontSize:"20px", fontWeight:"bold"}} role="progressbar"
                                             aria-valuenow="20" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
+                                            aria-valuemax="100">{(parseFloat(this.mal_ben["mal"]) * 100)+"%"}</div>
                                     </div>
-                                    <table className="mal-ben-percentage">
-                                        <th className="part-ben">정상</th>
-                                        <th className="part-mal">악성</th>
-                                    </table>
                                 </div>
                                 <div className="similary-result-table">
-                                    <table className="table table-striped">
+                                    <table className="table table-striped similary-table">
                                         <thead>
                                         <tr>
                                             <th scope="col">File(md5)</th>
                                             <th scope="col">Function(md5)</th>
-                                            <th scope="col">Cosine</th>
-                                            <th scope="col">Jaccard-distance</th>
+                                            <th className="similary-distance" scope="col">Cosine</th>
+                                            <th className="similary-distance" scope="col">Jaccard-distance</th>
                                             <th scope="col">Details</th>
                                         </tr>
                                         </thead>
