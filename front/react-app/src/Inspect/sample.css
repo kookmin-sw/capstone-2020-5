@@ -253,6 +253,9 @@ result-button-rignt{
     display: none;
 }
 .string-list{
+    height: 500px;
+    max-width: 500px;
+    overflow-y: scroll;
     font-size: 25px;
 }
 .search-table-font{
