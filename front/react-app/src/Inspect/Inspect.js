@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
+import { Doughnut } from "react-chartjs-2";
 import Nav from "../Nav/Nav";
 import "./Inspect.css";
 import "./sample.css";
-import Mnemonic from "./Mnemonic/Mnemonic";
-import String from "./String/String";
-import Import from "./Import/Import";
-import Export from "./Export/Export";
-import Balloon from "./Balloon/Balloon";
+
 import Axios from 'axios';
 import Spinner from '../Spinner/Spinner';
 import Overview from './Overview/Overview'
 
 
 class Inspect extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -55,9 +53,26 @@ class Inspect extends Component {
         });
         return list;
     }
-    
+
 
     render() {
+        const expData = {
+            labels: ["긍정적", "부정적", "보통"],
+            datasets: [
+                {
+                    labels: ["긍정적", "부정적", "보통"],
+                    data: [60, 13, 27],
+                    borderWidth: 2,
+                    hoverBorderWidth: 3,
+                    backgroundColor: [
+                        "rgba(238, 102, 121, 1)",
+                        "rgba(98, 181, 229, 1)",
+                        "rgba(255, 198, 0, 1)"
+                    ],
+                    fill: true
+                }
+            ]
+        };
         return(
             <div>
                 {
@@ -195,7 +210,18 @@ class Inspect extends Component {
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr>
-                                                                        <td>ben 도넛 들어갈 자리</td>
+                                                                        <td>
+                                                                            <Doughnut
+                                                                                options={{
+                                                                                    legend: {
+                                                                                        display: true,
+                                                                                        position: "right"
+                                                                                    }
+                                                                                }}
+                                                                                data={expData}
+                                                                                height={120}
+                                                                            />
+                                                                        </td>
                                                                         <td>mal 도넛 들어갈 자리</td>
                                                                     </tr>
                                                                     </tbody>
