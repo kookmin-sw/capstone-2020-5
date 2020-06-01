@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Doughnut } from "react-chartjs-2";
+import {HorizontalBar} from "react-chartjs-2";
+import {Doughnut} from "react-chartjs-2";
 import Nav from "../Nav/Nav";
 import "./Inspect.css";
 import "./sample.css";
@@ -56,18 +57,33 @@ class Inspect extends Component {
 
 
     render() {
-        const expData = {
-            labels: ["긍정적", "부정적", "보통"],
+        const stringBen = {
+            labels: ["ben","mal"],
             datasets: [
                 {
-                    labels: ["긍정적", "부정적", "보통"],
-                    data: [60, 13, 27],
-                    borderWidth: 2,
-                    hoverBorderWidth: 3,
+                    labels: ["ben","mal"],
+                    data: [60, 13],
+                    borderWidth: 0,
+                    hoverBorderWidth: 0,
                     backgroundColor: [
-                        "rgba(238, 102, 121, 1)",
-                        "rgba(98, 181, 229, 1)",
-                        "rgba(255, 198, 0, 1)"
+                        "rgb(193,208,203)",
+                        "rgb(25,255,148)"
+                    ],
+                    fill: true
+                }
+            ]
+        };
+        const stringMal = {
+            labels: ["ben","mal"],
+            datasets: [
+                {
+                    labels: ["ben","mal"],
+                    data: [60, 13],
+                    borderWidth: 0,
+                    hoverBorderWidth: 0,
+                    backgroundColor: [
+                        "rgb(208,193,193)",
+                        "rgb(255,25,44)"
                     ],
                     fill: true
                 }
@@ -211,18 +227,33 @@ class Inspect extends Component {
                                                                     <tbody>
                                                                     <tr>
                                                                         <td>
-                                                                            <Doughnut
-                                                                                options={{
-                                                                                    legend: {
-                                                                                        display: true,
-                                                                                        position: "right"
-                                                                                    }
-                                                                                }}
-                                                                                data={expData}
-                                                                                height={120}
-                                                                            />
+                                                                            <div className="donut-container">
+                                                                                <Doughnut
+                                                                                    options={{
+                                                                                        legend: {
+                                                                                            display: false,
+                                                                                            position: "right"
+                                                                                        }
+                                                                                    }}
+                                                                                    data={stringBen}
+                                                                                    height={120}
+                                                                                />
+                                                                            </div>
                                                                         </td>
-                                                                        <td>mal 도넛 들어갈 자리</td>
+                                                                        <td>
+                                                                            <div className="donut-container">
+                                                                                <Doughnut
+                                                                                    options={{
+                                                                                        legend: {
+                                                                                            display: false,
+                                                                                            position: "right"
+                                                                                        }
+                                                                                    }}
+                                                                                    data={stringMal}
+                                                                                    height={120}
+                                                                                />
+                                                                            </div>
+                                                                        </td>
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>

@@ -24,10 +24,11 @@
     text-align: left;
     display: inline-block;
     vertical-align: middle;
-    font-size: 25px;
+    font-size: 30px;
 }
 .file_contents > tbody > tr >td{
     padding-right: 15px;
+    font-size: 30px;
 }
 .file_name{
     font-size: 1.8rem;
@@ -35,7 +36,7 @@
 }
 .file_meta{
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .data_tabs{
@@ -243,8 +244,8 @@ result-button-rignt{
 }
 
 .string-list-scroll{
-    height: 400px;
-    max-height: 400px;
+    height: 300px;
+    max-height: 300px;
     overflow-y: scroll;
     border-right: 2px solid #d4d4d4;
 }
@@ -340,4 +341,17 @@ result-button-rignt{
 .search_table >thead >tr{
     background-color: rgba(151, 130, 205, 0.78);
     border-radius: 30px;
+}
+.donut-container{
+    width: 500px;
+    height: auto;
+}
+.horizontalbar-css{
+    height: 300px;
+    width: auto;
+}
+.amountdatachart{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
 }

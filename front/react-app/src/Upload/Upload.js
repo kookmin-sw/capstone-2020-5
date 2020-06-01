@@ -3,8 +3,12 @@ import Nav from "../Nav/Nav";
 import axios from 'axios';
 import "./Upload.css"
 import "../index/btn.css"
+import {HorizontalBar} from "react-chartjs-2";
 import { Redirect } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
+var CanvasJSReact = require('../canvasJS/canvasjs.react');
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class Upload extends Component{
 
@@ -128,19 +132,52 @@ class Upload extends Component{
         }
         return listOfFiles
     }
-
     render() {
-    return(
+        const data = {
+            labels: ['ben', 'mal',''],
+            datasets: [
+                {
+
+                    backgroundColor: [
+                        "rgb(0,238,159)",
+                        "rgb(255,25,33)"
+                    ],
+                    borderColor: [
+                        "rgb(0,168,113)",
+                        "rgb(175,0,7)"
+                    ],
+                    borderWidth: 1,
+                    hoverBackgroundColor: [
+                        "rgb(86,243,192)",
+                        "rgb(253,112,117)"
+                    ],
+                    hoverBorderColor: [
+                        "rgb(0,168,113)",
+                        "rgb(175,0,7)"
+                    ],
+                    data: [22000, 20000,0]
+                }
+            ]
+        };
+
+        return(
 
         <div className="upload_container">
             <Nav />
             {
                 !this.state.loading ?
                 <div className="upload_container">
+                    <div>
+                        <div className="amountdatachart">Amount of data</div>
+                        <div className="horizontalbar-css">
+                            <HorizontalBar data={data} width="1000px"/>
+                        </div>
+                    </div>
                     <div className="upload_title">
                         분석 요청하기
                     </div>
                     <hr className="underbar"></hr>
+
                     <div className="upload_body">
                         <div className="upload_img">
                             <img src="/img/upload_file.png"></img>
