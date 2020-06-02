@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {HorizontalBar} from "react-chartjs-2";
-import {Doughnut} from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import Nav from "../Nav/Nav";
 import "./Inspect.css";
 import "./sample.css";
@@ -35,6 +34,7 @@ class Inspect extends Component {
 
                 this.meta = this.state.file["meta"];
                 this.samefile = this.state.file["samefile"];
+                this.string=this.state.file["string"];
                 
                 // Create list of functions' hash
                 this.all_functions = this.state.file["all_functions"];
@@ -54,36 +54,31 @@ class Inspect extends Component {
         });
         return list;
     }
+    createListOfstring() {
+        let list = [];
+        let array = 
+        Object.entries(array).forEach(([key, value]) => {
+            list.push(
+               
+            );
+        });
+        return list;
+    }
 
 
     render() {
-        const stringBen = {
-            labels: ["ben","mal"],
+        const expData = {
+            labels: ["긍정적", "부정적", "보통"],
             datasets: [
                 {
-                    labels: ["ben","mal"],
-                    data: [60, 13],
-                    borderWidth: 0,
-                    hoverBorderWidth: 0,
+                    labels: ["긍정적", "부정적", "보통"],
+                    data: [60, 13, 27],
+                    borderWidth: 2,
+                    hoverBorderWidth: 3,
                     backgroundColor: [
-                        "rgb(193,208,203)",
-                        "rgb(25,255,148)"
-                    ],
-                    fill: true
-                }
-            ]
-        };
-        const stringMal = {
-            labels: ["ben","mal"],
-            datasets: [
-                {
-                    labels: ["ben","mal"],
-                    data: [60, 13],
-                    borderWidth: 0,
-                    hoverBorderWidth: 0,
-                    backgroundColor: [
-                        "rgb(208,193,193)",
-                        "rgb(255,25,44)"
+                        "rgba(238, 102, 121, 1)",
+                        "rgba(98, 181, 229, 1)",
+                        "rgba(255, 198, 0, 1)"
                     ],
                     fill: true
                 }
@@ -110,15 +105,15 @@ class Inspect extends Component {
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>md5</td>
+                                        <td>MD5</td>
                                         <td>{this.meta["md5"]}</td>
                                     </tr>
                                     <tr>
-                                        <td>sha256</td>
+                                        <td>SHA256</td>
                                         <td>{this.meta["sha256"]}</td>
                                     </tr>
                                     <tr>
-                                        <td>size</td>
+                                        <td>SIZE</td>
                                         <td>{this.meta["filesize"]}</td>
                                     </tr>
                                     </tbody>
@@ -127,10 +122,10 @@ class Inspect extends Component {
                             <hr className="under_line"></hr>
                             <ul className="nav nav-pills mb-3 sim-stran-tab" id="pills-tabs" role="tablist">
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">similarity</a>
+                                    <a className="tab-style nav-link active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">Similarity</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">anomaly detection</a>
+                                    <a className="tab-style nav-link tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">Anomaly Detection</a>
                                 </li>
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
@@ -200,7 +195,7 @@ class Inspect extends Component {
                                                             <tbody>
                                                             <td className="string-list-scroll">
                                                                 <div className="string-list">
-                                                                    this is a dangerous file
+                                                                  
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -227,33 +222,18 @@ class Inspect extends Component {
                                                                     <tbody>
                                                                     <tr>
                                                                         <td>
-                                                                            <div className="donut-container">
-                                                                                <Doughnut
-                                                                                    options={{
-                                                                                        legend: {
-                                                                                            display: false,
-                                                                                            position: "right"
-                                                                                        }
-                                                                                    }}
-                                                                                    data={stringBen}
-                                                                                    height={120}
-                                                                                />
-                                                                            </div>
+                                                                            <Doughnut
+                                                                                options={{
+                                                                                    legend: {
+                                                                                        display: true,
+                                                                                        position: "right"
+                                                                                    }
+                                                                                }}
+                                                                                data={expData}
+                                                                                height={120}
+                                                                            />
                                                                         </td>
-                                                                        <td>
-                                                                            <div className="donut-container">
-                                                                                <Doughnut
-                                                                                    options={{
-                                                                                        legend: {
-                                                                                            display: false,
-                                                                                            position: "right"
-                                                                                        }
-                                                                                    }}
-                                                                                    data={stringMal}
-                                                                                    height={120}
-                                                                                />
-                                                                            </div>
-                                                                        </td>
+                                                                        <td>mal 도넛 들어갈 자리</td>
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>

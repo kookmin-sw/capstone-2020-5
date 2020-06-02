@@ -83,10 +83,10 @@ class Overview extends Component {
         Object.entries(this.function_data).forEach(([key, value]) => {
             list.push(
                 <tr>
-                    <th scope="row">{key}</th>
-                    <td>{value["Function"]}</td>
+                    <th scope="row">{key}<br/>({value["Function"]})</th>
+    
                     <td>{value["cosine"]}</td>
-                    <td>{value["edit"]}</td>
+                    <td>{value["jaccard"]}</td>
                     <td>
                         <button type="button" className="zoomin-btn"
                                 data-toggle="modal" data-target={"#h" + key + this.sim}>
@@ -102,7 +102,7 @@ class Overview extends Component {
                                     <div className="modal-header modal-head-title">
                                         <div className="modal-title taget_title"
                                              id={"h"+key + this.sim+"Title"}>
-                                            (유사한 파일 md5)
+                                           
                                         </div>
                                         <button type="button" className="close close-btn-white"
                                                 data-dismiss="modal" aria-label="Close">
@@ -165,9 +165,7 @@ class Overview extends Component {
                     <div className="accordion-header" id="headingOne">
                         <div className="mb-0 each_function">
                             <div className="function_hash col-10">
-                            <span class="material-icons cloud-done-icon">
-                            cloud_done
-                            </span>
+                            
                             
                                 {this.hash}
                             </div>
@@ -199,8 +197,8 @@ class Overview extends Component {
                                     <table className="table table-striped similary-table">
                                         <thead>
                                         <tr>
-                                            <th scope="col">File(md5)</th>
-                                            <th scope="col">Function(md5)</th>
+                                            <th scope="col">File MD5<br/>(Fuction ID)</th>
+                                            
                                             <th className="similary-distance" scope="col">Cosine</th>
                                             <th className="similary-distance" scope="col">Jaccard-distance</th>
                                             <th scope="col">Details</th>

@@ -6,9 +6,7 @@ import "../index/btn.css"
 import {HorizontalBar} from "react-chartjs-2";
 import { Redirect } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
-var CanvasJSReact = require('../canvasJS/canvasjs.react');
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 
 class Upload extends Component{
 

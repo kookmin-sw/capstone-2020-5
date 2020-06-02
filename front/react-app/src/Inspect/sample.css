@@ -327,9 +327,12 @@ result-button-rignt{
 }
 .similary-table > thead > tr > th{
     font-size: 25px;
+    vertical-align:middle;
 }
 .similary-table >tbody > tr > th,td{
     font-size: 20px;
+    vertical-align: middle!important;
+    
 }
 .similary-distance{
     color: #7c00d4;
