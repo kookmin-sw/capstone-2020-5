@@ -175,7 +175,7 @@ class Overview extends Component {
                 <div className="card full_accordion">
                     <div className="accordion-header" id="headingOne">
                         <div className="mb-0 each_function">
-                            <div className="function_hash col-10">
+                            <div className="function_hash col-9">
 
                                 {this.hash}
                             </div>
