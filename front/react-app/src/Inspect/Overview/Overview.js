@@ -19,6 +19,7 @@ class Overview extends Component {
 
         this.loadFunctionData = this.loadFunctionData.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
+        this.createListOfMnemonics = this.createListOfMnemonics.bind(this);
     }
 
     downloadFile(data) {
@@ -79,6 +80,18 @@ class Overview extends Component {
         }
     }
 
+    createListOfMnemonics(array) {
+        let list = [];
+        for(let i = 0; i < array.length; ++i) {
+            list.push(
+                <div>
+                    {array[i]}
+                </div>
+            );
+        }
+        return list;
+    }
+
     createListOfSameFunctions() {
         let list = [];
         Object.entries(this.function_data).forEach(([key, value]) => {
@@ -135,11 +148,15 @@ class Overview extends Component {
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td className="function-mnemonic-scroll">
-                                                    업로드한 파일 뉴모닉
+                                                <td>
+                                                    <div className="function-mnemonic-scroll">
+                                                        {this.createListOfMnemonics(this.uploaded_mnemonics)}
+                                                    </div>
                                                 </td>
-                                                <td className="function-mnemonic-scroll">
-                                                    유사한 함수 뉴모닉
+                                                <td>
+                                                    <div className="function-mnemonic-scroll">
+                                                        {this.createListOfMnemonics(this.function_data[key]["mnemonics"])}
+                                                    </div>
                                                 </td>
                                             </tr>
                                             </tbody>
