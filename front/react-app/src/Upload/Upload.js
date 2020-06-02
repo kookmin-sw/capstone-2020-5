@@ -3,6 +3,7 @@ import Nav from "../Nav/Nav";
 import axios from 'axios';
 import "./Upload.css"
 import "../index/btn.css"
+import CountUp from "react-countup";
 import {HorizontalBar} from "react-chartjs-2";
 import { Redirect } from "react-router-dom";
 import slider from "react-slider"
@@ -148,8 +149,25 @@ class Upload extends Component{
             {
                 !this.state.loading ?
                 <div className="upload_container">
+                    <table className="amount-data">
+                        <thead>
+                        <tr>
+                            <th>Amount of ben file</th>
+                            <th>Amount of mal file</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <CountUp end={220000} start={0} />
+                            </td>
+                            <td>
+                                <CountUp end={180000} start={0} />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                     <div>
-
                     </div>
 
                     <div className="upload_title">

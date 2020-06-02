@@ -54,7 +54,7 @@
 .contents_title{
     font-size: 2rem;
     margin-bottom: 1rem;
-    font-family: BMDOHYEON;
+    font-family: 'Oswald', sans-serif;
     font-weight: bold;
     background: linear-gradient(to left, #8800ff 40%, #00f 60%);
     -webkit-background-clip: text;
@@ -63,7 +63,7 @@
 .contents_title_strange{
     font-size: 2rem;
     margin-bottom: 1rem;
-    font-family: BMDOHYEON;
+    font-family: 'Oswald', sans-serif;
     font-weight: bold;
     background: linear-gradient(to left, #8800ff 40%, #c90097 60%);
     -webkit-background-clip: text;
@@ -107,7 +107,7 @@
     background-color: #6a1fc1;
     padding:0.3rem 1rem 0.3rem 1rem;
     border-radius: 10px;
-    font-family: BMDOHYEON;
+    font-family: 'Oswald', sans-serif;
     text-align: center;
 }
 
@@ -209,7 +209,7 @@ result-button-rignt{
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
     background-color: #5039d2!important;
     font-size: 1.5rem;
-    font-family: BMDOHYEON;
+    font-family: 'Oswald', sans-serif;
 
 }
 .tab-style > .active{
@@ -219,7 +219,7 @@ result-button-rignt{
 .tab-style{
     font-size: 1.5rem;
     color: #5039d2;
-    font-family: BMDOHYEON;
+    font-family: 'Oswald', sans-serif;
 }
 .balloon-table{
     background-color: #ffffff;
@@ -306,7 +306,7 @@ result-button-rignt{
 }
 .function-donut-table >tbody> tr >td{
     background-color: #ffffff;
-    max-height: 40px;
+    max-height: 40px!important;
     overflow-y: scroll;
 }
 .function-donut-table >tbody> tr >td::-webkit-scrollbar{
@@ -393,4 +393,20 @@ result-button-rignt{
 }
 .slider-center{
     text-align: center!important;
+}
+.amount-data{
+    margin: 0 auto;
+}
+.amount-data > thead >tr >th{
+    padding: 0 20px 0 20px;
+    font-size: 30px;
+}
+.amount-data > tbody >tr >td{
+    font-size: 80px;
+    padding: 0 20px 0 20px;
+    font-weight: bold;
+}
+.function-mnemonic-scroll{
+    max-height: 30px;
+    overflow-y: scroll;
 }
