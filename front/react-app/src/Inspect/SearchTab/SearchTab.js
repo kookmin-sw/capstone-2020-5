@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import {Doughnut} from "react-chartjs-2";
 import Spinner from '../../Spinner/Spinner';
 
@@ -19,7 +19,6 @@ class SearchTab extends Component {
         this.stringMal = {};
         this.stringBen = {};
         this.showResult = this.showResult.bind(this);   
-
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,7 +61,7 @@ class SearchTab extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.setState({ searchResult: 1 });
-        Axios.get("http://127.0.0.1:5000/get_search_data", {
+        axios.get("http://127.0.0.1:5000/get_search_data", {
             params: {
                 search_value: this.state.searchValue,
                 search_type: this.listType
@@ -72,6 +71,23 @@ class SearchTab extends Component {
                 window.localStorage.setItem('error_message', "Search result found error");
                 window.location = "/error";
             } else {
+                this.originBen = [];
+                for(let i = 0; i < response.data["origin_file_hash"][0].length; ++i) {
+                    this.originBen.push(
+                        <li>
+                            {response.data["origin_file_hash"][0][i]}
+                        </li>
+                    );
+                }
+                this.originMal = [];
+                for(let i = 0; i < response.data["origin_file_hash"][1].length; ++i) {
+                    this.originMal.push(
+                        <li>
+                            {response.data["origin_file_hash"][1][i]}
+                        </li>
+                    );
+                }
+                
                 this.stringMal = {
                     labels: ["MAL_SIM","MAL_OTHER"],
                     datasets: [
@@ -81,8 +97,8 @@ class SearchTab extends Component {
                             borderWidth: 0,
                             hoverBorderWidth: 0,
                             backgroundColor: [
-                                "rgb(208,193,193)",
-                                "rgb(255,25,44)"
+                                "rgb(255,25,44)",
+                                "rgb(208,193,193)"
                             ],
                             fill: true
                         }
@@ -97,8 +113,8 @@ class SearchTab extends Component {
                             borderWidth: 0,
                             hoverBorderWidth: 0,
                             backgroundColor: [
-                                "rgb(193,208,203)",
-                                "rgb(25,255,148)"
+                                "rgb(25,255,148)",
+                                "rgb(193,208,203)"
                             ],
                             fill: true
                         }
@@ -157,6 +173,14 @@ class SearchTab extends Component {
                                         height={120}
                                     />
                                 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {this.originBen}
+                            </td>
+                            <td>
+                                {this.originMal}
                             </td>
                         </tr>
                     </tbody>
