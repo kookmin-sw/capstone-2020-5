@@ -150,32 +150,8 @@ class Upload extends Component{
                 window.location = "/error";
             } else {
                
-                this.data = {
-                    labels: ['ben', 'mal'],
-                    datasets: [
-                        {
-        
-                            backgroundColor: [
-                                "rgb(0,238,159)",
-                                "rgb(255,25,33)"
-                            ],
-                            borderColor: [
-                                "rgb(0,168,113)",
-                                "rgb(175,0,7)"
-                            ],
-                            borderWidth: 1,
-                            hoverBackgroundColor: [
-                                "rgb(86,243,192)",
-                                "rgb(253,112,117)"
-                            ],
-                            hoverBorderColor: [
-                                "rgb(0,168,113)",
-                                "rgb(175,0,7)"
-                            ],
-                            data: [parseFloat(response.data["mal_data"]), parseFloat (response.data["ben_data"])]
-                        }
-                    ]
-                };
+                this.mal_data = parseFloat(response.data["mal_data"])
+                this.ben_data =  parseFloat(response.data["ben_data"])
                 this.setState({db_loaded:true})
             }
         });
@@ -194,25 +170,30 @@ class Upload extends Component{
                 !this.state.loading ? 
                 
                 <div className="upload_container">
-
-                    <table className="amount-data">
-                        <thead>
-                        <tr>
-                            <th>Amount of ben file</th>
-                            <th>Amount of mal file</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <CountUp end={220000} start={0} />
-                            </td>
-                            <td>
-                                <CountUp end={180000} start={0} />
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    {
+                        this.state.db_loaded ?
+                        <table className="amount-data">
+                            <thead>
+                                <tr>
+                                    <th>Amount of ben file</th>
+                                    <th>Amount of mal file</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <CountUp end={this.ben_data} start={0} />
+                                    </td>
+                                    <td>
+                                        <CountUp end={this.mal_data} start={0} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        :
+                        <p></p>
+                    }
+                    
                     <div>
                     </div>
 
