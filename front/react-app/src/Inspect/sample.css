@@ -80,9 +80,13 @@
 
 }
 .each_function{
-    background: rgb(226,209,255);
+    /*background: rgb(226,209,255);
     background: linear-gradient(180deg, rgb(232, 218, 255) 0%, rgba(215,228,255,1) 52%, rgba(255,255,255,1) 100%);
-    padding: 0.7rem 0 0.7rem 0;
+    */
+    border: #eaecef solid 2px;
+    border-radius: 15px;
+    padding: 0.5rem 0 0.5rem 0;
+
 }
 .each_function_strange{
     background: rgb(226,209,255);
@@ -195,6 +199,9 @@ result-button-rignt{
     margin: 0 auto;
     overflow-y: scroll;
 }
+.mnemonic-scroll::-webkit-scrollbar{
+    display: none;
+}
 .sim-stran-tab{
     width: 80%;
     margin: 0 auto;
@@ -299,6 +306,11 @@ result-button-rignt{
 }
 .function-donut-table >tbody> tr >td{
     background-color: #ffffff;
+    max-height: 40px;
+    overflow-y: scroll;
+}
+.function-donut-table >tbody> tr >td::-webkit-scrollbar{
+    display: none;
 }
 .dropdown-icon{
     margin-left: 10px;
@@ -360,4 +372,25 @@ result-button-rignt{
     font-size: 20px;
     padding-top: 10px;
     padding-bottom: 0;
+}
+.slider-container{
+    display: inline-block;
+    width: 100px;
+}
+.slider-button{
+    border: none;
+    style: none;
+}
+.slider-button > span{
+    font-size: 25px;
+}
+.setting-button{
+    display: inline-block;
+}
+.slider-container{
+    width: 80%;
+    margin: 0 auto;
+}
+.slider-center{
+    text-align: center!important;
 }

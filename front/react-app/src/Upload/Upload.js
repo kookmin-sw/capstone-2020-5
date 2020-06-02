@@ -5,10 +5,16 @@ import "./Upload.css"
 import "../index/btn.css"
 import {HorizontalBar} from "react-chartjs-2";
 import { Redirect } from "react-router-dom";
+import slider from "react-slider"
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import VolumeDown from '@material-ui/icons/VolumeDown';
+import VolumeUp from '@material-ui/icons/VolumeUp';
 import Spinner from "../Spinner/Spinner";
-
-
 class Upload extends Component{
+
 
 
     constructor(props) {
@@ -130,33 +136,10 @@ class Upload extends Component{
         }
         return listOfFiles
     }
-    render() {
-        const data = {
-            labels: ['ben', 'mal',''],
-            datasets: [
-                {
 
-                    backgroundColor: [
-                        "rgb(0,238,159)",
-                        "rgb(255,25,33)"
-                    ],
-                    borderColor: [
-                        "rgb(0,168,113)",
-                        "rgb(175,0,7)"
-                    ],
-                    borderWidth: 1,
-                    hoverBackgroundColor: [
-                        "rgb(86,243,192)",
-                        "rgb(253,112,117)"
-                    ],
-                    hoverBorderColor: [
-                        "rgb(0,168,113)",
-                        "rgb(175,0,7)"
-                    ],
-                    data: [22000, 20000,0]
-                }
-            ]
-        };
+
+    render() {
+
 
         return(
 
@@ -166,11 +149,9 @@ class Upload extends Component{
                 !this.state.loading ?
                 <div className="upload_container">
                     <div>
-                        <div className="amountdatachart">Amount of data</div>
-                        <div className="horizontalbar-css">
-                            <HorizontalBar data={data} width="1000px"/>
-                        </div>
+
                     </div>
+
                     <div className="upload_title">
                         분석 요청하기
                     </div>
@@ -207,7 +188,9 @@ class Upload extends Component{
             }
         </div>
     );
+
     }
+
 }
 
 export default Upload;

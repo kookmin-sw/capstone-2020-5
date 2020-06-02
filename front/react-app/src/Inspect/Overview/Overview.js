@@ -6,6 +6,7 @@ import "../Inspect.css";
 import "../sample.css";
 import Balloon from '../Balloon/Balloon';
 import Spinner from "../../Spinner/Spinner";
+import Slider from "@material-ui/core/Slider";
 class Overview extends Component {
     constructor(props) {
         super(props);
@@ -134,10 +135,10 @@ class Overview extends Component {
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td>
+                                                <td className="function-mnemonic-scroll">
                                                     업로드한 파일 뉴모닉
                                                 </td>
-                                                <td>
+                                                <td className="function-mnemonic-scroll">
                                                     유사한 함수 뉴모닉
                                                 </td>
                                             </tr>
@@ -157,23 +158,50 @@ class Overview extends Component {
         });
         return list;
     }
+    state = {
+        slider1: 100
+    };
 
+    handleChange = name => (e, value) => {
+        this.setState({
+            [name]: value // --> Important bit here: This is how you set the value of sliders
+        });
+    };
     render() {
+        const { classes } = this.props;
+        const { slider1} = this.state;
         return (
             <div id="accordion">
                 <div className="card full_accordion">
                     <div className="accordion-header" id="headingOne">
                         <div className="mb-0 each_function">
                             <div className="function_hash col-10">
-                            
-                            
+
                                 {this.hash}
+                            </div>
+                            <div className="setting-button col-1">
+                                <div className="dropdown">
+                                    <div className="slider-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span className="material-icons">settings</span>
+                                    </div>
+                                    <div className="dropdown-menu slider-center" aria-labelledby="dropdownMenuButton">
+                                        <div className="slider-container">
+                                            <Slider
+                                                value={50}
+                                                aria-labelledby="label"
+                                                onChange={this.handleChange("slider1")}
+                                            />
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                             <div className="result-button-contain col-2">
                                 <div className="filelist_btn purple" data-toggle="collapse"
                                      data-target={"#h"+this.hash+this.sim+"One"} aria-expanded="true"
-                                     aria-controls={"h"+this.hash+this.sim+"One"} onClick={this.loadFunctionData}>
+                                     aria-controls={"h"+this.hash+this.sim+"One"} onClick={this.loadFunctionData} style={{verticalAlign:"middle"}}>
                                     유사도 검사
+
                                 </div>
                             </div>
                         </div>
