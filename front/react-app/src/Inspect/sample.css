@@ -394,6 +394,7 @@ result-button-rignt{
 .slider-center{
     text-align: center!important;
 }
+
 .amount-data{
     margin: 0 auto;
 }
@@ -410,3 +411,17 @@ result-button-rignt{
     max-height: 30px;
     overflow-y: scroll;
 }
+
+
+.function-mnemonic-scroll {
+    margin-top: 0px;
+    vertical-align: top;
+    text-align: left;
+    height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+.function-mnemonic-scroll::-webkit-scrollbar{
+    display: none;
+}
+

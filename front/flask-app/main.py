@@ -151,6 +151,17 @@ def get_search_data():
     except:
         return 'error'
 
+ 
+@app.route('/get_db_data', methods=['GET'])
+def get_db_data():
+    try:
+ 
+        db_data = OrderedDict()
+        db_data["mal_data"] = ["303000"]
+        db_data["ben_data"] = ["150000"]
+        return json.dumps(db_data , ensure_ascii=False , indent="\t")
+    except:
+        return 'error'
 
 if __name__ == '__main__':
     app.run(use_reloader=True, threaded=True)
