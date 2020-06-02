@@ -57,16 +57,6 @@ class Inspect extends Component {
         });
         return list;
     }
-    createListOfstring() {
-        let list = [];
-        let array = 
-        Object.entries(array).forEach(([key, value]) => {
-            list.push(
-               
-            );
-        });
-        return list;
-    }
 
 
     render() {
@@ -170,7 +160,7 @@ class Inspect extends Component {
                                                 <div id="String_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="String_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <SearchTab listType="String" dict={this.string} isFirstTab={true}/>
+                                                    <SearchTab listType="String" dict={this.string}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +187,7 @@ class Inspect extends Component {
                                                 <div id="Import_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="Import_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <SearchTab listType="Import" dict={this.import} isFirstTab={true}/>
+                                                    <SearchTab listType="Import" dict={this.import}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -224,7 +214,7 @@ class Inspect extends Component {
                                                 <div id="Export_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="Export_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <SearchTab listType="Export" dict={this.export} isFirstTab={true}/>
+                                                    <SearchTab listType="Export" dict={this.export}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -288,50 +278,7 @@ class Inspect extends Component {
                                                 <div id="String_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="String_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <div className="card-body card-width">
-                                                        <table className="table search_table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th scope ="col" className="search-table-font">string list</th>
-                                                                <th scope="col"  className="search-table-font">search similaryty</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td className="string-list-scroll">this is a dangerous file</td>
-                                                            <td>
-                                                                <div className="string-search-part">
-                                                                    <div className="string-search-input">
-                                                                        <input className="search-input" type="search" placeholder="Search string" />
-                                                                    </div>
-                                                                    <div className="string-search-button">
-                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <table className="table string-donut-table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            ben
-                                                                        </th>
-                                                                        <th>
-                                                                            mal
-                                                                        </th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td>donut</td>
-                                                                        <td>donut</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-
-
-                                                            </td>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <SearchTab listType="String" dict={this.string}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -358,50 +305,7 @@ class Inspect extends Component {
                                                 <div id="Import_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="Import_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <div className="card-body card-width">
-                                                        <table className="table search_table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th scope ="col" className="search-table-font">import list</th>
-                                                                <th scope="col"  className="search-table-font">search similarity</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td className="string-list-scroll">hi, yerin</td>
-                                                            <td>
-                                                                <div className="string-search-part">
-                                                                    <div className="string-search-input">
-                                                                        <input className="search-input" type="search" placeholder="Search import" />
-                                                                    </div>
-                                                                    <div className="string-search-button">
-                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <table className="table string-donut-table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            ben
-                                                                        </th>
-                                                                        <th>
-                                                                            mal
-                                                                        </th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td>donut</td>
-                                                                        <td>donut</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-
-
-                                                            </td>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <SearchTab listType="Import" dict={this.import}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -428,50 +332,7 @@ class Inspect extends Component {
                                                 <div id="Export_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="Export_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <div className="card-body card-width">
-                                                        <table className="table search_table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th scope ="col" className="search-table-font">Export list</th>
-                                                                <th scope="col"  className="search-table-font">search similarity</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td className="string-list-scroll">hi, yerin</td>
-                                                            <td>
-                                                                <div className="string-search-part">
-                                                                    <div className="string-search-input">
-                                                                        <input className="search-input" type="search" placeholder="Search Export" />
-                                                                    </div>
-                                                                    <div className="string-search-button">
-                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <table className="table string-donut-table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            ben
-                                                                        </th>
-                                                                        <th>
-                                                                            mal
-                                                                        </th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td>donut</td>
-                                                                        <td>donut</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-
-
-                                                            </td>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <SearchTab listType="Export" dict={this.export}/>
                                                 </div>
                                             </div>
                                         </div>
