@@ -64,7 +64,8 @@ class Overview extends Component {
                 params: {
                     filename:this.filename,
                     hash: this.hash,
-                    sim: this.sim
+                    sim: this.sim,
+                    threshold: this.state.slider1
                 }
             }).then((response) => {
                 if (response.data == "error") {
@@ -134,7 +135,7 @@ class Overview extends Component {
                                             </tr>
                                             <tr>
                                                 <td className="balloon-table compare-taget" style={{padding:"0"}}>
-                                                    {this.function_data[key]["Function"]}aa
+                                                    {this.function_data[key]["Function"]}
                                                 </td>
                                                 
                                             </tr>
@@ -204,7 +205,7 @@ class Overview extends Component {
                                     <div className="dropdown-menu slider-center" aria-labelledby="dropdownMenuButton">
                                         <div className="slider-container">
                                             <Slider
-                                                value={50}
+                                               defaultValue={90}
                                                 aria-labelledby="label"
                                                 onChange={this.handleChange("slider1")}
                                             />

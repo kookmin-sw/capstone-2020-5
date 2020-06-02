@@ -78,6 +78,8 @@ def get_function_data():
     try:
         # FAKE DATA!
         # WRITE SIM_JSON
+        threshold =request.args.get('threshold')
+        
         filename = request.args.get('filename')
         function_hash = request.args.get('hash')
         function_sim = request.args.get('sim')
