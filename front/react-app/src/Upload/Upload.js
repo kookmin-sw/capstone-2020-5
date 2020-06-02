@@ -24,10 +24,13 @@ class Upload extends Component{
         this.dropInput = React.createRef();
         this.files = []
         this.uploadJsonData = {};
+        this.getDbData=this.getDbData.bind(this);
+       
     }
     state = {
         dragging: false,
-        loading: false
+        loading: false,
+        db_loaded:false
     };
 
     handleDrag = (e) => {
@@ -69,6 +72,7 @@ class Upload extends Component{
         div.addEventListener('dragleave', this.handleDragOut);
         div.addEventListener('dragover', this.handleDrag);
         div.addEventListener('drop', this.handleDrop);
+        this.getDbData()
     }
 
     componentWillUnmount() {
@@ -136,22 +140,71 @@ class Upload extends Component{
         }
         return listOfFiles
     }
-
-
+    getDbData(){
+        axios.get("http://127.0.0.1:5000/get_db_data", {
+          
+        }).then((response) => {
+            if (response.data == "error") {
+                window.localStorage.setItem('error_message', "db_data not found error");
+                window.location = "/error";
+            } else {
+               
+                this.data = {
+                    labels: ['ben', 'mal'],
+                    datasets: [
+                        {
+        
+                            backgroundColor: [
+                                "rgb(0,238,159)",
+                                "rgb(255,25,33)"
+                            ],
+                            borderColor: [
+                                "rgb(0,168,113)",
+                                "rgb(175,0,7)"
+                            ],
+                            borderWidth: 1,
+                            hoverBackgroundColor: [
+                                "rgb(86,243,192)",
+                                "rgb(253,112,117)"
+                            ],
+                            hoverBorderColor: [
+                                "rgb(0,168,113)",
+                                "rgb(175,0,7)"
+                            ],
+                            data: [parseFloat(response.data["mal_data"]), parseFloat (response.data["ben_data"])]
+                        }
+                    ]
+                };
+                this.setState({db_loaded:true})
+            }
+        });
+    
+    }
     render() {
-
+       
 
         return(
+            
 
         <div className="upload_container">
             <Nav />
             {
-                !this.state.loading ?
+                
+                !this.state.loading ? 
+                
                 <div className="upload_container">
-                    <div>
-
-                    </div>
-
+                    {
+                        this.state.db_loaded?
+                        <div>
+                            <div className="amountdatachart">Amount of data</div>
+                            <div className="horizontalbar-css">
+                                <HorizontalBar data={this.data} width="1000px"/>
+                            </div>
+                        </div>
+                        :
+                        <p></p>
+                    }
+                    
                     <div className="upload_title">
                         분석 요청하기
                     </div>
