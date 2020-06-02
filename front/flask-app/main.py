@@ -88,14 +88,18 @@ def get_function_data():
                 "ben": 0.8
             }
             file_data["same_functions"] = {
-                "b52063cd84097a65d1633f5c74f5": {
+                
+                "x3b52063cd84097a65d1633f5c74f5": {
+                    "Function":"b52063cd84097a65d1633f5c74f5",
                     "cosine":"0.61",
-                    "edit": "6.60",
+                    "jaccard": "6.60",
                     "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
                 },
-                "cd84097a65d1633f5c74f5" : {
+               
+                "db4e72a613f9430f561806791378a5c" : {
+                    "Function":"cd84097a65d1633f5c74f5",
                     "cosine":"2.74",
-                    "edit": "4.72",
+                    "jaccard": "4.72",
                     "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
                 }
             }
@@ -105,14 +109,17 @@ def get_function_data():
                 "ben": 0.3
             }
             file_data["same_functions"] = {
-                "b52063cd84097a65d1633f5c74f5": {
+                 "x3b52063cd84097a65d1633f5c74f5": {
+                    "Function":"b52063cd84097a65d1633f5c74f5",
                     "cosine":"0.61",
-                    "edit": "6.60",
+                    "jaccard": "6.60",
                     "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
                 },
-                "cd84097a65d1633f5c74f5" : {
+               
+                "db4e72a613f9430f561806791378a5c" : {
+                    "Function":"cd84097a65d1633f5c74f5",
                     "cosine":"2.74",
-                    "edit": "4.72",
+                    "jaccard": "4.72",
                     "mnemonics": ["cmp","jz","sub","stmxcsr","mov","and","cmp","jnz","fnstcw","mov","and","cmp","lea","jnz","jmp","movq","movapd","movapd","movapd","psrlq","movd","andpd","psubd","psrlq","test","jz","cmp","jl","psllq","cmp","jg","movq","fld","retn","ucomisd","jnp","mov","sub","mov","mov","add","mov","mov","mov","call","add","fld","retn","movq","psllq","movapd","cmpnlepd","cmp","jl","cmp","jg","andpd","addsd","movq","fld","retn","fld","retn","cmpnlepd","andpd","movq","fld","retn","mov","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding","padding"]
                 }
             }
@@ -131,8 +138,19 @@ def get_function_data():
     except:
         return 'error'
  
+@app.route('/get_search_data', methods=['GET'])
+def get_search_data():
+    try:
+        search_value = request.args.get('search_value')
+        search_type = request.args.get('search_type')
 
-    
+        search_data = OrderedDict()
+        search_data["p_graph"] = [18, 82, 34, 66]
+        search_data["origin_file_hash"] = [["ben_md5_1", "ben_md5_2", "ben_md5_3", "ben_md5_4", "ben_md5_5"], ["mal_md5_1", "mal_md5_2", "mal_md5_3", "mal_md5_4", "mal_md5_5"]]
+        return json.dumps(search_data , ensure_ascii=False , indent="\t")
+    except:
+        return 'error'
+
 
 if __name__ == '__main__':
     app.run(use_reloader=True, threaded=True)

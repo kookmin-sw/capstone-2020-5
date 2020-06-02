@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Doughnut } from "react-chartjs-2";
+import {HorizontalBar} from "react-chartjs-2";
 import Nav from "../Nav/Nav";
 import "./Inspect.css";
 import "./sample.css";
 
 import Axios from 'axios';
 import Spinner from '../Spinner/Spinner';
-import Overview from './Overview/Overview'
+import Overview from './Overview/Overview';
+import SearchTab from './SearchTab/SearchTab';
 
 
 class Inspect extends Component {
@@ -34,7 +35,9 @@ class Inspect extends Component {
 
                 this.meta = this.state.file["meta"];
                 this.samefile = this.state.file["samefile"];
-                this.string=this.state.file["string"];
+                this.string = this.state.file["string"]
+                this.export = this.state.file["export"]
+                this.import = this.state.file["import"]
                 
                 // Create list of functions' hash
                 this.all_functions = this.state.file["all_functions"];
@@ -67,23 +70,6 @@ class Inspect extends Component {
 
 
     render() {
-        const expData = {
-            labels: ["긍정적", "부정적", "보통"],
-            datasets: [
-                {
-                    labels: ["긍정적", "부정적", "보통"],
-                    data: [60, 13, 27],
-                    borderWidth: 2,
-                    hoverBorderWidth: 3,
-                    backgroundColor: [
-                        "rgba(238, 102, 121, 1)",
-                        "rgba(98, 181, 229, 1)",
-                        "rgba(255, 198, 0, 1)"
-                    ],
-                    fill: true
-                }
-            ]
-        };
         return(
             <div>
                 {
@@ -184,65 +170,7 @@ class Inspect extends Component {
                                                 <div id="String_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="String_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <div className="card-body card-width">
-                                                        <table className="table search_table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th scope ="col" className="search-table-font">string list</th>
-                                                                <th scope="col"  className="search-table-font">search similarity</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td className="string-list-scroll">
-                                                                <div className="string-list">
-                                                                  
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div className="string-search-part">
-                                                                    <div className="string-search-input">
-                                                                        <input className="search-input" type="search" placeholder="Search string" />
-                                                                    </div>
-                                                                    <div className="string-search-button">
-                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <table className="table string-donut-table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            ben(%)
-                                                                        </th>
-                                                                        <th>
-                                                                            mal(%)
-                                                                        </th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <Doughnut
-                                                                                options={{
-                                                                                    legend: {
-                                                                                        display: true,
-                                                                                        position: "right"
-                                                                                    }
-                                                                                }}
-                                                                                data={expData}
-                                                                                height={120}
-                                                                            />
-                                                                        </td>
-                                                                        <td>mal 도넛 들어갈 자리</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-
-
-                                                            </td>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <SearchTab listType="String" dict={this.string} isFirstTab={true}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,50 +197,7 @@ class Inspect extends Component {
                                                 <div id="Import_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="Import_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <div className="card-body card-width">
-                                                        <table className="table search_table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th scope ="col" className="search-table-font">import list</th>
-                                                                <th scope="col"  className="search-table-font">search similarity</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td className="string-list-scroll">hi, yerin</td>
-                                                            <td>
-                                                                <div className="string-search-part">
-                                                                    <div className="string-search-input">
-                                                                        <input className="search-input" type="search" placeholder="Search import" />
-                                                                    </div>
-                                                                    <div className="string-search-button">
-                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <table className="table string-donut-table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            ben
-                                                                        </th>
-                                                                        <th>
-                                                                            mal
-                                                                        </th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td>donut</td>
-                                                                        <td>donut</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-
-
-                                                            </td>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <SearchTab listType="Import" dict={this.import} isFirstTab={true}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -339,50 +224,7 @@ class Inspect extends Component {
                                                 <div id="Export_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="Export_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <div className="card-body card-width">
-                                                        <table className="table search_table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th scope ="col" className="search-table-font">Export list</th>
-                                                                <th scope="col"  className="search-table-font">search similarity</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td className="string-list-scroll">hi, yerin</td>
-                                                            <td>
-                                                                <div className="string-search-part">
-                                                                    <div className="string-search-input">
-                                                                        <input className="search-input" type="search" placeholder="Search Export" />
-                                                                    </div>
-                                                                    <div className="string-search-button">
-                                                                        <button className="btn btn-lg btn-success search-button" type="submit">Search
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <table className="table string-donut-table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            ben
-                                                                        </th>
-                                                                        <th>
-                                                                            mal
-                                                                        </th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <td>donut</td>
-                                                                        <td>donut</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-
-
-                                                            </td>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <SearchTab listType="Export" dict={this.export} isFirstTab={true}/>
                                                 </div>
                                             </div>
                                         </div>
