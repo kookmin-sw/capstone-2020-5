@@ -8,14 +8,14 @@ class Contents extends Component{
     constructor(props) {
         super(props);
         this.jsonData = JSON.parse(window.localStorage.getItem('filenames'));
-    
+        console.log(this.jsonData);
     }
 
     createListOfFiles() {
         let listOfFiles = []
         Object.entries(this.jsonData).forEach(([key, value]) => {
             listOfFiles.push(
-                <ContentElement filename={value} key={value}/>
+                <ContentElement filename={key} key={key}/>
             );
         })
         return listOfFiles
