@@ -28,7 +28,7 @@ class Overview extends Component {
         let filename=this.hash+".json"
         let contentType = "application/json;charset=utf-8;";
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(fileData)))], { type: contentType });
+            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(fileData, null, 2)))], { type: contentType });
             navigator.msSaveOrOpenBlob(blob, filename);
         } else {
             var a = document.createElement('a');
@@ -84,10 +84,19 @@ class Overview extends Component {
     createListOfMnemonics(array) {
         let list = [];
         for(let i = 0; i < array.length; ++i) {
+            // if(i == 11) break;
             list.push(
-                <div>
-                    {array[i]}
-                </div>
+                <tr>
+                    <td>
+                        {array[i].split(",")[0]}
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        {array[i].split(",")[1]}
+                    </td>
+                </tr>
             );
         }
         return list;
