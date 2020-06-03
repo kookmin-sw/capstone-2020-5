@@ -37,7 +37,7 @@ class Overview extends Component {
         } else {
             var a = document.createElement('a');
             a.download = filename;
-            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(fileData));
+            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(fileData, null, 2));
             a.target = '_blank';
             document.body.appendChild(a);
             a.click();
@@ -53,12 +53,12 @@ class Overview extends Component {
          filename=data["Function"]+".json"
     
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(fileData)))], { type: contentType });
+            var blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(fileData, null, 2)))], { type: contentType });
             navigator.msSaveOrOpenBlob(blob, filename);
         } else {
             var a = document.createElement('a');
             a.download = filename;
-            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(fileData));
+            a.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(fileData, null, 2));
             a.target = '_blank';
             document.body.appendChild(a);
             a.click();
