@@ -25,7 +25,7 @@ class Balloon extends Component{
             var assigned = false;
             for(var j = 0; j < arrayGroups.length; ++j) {
                 for(var k = 0; k < arrayGroups[j].length; ++k) {
-                    if(arrayMnemonics[i].split(",")[0] == arrayGroups[j][k]) {
+                    if(arrayMnemonics[i].split("^#!!#")[0] == arrayGroups[j][k]) {
                         colors[i] = j;
                         assigned = true;
                         break;

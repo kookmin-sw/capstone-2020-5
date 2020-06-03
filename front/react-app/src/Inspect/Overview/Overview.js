@@ -24,6 +24,10 @@ class Overview extends Component {
 
     downloadFile(data) {
         let fileData = {}
+        let saving_mnemonics = this.uploaded_mnemonics
+        for(let i = 0; i < saving_mnemonics.length; ++i) {
+            saving_mnemonics[i] = saving_mnemonics[i].replace("^#!!#", " ");
+        }
         fileData[this.hash] = this.uploaded_mnemonics
         let filename=this.hash+".json"
         let contentType = "application/json;charset=utf-8;";
@@ -41,7 +45,11 @@ class Overview extends Component {
         }
  
          fileData = {}
-         fileData[data["Function"]] = data["mnemonics"]
+         saving_mnemonics = data["mnemonics"]
+        for(let i = 0; i < saving_mnemonics.length; ++i) {
+            saving_mnemonics[i] = saving_mnemonics[i].replace("^#!!#", " ");
+        }
+         fileData[data["Function"]] = saving_mnemonics
          filename=data["Function"]+".json"
     
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
@@ -88,13 +96,13 @@ class Overview extends Component {
             list.push(
                 <tr>
                     <td>
-                        {array[i].split(",")[0]}
+                        {array[i].split("^#!!#")[0]}
                     </td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                        {array[i].split(",")[1]}
+                        {array[i].split("^#!!#")[1]}
                     </td>
                 </tr>
             );
