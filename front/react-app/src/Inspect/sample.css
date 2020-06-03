@@ -238,10 +238,12 @@ result-button-rignt{
 }
 
 .card-body{
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 .card-width{
-    width: 75%;
+    max-width: 75%;
+    overflow-x: auto;
 }
 .string-search-input{
     display: inline-block;
@@ -249,7 +251,6 @@ result-button-rignt{
 .string-search-button{
     display: inline-block;
 }
-
 .string-list-scroll{
     height: 300px;
     max-height: 300px;
@@ -260,13 +261,13 @@ result-button-rignt{
     display: none;
 }
 .string-list{
+    text-align: left;
     height: 500px;
-    max-width: 500px;
     overflow-y: scroll;
-    font-size: 25px;
+    font-size: 1rem;
 }
 .search-table-font{
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: bold;
 }
 .search-input{
@@ -277,15 +278,21 @@ result-button-rignt{
 .search-button{
     height: 50px;
 }
+
 .string-ben-donut{
     margin: 20px;
 }
+
 .string-donut-table{
-    width: 80%;
     margin: 0 auto;
 }
+.donut-container{
+  width: 300px;
+  margin: 0 auto;
+}
+
 .string-donut-table > thead > tr >th{
-    font-size: 27px;
+    font-size: 1rem;
 }
 .cloud-done-icon{
     margin-right: 10px;
@@ -344,7 +351,7 @@ result-button-rignt{
 .similary-table >tbody > tr > th,td{
     font-size: 20px;
     vertical-align: middle!important;
-    
+
 }
 .similary-distance{
     color: #7c00d4;
@@ -359,10 +366,6 @@ result-button-rignt{
 .search_table >thead >tr{
     background-color: rgba(151, 130, 205, 0.78);
     border-radius: 30px;
-}
-.donut-container{
-    width: 500px;
-    height: auto;
 }
 .horizontalbar-css{
     height: 300px;
