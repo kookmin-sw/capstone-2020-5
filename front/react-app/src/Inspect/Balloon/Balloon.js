@@ -41,16 +41,16 @@ class Balloon extends Component{
 
     createColors() {
         let list = [];
-        var step = 255 / 47; //47 - number of groups
+        let paddingValue = "6px";
         for(var i = 0; i < this.state.colors.length; ++i) {
             if(this.state.colors[i] == -1) {
                 list.push(
-                    <th style={{backgroundColor: this.colors[50]}}>.</th>
+                    <td style={{backgroundColor: this.colors[50], paddingLeft:paddingValue, paddingRight:paddingValue}}></td>
                 );
                 continue;
             }
             list.push(
-            <th style={{backgroundColor: this.colors[i]}}>.</th>
+                <td style={{backgroundColor: this.colors[this.state.colors[i]], paddingLeft:paddingValue, paddingRight:paddingValue}}></td>
             );
         }
         return list;
