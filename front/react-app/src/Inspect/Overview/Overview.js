@@ -214,6 +214,7 @@ class Overview extends Component {
                                     <div className="dropdown-menu slider-center" aria-labelledby="dropdownMenuButton">
                                         <div className="slider-container">
                                             <Slider
+                                            valueLabelDisplay="auto"
                                                defaultValue={90}
                                                 aria-labelledby="label"
                                                 onChange={this.handleChange("slider1")}
