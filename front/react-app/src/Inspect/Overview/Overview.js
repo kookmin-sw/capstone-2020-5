@@ -62,7 +62,7 @@ class Overview extends Component {
         if(!this.state.dataloaded) {
             Axios.get("http://127.0.0.1:5000/get_function_data", {
                 params: {
-                    filename:JSON.parse(window.localStorage.getItem('filenames'))[this.filename],
+                    filename:this.filename,
                     hash: this.hash,
                     sim: this.sim,
                     threshold: this.state.slider1

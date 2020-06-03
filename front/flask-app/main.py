@@ -24,13 +24,12 @@ def serve(path):
 @app.route('/upload-files', methods = ['POST'])
 def upload_file():
     try:
-        filenames=OrderedDict()
+        filenames=[]
         all_file_datas = OrderedDict()
         uploaded_files = request.files.getlist("fileCollection")
         for file in uploaded_files:
-            fileMD5 = "File's MD5"
-            filename = secure_filename(fileMD5)
-            filenames[file.filename] = fileMD5
+            filename = secure_filename(file.filename)
+            filenames.append(file.filename)
             file.save("./files/"+filename)
             X_train, file_raw = md.preprocessing(os.path.join(r"./files/", filename), md.word2vec_wv, 80, 64)
             result = md.predict(np.array(X_train))
@@ -57,7 +56,7 @@ def upload_file():
             }
             all_file_datas[str(filename)] = file_data
             
-            file_to_write = open("./json/"+fileMD5, "w")
+            file_to_write = open("./json/"+file.filename, "w")
             file_to_write.write(json.dumps(file_data , ensure_ascii=False , indent="\t"))
             file_to_write.close()
         return json.dumps(filenames , ensure_ascii=False , indent="\t")

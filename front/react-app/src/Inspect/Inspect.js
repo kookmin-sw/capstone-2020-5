@@ -24,7 +24,7 @@ class Inspect extends Component {
     componentDidMount() {
         Axios.get("http://127.0.0.1:5000/get_files", {
             params: {
-                filename: JSON.parse(window.localStorage.getItem('filenames'))[this.props.match.params.id]
+                filename: this.props.match.params.id
             }
         }).then((response) => {
             if (response.data == "error") {
