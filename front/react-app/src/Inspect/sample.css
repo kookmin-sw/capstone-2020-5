@@ -254,7 +254,6 @@ result-button-rignt{
 .string-list-scroll{
     height: 300px;
     max-height: 300px;
-    overflow-y: scroll;
     border-right: 2px solid #d4d4d4;
 }
 .string-list-scroll::-webkit-scrollbar{
@@ -263,8 +262,12 @@ result-button-rignt{
 .string-list{
     text-align: left;
     height: 500px;
+    width: 400px;
     overflow-y: scroll;
     font-size: 1rem;
+}
+.string-list::-webkit-scrollbar{
+    display: none;
 }
 .search-table-font{
     font-size: 2rem;
@@ -294,6 +297,7 @@ result-button-rignt{
 .string-donut-table > thead > tr >th{
     font-size: 1rem;
 }
+.string-donut-table >tbody > tr
 .cloud-done-icon{
     margin-right: 10px;
 }
@@ -348,6 +352,21 @@ result-button-rignt{
     font-size: 25px;
     vertical-align:middle;
 }
+.similary-table > tbody >tr >td{
+    font-size: 25px;
+    font-weight: bold;
+}
+.file-md5{
+    font-size: 25px;
+    vertical-align: middle;
+}
+.function-id{
+    font-size: 18px!important;
+}
+.function-md5{
+    font-size: 15px;
+    vertical-align: middle;
+}
 .similary-table >tbody > tr > th,td{
     font-size: 20px;
     vertical-align: middle!important;
@@ -362,6 +381,12 @@ result-button-rignt{
 .search_table >thead > tr >th{
     color: #ffffff;
     padding: 5px 0 5px 0;
+}
+.search_table{
+    width: 100%!important;
+}
+.string-list >li{
+    list-style: none;
 }
 .search_table >thead >tr{
     background-color: rgba(151, 130, 205, 0.78);
@@ -398,18 +423,7 @@ result-button-rignt{
     text-align: center!important;
 }
 
-.amount-data{
-    margin: 0 auto;
-}
-.amount-data > thead >tr >th{
-    padding: 0 20px 0 20px;
-    font-size: 30px;
-}
-.amount-data > tbody >tr >td{
-    font-size: 80px;
-    padding: 0 20px 0 20px;
-    font-weight: bold;
-}
+
 .function-mnemonic-scroll{
     max-height: 30px;
     overflow-y: scroll;
@@ -426,4 +440,25 @@ result-button-rignt{
 }
 .function-mnemonic-scroll::-webkit-scrollbar{
     display: none;
+}
+.string-donut-table-contain{
+    width: 700px;
+    margin: 0 auto;
+}
+.list-item-width{
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px!important;
+    padding: 5px 0 5px 0!important;
+}
+.origin-similary-data{
+    max-height: 200px;
+    overflow-y: scroll;
+}
+.origin-similary-data::-webkit-scrollbar{
+    display: none;
+}
+.origin-similary-data>li{
+    list-style: none;
 }

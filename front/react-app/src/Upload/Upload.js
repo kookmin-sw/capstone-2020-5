@@ -13,7 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
+import Button from '@material-ui/core/Button';
 import Spinner from "../Spinner/Spinner";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+}));
 class Upload extends Component{
 
 
@@ -175,16 +184,16 @@ class Upload extends Component{
                         <table className="amount-data">
                             <thead>
                                 <tr>
-                                    <th>Amount of ben file</th>
-                                    <th>Amount of mal file</th>
+                                    <th>Benign</th>
+                                    <th>Malware</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>
+                                    <td className="ben-green">
                                         <CountUp end={this.ben_data} start={0} />
                                     </td>
-                                    <td>
+                                    <td className="mal-red">
                                         <CountUp end={this.mal_data} start={0} />
                                     </td>
                                 </tr>
@@ -198,18 +207,19 @@ class Upload extends Component{
                     </div>
 
                     <div className="upload_title">
-                        분석 요청하기
+                        File upload
                     </div>
-                    <hr className="underbar"></hr>
+                    <div>
+                        Providing information such as anomaly detection of function units <br />and similarity checking by uploading suspicious files.
+                    </div>
 
                     <div className="upload_body">
-                        <div className="upload_img">
-                            <img src="/img/upload_file.png"></img>
-                        </div>
                         <div ref={this.dropInput} id="drop-area" className={this.state.dragging ? "drag_drop bg_dark" : "drag_drop bg_light"}>
                             <form className="my-form w-100">
                                 {
-                                    (this.files.length === 0) && <div className="drag_drop_body">Drag and Drop</div>
+                                    (this.files.length === 0) && <div className="drag_drop_body">
+                                        <span className="material-icons">file_copy</span>
+                                        Drag and Drop</div>
                                 }
                                 {
                                     (this.files.length > 0) &&
@@ -221,10 +231,14 @@ class Upload extends Component{
                         </div>
                     </div>
                     <div className="container d-flex vertical-element">
-                        <div className="row w-100 justify-content-end">
+                        <div className="upload-button-body">
                             <input ref={this.fileInput} type="file" id="file" className="inputfile" multiple onChange={(e) => {this.files = e.target.files;this.forceUpdate();}}/>
-                            <label type="button" htmlFor="file" className="snip1535">파일 업로드</label>
-                            <button id="button-upload" type="button" className="snip1535" onClick={this.handleSubmit}>제출</button>
+                            <label type="button" htmlFor="file"  class="button-border-puple">
+                                <div className="pupleline-contents"><span className="material-icons">create_new_folder</span>Upload</div>
+                            </label>
+                            <button id="button-upload" type="button" className="button-border-puple" onClick={this.handleSubmit}>
+                                <div className="pupleline-contents"><span className="material-icons">send</span>Submit</div>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -94,17 +94,11 @@ class Overview extends Component {
         for(let i = 0; i < array.length; ++i) {
             // if(i == 11) break;
             list.push(
-                <tr>
-                    <td>
-                        {array[i].split("^#!!#")[0]}
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        {array[i].split("^#!!#")[1]}
-                    </td>
-                </tr>
+                <ul className="list-group">
+                    <li className="list-group-item list-item-width">
+                        {array[i].split("^#!!#")[0]}    {array[i].split("^#!!#")[1]}
+                    </li>
+                </ul>
             );
         }
         return list;
@@ -115,7 +109,7 @@ class Overview extends Component {
         Object.entries(this.function_data).forEach(([key, value]) => {
             list.push(
                 <tr>
-                    <th scope="row">{key}<br/>({value["Function"]})</th>
+                    <th scope="row"><div className="file-md5">{key}</div><div className="function-md5">({value["Function"]})</div></th>
     
                     <td>{value["cosine"]}</td>
                     <td>{value["jaccard"]}</td>
@@ -249,10 +243,10 @@ class Overview extends Component {
                             <div className="card-body">
                                 <div className="progress-contain">
                                     <div className="progress" style={{height:"30px"}}>
-                                    <div style={{width: (parseFloat(this.mal_ben["ben"]) * 100)+"%",backgroundColor:"#20c997", color:"#ffffff", fontSize:"20px", fontWeight:"bold"}} role="progressbar"
+                                    <div style={{width: (parseFloat(this.mal_ben["ben"]) * 100)+"%",backgroundColor:"#20c997", color:"#ffffff", fontSize:"20px", fontWeight:"bold",paddingTop:"15px"}} role="progressbar"
                                             aria-valuenow="30" aria-valuemin="0"
                                             aria-valuemax="100">{(parseFloat(this.mal_ben["ben"]) * 100)+"%"}</div>
-                                        <div style={{width: (parseFloat(this.mal_ben["mal"]) * 100)+"%",backgroundColor:"#ff2b99", color:"#ffffff", fontSize:"20px", fontWeight:"bold"}} role="progressbar"
+                                        <div style={{width: (parseFloat(this.mal_ben["mal"]) * 100)+"%",backgroundColor:"#ff2b99", color:"#ffffff", fontSize:"20px", fontWeight:"bold", paddingTop:"15px"}} role="progressbar"
                                             aria-valuenow="20" aria-valuemin="0"
                                             aria-valuemax="100">{(parseFloat(this.mal_ben["mal"]) * 100)+"%"}</div>
                                     </div>
@@ -261,7 +255,7 @@ class Overview extends Component {
                                     <table className="table table-striped similary-table">
                                         <thead>
                                         <tr>
-                                            <th scope="col">File MD5<br/>(Fuction ID)</th>
+                                            <th scope="col">File MD5<div className="function-id">(Fuction ID)</div></th>
                                             
                                             <th className="similary-distance" scope="col">Cosine</th>
                                             <th className="similary-distance" scope="col">Jaccard-distance</th>

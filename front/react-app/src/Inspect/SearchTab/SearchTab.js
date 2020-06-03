@@ -133,58 +133,61 @@ class SearchTab extends Component {
                 return(<Spinner/>);
             case 2:
                 return(
-                <table className="table string-donut-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                ben(%)
-                            </th>
-                            <th>
-                                mal(%)
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div className="donut-container">
-                                    <Doughnut
-                                        options={{
-                                            legend: {
-                                                display: false,
-                                                position: "right"
-                                            }
-                                        }}
-                                        data={this.stringBen}
-                                        height={120}
-                                    />
-                                </div>
-                            </td>
-                            <td>
-                                <div className="donut-container">
-                                    <Doughnut
-                                        options={{
-                                            legend: {
-                                                display: false,
-                                                position: "right"
-                                            }
-                                        }}
-                                        data={this.stringMal}
-                                        height={120}
-                                    />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                {this.originBen}
-                            </td>
-                            <td>
-                                {this.originMal}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div className="string-donut-table-contain">
+                        <table className="table string-donut-table">
+                            <thead>
+                            <tr>
+                                <th>
+                                    ben(%)
+                                </th>
+                                <th>
+                                    mal(%)
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div className="donut-container">
+                                        <Doughnut
+                                            options={{
+                                                legend: {
+                                                    display: false,
+                                                    position: "right"
+                                                }
+                                            }}
+                                            data={this.stringBen}
+                                            height={120}
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="donut-container">
+                                        <Doughnut
+                                            options={{
+                                                legend: {
+                                                    display: false,
+                                                    position: "right"
+                                                }
+                                            }}
+                                            data={this.stringMal}
+                                            height={120}
+                                        />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="origin-similary-data">{this.originBen}</div>
+                                </td>
+                                <td>
+                                    <div className="origin-similary-data">{this.originMal}</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
                 );
         }
     }
@@ -196,7 +199,7 @@ class SearchTab extends Component {
                     <thead>
                     <tr>
                         <th scope ="col" className="search-table-font">{this.listType} List</th>
-                        <th scope="col"  className="search-table-font">Search Similarity</th>
+                        <th scope="col"  className="search-table-font" colSpan="2">Search Similarity</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -205,7 +208,7 @@ class SearchTab extends Component {
                             {this.createList()}
                         </div>
                     </td>
-                    <td>
+                    <td className="" colSpan="2">
                         <div className="string-search-part">
                             <div className="string-search-input">
                                 <input className="search-input" type="search" value={this.state.searchValue} onChange={this.handleChange} placeholder="Search string" />
