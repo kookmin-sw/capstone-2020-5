@@ -157,11 +157,39 @@ def get_search_data():
 @app.route('/get_db_data', methods=['GET'])
 def get_db_data():
     try:
- 
         db_data = OrderedDict()
         db_data["mal_data"] = ["303000"]
         db_data["ben_data"] = ["150000"]
         return json.dumps(db_data , ensure_ascii=False , indent="\t")
+    except:
+        return 'error'
+
+@app.route('/get_anomaly_data', methods=['GET'])
+def get_anomaly_data():
+    try:
+        filename = request.args.get('filename')
+
+        anomaly_data = OrderedDict()
+        anomaly_data["data"] = {
+            "99901d1b6825b0aa4d57615c8db50910dbc36ddc":40,
+            "d8d9d0a86c25949f248b59c686ce62e4dfb57d49":10,
+            "c6ed1587b71af169ce9e22c43814c557914f769f":6,
+            "a0ec023a8ef647d191b25cb2dfa8cd05cd4941e4":7,
+            "e4b84e8d2e27f3ecee781012b9ccca6592ffd42a":2,
+            
+            "f9ab41a360bd4a83e920f06b3609006f7d4fb92e":40,
+            "3cb462c28d30dd2edbed92382f0bf26fe37865de":10,
+            "b1b85161ce20b21bbb7a2e91c389dad06a06649f":6,
+            "0693a0c670e915d756d329c1df6c6877c523c79e":7,
+            "f1512662924621bac76dc2089ed30d5d49a2c926":2,
+
+            "0756542dcbb9acf65819d88ec6ea85a6afe5f91f":40,
+            "55c0227450d011a91dcbc65adead8c4649302457":10,
+            "88ee803223746e897089231655f60343e525e03e":6,
+            "d825b9203a6393006903ef8b4ed6e1d5f2578217":7,
+            "f5bde1b61e799aa6c01bfe5d9363b2687fc95cc7":2
+        }
+        return json.dumps(anomaly_data , ensure_ascii=False , indent="\t")
     except:
         return 'error'
 

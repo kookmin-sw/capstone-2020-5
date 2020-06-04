@@ -8,16 +8,17 @@ import Axios from 'axios';
 import Spinner from '../Spinner/Spinner';
 import Overview from './Overview/Overview';
 import SearchTab from './SearchTab/SearchTab';
+import LineGraph from './LineGraph';
 
 
 class Inspect extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            file : null,
-            initialized : false
-        }
+            this.state = {
+                file : null,
+                initialized : false
+            }
         this.createListOfOverviews = this.createListOfOverviews.bind(this);
     }
 
@@ -142,7 +143,6 @@ class Inspect extends Component {
                                     <div className="String">
                                         <div className="accordion md-accordion" id="accordionEx" role="tablist"
                                              aria-multiselectable="true">
-
                                             <div className="card">
                                                 <div className="accordion_head" role="tab" id="String_handle_acco">
                                                     <div className="contents_title acco_header_title">String</div>
@@ -228,7 +228,7 @@ class Inspect extends Component {
                                     <div className="mnemonic">
                                         <div className="accordion md-accordion" id="accordionEx" role="tablist"
                                              aria-multiselectable="true">
-
+                                            <LineGraph filename={this.props.match.params.id}/>
                                             <div className="card">
                                                 <div className="accordion_head" role="tab" id="function_handle_acco">
                                                     <div className="contents_title_strange acco_header_title">Function</div>
