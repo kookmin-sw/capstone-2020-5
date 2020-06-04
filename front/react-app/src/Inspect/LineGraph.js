@@ -21,8 +21,11 @@ export default class LineGraph extends Component {
         } else {
             let labels = [];
             let values = [];
+            let value_labels = [];
+            let count = 0;
             Object.entries(response.data["data"]).forEach(([key, value]) => {
-              labels.push(key);
+              labels.push(count++);
+              value_labels.push(key);
               values.push(value);
             });
 
@@ -31,6 +34,7 @@ export default class LineGraph extends Component {
               datasets: [
                 {
                   label: 'Function Loss',
+                  showLabel: false,
                   fill: true,
                   lineTension: 0.1,
                   backgroundColor: 'rgba(75,192,192,0.4)',
@@ -48,7 +52,8 @@ export default class LineGraph extends Component {
                   pointHoverBorderWidth: 2,
                   pointRadius: 1,
                   pointHitRadius: 10,
-                  data: values
+                  data: values,
+                  data_label: value_labels
                 }
               ]
             };
@@ -64,12 +69,31 @@ export default class LineGraph extends Component {
       <div>
           {
           this.state.initialized?
-          <div style={{width: "80%"}}>
+          <div style={{width: "75%", margin: "0 auto"}}>
             <h2>Anomaly Functions Line Graph</h2>
-            <Line 
+            <Line
               ref="chart"
+              options={{
+                  legend: {
+                      display: false
+                  },
+                  tooltips: {
+                      mode: 'label',
+                      callbacks: {
+                          title: function(tooltipItem, data) {
+                            return data.labels[tooltipItem.index];
+                          },
+                          beforeLabel: function(tooltipItem, data) {
+                            return 'Loss: ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                          },
+                          label: function(tooltipItem, data) {
+                            return 'Hash: ' + data.datasets[tooltipItem.datasetIndex].data_label[tooltipItem.index];
+                          }
+                      }
+                  }
+              }}
               data={this.data}
-              height={120} />
+              height={100} />
           </div>
           :
           <br/>
