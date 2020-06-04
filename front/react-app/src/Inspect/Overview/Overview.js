@@ -92,13 +92,15 @@ class Overview extends Component {
     createListOfMnemonics(array) {
         let list = [];
         for(let i = 0; i < array.length; ++i) {
-            // if(i == 11) break;
             list.push(
-                <ul className="list-group">
-                    <li className="list-group-item list-item-width">
-                        {array[i].split("^#!!#")[0]}    {array[i].split("^#!!#")[1]}
-                    </li>
-                </ul>
+                <tr>
+                    <td >
+                        {array[i].split("^#!!#")[0]}
+                    </td>
+                    <td>
+                        {array[i].split("^#!!#")[1]}
+                    </td>
+                </tr>
             );
         }
         return list;
