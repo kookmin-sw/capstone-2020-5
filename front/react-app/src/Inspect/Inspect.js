@@ -70,7 +70,7 @@ class Inspect extends Component {
                         <div className="sample_body">
                             <div className="file_info">
                                 <div className="reportImg">
-                                    <img className="report_result_img" src="/img/report.png"></img>
+                                    <img className="report_result_img" src="/img/reports.png"></img>
                                 </div>
                                 <table className="file_contents">
                                     <thead>
@@ -99,10 +99,10 @@ class Inspect extends Component {
                             <hr className="under_line"></hr>
                             <ul className="nav nav-pills mb-3 sim-stran-tab" id="pills-tabs" role="tablist">
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">Similarity</a>
+                                    <a className="tab-style nav-link blue-tab active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">Similarity</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">Anomaly Detection</a>
+                                    <a className="tab-style nav-link red-tab tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">Anomaly Detection</a>
                                 </li>
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
@@ -119,7 +119,7 @@ class Inspect extends Component {
                                                        aria-controls="collapseOne1">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>
@@ -151,7 +151,7 @@ class Inspect extends Component {
                                                        aria-controls="collapseOne2">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>
@@ -178,7 +178,7 @@ class Inspect extends Component {
                                                        aria-controls="collapseOne3">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>
@@ -205,7 +205,7 @@ class Inspect extends Component {
                                                        aria-controls="collapseOne4">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>
@@ -237,7 +237,7 @@ class Inspect extends Component {
                                                         aria-controls="collapseOne1">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>
@@ -269,7 +269,7 @@ class Inspect extends Component {
                                                         aria-controls="collapseOne2">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>
@@ -296,7 +296,7 @@ class Inspect extends Component {
                                                         aria-controls="collapseOne3">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>
@@ -323,7 +323,7 @@ class Inspect extends Component {
                                                         aria-controls="collapseOne4">
                                                         <h5 className="mb-0">
                                                                 <span className="material-icons">
-                                                                arrow_drop_down_circle
+                                                                keyboard_arrow_down
                                                             </span>
                                                         </h5>
                                                     </a>

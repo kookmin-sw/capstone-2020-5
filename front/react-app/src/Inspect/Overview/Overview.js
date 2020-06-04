@@ -93,14 +93,14 @@ class Overview extends Component {
         let list = [];
         for(let i = 0; i < array.length; ++i) {
             list.push(
-                <tr>
-                    <td >
+                <ul className="ul-center">
+                    <li className="li-center">
                         {array[i].split("^#!!#")[0]}
-                    </td>
-                    <td>
+                    </li>
+                    <li className="li-center">
                         {array[i].split("^#!!#")[1]}
-                    </td>
-                </tr>
+                    </li>
+                </ul>
             );
         }
         return list;
@@ -229,10 +229,10 @@ class Overview extends Component {
                                 </div>
                             </div>
                             <div className="result-button-contain col-2">
-                                <div className="filelist_btn purple" data-toggle="collapse"
+                                <div className="check-sim-button" data-toggle="collapse"
                                      data-target={"#h"+this.hash+this.sim+"One"} aria-expanded="true"
                                      aria-controls={"h"+this.hash+this.sim+"One"} onClick={this.loadFunctionData} style={{verticalAlign:"middle"}}>
-                                    유사도 검사
+                                    Analysis
 
                                 </div>
                             </div>

@@ -12,10 +12,10 @@ function Nav() {
             </Link>
             <div className="small_buttons">
                 <Link to="/intro">
-                    <p type="button" className="small_button">서비스 소개</p>
+                    <p type="button" className="small_button">About</p>
                 </Link>
                 <Link to="/upload">
-                    <p type="button" className="small_button">분석 요청</p>
+                    <p type="button" className="small_button">Analysis</p>
                 </Link>
             </div>
         </nav>

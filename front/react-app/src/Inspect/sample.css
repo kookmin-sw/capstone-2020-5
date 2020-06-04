@@ -25,10 +25,13 @@
     display: inline-block;
     vertical-align: middle;
     font-size: 30px;
+    font-weight: normal;
 }
+
 .file_contents > tbody > tr >td{
     padding-right: 15px;
-    font-size: 30px;
+    font-size: 28px;
+    color: #323232;
 }
 .file_name{
     font-size: 1.8rem;
@@ -56,36 +59,33 @@
     margin-bottom: 1rem;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
-    background: linear-gradient(to left, #8800ff 40%, #00f 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #444444;
 }
 .contents_title_strange{
     font-size: 2rem;
     margin-bottom: 1rem;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
-    background: linear-gradient(to left, #8800ff 40%, #c90097 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #444444;
 }
 .under_line{
     border-width: 2px;
-    width: 80%;
+    width: 75%;
 }
 .full_accordion{
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 
 }
 .each_function{
-    /*background: rgb(226,209,255);
-    background: linear-gradient(180deg, rgb(232, 218, 255) 0%, rgba(215,228,255,1) 52%, rgba(255,255,255,1) 100%);
-    */
+    /*
     border: #eaecef solid 2px;
-    border-radius: 15px;
-    padding: 0.5rem 0 0.5rem 0;
+    border-radius: 8px;
+     */
+    border-bottom: #c1c1c1 solid 1px;
+    border-top: #c1c1c1 solid 1px;
+    padding: 0.2rem 0 0.2rem 0;
 
 }
 .each_function_strange{
@@ -100,6 +100,7 @@
 }
 .result-button-contain{
     display: inline-block;
+    vertical-align: top;
 }
 .result-button{
     color: white;
@@ -203,23 +204,30 @@ result-button-rignt{
     display: none;
 }
 .sim-stran-tab{
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
 }
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+.nav-pills .blue-tab.active, .nav-pills .show>.nav-link{
     background-color: #5039d2!important;
     font-size: 1.5rem;
     font-family: 'Oswald', sans-serif;
 
+}.nav-pills .red-tab.active, .nav-pills .show>.nav-link{
+    background-color: #ff004c !important;
+    font-size: 1.5rem;
+    font-family: 'Oswald', sans-serif;
+
 }
-.tab-style > .active{
-    background-color: #5039d2 !important;
-    color: white!important;
-}
+
 .tab-style{
     font-size: 1.5rem;
-    color: #5039d2;
     font-family: 'Oswald', sans-serif;
+}
+.blue-tab{
+    color: #5039d2;
+}
+.red-tab{
+    color: #ff004c;
 }
 .balloon-table{
     background-color: #ffffff;
@@ -229,7 +237,7 @@ result-button-rignt{
 }
 .accordion_head{
     border: none;
-    width: 80%;
+    width: 75%;
     text-align: left;
     margin: 0 auto;
 }
@@ -240,6 +248,7 @@ result-button-rignt{
 .card-body{
     margin-left: auto;
     margin-right: auto;
+    padding: 0!important;
 }
 .card-width{
     max-width: 75%;
@@ -253,6 +262,7 @@ result-button-rignt{
 }
 .string-list-scroll{
     height: 300px;
+    width:200px;
     max-height: 300px;
     border-right: 2px solid #d4d4d4;
 }
@@ -270,12 +280,12 @@ result-button-rignt{
     display: none;
 }
 .search-table-font{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 .search-input{
     height: 50px;
-    width: 300px;
+    width: 500px;
     border: solid 2px #a8aaac;
 }
 .search-button{
@@ -308,7 +318,7 @@ result-button-rignt{
     border: none!important;
 }
 .function-donut-table{
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
     background-color: #ffffff!important;
 }
@@ -327,17 +337,17 @@ result-button-rignt{
     margin-left: 10px;
 }
 .dropdown-icon > h5 >span{
-    font-size: 30px;
+    font-size: 40px;
     vertical-align: middle;
-    color: #7c00d4;
+    color: #5039d2;
 }
 .dropdown-icon-strange{
     margin-left: 10px;
 }
 .dropdown-icon-strange > h5 >span{
-    font-size: 30px;
+    font-size: 40px;
     vertical-align: middle;
-    color: #c90097;
+    color: #c1003b;
 }
 .homebutton{
     position : fixed;
@@ -389,7 +399,7 @@ result-button-rignt{
     list-style: none;
 }
 .search_table >thead >tr{
-    background-color: rgba(151, 130, 205, 0.78);
+    background-color: #535353;
     border-radius: 30px;
 }
 .horizontalbar-css{
@@ -461,4 +471,37 @@ result-button-rignt{
 }
 .origin-similary-data>li{
     list-style: none;
+}
+.ul-center{
+    text-align: center;
+    margin: 0 auto;
+    padding: 0!important;
+    width: 200px;
+    border: #e8e8e8 solid 2px;
+    border-radius: 10px;
+}
+.li-center{
+    display: inline-block;
+    list-style: none;
+    padding: 0 20px 0 20px;
+}
+.search-similary-tab{
+    height: 300px;
+}
+.progress-contain{
+    margin-top: 1rem;
+}
+.check-sim-button{
+    background-color: #6d6d6d;
+    width: 150px;
+    height: 40px;
+    vertical-align: middle;
+    margin: 0 auto;
+    color: #eaecef;
+    font-family: "Oswald";
+    font-size: 25px;
+    border-radius: 8px;
+}
+.setting-button{
+    vertical-align: middle;
 }

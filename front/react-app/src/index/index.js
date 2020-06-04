@@ -13,10 +13,10 @@ function Index() {
                     <img src="/img/asi_logo.png" className="asi_logo" alt=""/>
                     <div className="small_buttons">
                         <Link to="/intro">
-                            <p type="button" className="small_button">서비스 소개</p>
+                            <p type="button" className="small_button">About</p>
                         </Link>
                         <Link to="/upload">
-                            <p type="button" className="small_button">분석 요청</p>
+                            <p type="button" className="small_button">Analysis</p>
                         </Link>
                     </div>
                 </nav>
@@ -29,18 +29,18 @@ function Index() {
                             A Security Insight
                         </li>
                         <li className="astract">
-                            asi는 악성코드 분석 시간을 단축시켜주는 보조도구 입니다.<br></br>
-                            의심되는 파일을 업로드하면 여러 분석 결과를 제공합니다.
+                            Asi is an auxiliary tool that reduces the time to analyze malware.<br />
+                            Uploading a suspicious file provides multiple analysis results.
                         </li>
                     </div>
                 </div>
             </div>
             <div className="big_buttons">
             <Link to="/intro">
-                <button type="button" className="snip1535">서비스 소개</button>
+                <button type="button" className="snip1535">About</button>
                 </Link>
                 <Link to="/upload">
-                <button type="button" className="snip1535">분석 요청</button>
+                <button type="button" className="snip1535">Analysis</button>
                 </Link>
             </div>
             <div className="copyright">

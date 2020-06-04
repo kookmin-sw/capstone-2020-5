@@ -130,7 +130,7 @@ class SearchTab extends Component {
             case 0:
                 return(<div></div>);
             case 1:
-                return(<Spinner/>);
+                return(<Spinner />);
             case 2:
                 return(
                     <div className="string-donut-table-contain">
@@ -208,7 +208,7 @@ class SearchTab extends Component {
                             {this.createList()}
                         </div>
                     </td>
-                    <td className="" colSpan="2">
+                    <td className="search-similary-tab" colSpan="2">
                         <div className="string-search-part">
                             <div className="string-search-input">
                                 <input className="search-input" type="search" value={this.state.searchValue} onChange={this.handleChange} placeholder="Search string" />

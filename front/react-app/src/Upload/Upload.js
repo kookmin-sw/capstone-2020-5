@@ -232,18 +232,32 @@ class Upload extends Component{
                     </div>
                     <div className="container d-flex vertical-element">
                         <div className="upload-button-body">
-                            <input ref={this.fileInput} type="file" id="file" className="inputfile" multiple onChange={(e) => {this.files = e.target.files;this.forceUpdate();}}/>
-                            <label type="button" htmlFor="file"  class="button-border-puple">
-                                <div className="pupleline-contents"><span className="material-icons">create_new_folder</span>Upload</div>
-                            </label>
+                            <div className="label-button">
+                                <input ref={this.fileInput} type="file" id="file" className="inputfile" multiple
+                                       onChange={(e) => {
+                                           this.files = e.target.files;
+                                           this.forceUpdate();
+                                       }}/>
+                                <label type="button" htmlFor="file" className="button-border-puple">
+                                    <div className="pupleline-contents" style={{paddingTop:"15px"}}>
+                                        <div style={{fontWeight:"bold"}}>Upload</div>
+                                    </div>
+                                </label>
+                            </div>
+
                             <button id="button-upload" type="button" className="button-border-puple" onClick={this.handleSubmit}>
-                                <div className="pupleline-contents"><span className="material-icons">send</span>Submit</div>
+                                <div className="pupleline-contents" style={{fontWeight:"bold"}}>
+                                    Submit
+                                </div>
                             </button>
                         </div>
                     </div>
                 </div>
                 :
-                 <Spinner/>
+                    <div style={{marginTop:"350px"}}>
+                        <Spinner/>
+                    </div>
+
             }
         </div>
     );

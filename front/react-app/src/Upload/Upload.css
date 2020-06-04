@@ -99,7 +99,7 @@
     width: 200px;
     height: 80px;
     background-color: #ffffff;
-    border: #6140a5 solid 2px;
+    border: #6140a5 solid 3px;
     border-radius: 10px;
     color: #6140a5;
     font-size: 30px;
@@ -147,4 +147,7 @@
     color: #d5d5d5;
     display: block;
     margin-bottom: 20px;
+}
+.label-button{
+    display: inline-block;
 }
