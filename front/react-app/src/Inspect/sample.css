@@ -274,7 +274,7 @@ result-button-rignt{
     height: 500px;
     width: 400px;
     overflow-y: scroll;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 .string-list::-webkit-scrollbar{
     display: none;
@@ -476,7 +476,7 @@ result-button-rignt{
     text-align: center;
     margin: 0 auto;
     padding: 0!important;
-    width: 200px;
+    width: 400px;
     border: #e8e8e8 solid 2px;
     border-radius: 10px;
 }
@@ -504,4 +504,21 @@ result-button-rignt{
 }
 .setting-button{
     vertical-align: middle;
+}
+.string-list > li{
+    border-bottom: #cbcbcb solid 1px;
+    border-bottom-style: dashed;
+}
+.import-button{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+    border-bottom: #d9d9d9 solid 2px;
+
+}
+.import-body >li{
+    list-style: none;
+    border-bottom: #d9d9d9 solid 1px;
+    border-bottom-style: dashed;
+    padding-left: 10px;
 }

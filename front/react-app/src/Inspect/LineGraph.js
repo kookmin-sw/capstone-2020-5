@@ -37,7 +37,7 @@ export default class LineGraph extends Component {
                   showLabel: false,
                   fill: true,
                   lineTension: 0.1,
-                  backgroundColor: 'rgba(255,92,139,0.4)',
+                  backgroundColor: 'rgba(192,75,108,0.4)',
                   borderColor: 'rgba(255,65,114,0.4)',
                   borderCapStyle: 'butt',
                   borderDash: [],

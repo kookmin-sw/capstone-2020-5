@@ -81,7 +81,7 @@
 
 #scroll-view-upload {
     height: 200px;
-    width: 45rem;
+    width: 40rem;
     margin-right: auto;
     margin-left: auto;
     margin-top: 2rem;
@@ -90,7 +90,7 @@
     -ms-overflow-style: none;
 }
 .after_upload{
-
+    width: 40rem;
 }
 .upload-button-body{
     margin: 0 auto;

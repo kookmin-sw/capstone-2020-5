@@ -26,27 +26,42 @@ class SearchTab extends Component {
 
     createList() {
         let list = [];
+        let body=[];
         Object.entries(this.dict).forEach(([key, value]) => {
             if(this.listType == "Import") {
-                list.push(
-                    <li>
-                        {"---------"+key+"---------"}
-                        <br/>
-                    </li>
-                );
                 for(let i = 0; i < value.length; ++i) {
-                    list.push(
+                    body.push(
                         <li>
                             {value[i]}
                             <br/>
                         </li>
                     );
                 }
-            } else {
+                var count = 1;
+                list.push(
+                    <div className="accordion" id="accordionImport">
+                        <div className="card">
+                            <div className="import-card" id={"importHead"+count}>
+                                    <div className="import-button" type="button" data-toggle="collapse" data-target={"#collapseImport"+count} aria-expanded="true" aria-controls={"collapseImport"+count}>
+                                        {key}<span className="material-icons">keyboard_arrow_down</span>
+                                    </div>
+                            </div>
+
+                            <div id={"collapseImport"+count} className="collapse show" aria-labelledby={"importHead"+count}
+                                 data-parent="#accordionImport">
+                                <div className="card-body import-body">
+                                    {body}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+                count++;
+
+            }else {
                 list.push(
                     <li key={key}>
                         {value}
-                        <br/>
                     </li>
                 );
             }
