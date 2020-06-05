@@ -14,7 +14,8 @@ class ContentElement extends Component{
         Axios.get("http://127.0.0.1:5000/re_scan", {
             params: {
                 re_scan_file: this.props.filename,
-                filenames: window.localStorage.getItem('filenames')
+                filenames: window.localStorage.getItem('filenames'),
+                dates: window.localStorage.getItem('dates')
             }
         }).then((response) => {
             if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {

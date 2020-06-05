@@ -75,19 +75,19 @@ def upload_file():
 def re_scan():
     try:
         re_scaning_filename = request.args.get('re_scan_file')
-        other_filenames = eval(request.args.get('filenames'))
+        other_filenames = json.loads(request.args.get('filenames'))
+        dates = json.loads(request.args.get('dates'))
         filenames=[[],[]]
         # RE SCANING FILE
         filenames[0].append(re_scaning_filename)
         filenames[1].append("03.04.4540674 15:12")
-        print(other_filenames)
-        print(type(other_filenames))
+        print(type(dates))
         # OTHER FILES
-        for i in other_filenames:
-            if i == re_scaning_filename:
+        for i in range(len(other_filenames)):
+            if other_filenames[i] == re_scaning_filename:
                 continue
-            filenames[0].append(i)
-            filenames[1].append("03.04.19 15:12")
+            filenames[0].append(other_filenames[i])
+            filenames[1].append(dates[i])
         return json.dumps(filenames , ensure_ascii=False , indent="\t")
     except Exception as e :
         print(e)
