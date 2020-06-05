@@ -102,8 +102,8 @@ class Upload extends Component{
         }
         axios.post("http://127.0.0.1:5000/upload-files", formData, {
         }).then((response) => {
-            if(response.data == "error") {
-                window.localStorage.setItem('error_message', "Server uploading error");
+            if(typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+                window.localStorage.setItem('error_message', response.data.split(",")[1]);
                 window.location = "/error";
             } else {
                 window.localStorage.setItem('filenames', "");
@@ -154,8 +154,8 @@ class Upload extends Component{
         axios.get("http://127.0.0.1:5000/get_db_data", {
           
         }).then((response) => {
-            if (response.data == "error") {
-                window.localStorage.setItem('error_message', "db_data not found error");
+            if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+                window.localStorage.setItem('error_message',response.data.split(",")[1]);
                 window.location = "/error";
             } else {
                

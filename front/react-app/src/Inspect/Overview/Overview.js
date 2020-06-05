@@ -76,8 +76,8 @@ class Overview extends Component {
                     threshold: this.state.slider1
                 }
             }).then((response) => {
-                if (response.data == "error") {
-                    window.localStorage.setItem('error_message', "Function data not found error");
+                if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+                    window.localStorage.setItem('error_message', response.data.split(",")[1]);
                     window.location = "/error";
                 } else {
                     this.uploaded_mnemonics = this.props.uploaded_mnemonics
@@ -267,7 +267,7 @@ class Overview extends Component {
                                         <tr>
                                             <th scope="col">File MD5<div className="function-id">(Fuction ID)</div></th>
                                             
-                                            <th className="similary-distance" scope="col">Cosine</th>
+                                            <th className="similary-distance" scope="col">Score</th>
                                             <th className="similary-distance" scope="col">Jaccard-distance</th>
                                             <th scope="col">Details</th>
                                         </tr>

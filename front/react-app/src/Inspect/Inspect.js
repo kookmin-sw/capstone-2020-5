@@ -28,8 +28,8 @@ class Inspect extends Component {
                 filename: this.props.match.params.id
             }
         }).then((response) => {
-            if (response.data == "error") {
-                window.localStorage.setItem('error_message', "File not found error");
+            if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+                window.localStorage.setItem('error_message', response.data.split(",")[1]);
                 window.location = "/error";
             } else {
                 this.setState({ file: response.data });

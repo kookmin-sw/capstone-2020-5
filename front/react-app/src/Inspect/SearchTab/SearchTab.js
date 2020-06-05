@@ -82,8 +82,8 @@ class SearchTab extends Component {
                 search_type: this.listType
             }
         }).then((response) => {
-            if (response.data == "error") {
-                window.localStorage.setItem('error_message', "Search result found error");
+            if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+                window.localStorage.setItem('error_message', response.data.split(",")[1]);
                 window.location = "/error";
             } else {
                 this.originBen = [];

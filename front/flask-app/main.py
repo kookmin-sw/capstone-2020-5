@@ -23,6 +23,7 @@ def serve(path):
 
 @app.route('/upload-files', methods = ['POST'])
 def upload_file():
+
     try:
         filenames=[]
         all_file_datas = OrderedDict()
@@ -61,7 +62,7 @@ def upload_file():
             file_to_write.close()
         return json.dumps(filenames , ensure_ascii=False , indent="\t")
     except:
-        return "error"
+        return 'error,Upload error'
 
 @app.route('/get_files', methods = ['GET'])
 def get_files():
@@ -70,7 +71,7 @@ def get_files():
         with open("./json/"+filename, "r") as f:
             return json.load(f)
     except:
-        return 'error'
+        return 'error,File not found error'
   
     
 @app.route('/get_function_data', methods=['GET'])
@@ -138,7 +139,7 @@ def get_function_data():
         with open(file_path, "r") as f:
             return json.load(f)
     except:
-        return 'error'
+        return 'error,Function data load error'
  
 @app.route('/get_search_data', methods=['GET'])
 def get_search_data():
@@ -151,7 +152,7 @@ def get_search_data():
         search_data["origin_file_hash"] = [["ben_md5_1", "ben_md5_2", "ben_md5_3", "ben_md5_4", "ben_md5_5"], ["mal_md5_1", "mal_md5_2", "mal_md5_3", "mal_md5_4", "mal_md5_5"]]
         return json.dumps(search_data , ensure_ascii=False , indent="\t")
     except:
-        return 'error'
+        return 'error,Search data load error'
 
  
 @app.route('/get_db_data', methods=['GET'])
@@ -162,7 +163,7 @@ def get_db_data():
         db_data["ben_data"] = ["150000"]
         return json.dumps(db_data , ensure_ascii=False , indent="\t")
     except:
-        return 'error'
+        return 'error,Db data load error'
 
 @app.route('/get_anomaly_data', methods=['GET'])
 def get_anomaly_data():
@@ -191,7 +192,7 @@ def get_anomaly_data():
         }
         return json.dumps(anomaly_data , ensure_ascii=False , indent="\t")
     except:
-        return 'error'
+        return 'error,Anomaly data load error'
 
 if __name__ == '__main__':
     app.run(use_reloader=True, threaded=True)

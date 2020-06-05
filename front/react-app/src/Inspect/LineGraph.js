@@ -15,8 +15,8 @@ export default class LineGraph extends Component {
           filename: this.props.filename
         }
     }).then((response) => {
-        if (response.data == "error") {
-            window.localStorage.setItem('error_message', "File not found error");
+        if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+            window.localStorage.setItem('error_message', response.data.split(",")[1]);
             window.location = "/error";
         } else {
             let labels = [];
