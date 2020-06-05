@@ -434,16 +434,12 @@ result-button-rignt{
 }
 
 
-.function-mnemonic-scroll{
-    max-height: 30px;
-    overflow-y: scroll;
-}
 
 
 .function-mnemonic-scroll {
     margin-top: 0px;
     vertical-align: top;
-    text-align: left;
+    text-align: center;
     height: 500px;
     max-height: 500px;
     overflow-y: scroll;
@@ -476,9 +472,12 @@ result-button-rignt{
     text-align: center;
     margin: 0 auto;
     padding: 0!important;
-    width: 400px;
-    border: #e8e8e8 solid 2px;
-    border-radius: 10px;
+    width: 300px;
+    background-color: #ffffff!important;
+}
+.full-mne-table{
+    width: 400px!important;
+    margin: 0 auto;
 }
 .li-center{
     display: inline-block;
@@ -521,4 +520,10 @@ result-button-rignt{
     border-bottom: #d9d9d9 solid 1px;
     border-bottom-style: dashed;
     padding-left: 10px;
+}
+.full-mne-table > tbody > tr {
+    background-color: #ffffff;
+}
+.full-mne-table >tbody >tr >td{
+    text-align: left;
 }

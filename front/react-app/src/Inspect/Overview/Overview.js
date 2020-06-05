@@ -93,14 +93,14 @@ class Overview extends Component {
         let list = [];
         for(let i = 0; i < array.length; ++i) {
             list.push(
-                <ul className="ul-center">
-                    <li className="li-center">
+                <tr className="ul-center">
+                    <td className="">
                         {array[i].split("^#!!#")[0]}
-                    </li>
-                    <li className="li-center">
+                    </td>
+                    <td className="">
                         {array[i].split("^#!!#")[1]}
-                    </li>
-                </ul>
+                    </td>
+                </tr>
             );
         }
         return list;
@@ -164,12 +164,20 @@ class Overview extends Component {
                                             <tr>
                                                 <td>
                                                     <div className="function-mnemonic-scroll">
-                                                        {this.createListOfMnemonics(this.uploaded_mnemonics)}
+                                                        <table className="table full-mne-table">
+                                                            <tbody>
+                                                                {this.createListOfMnemonics(this.uploaded_mnemonics)}
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div className="function-mnemonic-scroll">
-                                                        {this.createListOfMnemonics(this.function_data[key]["mnemonics"])}
+                                                        <table className="table full-mne-table">
+                                                            <tbody>
+                                                            {this.createListOfMnemonics(this.function_data[key]["mnemonics"])}
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </td>
                                             </tr>
