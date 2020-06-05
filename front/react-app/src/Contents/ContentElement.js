@@ -10,8 +10,7 @@ class ContentElement extends Component{
     }
 
     reScan() {
-        console.log(this.props.filename)
-        console.log(JSON.parse(window.localStorage.getItem('filenames')))
+        this.props.onclick();
         Axios.get("http://127.0.0.1:5000/re_scan", {
             params: {
                 re_scan_file: this.props.filename,

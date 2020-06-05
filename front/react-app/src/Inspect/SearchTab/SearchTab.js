@@ -90,9 +90,8 @@ class SearchTab extends Component {
                 search_type: this.listType
             }
         }).then((response) => {
-            if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
-                window.localStorage.setItem('error_message', response.data.split(",")[1]);
-                window.location = "/error";
+            if (typeof response.data == "string") {
+                this.setState({ searchResult: 3 });
             } else {
                 this.originBen = [];
                 for(let i = 0; i < response.data["origin_file_hash"][0].length; ++i) {
@@ -212,6 +211,8 @@ class SearchTab extends Component {
 
                     </div>
                 );
+            case 3:
+                return(<div>No Data Found</div>);
         }
     }
 
