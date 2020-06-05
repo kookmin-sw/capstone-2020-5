@@ -22,32 +22,34 @@ class SearchTab extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.autoSearch = this.autoSearch.bind(this);
     }
 
     createList() {
         let list = [];
-        let body=[];
+        var count = 0;
         Object.entries(this.dict).forEach(([key, value]) => {
             if(this.listType == "Import") {
+                count++;
+                let body=[];
                 for(let i = 0; i < value.length; ++i) {
                     body.push(
-                        <li>
+                        <li onClick={() => {this.autoSearch(value[i])}} key={key+i}>
                             {value[i]}
                             <br/>
                         </li>
                     );
                 }
-                var count = 1;
                 list.push(
                     <div className="accordion" id="accordionImport">
                         <div className="card">
                             <div className="import-card" id={"importHead"+count}>
                                     <div className="import-button" type="button" data-toggle="collapse" data-target={"#collapseImport"+count} aria-expanded="true" aria-controls={"collapseImport"+count}>
-                                        {key}<span className="material-icons">keyboard_arrow_down</span>
+                                        {key+count}<span className="material-icons">keyboard_arrow_down</span>
                                     </div>
                             </div>
 
-                            <div id={"collapseImport"+count} className="collapse show" aria-labelledby={"importHead"+count}
+                            <div id={"collapseImport"+count} className="collapse" aria-labelledby={"importHead"+count}
                                  data-parent="#accordionImport">
                                 <div className="card-body import-body">
                                     {body}
@@ -56,11 +58,10 @@ class SearchTab extends Component {
                         </div>
                     </div>
                 );
-                count++;
 
             }else {
                 list.push(
-                    <li key={key}>
+                    <li onClick={() => {this.autoSearch(value)}} key={key}>
                         {value}
                     </li>
                 );
@@ -69,12 +70,19 @@ class SearchTab extends Component {
         return list;
     }
 
+    autoSearch(value) {
+        this.setState({searchValue: value});
+        this.handleSubmit(null);
+    }
+
     handleChange(event) {
         this.setState({searchValue: event.target.value});
     }
 
     handleSubmit(event) {
-        event.preventDefault();
+        if(event != null) {
+            event.preventDefault();
+        }
         this.setState({ searchResult: 1 });
         axios.get("http://127.0.0.1:5000/get_search_data", {
             params: {

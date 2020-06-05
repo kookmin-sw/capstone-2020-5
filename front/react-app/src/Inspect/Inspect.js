@@ -42,7 +42,10 @@ class Inspect extends Component {
                 
                 // Create list of functions' hash
                 this.all_functions = this.state.file["all_functions"];
+
                 this.anomaly_functions = this.state.file["anomaly_functions"];
+                
+
                 this.setState({initialized : true});
             }
         });

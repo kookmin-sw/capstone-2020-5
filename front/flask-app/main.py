@@ -45,7 +45,11 @@ def upload_file():
             file_data = OrderedDict()
             file_data["meta"] = {"md5": "55cb06fc7ddebaf8c87df15c3681a1fd", "sha256": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778","filesize":"440.92 KB"}     
             file_data["string"]= {"0":["Project1"],"1":["cDefE!gYjjiiijj2mnop"],"2":["music"],"3":["Microsoft Windows"],"4":["frm_main"],"5":["class_main"],"6":["module_main"],"7":["module_bind"],"8":["module_rnd"],"9":["module_registry"],"10":["module_until"],"11":["module_path"],"12":["module_check"],"13":["Project1"],"14":["C:\\Program Files\\Microsoft Visual Studio\\VB98\\VB6.OLB"],"15":["C:\\WINDOWS\\system32\\msvbvm60.dll\\3"],"16":["VBRUN"],"17":["AdjustTokenPrivileges"],"18":["LookupPrivilegeValueA"],"19":["GetCurrentProcess"],"20":["GetFileAttributesA"],"21":["GetWindowTextLengthA"],"22":["MSVBVM60.DLL"]}
-            file_data["import"]= {"MSVBVM60":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface","__vbaExceptHandler","ProcCallEngine","__imp_ThunRTMain","rtcSpaceBstr","rtcSpaceVar","rtcKillFiles","rtcChangeDir","rtcBstrFromAnsi","rtcGetPresentDate","rtcGetSecondOfMinute","rtcFileLength","rtcSetFileAttr","rtcRandomNext","rtcRandomize","rtcMsgBox","rtcDoEvents","rtcShell","rtcArray","rtcStringVar","rtcVarBstrFromAnsi","rtcLeftCharBstr","__imp_rtcDir","rtcCommandVar","rtcErrObj","rtcCreateObject2"]}
+            file_data["import"]= {"MSVBVM60":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface"],
+                                "asdjkl1":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface"],
+                                "1024kkvbiamsd":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface"],
+                                "h12340ksas":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface"],
+                                "mjvm12038n":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface"]}
             file_data["export"]= {"0":["start"]}
 
             file_data['anomaly_functions'] = {
@@ -101,7 +105,20 @@ def get_function_data():
                
                 "db4e72a613f9430f561806791378a5c" : {
                     "Function":"cd84097a65d1633f5c74f5",
+                    "cosine":"3.31",
+                    "jaccard": "4.72",
+                    "mnemonics": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"]
+                },
+
+                "cb4e72a613f9430f561806791378a5c" : {
+                    "Function":"cd84097a65d1633f5c74f5",
                     "cosine":"2.74",
+                    "jaccard": "4.72",
+                    "mnemonics": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"]
+                },
+                "bb4e72a613f9430f561806791378a5c" : {
+                    "Function":"cd84097a65d1633f5c74f5",
+                    "cosine":"3.12",
                     "jaccard": "4.72",
                     "mnemonics": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"]
                 }
@@ -112,7 +129,7 @@ def get_function_data():
                 "ben": 0.3
             }
             file_data["same_functions"] = {
-                 "x3b52063cd84097a65d1633f5c74f5": {
+                "x3b52063cd84097a65d1633f5c74f5": {
                     "Function":"b52063cd84097a65d1633f5c74f5",
                     "cosine":"0.61",
                     "jaccard": "6.60",
@@ -121,7 +138,20 @@ def get_function_data():
                
                 "db4e72a613f9430f561806791378a5c" : {
                     "Function":"cd84097a65d1633f5c74f5",
+                    "cosine":"3.31",
+                    "jaccard": "4.72",
+                    "mnemonics": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"]
+                },
+
+                "cb4e72a613f9430f561806791378a5c" : {
+                    "Function":"cd84097a65d1633f5c74f5",
                     "cosine":"2.74",
+                    "jaccard": "4.72",
+                    "mnemonics": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"]
+                },
+                "bb4e72a613f9430f561806791378a5c" : {
+                    "Function":"cd84097a65d1633f5c74f5",
+                    "cosine":"3.12",
                     "jaccard": "4.72",
                     "mnemonics": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"]
                 }

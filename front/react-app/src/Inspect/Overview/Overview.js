@@ -82,7 +82,19 @@ class Overview extends Component {
                 } else {
                     this.uploaded_mnemonics = this.props.uploaded_mnemonics
                     this.mal_ben = response.data["mal_ben"];
-                    this.function_data = response.data["same_functions"]
+                    // Sort all functions
+                    var items = Object.keys(response.data["same_functions"]).map(function(key) {
+                      return [key, response.data["same_functions"][key]];
+                    });
+                    items.sort(function(first, second) {
+                      return parseFloat(second[1]["cosine"]) - parseFloat(first[1]["cosine"]);
+                    });
+                    this.function_data = {};
+
+                    for(let i = 0; i < items.length; ++i) {
+                        this.function_data[items[i][0]] = items[i][1]
+                    }
+                    
                     this.setState({dataloaded : true});
                 }
             });
