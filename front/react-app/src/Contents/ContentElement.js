@@ -45,7 +45,7 @@ class ContentElement extends Component{
                         </Link>
                     </td>
                     <td>
-                        <input type="button" className="filelist_btn" value="Re-analysis" onClick={()=>{this.reScan()}}/>
+                        <input type="button" className="filelist_btn2" value="Re-analysis" onClick={()=>{this.reScan()}}/>
                     </td>
                     <td>{this.props.date}</td>
                 </tr>
