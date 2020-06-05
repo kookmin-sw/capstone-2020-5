@@ -7,10 +7,10 @@ import signal
 from tqdm import tqdm
 import os
 import gc
-import ftp.ftp_run as ft
 
 FILEPATH = r''
 BASEPATH = r''
+
 CPU_MAX = 4
 
 
@@ -19,10 +19,11 @@ SAVEPATH_code = BASEPATH
 SAVEPATH_report = os.path.join(BASEPATH , 'report')
 SAVEPATH_log = os.path.join(BASEPATH , 'log')
 
-IDA_PYTHON_SCRIPT_PATH3 = r'.\report.py'
-IDA_PYTHON_SCRIPT_PATH2 = r'.\exit_ida.py'
-IDA_PYTHON_SCRIPT_PATH1 = r'.\code_ida.py'
+IDA_PYTHON_SCRIPT_PATH3 = r'F:\ida2_3\report_ida.py'
+IDA_PYTHON_SCRIPT_PATH2 = r'F:\ida2_3\exit_ida.py'
+IDA_PYTHON_SCRIPT_PATH1 = r'F:\ida2_3\code_ida.py'
 
+# FILEPATH = r'D:\ida_capstone\kbw_mal'
 IDA_PATH = r'C:\Program Files\IDA 7.2'
 
 def setting():
@@ -97,10 +98,9 @@ def run_idb_multi(filename):
     command = '{ida_path} -c -o{idb_path} -A -S{script_path} {file_path}'.format(
         ida_path='ida64', script_path=IDA_PYTHON_SCRIPT_PATH2, file_path=os.path.join(FILEPATH,filename),
         idb_path=SAVEPATH_idb)
-
     proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     try:
-        proc.wait(timeout=60) 
+        proc.wait(timeout=60)  # shell: 앞 인자를 list->str 로 변환
         if os.path.exists(os.path.join(SAVEPATH_idb , filename +'.i64')):
             print("{0} 성공1".format(filename))
             write_log(filename.split('.')[0]+'.vir' ,'idb')
@@ -129,7 +129,7 @@ def run_code_multi(filename):
 
     proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     try:
-        proc.wait(timeout=60)  
+        proc.wait(timeout=60)  # shell: 앞 인자를 list->str 로 변환
         if os.path.exists(os.path.join(SAVEPATH_code,'mnemonic', filename.split('.')[0] + '.pickle')):
             print("{0} 성공".format(filename))
             write_log(filename,'code')
@@ -147,6 +147,7 @@ def run_code_multi(filename):
             write_log(filename.split('.')[0] + '.vir' + ',2', 'code2')
 
 def run_report_multi(filename):
+
     command = '{ida_path} -A -S"{script_path} {code_save_path} {filename}" {idb_file_path}'.format(
         ida_path='ida64'
         ,script_path=IDA_PYTHON_SCRIPT_PATH3
@@ -156,13 +157,13 @@ def run_report_multi(filename):
 
     proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     try:
-        proc.wait(timeout=300) 
+        proc.wait(timeout=300)  # shell: 앞 인자를 list->str 로 변환
         if os.path.exists(os.path.join(SAVEPATH_report, filename.split('.')[0] + '.json')):
             print("{0} 성공".format(filename))
             write_log(filename,'report')
         else:
             print("{0} 실패1".format(filename))
-            write_log(filename.split('.')[0] + '.vir' + ',2', 'report2')
+            write_log(filename + ',2', 'report2')
     except subprocess.TimeoutExpired:
         try:
             kill(proc.pid)
@@ -205,6 +206,10 @@ def run_code():
 
 def run_report():
     filenames = os.listdir(SAVEPATH_idb)
+    new_filenames = []
+    for filename in filenames:
+        if (filename.split('.')[-1]=='i64'):
+            new_filenames.append(filename)
     if os.path.exists(os.path.join(SAVEPATH_log, 'log_report.txt')):
         filenames = check_complte_files(filenames, 'report')
 
@@ -222,8 +227,5 @@ def run_report():
 
 if __name__ == '__main__':
     setting()
-    filenames = ft.get_filenames()
-    for i in range(0,1000):
-        ft.download(filenames[i*100:(i+1)*100] , FILEPATH)
-        run_idb()
-        run_report()
+    run_idb()
+    run_report()
