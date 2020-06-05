@@ -23,7 +23,6 @@ IDA_PYTHON_SCRIPT_PATH3 = r'F:\ida2_3\report_ida.py'
 IDA_PYTHON_SCRIPT_PATH2 = r'F:\ida2_3\exit_ida.py'
 IDA_PYTHON_SCRIPT_PATH1 = r'F:\ida2_3\code_ida.py'
 
-# FILEPATH = r'D:\ida_capstone\kbw_mal'
 IDA_PATH = r'C:\Program Files\IDA 7.2'
 
 def setting():
@@ -100,7 +99,7 @@ def run_idb_multi(filename):
         idb_path=SAVEPATH_idb)
     proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     try:
-        proc.wait(timeout=60)  # shell: 앞 인자를 list->str 로 변환
+        proc.wait(timeout=60) 
         if os.path.exists(os.path.join(SAVEPATH_idb , filename +'.i64')):
             print("{0} 성공1".format(filename))
             write_log(filename.split('.')[0]+'.vir' ,'idb')
@@ -129,7 +128,7 @@ def run_code_multi(filename):
 
     proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     try:
-        proc.wait(timeout=60)  # shell: 앞 인자를 list->str 로 변환
+        proc.wait(timeout=60)
         if os.path.exists(os.path.join(SAVEPATH_code,'mnemonic', filename.split('.')[0] + '.pickle')):
             print("{0} 성공".format(filename))
             write_log(filename,'code')
@@ -157,7 +156,7 @@ def run_report_multi(filename):
 
     proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     try:
-        proc.wait(timeout=300)  # shell: 앞 인자를 list->str 로 변환
+        proc.wait(timeout=300) 
         if os.path.exists(os.path.join(SAVEPATH_report, filename.split('.')[0] + '.json')):
             print("{0} 성공".format(filename))
             write_log(filename,'report')
