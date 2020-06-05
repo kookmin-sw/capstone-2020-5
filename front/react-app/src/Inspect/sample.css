@@ -259,7 +259,12 @@ result-button-rignt{
 }
 .string-search-button{
     display: inline-block;
+    background-color: rgb(80, 57, 210);
+    border-radius: 5px;
+    
 }
+
+
 .string-list-scroll{
     height: 300px;
     width:200px;

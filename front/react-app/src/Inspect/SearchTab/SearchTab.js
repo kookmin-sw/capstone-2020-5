@@ -237,7 +237,7 @@ class SearchTab extends Component {
                                 <input className="search-input" type="search" value={this.state.searchValue} onChange={this.handleChange} placeholder="Search string" />
                             </div>
                             <div className="string-search-button">
-                                <button className="btn btn-lg btn-success search-button" type="submit" onClick={this.handleSubmit}>Search
+                                <button style={{color:"white"}} className="btn btn-lg search-button" type="submit" onClick={this.handleSubmit}>Search
                                 </button>
                             </div>
                         </div>
