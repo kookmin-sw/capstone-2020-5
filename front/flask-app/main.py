@@ -25,12 +25,15 @@ def serve(path):
 def upload_file():
 
     try:
-        filenames=[]
+        filenames=[[],[]]
         all_file_datas = OrderedDict()
         uploaded_files = request.files.getlist("fileCollection")
         for file in uploaded_files:
             filename = secure_filename(file.filename)
-            filenames.append(file.filename)
+            filenames[0].append(file.filename)
+            filenames[1].append("03.04.19 15:12")
+            # [["file1", "file2", "file3"], ["03.04.19 15:12", "03.04.19 15:12", "03.04.19 15:12"]]
+            
             file.save("./files/"+filename)
             X_train, file_raw = md.preprocessing(os.path.join(r"./files/", filename), md.word2vec_wv, 80, 64)
             result = md.predict(np.array(X_train))
@@ -67,6 +70,28 @@ def upload_file():
         return json.dumps(filenames , ensure_ascii=False , indent="\t")
     except:
         return 'error,Upload error'
+
+@app.route('/re_scan', methods = ['GET'])
+def re_scan():
+    try:
+        re_scaning_filename = request.args.get('re_scan_file')
+        other_filenames = eval(request.args.get('filenames'))
+        filenames=[[],[]]
+        # RE SCANING FILE
+        filenames[0].append(re_scaning_filename)
+        filenames[1].append("03.04.4540674 15:12")
+        print(other_filenames)
+        print(type(other_filenames))
+        # OTHER FILES
+        for i in other_filenames:
+            if i == re_scaning_filename:
+                continue
+            filenames[0].append(i)
+            filenames[1].append("03.04.19 15:12")
+        return json.dumps(filenames , ensure_ascii=False , indent="\t")
+    except Exception as e :
+        print(e)
+        return "error,Re Scan Error"
 
 @app.route('/get_files', methods = ['GET'])
 def get_files():

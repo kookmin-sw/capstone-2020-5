@@ -107,7 +107,9 @@ class Upload extends Component{
                 window.location = "/error";
             } else {
                 window.localStorage.setItem('filenames', "");
-                window.localStorage.setItem('filenames', JSON.stringify(response.data));
+                window.localStorage.setItem('filenames', JSON.stringify(response.data[0]));
+                window.localStorage.setItem('dates', "");
+                window.localStorage.setItem('dates', JSON.stringify(response.data[1]));
                 window.location = "/contents";
             }
         });

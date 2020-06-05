@@ -8,15 +8,16 @@ class Contents extends Component{
     constructor(props) {
         super(props);
         this.jsonData = JSON.parse(window.localStorage.getItem('filenames'));
+        this.jsonUploadDates = JSON.parse(window.localStorage.getItem('dates'));
     }
 
     createListOfFiles() {
         let listOfFiles = []
-        Object.entries(this.jsonData).forEach(([key, value]) => {
+        for(let i = 0; i < this.jsonData.length; ++i) {
             listOfFiles.push(
-                <ContentElement filename={value} key={value}/>
+                <ContentElement filename={this.jsonData[i]} key={this.jsonData[i]} date={this.jsonUploadDates[i]}/>
             );
-        })
+        }
         return listOfFiles
     }
 
@@ -28,18 +29,18 @@ class Contents extends Component{
                     <div className="container">
                         <div className="">
                             <div className="title_text row">
-                                <div className="col-9">Upload / <span>File List</span></div>
-                                <div className="col-3"><input type="button" value="Download ZIP" className="filelist_btn purple" /></div>
+                                <div className="col-9"><span>File List</span></div>
+                                <div className="col-3"></div>
                             </div>
                         </div>
                         <div>
                             <table className="table table-striped">
-                                <caption>List of users</caption>
                                 <thead>
                                 <tr>
-                                    <th scope="col" colspan="2">파일명</th>
-                                    <th scope="col">결과</th>
-                                    <th scope="col">정보</th>
+                                    <th scope="col" colspan="2">File Name</th>
+                                    <th scope="col">Result</th>
+                                    <th scope="col">Re-analysis</th>
+                                    <th scope="col">Scan Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
