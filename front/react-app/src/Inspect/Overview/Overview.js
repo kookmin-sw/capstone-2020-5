@@ -11,7 +11,8 @@ class Overview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataloaded : false
+            dataloaded : false,
+            slider1: 90
         }
         this.filename = this.props.filename
         this.hash = this.props.hash
@@ -20,6 +21,7 @@ class Overview extends Component {
         this.loadFunctionData = this.loadFunctionData.bind(this);
         this.downloadFile = this.downloadFile.bind(this);
         this.createListOfMnemonics = this.createListOfMnemonics.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     downloadFile(data) {
@@ -209,9 +211,6 @@ class Overview extends Component {
         });
         return list;
     }
-    state = {
-        slider1: 100
-    };
 
     handleChange = name => (e, value) => {
         this.setState({
@@ -219,8 +218,6 @@ class Overview extends Component {
         });
     };
     render() {
-        const { classes } = this.props;
-        const { slider1} = this.state;
         return (
             <div id="accordion">
                 <div className="card full_accordion">
@@ -238,10 +235,17 @@ class Overview extends Component {
                                     <div className="dropdown-menu slider-center" aria-labelledby="dropdownMenuButton">
                                         <div className="slider-container">
                                             <Slider
+                                            onMouseUp={()=>{
+                                                this.state.dataloaded = false;
+                                                this.setState({dataloaded: false});
+                                                this.loadFunctionData();
+                                            }}
                                             valueLabelDisplay="auto"
                                                defaultValue={90}
                                                 aria-labelledby="label"
-                                                onChange={this.handleChange("slider1")}
+                                                onChange={(e, value) => {
+                                                    this.setState({slider1: value});
+                                                }}
                                             />
                                         </div>
 
