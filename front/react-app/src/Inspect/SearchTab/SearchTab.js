@@ -60,11 +60,13 @@ class SearchTab extends Component {
                 );
 
             }else {
-                list.push(
-                    <li onClick={() => {this.autoSearch(value)}} key={key}>
-                        {value}
-                    </li>
-                );
+                for(let i = 0; i < value.length; ++i) {
+                    list.push(
+                        <li onClick={() => {this.autoSearch(value[i])}} key={key}>
+                            {value[i]}
+                        </li>
+                    );
+                }
             }
         });
         return list;
@@ -72,21 +74,21 @@ class SearchTab extends Component {
 
     autoSearch(value) {
         this.setState({searchValue: value});
-        this.handleSubmit(null);
+        this.handleSubmit(null, value);
     }
 
     handleChange(event) {
         this.setState({searchValue: event.target.value});
     }
 
-    handleSubmit(event) {
+    handleSubmit(event, autoSearchValue) {
         if(event != null) {
             event.preventDefault();
         }
         this.setState({ searchResult: 1 });
         axios.get("http://127.0.0.1:5000/get_search_data", {
             params: {
-                search_value: this.state.searchValue,
+                search_value: autoSearchValue == undefined ? this.state.searchValue : autoSearchValue,
                 search_type: this.listType
             }
         }).then((response) => {
