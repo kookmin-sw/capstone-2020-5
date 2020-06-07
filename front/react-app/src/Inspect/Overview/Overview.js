@@ -124,7 +124,7 @@ class Overview extends Component {
         let list = [];
         Object.entries(this.function_data).forEach(([key, value]) => {
             list.push(
-                <tr>
+                <tr style={{backgroundColor: value["mal"] == "true" ? "rgba(32, 201, 151, 0.6)" : "rgba(255, 43, 153, 0.6)"}}>
                     <th scope="row"><div className="file-md5">{key}</div><div className="function-md5">({value["Function"]})</div></th>
     
                     <td>{value["cosine"]}</td>
