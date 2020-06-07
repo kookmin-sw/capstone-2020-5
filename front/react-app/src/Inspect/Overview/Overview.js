@@ -123,7 +123,7 @@ class Overview extends Component {
     createListOfSameFunctions() {
         let list = [];
         Object.entries(this.function_data).forEach(([key, value]) => {
-            let s={color: value["mal"] == "true" ? "rgba(32, 201, 151, 0.6)" : "rgba(255, 43, 153, 0.6)"};
+            let s={color: value["mal"] == "true" ? "rgba(255,0,76,1)" : "rgba(0,204,0,1)"};
             list.push(
                 <tr>
                     <th scope="row"><div style={s} className="file-md5">{key}</div><div style={s} className="function-md5">({value["Function"]})</div></th>
@@ -279,7 +279,7 @@ class Overview extends Component {
                                     </div>
                                 </div>
                                 <div className="similary-result-table">
-                                    <table className="table table-striped similary-table">
+                                    <table className="table similary-table">
                                         <thead>
                                         <tr>
                                             <th scope="col">File MD5<div className="function-id">(Fuction ID)</div></th>
