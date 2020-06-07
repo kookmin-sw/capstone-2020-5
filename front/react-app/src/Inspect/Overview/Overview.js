@@ -123,7 +123,7 @@ class Overview extends Component {
     createListOfSameFunctions() {
         let list = [];
         Object.entries(this.function_data).forEach(([key, value]) => {
-            let s={color: value["mal"] == "true" ? "rgba(255,0,76,1)" : "rgba(0,204,0,1)"};
+            let s={color: value["mal"] == "true" ? "rgba(255,0,76,1)" : "rgba(60,179,113,1)"};
             list.push(
                 <tr>
                     <th scope="row"><div style={s} className="file-md5">{key}</div><div style={s} className="function-md5">({value["Function"]})</div></th>
