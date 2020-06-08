@@ -219,7 +219,7 @@ class SearchTab extends Component {
                                         />
                                     </div>
                                 </td>
-                                <td>
+                                <td rowSpan="2">
                                     <div className="donut-container">
                                         <Doughnut
                                             options={{

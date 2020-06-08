@@ -20,7 +20,9 @@ class Inspect extends Component {
                 initialized : false
             }
         this.createListOfOverviews = this.createListOfOverviews.bind(this);
-       
+        this.createDetails = this.createDetails.bind(this);
+        this.createPE = this.createPE.bind(this);
+        this.createList = this.createList.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +42,7 @@ class Inspect extends Component {
                 this.string = this.state.file["string"]
                 this.export = this.state.file["export"]
                 this.import = this.state.file["import"]
+                this.PE = this.state.file["PE"];
                 
                 // Create list of functions' hash
                 this.all_functions = this.state.file["all_functions"];
@@ -58,7 +61,108 @@ class Inspect extends Component {
         let array = similarity ? this.all_functions : this.anomaly_functions
         Object.entries(array).forEach(([key, value]) => {
             list.push(
-                <Overview key={key} filename={this.props.match.params.id} hash={key} uploaded_mnemonics={value} sim={similarity}/>
+                <Overview onclick={() => {this.setState({initialized : false})}} key={key} filename={this.props.match.params.id} hash={key} uploaded_mnemonics={value} sim={similarity}/>
+            );
+        });
+        return list;
+    }
+
+    createDetails() {
+        let tableContents = [];
+        Object.entries(this.meta).forEach(([key, value]) => {
+            tableContents.push(
+                <tr>
+                    <td>{key}</td>
+                    <td>{value}</td>
+                </tr>
+            );
+        });
+        return tableContents;
+    }
+
+    createList(array, isImport) {
+        let list = [];
+        var count = 100000;
+        Object.entries(array).forEach(([key, value]) => {
+            if(isImport) {
+                count++;
+                let body=[];
+                for(let i = 0; i < value.length; ++i) {
+                    body.push(
+                        <tr key={key+i}>
+                            {value[i]}
+                            <br/>
+                        </tr>
+                    );
+                }
+                list.push(
+                    <div className="accordion" id="accordionImport">
+                        <div className="card">
+                            <div className="import-card" id={"importHead"+count}>
+                                    <div className="import-button" type="button" data-toggle="collapse" data-target={"#collapseImport"+count} aria-expanded="true" aria-controls={"collapseImport"+count}>
+                                        {key}<span className="material-icons">keyboard_arrow_down</span>
+                                    </div>
+                            </div>
+
+                            <div id={"collapseImport"+count} className="collapse" aria-labelledby={"importHead"+count}
+                                 data-parent="#accordionImport">
+                                <div className="card-body import-body">
+                                    {body}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+
+            }else {
+                for(let i = 0; i < value.length; ++i) {
+                    list.push(
+                        <tr key={key}>
+                            {value[i]}
+                        </tr>
+                    );
+                }
+            }
+        });
+        return list;
+    }
+
+    createPE() {
+        let list = []
+        var count = 10000;
+        Object.entries(this.PE).forEach(([key, value]) => {
+            count++;
+            let body = []
+            Object.entries(value).forEach(([ikey, ivalue]) => {
+                console.log(ikey)
+                console.log(ivalue)
+                body.push(
+                    <tr>
+                        <td>
+                            {ikey} 
+                        </td>
+                        <td>
+                            {ivalue}
+                        </td>
+                    </tr>
+                );
+            });
+            list.push(
+                <div className="accordion" id="accordionImport">
+                    <div className="card">
+                        <div className="import-card" id={"importHead"+count}>
+                                <div className="import-button" type="button" data-toggle="collapse" data-target={"#collapseImport"+count} aria-expanded="true" aria-controls={"collapseImport"+count}>
+                                    {key+count}<span className="material-icons">keyboard_arrow_down</span>
+                                </div>
+                        </div>
+                        <div id={"collapseImport"+count} className="collapse" aria-labelledby={"importHead"+count}
+                             data-parent="#accordionImport">
+                            <div className="card-body import-body">
+                                {body}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             );
         });
         return list;
@@ -115,7 +219,7 @@ class Inspect extends Component {
                                     <a className="tab-style nav-link red-tab tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">Anomaly Detection</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link blue-tab active" id="pills-details-tab" data-toggle="pill" href="#details-tab" role="tab" aria-controls="pills-details" aria-selected="true">Details</a>
+                                    <a className="tab-style nav-link blue-tab" id="pills-details-tab" data-toggle="pill" href="#details-tab" role="tab" aria-controls="pills-details" aria-selected="true">Details</a>
                                 </li>
                                 
                             </ul>
@@ -355,10 +459,24 @@ class Inspect extends Component {
 
                                     </div>
                                 </div>
-
-                              
-                                                 
-
+                                <div className="tab-pane fade" id="details-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
+                                    <div className="mnemonic">
+                                        <div className="accordion md-accordion">
+                                            <h2>HASH</h2>
+                                            <table className="gradient-table">
+                                                {this.createDetails()}
+                                            </table>
+                                            <h2>PE</h2>
+                                            {this.createPE()}
+                                            <h2>STRING</h2>
+                                            {this.createList(this.string, false)}
+                                            <h2>IMPORT</h2>
+                                            {this.createList(this.import, true)}
+                                            <h2>EXPORT</h2>
+                                            {this.createList(this.export, false)}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -372,7 +490,7 @@ class Inspect extends Component {
                     </div>
 
                     :
-                    <br/>
+                    <Spinner/>
                 }
             </div>
         );

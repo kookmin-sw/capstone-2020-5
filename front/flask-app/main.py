@@ -46,7 +46,13 @@ def upload_file():
 
 
             file_data = OrderedDict()
-            file_data["meta"] = {"md5": "55cb06fc7ddebaf8c87df15c3681a1fd", "sha256": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778","filesize":"440.92 KB"}     
+            file_data["meta"] = {
+                "md5": "55cb06fc7ddebaf8c87df15c3681a1fd", 
+                "sha256": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778",
+                "filesize":"440.92 KB",
+                "sha1": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778",
+                "ssdeep": "b384422960a820e3091e011d1a74d6cb5f5fb9f98a67e88233c7da1e3f91e778"
+                }     
             file_data["string"]= {"0":["Project1"],"1":["cDefE!gYjjiiijj2mnop"],"2":["music"],"3":["Microsoft Windows"],"4":["frm_main"],"5":["class_main"],"6":["module_main"],"7":["module_bind"],"8":["module_rnd"],"9":["module_registry"],"10":["module_until"],"11":["module_path"],"12":["module_check"],"13":["Project1"],"14":["C:\\Program Files\\Microsoft Visual Studio\\VB98\\VB6.OLB"],"15":["C:\\WINDOWS\\system32\\msvbvm60.dll\\3"],"16":["VBRUN"],"17":["AdjustTokenPrivileges"],"18":["LookupPrivilegeValueA"],"19":["GetCurrentProcess"],"20":["GetFileAttributesA"],"21":["GetWindowTextLengthA"],"22":["MSVBVM60.DLL"]}
             file_data["import"]= {"MSVBVM60":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface"],
                                 "asdjkl1":["MethCallEngine","EVENT_SINK_AddRef","DllFunctionCall","EVENT_SINK_Release","EVENT_SINK_QueryInterface"],
@@ -62,6 +68,49 @@ def upload_file():
                 "1db4e72a613f9430f561806791378a5c": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"],
                 "8609397dbd5b09b1a89a7cd9d2955d6c": ["cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123","cmp^#!!#123"]
             }
+            file_data["PE"] = {
+            "FILE_HEADER":{
+                "Machine":332,
+                "NumberOfSections":5,
+                "TimeDateStamp":1252102037,
+                "PointerToSymbolTable":0,
+                "NumberOfSymbols":0,
+                "SizeOfOptionalHeader":224,
+                "Characteristics":259
+            },
+            "OPTIONAL_HEADER":{
+                "Magic":267,
+                "MajorLinkerVersion":8,
+                "MinorLinkerVersion":0,
+                "SizeOfCode":25088,
+                "SizeOfInitializedData":125440,
+                "SizeOfUninitializedData":1024,
+                "AddressOfEntryPoint":13851,
+                "BaseOfCode":4096,
+                "BaseOfData":32768,
+                "ImageBase":4194304,
+                "SectionAlignment":4096,
+                "FileAlignment":512,
+                "MajorOperatingSystemVersion":4,
+                "MinorOperatingSystemVersion":0,
+                "MajorImageVersion":6,
+                "MinorImageVersion":1,
+                "MajorSubsystemVersion":4,
+                "MinorSubsystemVersion":0,
+                "Reserved1":0,
+                "SizeOfImage":196608,
+                "SizeOfHeaders":1024,
+                "CheckSum":355432,
+                "Subsystem":2,
+                "DllCharacteristics":33792,
+                "SizeOfStackReserve":1048576,
+                "SizeOfStackCommit":4096,
+                "SizeOfHeapReserve":1048576,
+                "SizeOfHeapCommit":4096,
+                "LoaderFlags":0,
+                "NumberOfRvaAndSizes":16,
+                "DATA_DIRECTORY":"???"
+            }}
             all_file_datas[str(filename)] = file_data
             
             file_to_write = open("./json/"+file.filename, "w")
@@ -81,7 +130,6 @@ def re_scan():
         # RE SCANING FILE
         filenames[0].append(re_scaning_filename)
         filenames[1].append("03.04.4540674 15:12")
-        print(type(dates))
         # OTHER FILES
         for i in range(len(other_filenames)):
             if other_filenames[i] == re_scaning_filename:
@@ -90,7 +138,6 @@ def re_scan():
             filenames[1].append(dates[i])
         return json.dumps(filenames , ensure_ascii=False , indent="\t")
     except Exception as e :
-        print(e)
         return "error,Re Scan Error"
 
 @app.route('/get_files', methods = ['GET'])
@@ -264,12 +311,12 @@ def get_search_data():
         search_type = request.args.get('search_type')
 
         search_data = OrderedDict()
-        search_data["p_graph"] = [18, 82, 34, 66]
+        search_data["p_graph"] = [18, 82, 34, 66, 23, 77]
+
         search_data["origin_file_hash"] = [["ben_md5_1", "ben_md5_2", "ben_md5_3", "ben_md5_4", "ben_md5_5"], ["mal_md5_1", "mal_md5_2", "mal_md5_3", "mal_md5_4", "mal_md5_5"]]
         return json.dumps(search_data , ensure_ascii=False , indent="\t")
     except:
         return 'error,Search data load error'
-
  
 @app.route('/get_db_data', methods=['GET'])
 def get_db_data():
@@ -280,6 +327,28 @@ def get_db_data():
         return json.dumps(db_data , ensure_ascii=False , indent="\t")
     except:
         return 'error,Db data load error'
+
+@app.route('/db_re_scan', methods = ['GET'])
+def db_re_scan():
+    try:
+        re_scaning_filename = request.args.get('db_re_scan_file')
+        print(re_scaning_filename)
+        other_filenames = json.loads(request.args.get('filenames'))
+        dates = json.loads(request.args.get('dates'))
+        filenames=[[],[]]
+        # RE SCANING FILE
+        filenames[0].append(re_scaning_filename)
+        filenames[1].append("03.04.4540674 15:12")
+        # OTHER FILES
+        for i in range(len(other_filenames)):
+            if other_filenames[i] == re_scaning_filename:
+                continue
+            filenames[0].append(other_filenames[i])
+            filenames[1].append(dates[i])
+        return json.dumps(filenames , ensure_ascii=False , indent="\t")
+    except Exception as e :
+        return "error,db_Re Scan Error"
+
 
 @app.route('/get_anomaly_data', methods=['GET'])
 def get_anomaly_data():

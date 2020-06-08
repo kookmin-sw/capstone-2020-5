@@ -24,11 +24,11 @@ class Overview extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.db_reScan = this.db_reScan.bind(this);
     }
-    db_reScan() {
+    db_reScan(md5) {
         this.props.onclick();
         Axios.get("http://127.0.0.1:5000/db_re_scan", {
             params: {
-                db_re_scan_file: this.props.filename,
+                db_re_scan_file: md5,
                 filenames: window.localStorage.getItem('filenames'),
                 dates: window.localStorage.getItem('dates')
             }
@@ -149,7 +149,10 @@ class Overview extends Component {
             let s={color: value["mal"] == "true" ? "rgba(255,0,76,1)" : "rgba(60,179,113,1)"};
             list.push(
                 <tr>
-                    <th scope="row"><input type="button"  style={s} className="file-md5" onClick={()=>{this.db_reScan()}}>{key}></input><div style={s} className="function-md5">({value["Function"]})</div></th>
+                    <th onClick={() => {this.db_reScan(key)}} scope="row">
+                        <div style={s} className="file-md5">{key}</div>
+                        <div style={s} className="function-md5">({value["Function"]})</div>
+                    </th>
     
                     <td>{value["cosine"]}</td>
                     <td>{value["jaccard"]}</td>
