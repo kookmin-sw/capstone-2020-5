@@ -30,7 +30,7 @@
 
 .file_contents > tbody > tr >td{
     padding-right: 15px;
-    font-size: 28px;
+    font-size: 1rem;
     color: #323232;
 }
 .file_name{
@@ -261,7 +261,7 @@ result-button-rignt{
     display: inline-block;
     background-color: rgb(80, 57, 210);
     border-radius: 5px;
-    
+
 }
 
 
@@ -542,4 +542,28 @@ result-button-rignt{
 }
 .import-button >span{
     display: inline-block;
+}
+
+.details-string{
+    text-align: left;
+    height: 500px;
+    width: 400px;
+    overflow-y: scroll;
+    font-size: 1.3rem;
+    margin-left: 30px;
+}
+.details-string::-webkit-scrollbar{
+    display: none;
+}
+
+.details-export{
+    text-align: left;
+    height: 500px;
+    width: 400px;
+    overflow-y: scroll;
+    font-size: 1.3rem;
+    margin-left: 30px;
+}
+.details-export::-webkit-scrollbar{
+    display: none;
 }
