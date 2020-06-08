@@ -459,12 +459,12 @@ class Inspect extends Component {
                                 </div>
                                 <div className="tab-pane fade  show active" id="details-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
                                     <div className="mnemonic">
-                                        <div className="accordion md-accordion">
-                                            <h2>HASH</h2>
+                                    <h2>HASH</h2>
                                             <table className="gradient-table">
                                                 {this.createDetails()}
                                             </table>
-                                            <div className="accordion" id="pe_det_acc">
+                                       
+                                            <div className="accordion Details-accord"  id="pe_det_acc">
                                                 <div className="card">
                                                     <div className="import-card" id="pe_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#pe_det" aria-expanded="true" aria-controls="pe_det">
@@ -532,7 +532,7 @@ class Inspect extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            
 
 
                         </div>
