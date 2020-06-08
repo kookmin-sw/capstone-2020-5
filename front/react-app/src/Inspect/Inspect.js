@@ -48,7 +48,7 @@ class Inspect extends Component {
                 this.all_functions = this.state.file["all_functions"];
 
                 this.anomaly_functions = this.state.file["anomaly_functions"];
-                this.virustotal="https://www.virustotal.com/gui/file/"+this.meta["SHA-256"]+"/details"
+                this.virustotal="https://www.virustotal.com/gui/file/"+this.meta["sha256"]+"/details"
 
 
                 this.setState({initialized : true});
@@ -72,7 +72,7 @@ class Inspect extends Component {
         Object.entries(this.meta).forEach(([key, value]) => {
             tableContents.push(
                 <tr>
-                    <td>{key}</td>
+                    <td>{key.toUpperCase()}</td>
                     <td>{value}</td>
                 </tr>
             );
