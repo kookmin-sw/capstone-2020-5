@@ -22,6 +22,28 @@ class Overview extends Component {
         this.downloadFile = this.downloadFile.bind(this);
         this.createListOfMnemonics = this.createListOfMnemonics.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.db_reScan = this.db_reScan.bind(this);
+    }
+    db_reScan() {
+        this.props.onclick();
+        Axios.get("http://127.0.0.1:5000/db_re_scan", {
+            params: {
+                db_re_scan_file: this.props.filename,
+                filenames: window.localStorage.getItem('filenames'),
+                dates: window.localStorage.getItem('dates')
+            }
+        }).then((response) => {
+            if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+                window.localStorage.setItem('error_message', response.data.split(",")[1]);
+                window.location = "/error";
+            } else {
+                window.localStorage.setItem('filenames', "");
+                window.localStorage.setItem('filenames', JSON.stringify(response.data[0]));
+                window.localStorage.setItem('dates', "");
+                window.localStorage.setItem('dates', JSON.stringify(response.data[1]));
+                window.location = "/contents";
+            }
+        });
     }
 
     downloadFile(data) {
@@ -109,6 +131,7 @@ class Overview extends Component {
             list.push(
                 <tr className="ul-center">
                     <td className="">
+                        
                         {array[i].split("^#!!#")[0]}
                     </td>
                     <td className="">
@@ -126,7 +149,7 @@ class Overview extends Component {
             let s={color: value["mal"] == "true" ? "rgba(255,0,76,1)" : "rgba(60,179,113,1)"};
             list.push(
                 <tr>
-                    <th scope="row"><div style={s} className="file-md5">{key}</div><div style={s} className="function-md5">({value["Function"]})</div></th>
+                    <th scope="row"><input type="button"  style={s} className="file-md5" onClick={()=>{this.db_reScan()}}>{key}></input><div style={s} className="function-md5">({value["Function"]})</div></th>
     
                     <td>{value["cosine"]}</td>
                     <td>{value["jaccard"]}</td>
