@@ -20,6 +20,7 @@ class Inspect extends Component {
                 initialized : false
             }
         this.createListOfOverviews = this.createListOfOverviews.bind(this);
+       
     }
 
     componentDidMount() {
@@ -44,8 +45,9 @@ class Inspect extends Component {
                 this.all_functions = this.state.file["all_functions"];
 
                 this.anomaly_functions = this.state.file["anomaly_functions"];
-                
-
+                this.virustotal="https://www.virustotal.com/gui/file/"+this.meta["sha256"]+"/details"
+               
+   
                 this.setState({initialized : true});
             }
         });
@@ -96,6 +98,11 @@ class Inspect extends Component {
                                         <td>SIZE</td>
                                         <td>{this.meta["filesize"]}</td>
                                     </tr>
+                                    <tr>
+                                        <td>LINK</td>
+                                       
+                                        <td><a href={this.virustotal} target="_blank">VIRUS TOTAL</a></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -107,6 +114,10 @@ class Inspect extends Component {
                                 <li className="nav-item">
                                     <a className="tab-style nav-link red-tab tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">Anomaly Detection</a>
                                 </li>
+                                <li className="nav-item">
+                                    <a className="tab-style nav-link blue-tab active" id="pills-details-tab" data-toggle="pill" href="#details-tab" role="tab" aria-controls="pills-details" aria-selected="true">Details</a>
+                                </li>
+                                
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
                                 <div className="tab-pane fade show active" id="similary-tab" role="tabpanel" aria-labelledby="pills-similary-tab">
@@ -344,6 +355,10 @@ class Inspect extends Component {
 
                                     </div>
                                 </div>
+
+                              
+                                                 
+
                             </div>
 
 
