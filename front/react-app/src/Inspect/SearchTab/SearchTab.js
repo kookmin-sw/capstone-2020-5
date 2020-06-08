@@ -179,13 +179,13 @@ class SearchTab extends Component {
                             <thead>
                             <tr>
                                 <th>
-                                    ben(%)
+                                    Ben(%)
                                 </th>
                                 <th>
-                                    mal(%)
+                                    Mal(%)
                                 </th>
                                 <th>
-                                    file ben mal(%)
+                                    Mal Ben Rate(%)
                                 </th>
                             </tr>
                             </thead>
