@@ -203,9 +203,7 @@ class Inspect extends Component {
                                         <td>{this.meta["filesize"]}</td>
                                     </tr>
                                     <tr>
-                                        <td>LINK</td>
-                                       
-                                        <td><a href={this.virustotal} target="_blank">VIRUS TOTAL</a></td>
+                                        <td colSpan="2"><a href={this.virustotal} target="_blank">VIRUS TOTAL LINK</a></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -213,18 +211,18 @@ class Inspect extends Component {
                             <hr className="under_line"></hr>
                             <ul className="nav nav-pills mb-3 sim-stran-tab" id="pills-tabs" role="tablist">
                                 <li className="nav-item">
-                                    <a className="tab-style nav-link blue-tab active" id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">Similarity</a>
+                                    <a className="tab-style nav-link blue-tab active" id="pills-details-tab" data-toggle="pill" href="#details-tab" role="tab" aria-controls="pills-details" aria-selected="true">Details</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="tab-style nav-link blue-tab " id="pills-similary-tab" data-toggle="pill" href="#similary-tab" role="tab" aria-controls="pills-similary" aria-selected="true">Similarity</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="tab-style nav-link red-tab tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">Anomaly Detection</a>
                                 </li>
-                                <li className="nav-item">
-                                    <a className="tab-style nav-link blue-tab" id="pills-details-tab" data-toggle="pill" href="#details-tab" role="tab" aria-controls="pills-details" aria-selected="true">Details</a>
-                                </li>
                                 
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
-                                <div className="tab-pane fade show active" id="similary-tab" role="tabpanel" aria-labelledby="pills-similary-tab">
+                                <div className="tab-pane fade" id="similary-tab" role="tabpanel" aria-labelledby="pills-similary-tab">
                                     <div className="mnemonic">
                                         <div className="accordion md-accordion" id="accordionEx" role="tablist"
                                              aria-multiselectable="true">
@@ -459,21 +457,78 @@ class Inspect extends Component {
 
                                     </div>
                                 </div>
-                                <div className="tab-pane fade" id="details-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
+                                <div className="tab-pane fade  show active" id="details-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
                                     <div className="mnemonic">
                                         <div className="accordion md-accordion">
                                             <h2>HASH</h2>
                                             <table className="gradient-table">
                                                 {this.createDetails()}
                                             </table>
-                                            <h2>PE</h2>
-                                            {this.createPE()}
-                                            <h2>STRING</h2>
-                                            {this.createList(this.string, false)}
-                                            <h2>IMPORT</h2>
-                                            {this.createList(this.import, true)}
-                                            <h2>EXPORT</h2>
-                                            {this.createList(this.export, false)}
+                                            <div className="accordion" id="pe_det_acc">
+                                                <div className="card">
+                                                    <div className="import-card" id="pe_det_">
+                                                            <div className="import-button" type="button" data-toggle="collapse" data-target="#pe_det" aria-expanded="true" aria-controls="pe_det">
+                                                                <h2>PE</h2><span className="material-icons">keyboard_arrow_down</span>
+                                                            </div>
+                                                    </div>
+
+                                                    <div id="pe_det" className="collapse" aria-labelledby="pe_det"
+                                                        data-parent="#pe_det_acc">
+                                                        <div className="card-body import-body">
+                                                            {this.createPE()}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="accordion" id="string_det_acc">
+                                                <div className="card">
+                                                    <div className="import-card" id="string_det_">
+                                                            <div className="import-button" type="button" data-toggle="collapse" data-target="#string_det" aria-expanded="true" aria-controls="string_det">
+                                                                <h2>STRING</h2><span className="material-icons">keyboard_arrow_down</span>
+                                                            </div>
+                                                    </div>
+
+                                                    <div id="string_det" className="collapse" aria-labelledby="string_det"
+                                                        data-parent="#string_det_acc">
+                                                        <div className="card-body import-body">
+                                                            {this.createList(this.string, false)}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="accordion" id="import_det_acc">
+                                                <div className="card">
+                                                    <div className="import-card" id="pe_det_">
+                                                            <div className="import-button" type="button" data-toggle="collapse" data-target="#import_det" aria-expanded="true" aria-controls="import_det">
+                                                                <h2>IMPORT</h2><span className="material-icons">keyboard_arrow_down</span>
+                                                            </div>
+                                                    </div>
+
+                                                    <div id="import_det" className="collapse" aria-labelledby="import_det"
+                                                        data-parent="#import_det_acc">
+                                                        <div className="card-body import-body">
+                                                            {this.createList(this.import, true)}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="accordion" id="export_det_acc">
+                                                <div className="card">
+                                                    <div className="import-card" id="export_det_">
+                                                            <div className="import-button" type="button" data-toggle="collapse" data-target="#export_det" aria-expanded="true" aria-controls="export_det">
+                                                                <h2>EXPORT</h2><span className="material-icons">keyboard_arrow_down</span>
+                                                            </div>
+                                                    </div>
+
+                                                    <div id="export_det" className="collapse" aria-labelledby="export_det"
+                                                        data-parent="#export_det_acc">
+                                                        <div className="card-body import-body">
+                                                            {this.createList(this.export, false)}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
