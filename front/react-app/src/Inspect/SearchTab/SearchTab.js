@@ -18,6 +18,7 @@ class SearchTab extends Component {
         }
         this.stringMal = {};
         this.stringBen = {};
+        this.filemalben={};
         this.showResult = this.showResult.bind(this);   
 
         this.handleChange = this.handleChange.bind(this);
@@ -144,6 +145,22 @@ class SearchTab extends Component {
                         }
                     ]
                 };
+                this.filemalben = {
+                    labels: ["FILE_BEN","FILE_MAL"],
+                    datasets: [
+                        {
+                            labels: ["FILE_BEN","FILE_MAL"],
+                            data: [response.data["p_graph"][4], response.data["p_graph"][5]],
+                            borderWidth: 0,
+                            hoverBorderWidth: 0,
+                            backgroundColor: [
+                                "rgb(25,255,148)",
+                                "rgb(255,25,44)",
+                            ],
+                            fill: true
+                        }
+                    ]
+                };
                 this.setState({ searchResult: 2 });
             }
         });
@@ -166,6 +183,9 @@ class SearchTab extends Component {
                                 </th>
                                 <th>
                                     mal(%)
+                                </th>
+                                <th>
+                                    file ben mal(%)
                                 </th>
                             </tr>
                             </thead>
@@ -195,6 +215,20 @@ class SearchTab extends Component {
                                                 }
                                             }}
                                             data={this.stringMal}
+                                            height={120}
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="donut-container">
+                                        <Doughnut
+                                            options={{
+                                                legend: {
+                                                    display: false,
+                                                    position: "right"
+                                                }
+                                            }}
+                                            data={this.filemalben}
                                             height={120}
                                         />
                                     </div>
