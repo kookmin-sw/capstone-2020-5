@@ -4,6 +4,7 @@ import ContentElement from "./ContentElement";
 import {Link} from "react-router-dom";
 import "./Contents.css";
 import Spinner from "../Spinner/Spinner";
+import Axios from 'axios';
 
 class Contents extends Component{
     constructor(props) {
@@ -11,11 +12,44 @@ class Contents extends Component{
         this.state = {
             loading: false
         }
-        this.jsonData = JSON.parse(window.localStorage.getItem('filenames'));
-        this.jsonUploadDates = JSON.parse(window.localStorage.getItem('dates'));
+        
+        if(window.localStorage.getItem('db_rescan_filename') === null) {
+            this.jsonData = JSON.parse(window.localStorage.getItem('filenames'));
+            this.jsonUploadDates = JSON.parse(window.localStorage.getItem('dates'));
+        } else {
+            this.setState({loading: true});
+            this.state.loading =  true;
+            
+            Axios.get("http://127.0.0.1:5000/db_re_scan", {
+                params: {
+                    db_re_scan_file: window.localStorage.getItem('db_rescan_filename'),
+                    filenames: window.localStorage.getItem('filenames'),
+                    dates: window.localStorage.getItem('dates')
+                }
+            }).then((response) => {
+                if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
+                    window.localStorage.setItem('error_message', response.data.split(",")[1]);
+                    window.location = "/error";
+                } else {
+                    window.localStorage.setItem('filenames', "");
+                    window.localStorage.setItem('filenames', JSON.stringify(response.data[0]));
+                    window.localStorage.setItem('dates', "");
+                    window.localStorage.setItem('dates', JSON.stringify(response.data[1]));
+                    
+                    window.localStorage.removeItem('db_rescan_filename');
+                    this.jsonData = JSON.parse(window.localStorage.getItem('filenames'));
+                    this.jsonUploadDates = JSON.parse(window.localStorage.getItem('dates'));
+
+                    this.setState({loading: false});
+                }
+            });
+        }
     }
 
     createListOfFiles() {
+        if(!this.jsonData) {
+            return [];
+        }
         let listOfFiles = []
         for(let i = 0; i < this.jsonData.length; ++i) {
             listOfFiles.push(

@@ -25,26 +25,9 @@ class Overview extends Component {
         this.db_reScan = this.db_reScan.bind(this);
     }
     db_reScan(md5) {
-      
-        Axios.get("http://127.0.0.1:5000/db_re_scan", {
-            params: {
-                db_re_scan_file: md5,
-                filenames: window.localStorage.getItem('filenames'),
-                dates: window.localStorage.getItem('dates')
-            }
-        }).then((response) => {
-            if (typeof response.data == "string"&& response.data.split(",")[0]  == "error") {
-                window.localStorage.setItem('error_message', response.data.split(",")[1]);
-                window.location = "/error";
-            } else {
-                window.localStorage.setItem('filenames', "");
-                window.localStorage.setItem('filenames', JSON.stringify(response.data[0]));
-                window.localStorage.setItem('dates', "");
-                window.localStorage.setItem('dates', JSON.stringify(response.data[1]));
-               var win=window.open("/contents",'_blank');
-               win.focus();
-            }
-        });
+        window.localStorage.setItem('db_rescan_filename', md5);
+        var win=window.open("/contents",'_blank');
+        win.focus();
     }
 
     downloadFile(data) {
