@@ -25,7 +25,7 @@ class Overview extends Component {
         this.db_reScan = this.db_reScan.bind(this);
     }
     db_reScan(md5) {
-        this.props.onclick();
+      
         Axios.get("http://127.0.0.1:5000/db_re_scan", {
             params: {
                 db_re_scan_file: md5,
@@ -41,7 +41,8 @@ class Overview extends Component {
                 window.localStorage.setItem('filenames', JSON.stringify(response.data[0]));
                 window.localStorage.setItem('dates', "");
                 window.localStorage.setItem('dates', JSON.stringify(response.data[1]));
-                window.location = "/contents";
+               var win=window.open("/contents",'_blank');
+               win.focus();
             }
         });
     }
