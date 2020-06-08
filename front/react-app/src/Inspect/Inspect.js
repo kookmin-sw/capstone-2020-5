@@ -192,15 +192,15 @@ class Inspect extends Component {
                                     <tbody>
                                     <tr>
                                         <td>MD5</td>
-                                        <td>{this.meta["MD5"]}</td>
+                                        <td>{this.meta["md5"]}</td>
                                     </tr>
                                     <tr>
                                         <td>SHA256</td>
-                                        <td>{this.meta["SHA-256"]}</td>
+                                        <td>{this.meta["sha256"]}</td>
                                     </tr>
                                     <tr>
                                         <td>SIZE</td>
-                                        <td>{this.meta["File size"]}</td>
+                                        <td>{this.meta["filesize"]}</td>
                                     </tr>
                                     <tr>
                                         <td colSpan="2">
