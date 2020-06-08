@@ -547,7 +547,10 @@ class Inspect extends Component {
                     </div>
 
                     :
-                    <Spinner/>
+                
+            <div style={{marginTop:"350px"}}>
+                <Spinner/>
+            </div>
                 }
             </div>
         );

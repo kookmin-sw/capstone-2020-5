@@ -31,7 +31,9 @@ class Contents extends Component{
                 <Nav />
                 {
                     this.state.loading ? 
-                    <Spinner />
+                    <div style={{marginTop:"350px"}}>
+                        <Spinner/>
+                    </div>
                     :
                     <div className="contents_container">
                         <div className="container">

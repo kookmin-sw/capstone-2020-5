@@ -322,7 +322,9 @@ class Overview extends Component {
                                 </div>
                             </div>
                             :
-                            <Spinner/>
+                           
+                        <Spinner/>
+                 
                         }
                         </div>
                         
