@@ -459,11 +459,13 @@ class Inspect extends Component {
                                 </div>
                                 <div className="tab-pane fade  show active" id="details-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
                                     <div className="mnemonic">
-                                    <h2>HASH</h2>
-                                            <table className="gradient-table">
+                                        
+                                        <div className="Details-accord">
+                                            <h2>HASH</h2>
+                                            <table className="">
                                                 {this.createDetails()}
                                             </table>
-                                       
+                                        </div>
                                             <div className="accordion Details-accord"  id="pe_det_acc">
                                                 <div className="card">
                                                     <div className="import-card" id="pe_det_">
@@ -480,7 +482,7 @@ class Inspect extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="accordion" id="string_det_acc">
+                                            <div className="accordion Details-accord" id="string_det_acc">
                                                 <div className="card">
                                                     <div className="import-card" id="string_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#string_det" aria-expanded="true" aria-controls="string_det">
@@ -496,7 +498,7 @@ class Inspect extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="accordion" id="import_det_acc">
+                                            <div className="accordion Details-accord" id="import_det_acc">
                                                 <div className="card">
                                                     <div className="import-card" id="pe_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#import_det" aria-expanded="true" aria-controls="import_det">
@@ -513,7 +515,7 @@ class Inspect extends Component {
                                                 </div>
                                             </div>
                                             
-                                            <div className="accordion" id="export_det_acc">
+                                            <div className="accordion Details-accord" id="export_det_acc">
                                                 <div className="card">
                                                     <div className="import-card" id="export_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#export_det" aria-expanded="true" aria-controls="export_det">

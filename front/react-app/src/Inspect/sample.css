@@ -532,3 +532,14 @@ result-button-rignt{
 .full-mne-table >tbody >tr >td{
     text-align: left;
 }
+.Details-accord{
+    width: 75%;
+    margin: 0 auto;
+    text-align: left;
+}
+.import-button >h2{
+    display: inline-block;
+}
+.import-button >span{
+    display: inline-block;
+}
