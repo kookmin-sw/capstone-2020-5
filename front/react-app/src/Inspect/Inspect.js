@@ -43,14 +43,14 @@ class Inspect extends Component {
                 this.export = this.state.file["export"]
                 this.import = this.state.file["import"]
                 this.PE = this.state.file["PE"];
-                
+
                 // Create list of functions' hash
                 this.all_functions = this.state.file["all_functions"];
 
                 this.anomaly_functions = this.state.file["anomaly_functions"];
-                this.virustotal="https://www.virustotal.com/gui/file/"+this.meta["sha256"]+"/details"
-               
-   
+                this.virustotal="https://www.virustotal.com/gui/file/"+this.meta["SHA-256"]+"/details"
+
+
                 this.setState({initialized : true});
             }
         });
@@ -97,7 +97,7 @@ class Inspect extends Component {
                 }
                 list.push(
                     <div className="accordion" id="accordionImport">
-                        <div className="card">
+                        <div className="card" style={{"margin-left": 30}}>
                             <div className="import-card" id={"importHead"+count}>
                                     <div className="import-button" type="button" data-toggle="collapse" data-target={"#collapseImport"+count} aria-expanded="true" aria-controls={"collapseImport"+count}>
                                         {key}<span className="material-icons">keyboard_arrow_down</span>
@@ -117,9 +117,9 @@ class Inspect extends Component {
             }else {
                 for(let i = 0; i < value.length; ++i) {
                     list.push(
-                        <tr key={key}>
+                        <li key={key}>
                             {value[i]}
-                        </tr>
+                        </li>
                     );
                 }
             }
@@ -139,7 +139,7 @@ class Inspect extends Component {
                 body.push(
                     <tr>
                         <td>
-                            {ikey} 
+                            {ikey}
                         </td>
                         <td>
                             {ivalue}
@@ -149,7 +149,7 @@ class Inspect extends Component {
             });
             list.push(
                 <div className="accordion" id="accordionImport">
-                    <div className="card">
+                    <div className="card" style={{"margin-left": 30}}>
                         <div className="import-card" id={"importHead"+count}>
                                 <div className="import-button" type="button" data-toggle="collapse" data-target={"#collapseImport"+count} aria-expanded="true" aria-controls={"collapseImport"+count}>
                                     {key+count}<span className="material-icons">keyboard_arrow_down</span>
@@ -173,7 +173,7 @@ class Inspect extends Component {
         return(
             <div>
                 {
-                    this.state.initialized ? 
+                    this.state.initialized ?
                     <div className="sample_container">
                         <Nav id="top" />
                         <div className="sample_body">
@@ -192,18 +192,23 @@ class Inspect extends Component {
                                     <tbody>
                                     <tr>
                                         <td>MD5</td>
-                                        <td>{this.meta["md5"]}</td>
+                                        <td>{this.meta["MD5"]}</td>
                                     </tr>
                                     <tr>
                                         <td>SHA256</td>
-                                        <td>{this.meta["sha256"]}</td>
+                                        <td>{this.meta["SHA-256"]}</td>
                                     </tr>
                                     <tr>
                                         <td>SIZE</td>
-                                        <td>{this.meta["filesize"]}</td>
+                                        <td>{this.meta["File size"]}</td>
                                     </tr>
                                     <tr>
-                                        <td colSpan="2"><a href={this.virustotal} target="_blank">VIRUS TOTAL LINK</a></td>
+                                        <td colSpan="2">
+                                            <a href={this.virustotal} target="_blank" title="Virustotal Link" style={{"font-weight": "bold"}}>
+                                                <img class="virustotal-img" src="/img/vt_logo.svg" width="24" height="24"/>
+                                                &#160;&#160;VIRUSTOTAL
+                                            </a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -219,7 +224,7 @@ class Inspect extends Component {
                                 <li className="nav-item">
                                     <a className="tab-style nav-link red-tab tab-style" id="pills-starange-tab" data-toggle="pill" href="#strange-tab" role="tab" aria-controls="pills-strange" aria-selected="false">Anomaly Detection</a>
                                 </li>
-                                
+
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
                                 <div className="tab-pane fade" id="similary-tab" role="tabpanel" aria-labelledby="pills-similary-tab">
@@ -394,13 +399,10 @@ class Inspect extends Component {
                                                 <div id="String_contents_acco" className="collapse" role="tabpanel"
                                                      aria-labelledby="String_handle_acco"
                                                      data-parent="#accordionEx">
-                                                    <SearchTab listType="String" dict={this.string}/>
+                                                    <SearchTab listType="String" dict={this.string} />
                                                 </div>
                                             </div>
                                         </div>
-
-
-
                                     </div>
                                     <div className="Import">
                                         <div className="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
@@ -459,14 +461,14 @@ class Inspect extends Component {
                                 </div>
                                 <div className="tab-pane fade  show active" id="details-tab" role="tabpanel" aria-labelledby="pills-strange-tab">
                                     <div className="mnemonic">
-                                        
-                                        <div className="Details-accord">
+
+                                        <div className="Details-accord" style={{"margin-bottom":"30px"}}>
                                             <h2>HASH</h2>
                                             <table className="">
                                                 {this.createDetails()}
                                             </table>
                                         </div>
-                                            <div className="accordion Details-accord"  id="pe_det_acc">
+                                            <div className="accordion Details-accord"  id="pe_det_acc" style={{"margin-bottom":"30px"}}>
                                                 <div className="card">
                                                     <div className="import-card" id="pe_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#pe_det" aria-expanded="true" aria-controls="pe_det">
@@ -482,7 +484,7 @@ class Inspect extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="accordion Details-accord" id="string_det_acc">
+                                            <div className="accordion Details-accord" id="string_det_acc" style={{"margin-bottom":"30px"}}>
                                                 <div className="card">
                                                     <div className="import-card" id="string_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#string_det" aria-expanded="true" aria-controls="string_det">
@@ -492,13 +494,13 @@ class Inspect extends Component {
 
                                                     <div id="string_det" className="collapse" aria-labelledby="string_det"
                                                         data-parent="#string_det_acc">
-                                                        <div className="card-body import-body">
+                                                        <div className="card-body import-body details-string">
                                                             {this.createList(this.string, false)}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="accordion Details-accord" id="import_det_acc">
+                                            <div className="accordion Details-accord" id="import_det_acc" style={{"margin-bottom":"30px"}}>
                                                 <div className="card">
                                                     <div className="import-card" id="pe_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#import_det" aria-expanded="true" aria-controls="import_det">
@@ -514,8 +516,8 @@ class Inspect extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            <div className="accordion Details-accord" id="export_det_acc">
+
+                                            <div className="accordion Details-accord" id="export_det_acc" style={{"margin-bottom":"30px"}}>
                                                 <div className="card">
                                                     <div className="import-card" id="export_det_">
                                                             <div className="import-button" type="button" data-toggle="collapse" data-target="#export_det" aria-expanded="true" aria-controls="export_det">
@@ -525,7 +527,7 @@ class Inspect extends Component {
 
                                                     <div id="export_det" className="collapse" aria-labelledby="export_det"
                                                         data-parent="#export_det_acc">
-                                                        <div className="card-body import-body">
+                                                        <div className="card-body import-body details-export">
                                                             {this.createList(this.export, false)}
                                                         </div>
                                                     </div>
@@ -534,7 +536,7 @@ class Inspect extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            
+
 
 
                         </div>
@@ -547,7 +549,7 @@ class Inspect extends Component {
                     </div>
 
                     :
-                
+
             <div style={{marginTop:"350px"}}>
                 <Spinner/>
             </div>
