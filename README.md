@@ -53,7 +53,7 @@ However, research on automatic analysis tools of malicious code is active, but r
 
 
 
-## VII 팀 소개
+## VI 팀 소개
 
 
 <center><img src="https://user-images.githubusercontent.com/28583588/78563697-5b26a000-7856-11ea-85ec-dff4b6b0019f.png" width="30%" height="30%"></center>
