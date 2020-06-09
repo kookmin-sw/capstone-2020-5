@@ -1,0 +1,105 @@
+@font-face { font-family: 'BMDOHYEON'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+
+
+@media screen and (min-width:512px){
+    .index_background {
+
+    }
+    .index_nav{
+        padding: 10px 0 0 20px;
+        text-align: left;
+        display: inline-block;
+        width: 100%;
+    }
+    .small_buttons{
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+    .asi_logo{
+        height: 45px;
+    }
+    .small_button{
+        height: 60px;
+        margin: 0 0 0 2rem;
+        display: inline-block;
+        font-family: BMDOHYEON;
+        font-size: 20px;
+        text-decoration: underline;
+        text-underline-position: under;
+        color: #ffffff;
+
+    }
+    .big_buttons{
+        padding-top: 30px;
+    }
+    .btn.btn-primary{
+        font-size: 40px;
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+        font-family: BMDOHYEON;
+        background-color: #0000bd;
+        margin-right: 2rem;
+        padding: 1rem 3rem 2rem 3rem;
+    }
+    .btn-primary:hover ,btn-primary:active{
+        background-color: black;
+        color: #ffffff;
+    }
+    .intro_button{
+
+    }
+    .upload_button{
+
+    }
+    .main_container{
+        background: rgb(112,101,238);
+        background: linear-gradient(103deg, rgba(112,101,238,1) 0%, rgba(116,33,184,1) 45%, rgba(92,0,165,1) 100%);
+        padding-bottom: 6rem;
+    }
+    .main_table{
+        text-align: center;
+        margin-top: 3rem;
+        padding: 3rem;
+        display: inline-block;
+        height: 25rem;
+        font-size: 0;
+    }
+    .main_image_container{
+        display: inline-block;
+        height: 20rem;
+        font-size: 0;
+    }
+    .main_contents_container{
+        display: inline-block;
+        height: 20rem;
+        margin-left: 2rem;
+    }
+    .main_image{
+        width: 500px;
+        display: inline-block;
+        padding-bottom: 10rem;
+    }
+    .project_intro{
+        color: #3c3f41;
+        display: inline-block;
+        width: 600px;
+        font-family: BMDOHYEON;
+    }
+    .title{
+        color: #ffffff;
+        font-family: BMDOHYEON;
+        font-size: 70px;
+        list-style: none;
+        padding-bottom: 30px;
+    }
+    .astract{
+        color: #929fba;
+        font-family: BMDOHYEON;
+        font-size: 25px;
+        list-style: none;
+        text-align: left;
+        padding-bottom: 40px;
+        line-height: 3rem;
+    }
+}

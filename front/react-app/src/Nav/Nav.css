@@ -1,0 +1,16 @@
+.img_asi{
+    display: block;
+    max-width: 5%;
+    height: auto;
+}
+
+.bg-top {
+    background-color: #323c6e;
+}
+.main_nav{
+    background: linear-gradient(103deg, rgba(112,101,238,1) 0%, rgba(116,33,184,1) 45%, rgba(92,0,165,1) 100%);
+    text-align: left;
+    padding: 10px 0 0 20px;
+    display: inline-block;
+    width: 100%;
+}
