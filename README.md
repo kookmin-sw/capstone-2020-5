@@ -17,7 +17,7 @@
  AhnLab에 따르면 전문가가 한개의 악성코드를 분석하는데는 최소 몇시간, 최대 몇주가 소요됩니다.
 그러나, 악성코드 자동분석도구의 연구는 활발한 반면 전문가를 위한 악성코드 분석도구의 연구와 투자는 턱없이 부족합니다.
 
- 본 프로젝트의 목표는 딥러닝 기반 악성코드 분석 보조도구를 개발하는 것입니다. 파일을 입력으로 받아 disassemble을 수행한 뒤, opcode 중 악성 행위를 수행하는 부분을 요약하는 소프트웨어를 개발함으로써 적은 인력으로도 악성코드를 효과적으로 분석할 수 있는 소프트웨어를 개발할 것입니다.
+ 본 프로젝트의 목표는 딥러닝 기반 악성코드 분석 보조도구를 개발하는 것입니다. 파일을 입력으로 받아 disassemble을 수행한 뒤 RNN 기반 이상탐지 결과와 CNN기반 유사도 검사 결과를 제공하는 소프트웨어를 개발함으로써 적은 인력으로도 악성코드를 효과적으로 분석할 수 있도록 합니다.
 
 
 ## II. Abstract
@@ -27,8 +27,8 @@ Experts intervention is essential for some files, as automated analysis tools ha
  According to AnLab, it takes at least hours and weeks for an expert to analyze a malicious code.
 However, research on automatic analysis tools of malicious code is active, but research and investment of malicious code analysis aids for experts is insufficient.
 
- The goal of this project is to develop deep learning-based malware analysis aids.
-After receiving the file as input, we will develop software that summarizes the parts that perform malicious behavior between opcode so that we can effectively analyze malicious code with a small number of people. 
+ The goal of this project is to develop a tool for analyzing malware based on deep learning.
+ By disassemble after receiving the file as input, we develop software that provides RNN-based anomaly detection results and CNN-based similarity test results, so that we can effectively analyze malicious code with less manpower.
 
 
 ## III 소개 영상 - 계획서 발표
@@ -37,23 +37,19 @@ After receiving the file as input, we will develop software that summarizes the 
 [![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/5gRVqjZ8mxI)
 
 
-## IV 소개 영상 - 중간 발표
-  
-
-[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/TInuzVyQY5U)
 
 
-## V 소개 영상 - 2차 중간 발표
-  
-
-[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/StVPDL_qehU)
+## IV 최종 발표 영상
 
 
+[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/qb5DdBd1KLQ)
 
-## VI 시연 영상 - 2차 중간 발표
-  
 
-[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/5w1rk3371yY)
+## V 최종 시연 영상
+
+
+
+[![image](https://user-images.githubusercontent.com/28583588/77656906-e3d05100-6fb7-11ea-96f1-abd8fb22457e.png)](https://youtu.be/QB38GtiLg2s)
 
 
 
